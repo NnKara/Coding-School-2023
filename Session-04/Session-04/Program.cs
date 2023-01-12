@@ -39,3 +39,5 @@ Console.WriteLine("\n");
 CelsiusToKelvinAndFahrenheit newConverter = new CelsiusToKelvinAndFahrenheit();
 newConverter.convertCelsius();
 
+Console.ReadLine();
+
