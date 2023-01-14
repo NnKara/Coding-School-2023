@@ -24,6 +24,7 @@ namespace Session_05
                 else
                 {
                     while (true)
+
                     {
                         Console.WriteLine("-Menu-\n" +
                                           "Press |1| to Sum your number with N values \n" +

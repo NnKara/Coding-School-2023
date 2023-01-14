@@ -16,7 +16,7 @@ internal class Program
         //Exercise #2
         Console.WriteLine("//    Exercise #2        //");
         ProductAndSum result = new ProductAndSum();
-        result.SumAndProduct(); 
+        result.SumAndProduct();
 
 
 
@@ -30,6 +30,6 @@ internal class Program
 
 
 
-
+        Console.ReadLine();
     }
 }
