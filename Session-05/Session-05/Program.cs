@@ -9,19 +9,21 @@ internal class Program
         //Exercise #1
         Console.WriteLine("//    Exercise #1  WithLibrary      //");
         ReverseString reverse=new ReverseString();  
-        reverse.ReverseWithLibrary();
+       // reverse.ReverseWithLibrary();
         Console.WriteLine("//     Exercise #1 ByHand    // ");
-        reverse.ReverseByHand();
+       // reverse.ReverseByHand();
+        Console.WriteLine("\n");
 
         //Exercise #2
         Console.WriteLine("//    Exercise #2        //");
         ProductAndSum result = new ProductAndSum();
-        result.SumAndProduct();
+       // result.SumAndProduct();
 
 
-
-
-
+        //Exercise #3
+        Console.WriteLine("//    Exercise #2        //");
+        PrimeNumbers primes=new PrimeNumbers();
+        primes.FindPrimeNumbers();
 
 
 
