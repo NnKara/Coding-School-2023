@@ -34,7 +34,5 @@ namespace Session_05
             Console.WriteLine("Reversed String: " + reversedString);
         }
 
-
-
     }
 }
