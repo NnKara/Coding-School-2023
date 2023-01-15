@@ -11,8 +11,6 @@ namespace Session_05
     {
         public void FindPrimeNumbers()
         {
-            //StringBuilder newString = new StringBuilder();
-
             Console.WriteLine("Please enter an Integer: ");
             while (true)
             {
@@ -37,7 +35,7 @@ namespace Session_05
                         }
                         if (counter==0 && i!=1)
                         {
-                            Console.WriteLine("{0}",i);
+                            Console.WriteLine(i);
                         }
                     }
                     break;

@@ -11,27 +11,27 @@ namespace Session_05
     
         public void ReverseWithLibrary()
         {
-            
+            StringBuilder sb= new StringBuilder();
             Console.WriteLine("Enter your String: ");
-            String givenString = Console.ReadLine();
-
-            char[] stringsCharacters = givenString.ToCharArray();
+            String usersInput=Console.ReadLine();
+            char[] stringsCharacters = usersInput.ToCharArray();
             Array.Reverse(stringsCharacters);
             String reversedString = new string(stringsCharacters);
-            Console.WriteLine("Reversed String :"+reversedString);                    
+            Console.WriteLine("Reversed String: "+reversedString);            
         }
 
 
         public void ReverseByHand()
         {
+            StringBuilder stringBuilder= new StringBuilder();   
             Console.WriteLine("Enter your String: ");
             String givenString = Console.ReadLine();
-            String reversedString = "";
+            
             for(int i=givenString.Length-1;i>=0; i--)
             {
-                reversedString += givenString[i];
+                stringBuilder.Append(givenString[i]);
             }
-            Console.WriteLine("Reversed String: " + reversedString);
+            Console.WriteLine(stringBuilder);           
         }
 
     }

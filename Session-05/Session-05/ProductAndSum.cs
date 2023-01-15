@@ -11,13 +11,13 @@ namespace Session_05
 
         public void SumAndProduct()
         {
-            StringBuilder newString = new StringBuilder();
-            Console.WriteLine("Please enter an Integer(n): ");
+            
+            Console.WriteLine("Please enter an Integer: ");
             while (true)
             {
                 
                 String usersInput = Console.ReadLine();
-                if (!int.TryParse(usersInput, out int givenNumber))
+                if (!int.TryParse(usersInput, out int givenNumber) || givenNumber<0)
                 {
                     Console.WriteLine("Invalid input.Re-Enter your |INTEGER| : ");
                 }
@@ -41,19 +41,21 @@ namespace Session_05
                                 int sum = 0;
                                 for (int i = 0; i <= givenNumber; i++)
                                 {
-                                    sum += givenNumber + i;
-                                    Console.WriteLine("Result: " + sum);
+                                    //sum+=givenNumber+i;
+                                    sum += i;
+                                    
                                 }
+                                Console.WriteLine("Result: " + sum);
                                 break;
                             }
                             else if (selection == 2)
                             {
-                                int product = 0;
-                                for (int i = 0; i <= givenNumber; i++)
+                                int product = 1;
+                                for (int i = 1; i <= givenNumber; i++)
                                 {
-                                    product += givenNumber * i;
-                                    Console.WriteLine("Result: " + product);
+                                    product *=i ;                                   
                                 }
+                                Console.WriteLine("Result: " + product);
                                 break;
                             }                           
                         }                        
