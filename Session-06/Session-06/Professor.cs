@@ -9,6 +9,7 @@ namespace Session_06
     internal class Professor:Person
     {
         public String? Rank { get; set; }
+
         public Course[]? Courses { get; set; }
 
         public Professor() : base() { }
@@ -43,6 +44,11 @@ namespace Session_06
         }
 
         public void SetGrade(Guid studetntID,Guid courseID,int grade)
+        {
+
+        }
+
+        public void GetName()
         {
 
         }
