@@ -31,5 +31,15 @@ namespace Session_06
             RegistrationNumber = registrationNumber;
             Courses  = courses;
         }
+
+        public void Attend(Course course,DateTime dateTime)
+        {
+
+        }
+
+        public void WriteExam(Course course,DateTime dateTime)
+        {
+
+        }
     }
 }
