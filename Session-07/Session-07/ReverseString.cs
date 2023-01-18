@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Session_07
 {
-    internal class ReverseString
+    internal class ReverseString:StringParser
     {
 
-        public string ReverseStringWithRecursion(string input)
+        public override string Manipulate(string input)
         {
             if (input is string)
             {
@@ -19,7 +19,7 @@ namespace Session_07
                 }
                 else
                 {
-                    String reversed= ReverseStringWithRecursion(input.Substring(1)) + input[0];
+                    String reversed= Manipulate(input.Substring(1)) + input[0];
                     Console.WriteLine(reversed);
                     return reversed;
                 }

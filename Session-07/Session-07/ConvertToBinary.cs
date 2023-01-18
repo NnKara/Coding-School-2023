@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Session_07
 {
-    internal class ConvertToBinary
+    internal class ConvertToBinary:StringParser
     {
-        public string BinaryConverter(string input)
+
+
+        public override string Manipulate(string input)
         {
             decimal number;
             if(decimal.TryParse(input,out number))

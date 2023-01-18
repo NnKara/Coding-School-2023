@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Session_07
 {
-    internal class ConvertToUpperCase
+    internal class ConvertToUpperCase:StringParser
     {
-        public string UppercaseConverter(string input)
+        public override string Manipulate(string input)
         {
             if (input.Contains(""))
             {
@@ -24,8 +24,7 @@ namespace Session_07
                         maxLength = words[i].Length;
                     }
                 }
-
-               string upperLongestWord = longestWord.ToUpper();
+                string upperLongestWord = longestWord.ToUpper();
                 Console.WriteLine(upperLongestWord);
                 return upperLongestWord;
             }

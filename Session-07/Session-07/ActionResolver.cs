@@ -19,7 +19,7 @@ namespace Session_07
             response.RequestID=request.RequestID;
 
             Logger = new MessageLogger();
-            Logger.Write(new Message("EXECUTION START"));
+            Log("EXECUTION START");
            
             try
             {
@@ -27,22 +27,22 @@ namespace Session_07
                 switch (request.Action)
                 {
                     case ActionEnum.Convert:
-                        Logger.Write(new Message("EXECUTION FOR BINARY"));
+                        Log("EXECUTION FOR BINARY");
                         ConvertToBinary binaryConverter = new ConvertToBinary();
-                        response.Output = binaryConverter.BinaryConverter(request.Input);
+                        response.Output = binaryConverter.Manipulate(request.Input);
                         break;
 
                     case ActionEnum.Uppercase:
-                        Logger.Write(new Message("EXECUTION FOR UPPERCASE"));
+                        Log("EXECUTION FOR UPPERCASE");
                         ConvertToUpperCase converter = new ConvertToUpperCase();
-                        response.Output = converter.UppercaseConverter(request.Input);                      
+                        response.Output = converter.Manipulate(request.Input);                      
                         break;
 
 
                     case ActionEnum.Reverse:
-                        Logger.Write(new Message("EXECUTION FOR REVERSE"));
+                        Log("EXECUTION FOR REVERSE");
                         ReverseString reverse = new ReverseString();
-                        response.Output = reverse.ReverseStringWithRecursion(request.Input);
+                        response.Output = reverse.Manipulate(request.Input);
                         break;
 
                     default:
@@ -50,28 +50,26 @@ namespace Session_07
                         break;
 
                 }
-
-               
-
             }
             catch (Exception ex)
 
             {              
-                Logger.Write(new Message(ex.Message));
+                Log(ex.Message);
                
                 throw;
             }
             finally
             {
-                Logger.Write(new Message("EXECUTION END"));
+                Log("EXECUTION END");
             }
+
+
             
             return response;
-
-
-
-
-            
+        }
+        public void Log(String loggerMesssage)
+        {
+            Logger.Write(new Message(loggerMesssage)); 
         }
     }
 }
