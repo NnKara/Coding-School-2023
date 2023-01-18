@@ -10,11 +10,12 @@ namespace Session_07
     {
         public Guid RequestID { get; set; }
         public Guid ResponseID { get; set; }
-        public String? Output { get; set; } 
-
-
-     
+        public String? Output { get; set; }      
         
+        public ActionResponse() 
+        {
+            ResponseID=Guid.NewGuid();
+        }
 
     }
 }

@@ -10,13 +10,56 @@ namespace Session_07
     {
        public MessageLogger? Logger { get; set; }
 
-        public void Execute(ActionRequest action)
+
+
+        public ActionResponse Execute(ActionRequest request)
         {
+            ActionResponse response = new ActionResponse();
+            response.ResponseID=Guid.NewGuid();
+            response.RequestID=request.RequestID;           
+           
+            try
+            {
 
+                switch (request.Action)
+                {
+                    case ActionEnum.Convert:
+                        ConvertToBinary binaryConverter = new ConvertToBinary();
+                        response.Output = binaryConverter.BinaryConverter(request.Input);
+                        break;
+
+                    case ActionEnum.Uppercase:
+                        ConvertToUpperCase converter = new ConvertToUpperCase();
+                        response.Output = converter.UppercaseConverter(request.Input);
+                        break;
+
+
+                    case ActionEnum.Reverse:
+                        ReverseString reverse = new ReverseString();
+                        response.Output = reverse.ReverseStringWithRecursion(request.Input);
+                        break;
+
+                    default:
+
+                        break;
+
+                }
+
+               
+
+            }
+            catch (Exception ex)
+
+            {
+                throw;
+            }
+            
+            return response;
+
+
+
+
+            
         }
-
-        
-
-
     }
 }

@@ -8,7 +8,15 @@ namespace Session_07
 {
     internal class MessageLogger
     {
-        public Message[]? Messages { get; set; }       
+        public Message[]? Messages { get; set; }
+
+        
+
+        public MessageLogger() 
+        {
+            Messages = new Message[1000];
+        }
+        
 
         public void ReadAll()
         {

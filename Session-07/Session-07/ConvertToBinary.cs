@@ -23,8 +23,7 @@ namespace Session_07
                 return binary;
             }
 
-            return "Invalid Input.";
-            
+            return "Invalid Input.";            
         }
     }
 }
