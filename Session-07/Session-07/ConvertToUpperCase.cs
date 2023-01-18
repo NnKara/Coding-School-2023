@@ -25,7 +25,8 @@ namespace Session_07
                     }
                 }
 
-                string upperLongestWord = longestWord.ToUpper();
+               string upperLongestWord = longestWord.ToUpper();
+                Console.WriteLine(upperLongestWord);
                 return upperLongestWord;
             }
             else

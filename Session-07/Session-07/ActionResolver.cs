@@ -16,7 +16,10 @@ namespace Session_07
         {
             ActionResponse response = new ActionResponse();
             response.ResponseID=Guid.NewGuid();
-            response.RequestID=request.RequestID;           
+            response.RequestID=request.RequestID;
+
+            Logger = new MessageLogger();
+            Logger.Write(new Message("EXECUTION START"));
            
             try
             {
@@ -24,17 +27,20 @@ namespace Session_07
                 switch (request.Action)
                 {
                     case ActionEnum.Convert:
+                        Logger.Write(new Message("EXECUTION FOR BINARY"));
                         ConvertToBinary binaryConverter = new ConvertToBinary();
                         response.Output = binaryConverter.BinaryConverter(request.Input);
                         break;
 
                     case ActionEnum.Uppercase:
+                        Logger.Write(new Message("EXECUTION FOR UPPERCASE"));
                         ConvertToUpperCase converter = new ConvertToUpperCase();
-                        response.Output = converter.UppercaseConverter(request.Input);
+                        response.Output = converter.UppercaseConverter(request.Input);                      
                         break;
 
 
                     case ActionEnum.Reverse:
+                        Logger.Write(new Message("EXECUTION FOR REVERSE"));
                         ReverseString reverse = new ReverseString();
                         response.Output = reverse.ReverseStringWithRecursion(request.Input);
                         break;
@@ -50,8 +56,14 @@ namespace Session_07
             }
             catch (Exception ex)
 
-            {
+            {              
+                Logger.Write(new Message(ex.Message));
+               
                 throw;
+            }
+            finally
+            {
+                Logger.Write(new Message("EXECUTION END"));
             }
             
             return response;

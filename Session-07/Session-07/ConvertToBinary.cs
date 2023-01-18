@@ -20,6 +20,7 @@ namespace Session_07
                     binary = (intNumber % 2) + binary;
                     intNumber /= 2;
                 }
+                Console.WriteLine(binary);
                 return binary;
             }
 

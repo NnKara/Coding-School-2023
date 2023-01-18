@@ -19,7 +19,9 @@ namespace Session_07
                 }
                 else
                 {
-                    return ReverseStringWithRecursion(input.Substring(1)) + input[0];
+                    String reversed= ReverseStringWithRecursion(input.Substring(1)) + input[0];
+                    Console.WriteLine(reversed);
+                    return reversed;
                 }
             }
             else

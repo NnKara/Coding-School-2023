@@ -14,7 +14,17 @@ namespace Session_07
         public String? MyMessage { get; set; }
 
         
-        
+        public Message() 
+        {
+            ID=Guid.NewGuid();
+        }
+
+        public Message(string myMessage)
+        {
+            ID= Guid.NewGuid();
+            TimeStamp=DateTime.Now;
+            MyMessage = myMessage;
+        }
      
     }
 }
