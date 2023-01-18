@@ -13,13 +13,8 @@ namespace Session_07
 
         public String? MyMessage { get; set; }
 
-        public Message() { }
+        
 
-        public Message(Guid id,DateTime dateTime,String myMessage)
-        {
-            ID = id;
-            TimeStamp = dateTime;
-            MyMessage = myMessage;
-        }
+     
     }
 }
