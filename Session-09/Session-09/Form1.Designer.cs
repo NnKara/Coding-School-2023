@@ -40,6 +40,12 @@
             this.Result = new System.Windows.Forms.Button();
             this.Addition = new System.Windows.Forms.Button();
             this.ctrlDisplay = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.Subtraction = new System.Windows.Forms.Button();
+            this.btnMultiplication = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.Power = new System.Windows.Forms.Button();
+            this.btnSquareRoot = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -134,7 +140,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(59, 361);
+            this.Result.Location = new System.Drawing.Point(521, 353);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(94, 29);
             this.Result.TabIndex = 9;
@@ -144,7 +150,7 @@
             // 
             // Addition
             // 
-            this.Addition.Location = new System.Drawing.Point(186, 361);
+            this.Addition.Location = new System.Drawing.Point(586, 135);
             this.Addition.Name = "Addition";
             this.Addition.Size = new System.Drawing.Size(94, 29);
             this.Addition.TabIndex = 10;
@@ -161,11 +167,77 @@
             this.ctrlDisplay.TabIndex = 11;
             this.ctrlDisplay.TextChanged += new System.EventHandler(this.Display_TextChanged);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(586, 213);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(94, 29);
+            this.button10.TabIndex = 12;
+            this.button10.Text = "/";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // Subtraction
+            // 
+            this.Subtraction.Location = new System.Drawing.Point(461, 135);
+            this.Subtraction.Name = "Subtraction";
+            this.Subtraction.Size = new System.Drawing.Size(94, 29);
+            this.Subtraction.TabIndex = 13;
+            this.Subtraction.Text = "-";
+            this.Subtraction.UseVisualStyleBackColor = true;
+            this.Subtraction.Click += new System.EventHandler(this.Subtraction_Click);
+            // 
+            // btnMultiplication
+            // 
+            this.btnMultiplication.Location = new System.Drawing.Point(461, 213);
+            this.btnMultiplication.Name = "btnMultiplication";
+            this.btnMultiplication.Size = new System.Drawing.Size(94, 29);
+            this.btnMultiplication.TabIndex = 14;
+            this.btnMultiplication.Text = "*";
+            this.btnMultiplication.UseVisualStyleBackColor = true;
+            this.btnMultiplication.Click += new System.EventHandler(this.btnMultiplication_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(186, 353);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(94, 29);
+            this.button11.TabIndex = 15;
+            this.button11.Text = "0";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // Power
+            // 
+            this.Power.Location = new System.Drawing.Point(461, 285);
+            this.Power.Name = "Power";
+            this.Power.Size = new System.Drawing.Size(94, 29);
+            this.Power.TabIndex = 16;
+            this.Power.Text = "^";
+            this.Power.UseVisualStyleBackColor = true;
+            this.Power.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // btnSquareRoot
+            // 
+            this.btnSquareRoot.Location = new System.Drawing.Point(586, 285);
+            this.btnSquareRoot.Name = "btnSquareRoot";
+            this.btnSquareRoot.Size = new System.Drawing.Size(94, 29);
+            this.btnSquareRoot.TabIndex = 17;
+            this.btnSquareRoot.Text = "√";
+            this.btnSquareRoot.UseVisualStyleBackColor = true;
+            this.btnSquareRoot.Click += new System.EventHandler(this.btnSquareRoot_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSquareRoot);
+            this.Controls.Add(this.Power);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.btnMultiplication);
+            this.Controls.Add(this.Subtraction);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.ctrlDisplay);
             this.Controls.Add(this.Addition);
             this.Controls.Add(this.Result);
@@ -199,5 +271,11 @@
         private Button Result;
         private Button Addition;
         private TextBox ctrlDisplay;
+        private Button button10;
+        private Button Subtraction;
+        private Button btnMultiplication;
+        private Button button11;
+        private Button Power;
+        private Button btnSquareRoot;
     }
 }
