@@ -8,197 +8,72 @@ namespace Session_09
         private decimal? _value1 = null;
         private decimal? _value2= null;
         private decimal? _result= null;
+        public Form1()
+        {
+            InitializeComponent();
+            _calcOperation = CalcOperation.None;
+        }
 
 
        
 
         private CalcOperation _calcOperation;
-        public Form1()
-        {
-            InitializeComponent();
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
-        {
-
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result= null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 1;
-            }
-            else
-            {
-                _value2 = 1;
-            }
-            ctrlDisplay.Text += "1";
+        {          
+            UpdateValue(1);
+            AppendToDisplay("1");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 2;
-            }
-            else
-            {
-                _value2 = 2;
-            }
-            ctrlDisplay.Text += "2";
+            UpdateValue(2);
+            AppendToDisplay("2");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 3;
-            }
-            else
-            {
-                _value2 =3 ;
-            }
-            ctrlDisplay.Text += "3";
+            UpdateValue(3);
+            AppendToDisplay("3");
         }
         
     
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 4;
-            }
-            else
-            {
-                _value2 = 4;
-            }
-            ctrlDisplay.Text += "4";
+            UpdateValue(4);
+            AppendToDisplay("4");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 5;
-            }
-            else
-            {
-                _value2 = 5;
-            }
-            ctrlDisplay.Text += "5";
+            UpdateValue(5);
+            AppendToDisplay("5");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 6;
-            }
-            else
-            {
-                _value2 = 6;
-            }
-            ctrlDisplay.Text += "6"; ;
+            UpdateValue(6);
+            AppendToDisplay("6");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 7;
-            }
-            else
-            {
-                _value2 = 7;
-            }
-            ctrlDisplay.Text += "7";
+            UpdateValue(7);
+            AppendToDisplay("7");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 8;
-            }
-            else
-            {
-                _value2 = 8;
-            }
-            ctrlDisplay.Text += "8";
+            UpdateValue(8);
+            AppendToDisplay("8");
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 9;
-            }
-            else
-            {
-                _value2 = 9;
-            }
-            ctrlDisplay.Text += "9";
+            UpdateValue(9);
+            AppendToDisplay("9");
         }
 
         private void Result_Click(object sender, EventArgs e)
@@ -233,11 +108,14 @@ namespace Session_09
                     _result = calculation.SquareRoot(_value1);
                     break;
 
+                
 
                 default:
+                    _calcOperation = CalcOperation.None;
                     break;
 
             }
+            
             ctrlDisplay.Text += _result;
         }
 
@@ -272,22 +150,8 @@ namespace Session_09
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (_result != null)
-            {
-                ctrlDisplay.Text = string.Empty;
-                _value1 = null;
-                _value2 = null;
-                _result = null;
-            }
-            if (_value1 == null)
-            {
-                _value1 = 0;
-            }
-            else
-            {
-                _value2 = 0;
-            }
-            ctrlDisplay.Text += "0";
+            UpdateValue(0);
+            AppendToDisplay("0");
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -301,5 +165,40 @@ namespace Session_09
             ctrlDisplay.Text += "RootOf"; 
             _calcOperation = CalcOperation.SquareRoot;
         }
+
+
+        private void UpdateValue(decimal? number)
+        {
+            if (_result != null)
+            {
+                _value1 = _result;
+                _value2 = null;
+                _result = null;
+            }
+
+            if (_value1 == null)
+            {
+                _value1 = number;
+            }
+            else
+            {
+                _value2 = number;
+            }
+        }
+
+        private void AppendToDisplay(String text)
+        {
+            ctrlDisplay.Text += text;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            _value1 = null;
+            _value2 = null;
+            _result = null;
+            _calcOperation = CalcOperation.None;
+            ctrlDisplay.Text = string.Empty;
+        }
     }
+
 }

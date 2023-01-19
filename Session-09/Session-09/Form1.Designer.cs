@@ -46,6 +46,7 @@
             this.button11 = new System.Windows.Forms.Button();
             this.Power = new System.Windows.Forms.Button();
             this.btnSquareRoot = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -140,7 +141,7 @@
             // 
             // Result
             // 
-            this.Result.Location = new System.Drawing.Point(521, 353);
+            this.Result.Location = new System.Drawing.Point(461, 353);
             this.Result.Name = "Result";
             this.Result.Size = new System.Drawing.Size(94, 29);
             this.Result.TabIndex = 9;
@@ -227,11 +228,22 @@
             this.btnSquareRoot.UseVisualStyleBackColor = true;
             this.btnSquareRoot.Click += new System.EventHandler(this.btnSquareRoot_Click);
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(586, 353);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(94, 29);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "AC";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSquareRoot);
             this.Controls.Add(this.Power);
             this.Controls.Add(this.button11);
@@ -277,5 +289,6 @@
         private Button button11;
         private Button Power;
         private Button btnSquareRoot;
+        private Button btnClear;
     }
 }

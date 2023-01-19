@@ -13,6 +13,7 @@ namespace Session_09
         Multiplication,
         Division,
         Power,
-        SquareRoot
+        SquareRoot,
+        None
     }
 }
