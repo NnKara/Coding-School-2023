@@ -14,14 +14,11 @@ namespace Session_09
             _calcOperation = CalcOperation.None;
         }
 
-
-       
-
         private CalcOperation _calcOperation;
        
 
         private void button1_Click(object sender, EventArgs e)
-        {          
+        {     
             UpdateValue(1);
             AppendToDisplay("1");
         }
@@ -76,6 +73,12 @@ namespace Session_09
             AppendToDisplay("9");
         }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            UpdateValue(0);
+            AppendToDisplay("0");
+        }
+
         private void Result_Click(object sender, EventArgs e)
         {
             Calculation calculation = new Calculation();
@@ -108,8 +111,6 @@ namespace Session_09
                     _result = calculation.SquareRoot(_value1);
                     break;
 
-                
-
                 default:
                     _calcOperation = CalcOperation.None;
                     break;
@@ -121,59 +122,54 @@ namespace Session_09
 
         private void Addition_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "+";
+            AppendToDisplay("+");
             _calcOperation = CalcOperation.Addition;
-        }
-
-        private void Display_TextChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "/";
+
+            AppendToDisplay("/");
             _calcOperation = CalcOperation.Division;
         }
 
         private void Subtraction_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "-";
+            AppendToDisplay("-");
             _calcOperation = CalcOperation.Substraction;
         }
 
         private void btnMultiplication_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "*";
+            AppendToDisplay("*");
             _calcOperation = CalcOperation.Multiplication;
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            UpdateValue(0);
-            AppendToDisplay("0");
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "^";
+            AppendToDisplay("^");
             _calcOperation = CalcOperation.Power;
         }
 
         private void btnSquareRoot_Click(object sender, EventArgs e)
         {
-            ctrlDisplay.Text += "RootOf"; 
+            
+            ctrlDisplay.Text += (char)0x221A; 
             _calcOperation = CalcOperation.SquareRoot;
         }
 
-
+        private void Display_TextChanged(object sender, EventArgs e)
+        {
+        }
         private void UpdateValue(decimal? number)
         {
             if (_result != null)
             {
-                _value1 = _result;
+                ctrlDisplay.Text = string.Empty;
+                _value1 = null;
                 _value2 = null;
                 _result = null;
+                ctrlDisplay.Text = string.Empty;
             }
 
             if (_value1 == null)

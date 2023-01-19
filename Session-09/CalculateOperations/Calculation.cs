@@ -50,9 +50,7 @@ namespace CalculateOperations
             decimal result = 0;
             if (value1.HasValue && value2.HasValue)
             {
-                decimal val1 = value1.Value;
-                decimal val2 = value2.Value;
-                result = (decimal)Math.Pow((double)val1, (double)val2);
+                result = (decimal)Math.Pow((double)value1, (double)value2);
             }
             return result;
         }
@@ -62,10 +60,9 @@ namespace CalculateOperations
             decimal result = 0;
             if (value1.HasValue)
             {
-                double doubleVal=(double)value1.Value;
+                double doubleVal = (double)value1.Value;
                 double doubleResult = Math.Sqrt(doubleVal);
-                result =(decimal) doubleResult;
-                
+                result = (decimal)doubleResult;
             }
             return result;
         }

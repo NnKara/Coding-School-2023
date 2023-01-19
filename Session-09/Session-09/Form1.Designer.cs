@@ -37,14 +37,14 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.Result = new System.Windows.Forms.Button();
-            this.Addition = new System.Windows.Forms.Button();
+            this.btnResult = new System.Windows.Forms.Button();
+            this.btnAddition = new System.Windows.Forms.Button();
             this.ctrlDisplay = new System.Windows.Forms.TextBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.Subtraction = new System.Windows.Forms.Button();
+            this.btnDivision = new System.Windows.Forms.Button();
+            this.btnSubtraction = new System.Windows.Forms.Button();
             this.btnMultiplication = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.Power = new System.Windows.Forms.Button();
+            this.btnPower = new System.Windows.Forms.Button();
             this.btnSquareRoot = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -148,28 +148,28 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // Result
+            // btnResult
             // 
-            this.Result.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Result.Location = new System.Drawing.Point(634, 405);
-            this.Result.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(129, 34);
-            this.Result.TabIndex = 9;
-            this.Result.Text = "=";
-            this.Result.UseVisualStyleBackColor = true;
-            this.Result.Click += new System.EventHandler(this.Result_Click);
+            this.btnResult.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnResult.Location = new System.Drawing.Point(634, 405);
+            this.btnResult.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnResult.Name = "btnResult";
+            this.btnResult.Size = new System.Drawing.Size(129, 34);
+            this.btnResult.TabIndex = 9;
+            this.btnResult.Text = "=";
+            this.btnResult.UseVisualStyleBackColor = true;
+            this.btnResult.Click += new System.EventHandler(this.Result_Click);
             // 
-            // Addition
+            // btnAddition
             // 
-            this.Addition.Location = new System.Drawing.Point(806, 156);
-            this.Addition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Addition.Name = "Addition";
-            this.Addition.Size = new System.Drawing.Size(129, 34);
-            this.Addition.TabIndex = 10;
-            this.Addition.Text = "+";
-            this.Addition.UseVisualStyleBackColor = true;
-            this.Addition.Click += new System.EventHandler(this.Addition_Click);
+            this.btnAddition.Location = new System.Drawing.Point(806, 156);
+            this.btnAddition.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAddition.Name = "btnAddition";
+            this.btnAddition.Size = new System.Drawing.Size(129, 34);
+            this.btnAddition.TabIndex = 10;
+            this.btnAddition.Text = "+";
+            this.btnAddition.UseVisualStyleBackColor = true;
+            this.btnAddition.Click += new System.EventHandler(this.Addition_Click);
             // 
             // ctrlDisplay
             // 
@@ -183,27 +183,27 @@
             this.ctrlDisplay.TabIndex = 11;
             this.ctrlDisplay.TextChanged += new System.EventHandler(this.Display_TextChanged);
             // 
-            // button10
+            // btnDivision
             // 
-            this.button10.Location = new System.Drawing.Point(806, 244);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(129, 34);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "/";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.btnDivision.Location = new System.Drawing.Point(806, 244);
+            this.btnDivision.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDivision.Name = "btnDivision";
+            this.btnDivision.Size = new System.Drawing.Size(129, 34);
+            this.btnDivision.TabIndex = 12;
+            this.btnDivision.Text = "/";
+            this.btnDivision.UseVisualStyleBackColor = true;
+            this.btnDivision.Click += new System.EventHandler(this.button10_Click);
             // 
-            // Subtraction
+            // btnSubtraction
             // 
-            this.Subtraction.Location = new System.Drawing.Point(634, 156);
-            this.Subtraction.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Subtraction.Name = "Subtraction";
-            this.Subtraction.Size = new System.Drawing.Size(129, 34);
-            this.Subtraction.TabIndex = 13;
-            this.Subtraction.Text = "-";
-            this.Subtraction.UseVisualStyleBackColor = true;
-            this.Subtraction.Click += new System.EventHandler(this.Subtraction_Click);
+            this.btnSubtraction.Location = new System.Drawing.Point(634, 156);
+            this.btnSubtraction.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnSubtraction.Name = "btnSubtraction";
+            this.btnSubtraction.Size = new System.Drawing.Size(129, 34);
+            this.btnSubtraction.TabIndex = 13;
+            this.btnSubtraction.Text = "-";
+            this.btnSubtraction.UseVisualStyleBackColor = true;
+            this.btnSubtraction.Click += new System.EventHandler(this.Subtraction_Click);
             // 
             // btnMultiplication
             // 
@@ -227,16 +227,16 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // Power
+            // btnPower
             // 
-            this.Power.Location = new System.Drawing.Point(634, 327);
-            this.Power.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Power.Name = "Power";
-            this.Power.Size = new System.Drawing.Size(129, 34);
-            this.Power.TabIndex = 16;
-            this.Power.Text = "^";
-            this.Power.UseVisualStyleBackColor = true;
-            this.Power.Click += new System.EventHandler(this.button12_Click);
+            this.btnPower.Location = new System.Drawing.Point(634, 327);
+            this.btnPower.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnPower.Name = "btnPower";
+            this.btnPower.Size = new System.Drawing.Size(129, 34);
+            this.btnPower.TabIndex = 16;
+            this.btnPower.Text = "^";
+            this.btnPower.UseVisualStyleBackColor = true;
+            this.btnPower.Click += new System.EventHandler(this.button12_Click);
             // 
             // btnSquareRoot
             // 
@@ -268,14 +268,14 @@
             this.ClientSize = new System.Drawing.Size(986, 518);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSquareRoot);
-            this.Controls.Add(this.Power);
+            this.Controls.Add(this.btnPower);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.btnMultiplication);
-            this.Controls.Add(this.Subtraction);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnSubtraction);
+            this.Controls.Add(this.btnDivision);
             this.Controls.Add(this.ctrlDisplay);
-            this.Controls.Add(this.Addition);
-            this.Controls.Add(this.Result);
+            this.Controls.Add(this.btnAddition);
+            this.Controls.Add(this.btnResult);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -306,14 +306,14 @@
         private Button button7;
         private Button button8;
         private Button button9;
-        private Button Result;
-        private Button Addition;
+        private Button btnResult;
+        private Button btnAddition;
         private TextBox ctrlDisplay;
-        private Button button10;
-        private Button Subtraction;
+        private Button btnDivision;
+        private Button btnSubtraction;
         private Button btnMultiplication;
         private Button button11;
-        private Button Power;
+        private Button btnPower;
         private Button btnSquareRoot;
         private Button btnClear;
     }
