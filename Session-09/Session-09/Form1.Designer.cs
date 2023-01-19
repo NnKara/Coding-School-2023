@@ -39,7 +39,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.Result = new System.Windows.Forms.Button();
             this.Addition = new System.Windows.Forms.Button();
-            this.Display = new System.Windows.Forms.TextBox();
+            this.ctrlDisplay = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -152,21 +152,21 @@
             this.Addition.UseVisualStyleBackColor = true;
             this.Addition.Click += new System.EventHandler(this.Addition_Click);
             // 
-            // Display
+            // ctrlDisplay
             // 
-            this.Display.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Display.Location = new System.Drawing.Point(103, 53);
-            this.Display.Name = "Display";
-            this.Display.Size = new System.Drawing.Size(270, 38);
-            this.Display.TabIndex = 11;
-            this.Display.TextChanged += new System.EventHandler(this.Display_TextChanged);
+            this.ctrlDisplay.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ctrlDisplay.Location = new System.Drawing.Point(103, 53);
+            this.ctrlDisplay.Name = "ctrlDisplay";
+            this.ctrlDisplay.Size = new System.Drawing.Size(270, 38);
+            this.ctrlDisplay.TabIndex = 11;
+            this.ctrlDisplay.TextChanged += new System.EventHandler(this.Display_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Display);
+            this.Controls.Add(this.ctrlDisplay);
             this.Controls.Add(this.Addition);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.button9);
@@ -198,6 +198,6 @@
         private Button button9;
         private Button Result;
         private Button Addition;
-        private TextBox Display;
+        private TextBox ctrlDisplay;
     }
 }
