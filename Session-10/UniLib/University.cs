@@ -25,14 +25,6 @@ namespace UniLib
             ScheduledCourse = new List<Schedule>();
         }
 
-        public University(Guid id) : base(id) { }
-
-
-        public University(Guid id,string name):base(id,name) { }
-
-
-        public University(Guid id,string name,int yearsServed):base(id,name, yearsServed) { }
-
 
         public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduleCourse,
             Guid id,String name,int yearsServed):base(id,name,yearsServed)
