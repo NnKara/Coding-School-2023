@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    internal class Professor:Person
+    public class Professor:Person
     {
         public String? Rank { get; set; }
 

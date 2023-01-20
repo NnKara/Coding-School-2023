@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    internal class University:Institude
+    public class University:Institude
     {
-        public Student[]? Students { get; set; }
+        public List<Student> Students { get; set; }
 
-        public Course[]? Courses { get; set; }
+        public List<Course> Courses { get; set; }
 
-        public Grade[]? Grades { get; set; }
+        public List<Grade> Grades { get; set; }
 
-        public Schedule[]? ScheduledCourse { get; set; }
+        public List<Schedule> ScheduledCourse { get; set; }
 
 
         public University() : base() { }
@@ -29,7 +29,7 @@ namespace Session_06
         public University(Guid id,string name,int yearsServed):base(id,name, yearsServed) { }
 
 
-        public University(Student[] students, Course[] courses, Grade[] grades, Schedule[] scheduleCourse,
+        public University(List<Student> students, List<Course> courses, List<Grade> grades, List<Schedule> scheduleCourse,
             Guid id,String name,int yearsServed):base(id,name,yearsServed)
         {
             Students = students;

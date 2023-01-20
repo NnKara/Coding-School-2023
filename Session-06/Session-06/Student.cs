@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Session_06
 {
-    internal class Student:Person
+    public class Student:Person
     {
         public int RegistrationNumber { get; set; }
 
-        public Course[]? Courses { get; set; }
+        public List<Course> Courses { get; set; }
 
-        public Student():base() { }
+        public Student()
+        {
+            ID= Guid.NewGuid();
+        }
+
+        
 
         public Student(Guid id) : base(id) { }
 
@@ -20,13 +25,9 @@ namespace Session_06
 
         public Student(Guid id,string name,int age) : base(id, name, age) { }
 
-        public Student(int registrationNumber,Course[] courses,Guid id, string name) : base(id, name) 
-        {
-            RegistrationNumber = registrationNumber;
-            Courses = courses;
-        }
+        
 
-        public Student(int registrationNumber, Course[] courses, String name, Guid id, int age) : base(id, name, age)
+        public Student(int registrationNumber, List<Course> courses, String name, Guid id, int age) : base(id, name, age)
         {
             RegistrationNumber = registrationNumber;
             Courses  = courses;
