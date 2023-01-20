@@ -16,8 +16,17 @@ namespace UniLib
 
         public List<Schedule> ScheduledCourse { get; set; }
 
+        public University()
+        {
+            ID=Guid.NewGuid();
+            Students = new List<Student>();
+            Courses= new List<Course>();
+            Grades = new List<Grade>();
+            ScheduledCourse = new List<Schedule>();
+        }
 
-        public University() : base() { }
+
+        
 
 
         public University(Guid id) : base(id) { }

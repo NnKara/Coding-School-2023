@@ -14,26 +14,13 @@ namespace UniLib
         public string? Code { get; set; }
 
         public string? Subject { get; set; }
-
-        public Course() { }
         
 
-        public Course(Guid id)
-        {
-            ID= id;
-        }
+        
 
-        public Course(Guid id,String code)
+        public Course()
         {
-            ID = id;
-            Code= code;
-        }
-
-        public Course(Guid iD, string? code, string? subject) 
-        {
-            ID = iD;
-            Code= code;
-            Subject = subject;
+            ID= Guid.NewGuid();
         }
     }
 }
