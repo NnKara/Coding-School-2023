@@ -34,15 +34,17 @@
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdViewGrades = new System.Windows.Forms.DataGridView();
+            this.colGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdViewSchedules = new System.Windows.Forms.DataGridView();
+            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grdVCourses = new System.Windows.Forms.DataGridView();
             this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewGrades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewSchedules)).BeginInit();
@@ -111,6 +113,22 @@
             this.grdViewGrades.TabIndex = 2;
             this.grdViewGrades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewGrades_CellContentClick);
             // 
+            // colGrade
+            // 
+            this.colGrade.DataPropertyName = "GradeValue";
+            this.colGrade.HeaderText = "Grade";
+            this.colGrade.MinimumWidth = 6;
+            this.colGrade.Name = "colGrade";
+            this.colGrade.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "University";
+            this.dataGridViewTextBoxColumn2.HeaderText = "University";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
             // grdViewSchedules
             // 
             this.grdViewSchedules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -124,6 +142,21 @@
             this.grdViewSchedules.Size = new System.Drawing.Size(669, 89);
             this.grdViewSchedules.TabIndex = 3;
             this.grdViewSchedules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewSchedules_CellContentClick);
+            // 
+            // colDateTime
+            // 
+            this.colDateTime.DataPropertyName = "Callendar";
+            this.colDateTime.HeaderText = "DateTime";
+            this.colDateTime.MinimumWidth = 6;
+            this.colDateTime.Name = "colDateTime";
+            this.colDateTime.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "University";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
             // 
             // grdVCourses
             // 
@@ -164,42 +197,31 @@
             this.colCode.Name = "colCode";
             this.colCode.Width = 125;
             // 
-            // colGrade
+            // button1
             // 
-            this.colGrade.DataPropertyName = "GradeValue";
-            this.colGrade.HeaderText = "Grade";
-            this.colGrade.MinimumWidth = 6;
-            this.colGrade.Name = "colGrade";
-            this.colGrade.Width = 125;
+            this.button1.Location = new System.Drawing.Point(626, 412);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Load";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // button2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "University";
-            this.dataGridViewTextBoxColumn2.HeaderText = "University";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // colDateTime
-            // 
-            this.colDateTime.DataPropertyName = "Callendar";
-            this.colDateTime.HeaderText = "DateTime";
-            this.colDateTime.MinimumWidth = 6;
-            this.colDateTime.Name = "colDateTime";
-            this.colDateTime.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "University";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
+            this.button2.Location = new System.Drawing.Point(509, 412);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Save";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.grdVCourses);
             this.Controls.Add(this.grdViewSchedules);
             this.Controls.Add(this.grdViewGrades);
@@ -235,5 +257,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn colDateTime;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private Button button1;
+        private Button button2;
     }
 }

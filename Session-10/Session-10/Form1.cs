@@ -85,8 +85,14 @@ namespace Session_10
             uni.ScheduledCourse.Add(schedule1);
             grdViewSchedules.DataSource = uni.ScheduledCourse;
 
-  
-            
+
+            Serializer serializer = new Serializer();
+            serializer.SerializeToFile(uni, "test.json");
+
+
+            uni = serializer.Deserialize<University>("test.json");
+
+
         }
 
 
