@@ -14,7 +14,13 @@ namespace UniLib
         public int GradeValue { get; set; }
 
 
-        public Grade() { }
+        public Grade() 
+        {
+           ID=Guid.NewGuid();
+            StudentID=Guid.NewGuid();
+            CourseID=Guid.NewGuid();
+            
+        }
 
         public Grade(Guid id)
         {
@@ -34,12 +40,5 @@ namespace UniLib
             CourseID = courseid;
         }
 
-        public Grade(Guid iD, Guid studentID, Guid courseID, int grade) 
-        {
-            ID = iD;
-            StudentID = studentID;
-            CourseID = courseID;
-            GradeValue = grade;            
-        }
     }
 }

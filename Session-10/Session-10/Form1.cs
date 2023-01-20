@@ -14,11 +14,25 @@ namespace Session_10
         private void Form1_Load(object sender, EventArgs e)
         {
             grdViewStudents.AutoGenerateColumns = false;
-            University uni = new University();
+            grdVCourses.AutoGenerateColumns = false;
+            grdViewGrades.AutoGenerateColumns = false;
+            grdViewSchedules.AutoGenerateColumns = false;
+
+
+
+            University uni = new University()
+            {
+                Name="Papel",
+                YearsService=1980
+            };
+           
+
             List<Student> students = new List<Student>();
             List<Course> courses = new List<Course>();
             List<Grade> grades = new List<Grade>();
             List<Schedule> schedules = new List<Schedule>();
+
+
 
             Student student1 = new Student()
             {
@@ -26,46 +40,65 @@ namespace Session_10
                 Age = 25,
                 RegistrationNumber = 1
             };
-            students.Add(student1);
-           // uni.Students.Add(student1);
+            uni.Students.Add(student1);
             Student student2 = new Student()
             {
                 Name = "Giannis Kats",
                 Age = 25,
                 RegistrationNumber = 2
             };
-            students.Add(student2);
-           // uni.Students.Add(student2);
-            grdViewStudents.DataSource = students;
-            grdViewStudents.AutoGenerateColumns = false;
+            uni.Students.Add(student2);
+            grdViewStudents.DataSource = uni.Students;
+
+
             Course course = new Course()
             {
                 Subject = "Maths",
                 Code = "1"
             };
             courses.Add(course);
-            //uni.Courses.Add(course);
             Course course1 = new Course()
             {
                 Subject = "History",
                 Code = "2"
             };
-            courses.Add(course1);
-            //uni.Courses.Add(course1);
-            grdVCourses.DataSource = courses;
-          
+            uni.Courses.Add(course);
+            uni.Courses.Add(course1);
+            grdVCourses.DataSource = uni.Courses;
 
+            Grade grade1 = new Grade()
+            {
+                GradeValue = 15
+            };
+
+            Grade grade2 = new Grade()
+            {
+            GradeValue = 20
+            };
+            uni.Grades.Add(grade1);
+            uni.Grades.Add(grade2);
+            grdViewGrades.DataSource = uni.Grades;
+
+            Schedule schedule1 = new Schedule();
+            Schedule schedule2 = new Schedule();
+            uni.ScheduledCourse.Add(schedule2);
+            uni.ScheduledCourse.Add(schedule1);
+            grdViewSchedules.DataSource = uni.ScheduledCourse;
+
+  
+            
         }
 
 
 
 
-        //public void AddCourse(String subject,String code)
-        //{
-        //    Course course = new Course();
-        //    course.Subject = subject;
-        //    course.Code = code;
-        //}
+        public Course AddCourse(String subject, String code)
+        {
+            Course course = new Course();
+            course.Subject = subject;
+            course.Code = code;
+            return course;
+        }
 
         private void grdViewStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
