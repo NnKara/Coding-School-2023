@@ -18,8 +18,8 @@ namespace UniLib
         public void SerializeToFile(object obj, string fileName)
         {
 
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(obj, options);
+            
+            string jsonString = JsonSerializer.Serialize(obj);
 
             File.WriteAllText(fileName, jsonString);
         }
