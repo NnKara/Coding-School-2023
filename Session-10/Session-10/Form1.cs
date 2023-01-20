@@ -1,11 +1,15 @@
 
 
+using System;
 using UniLib;
 
 namespace Session_10
 {
     public partial class Form1 : Form
     {
+        Serializer serializer;
+
+        University uni;
         public Form1()
         {
             InitializeComponent();
@@ -18,9 +22,9 @@ namespace Session_10
             grdViewGrades.AutoGenerateColumns = false;
             grdViewSchedules.AutoGenerateColumns = false;
 
+             serializer = new Serializer();
 
-
-            University uni = new University()
+            uni = new University()
             {
                 Name="Papel",
                 YearsService=1980
@@ -86,12 +90,6 @@ namespace Session_10
             grdViewSchedules.DataSource = uni.ScheduledCourse;
 
 
-            Serializer serializer = new Serializer();
-            serializer.SerializeToFile(uni, "test.json");
-
-
-            uni = serializer.Deserialize<University>("test.json");
-
 
         }
 
@@ -124,6 +122,18 @@ namespace Session_10
         private void grdVCourses_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            serializer.SerializeToFile(uni, "University.json");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            uni = serializer.Deserialize<University>("University.json");
         }
     }
 }
