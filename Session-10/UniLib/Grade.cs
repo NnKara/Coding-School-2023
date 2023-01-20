@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_06
+namespace UniLib
 {
     public class Grade
     {
