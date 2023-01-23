@@ -8,13 +8,13 @@ namespace Session_11
 {
     public class Pet
     {
-        enum AnimalTypeEnum
+        public enum AnimalTypeEnum
         {
             Bird,
             Cat,
             Dog
         }
-        enum PetStatusEnum
+        public enum PetStatusEnum
         {
             OK,
             Unhealthy,
