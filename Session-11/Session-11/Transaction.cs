@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_11 {
-    internal class Transaction {
+    public class Transaction {
         public Guid TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }
         public Guid CustomerID { get; set; }
