@@ -4,9 +4,11 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Session_11 {
     public class Transaction {
+        public List<Transaction> Transactions { get; set; }
         public Guid TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }
         public Guid CustomerID { get; set; }
@@ -18,6 +20,9 @@ namespace Session_11 {
         public double PetFoodPrice { get; set; }
         public double TotalPrice { get; set; }
 
+        public Transaction() {
+            TransactionID = Guid.NewGuid();
+        }
         public Transaction(Guid customerID, Guid employeeID, Guid petID, double petPrice, Guid petFoodID, double petFoodQty, double petFoodPrice, double totalPrice) {
             TransactionID = new Guid();
             TransactionDate = DateTime.Now;
