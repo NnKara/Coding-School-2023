@@ -24,8 +24,8 @@ namespace Session_11
         public string Breed { get; set; }
         AnimalTypeEnum AnimalType { get; set; }
         PetStatusEnum Status { get; set; }
-        public int Price { get; set; }
-        public int Cost { get; set; }
+        public double Price { get; set; }
+        public double Cost { get; set; }
 
         public Pet(){
             PetID = Guid.NewGuid();           
