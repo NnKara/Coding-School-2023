@@ -13,7 +13,7 @@ namespace Session_11
         Manager,
         Staff
         }
-        public double Salary { get; set; }
+        public double SalaryPerMonth { get; set; }
         EmployeeTypeEnum EmployeeType { get; set; }
 
         public Employee() { 
