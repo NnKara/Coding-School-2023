@@ -20,7 +20,7 @@ namespace Session_11 {
 
         public Transaction(DateTime transactionDate, Guid customerID, Guid employeeID, Guid petID, double petPrice, Guid petFoodID, double petFoodQty, double petFoodPrice, double totalPrice) {
             TransactionID = new Guid();
-            TransactionDate = transactionDate;
+            TransactionDate = DateTime.Now;
             CustomerID = customerID;
             EmployeeID = employeeID;
             PetID = petID;
