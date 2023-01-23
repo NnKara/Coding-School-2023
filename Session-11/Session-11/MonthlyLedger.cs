@@ -11,7 +11,6 @@ namespace Session_11
     {
         public DateOnly Year { get; set; }
         public DateOnly Month { get; set; }
-
         public double Income { get; set; }
         public double Expenses { get; set; }
         public double Total { get; set; }

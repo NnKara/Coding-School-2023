@@ -10,6 +10,10 @@ namespace Session_11 {
         public string Phone { get; set; }
         public string TIN { get; set; }
 
+        public Customer()
+        {
+            CustomerID = Guid.NewGuid();
+        }
         public Customer(Guid id) : base(id) {
             CustomerID = id;
         }
