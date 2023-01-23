@@ -13,7 +13,7 @@ namespace Session_11
         public string Surname { get; set; }
         public Person()
         {
-
+            PersonID= Guid.NewGuid();
         }
     }
     

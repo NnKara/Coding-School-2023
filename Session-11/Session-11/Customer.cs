@@ -8,11 +8,12 @@ namespace Session_11
 {
     public class Customer : Person
     {
-        
+        public Guid CustomerID { get; set; }
         public string Phone { get; set; }
         public string TIN { get; set; }
 
         public Customer() {
+            CustomerID = PersonID;
             
         }
 
