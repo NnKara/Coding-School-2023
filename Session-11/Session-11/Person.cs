@@ -11,10 +11,24 @@ namespace Session_11
         public Guid PersonID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+
         public Person(Guid id)
         {
-            PersonID= Guid.NewGuid();
+            PersonID = Guid.NewGuid();
         }
+
+        public Person(Guid id, string name,string surname)
+        {
+            PersonID= id;
+            Name= name;
+            Surname= surname;
+        }
+
+        public Person()
+        {
+
+        }
+
     }
     
 }

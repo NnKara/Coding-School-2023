@@ -30,6 +30,10 @@ namespace Session_11 {
             PetFoodPrice = petFoodPrice;
             TotalPrice = totalPrice;
         }
+        public Transaction()
+        {
+            TransactionID = new Guid();
+        }
     }
 
 }

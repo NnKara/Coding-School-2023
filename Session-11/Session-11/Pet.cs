@@ -22,14 +22,16 @@ namespace Session_11
         }
         public Guid PetID { get; set; }
         public string Breed { get; set; }
-        AnimalTypeEnum AnimalType { get; set; }
-        PetStatusEnum Status { get; set; }
+         public AnimalTypeEnum AnimalType { get; set; }
+        public PetStatusEnum Status { get; set; }
         public double Price { get; set; }
         public double Cost { get; set; }
 
         public Pet(){
             PetID = Guid.NewGuid();           
         }
+
+      
 
 
     }

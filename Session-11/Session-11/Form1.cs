@@ -36,8 +36,10 @@ namespace Session_11
 
         }
 
-        public void Buy()
+        public Transaction Buy(Customer custmer,Pet pet)
         {
+            Pet pe1 = new Pet();
+            
             Customer newCustm = new Customer()
             {
                 Name = "Nikos",
@@ -45,6 +47,26 @@ namespace Session_11
                 Phone = "6978319622",
                 TIN = "12390812903"
             };
+            switch (pet.AnimalType)
+            {
+                  case Pet.AnimalTypeEnum.Bird:
+                    break;
+                
+                  case Pet.AnimalTypeEnum.Cat: 
+                    break;
+
+                  case Pet.AnimalTypeEnum.Dog: 
+                    break;
+
+
+                    default: 
+
+                    break;
+                        
+            }
+            Transaction tras = new Transaction();
+            return tras;
         }
+        
     }
 }

@@ -10,10 +10,19 @@ namespace Session_11 {
         public string Phone { get; set; }
         public string TIN { get; set; }
 
+
+        public Customer(Guid id, String name,String surname, string phone, string tIN) : base(id,name,surname)
+        {
+            
+            Phone = phone;
+            TIN = tIN;
+        }
+
         public Customer()
         {
-            CustomerID = Guid.NewGuid();
+
         }
+
         public Customer(Guid id) : base(id) {
             CustomerID = id;
         }
