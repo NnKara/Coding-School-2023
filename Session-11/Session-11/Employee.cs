@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Session_11 {
     public class Employee : Person {
-        enum EmployeeTypeEnum {
+        public enum EmployeeTypeEnum {
             Manager,
             Staff
         }
         public Guid EmployeeID { get; set; }
         public double SalaryPerMonth { get; set; }
-        EmployeeTypeEnum EmployeeType { get; set; }
+        public EmployeeTypeEnum EmployeeType { get; set; }
 
         public Employee(Guid id) : base(id) {
             EmployeeID = id;
