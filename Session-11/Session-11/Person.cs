@@ -11,7 +11,7 @@ namespace Session_11
         public Guid PersonID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Person()
+        public Person(Guid id)
         {
             PersonID= Guid.NewGuid();
         }
