@@ -43,20 +43,48 @@ namespace Session_11 {
             //bsStudents.DataSource = university.Students;
         }
 
+        public Transaction Buy(Customer custmer, Pet pet) {
+            Pet pe1 = new Pet();
 
-        public Transaction GetTransaction() {
-            Transaction tran = new Transaction {
-                TransactionID = new Guid(),
-                TransactionDate = DateTime.Now,
-                CustomerID = new Guid(),
-                EmployeeID = new Guid(),
-                PetID = new Guid()
-
+            Customer newCustm = new Customer() {
+                Name = "Nikos",
+                Surname = "Karamitos",
+                Phone = "6978319622",
+                TIN = "12390812903"
             };
+
+            public Transaction GetTransaction() {
+                Transaction tran = new Transaction {
+                    TransactionID = new Guid(),
+                    TransactionDate = DateTime.Now,
+                    CustomerID = new Guid(),
+                    EmployeeID = new Guid(),
+                    PetID = new Guid()
+
+                };
+                switch (pet.AnimalType) {
+                    case Pet.AnimalTypeEnum.Bird:
+                        break;
+
+                    case Pet.AnimalTypeEnum.Cat:
+                        break;
+
+                    case Pet.AnimalTypeEnum.Dog:
+                        break;
+
+
+                    default:
+
+                        break;
+
+                }
+           
+                return tras;
+
+
+            }
+
 
 
         }
-
-
     }
-}
