@@ -40,7 +40,7 @@ namespace Session_11
 
 
 
-            public Transaction Buy(Customer custmer, Pet pet)
+            public Transaction Buy(Customer customer, Pet pet)
             {
              
             Transaction newTras=new Transaction();
@@ -83,6 +83,7 @@ namespace Session_11
                 tras.PetPrice = pet.Price;
                 tras.PetID = pet.PetID;
                 tras.TransactionDate = DateTime.Now;
+                tras.TotalPrice = pet.Price + (tras.PetFoodPrice * (tras.PetFoodQty-1));
                 
             }
             return tras;
