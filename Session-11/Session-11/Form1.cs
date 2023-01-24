@@ -17,17 +17,16 @@ namespace Session_11
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             Pet pet = new Pet();
             Transaction newTras = new Transaction();
-            Customer newCustomer = new Customer() {
-                Name = "Nikos",
-                Surname = "Karamitos",
-                Phone = "6978319622",
-                TIN = "12390812903"
-            };
+            Customer newCustomer = PopulateCustomer();
 
+            PopulatePets();
+            PopulateEmployee();
             Buy(newCustomer, pet);
 
 
         }
+
+        
 
         private void btnOrder_Click(object sender, EventArgs e) {
 
@@ -120,10 +119,21 @@ namespace Session_11
                 MessageBox.Show("Currently Out of Stock");
 
             }
-            //public Transaction SelectDog(Pet pet)
-            //{
-            //    Transaction newTras=new Transaction();
-            //}
+            
+        }
+        public Transaction SelectDog(Pet pet) {
+            Transaction newTras = new Transaction();
+        }
+
+
+        private void PopulateCustomer() {
+            Customer customer1 =  new Customer() {
+                Name = "Nikos",
+                Surname = "Karamitos",
+                Phone = "6978319622",
+                TIN = "12390812903"
+            };
+            petShop.Customers.Add(customer1);
         }
 
         private void PopulateEmployee()
@@ -141,7 +151,8 @@ namespace Session_11
             {
                 Name = "Alex",
                 Surname = "Gad",
-                EmployeeType = Employee.EmployeeTypeEnum.Staff
+                EmployeeType = Employee.EmployeeTypeEnum.Staff,
+                SalaryPerMonth = 1000
 
             };
             petShop.Employees.Add(employee2);
