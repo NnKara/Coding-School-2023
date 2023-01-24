@@ -28,9 +28,6 @@ namespace Session_11 {
             EmployeeType = employeeType;
         }
 
-        public Employee()
-        {
-
-        }
+    
     }
 }

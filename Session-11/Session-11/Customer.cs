@@ -20,7 +20,6 @@ namespace Session_11 {
 
         public Customer()
         {
-
         }
 
         public Customer(Guid id) : base(id) {
