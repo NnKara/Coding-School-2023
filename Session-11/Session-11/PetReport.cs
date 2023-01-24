@@ -19,7 +19,7 @@ namespace Session_11 {
             TotalSold = totalSold;            
         }
 
-        public string showPetReport () {
+        public string ShowPetReport () {
             string result = $"Year: {Year} Month: {Month} Animal Type: {AnimalType} Total Sold: {TotalSold}";
             return result; 
         }
