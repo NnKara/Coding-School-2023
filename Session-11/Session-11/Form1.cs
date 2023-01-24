@@ -10,8 +10,8 @@ namespace Session_11
         public Form1()
         {
             InitializeComponent();
-            //var pets = this.list;
-            //dataGridView2.DataSource = pets;
+            var pets = this.list;
+            dataGridView2.DataSource = pets;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -96,7 +96,7 @@ namespace Session_11
             Stock animalStock = new Stock();
             PetFood petFood = new PetFood();
             Transaction tras = new Transaction();
-            if (animalStock.PetsNumber > 0)
+            if (animalStock.GetPetsNumberStock() > 0)
             {
                 if (pet.Status.ToString() == "Unhealthy")
                 {
@@ -107,16 +107,17 @@ namespace Session_11
                     tras.PetPrice = pet.Price;
                     tras.PetFoodPrice = petFood.PetFoodPrice;
                     tras.TransactionDate = DateTime.Now;
-                    tras.PetFoodQty = animalStock.PetFoodQty - tras.PetFoodQty;
+                    tras.PetFoodQty = animalStock.GetPetFoodStock() - tras.PetFoodQty;
                     tras.TransactionID = pet.PetID;
 
                 }
             }
             else
             {
-                //pring out of stock
-
+                MessageBox.Show("Current Pet Out Of Stock!");
+                
             }
+            return tras;
         }
 
         private void PopulateEmployee()
@@ -176,36 +177,46 @@ namespace Session_11
         public Transaction SelectDog(Pet pet)
         {
             Transaction newTras=new Transaction();
+            return newTras;
         }
 
 
-        public void CheckStock(Stock stock, double petFoodQty)
+        public bool CheckStock(Stock stock, double petFoodQty)
         {
-            
+
+            if (stock.RemovePetFoodFromStock(petFoodQty) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Out Of Stock!");
+                return false;
+            }
         }
 
 
-        //static Pet petcat = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Cat,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        //static Pet petDog = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Dog,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        //static
-        //Pet petBird = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Bird,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
+        static Pet petcat = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Cat,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black"
+        };
+        static Pet petDog = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Dog,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black"
+        };
+        static
+        Pet petBird = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Bird,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black"
+        };
 
-        //List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
+        List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
 
         //PetShop petShop = new PetShop()
         //{
