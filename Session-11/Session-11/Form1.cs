@@ -67,11 +67,11 @@ namespace Session_11 {
                         break;
 
                     case Pet.AnimalTypeEnum.Cat:
-                        // newTras = SelectCat(pet, newTras);
+                         newTras = SelectCat(pet, newTras);
                         break;
 
                     case Pet.AnimalTypeEnum.Dog:
-                        //  newTras = SelectDog(pet, newTras);
+                          newTras = SelectDog(pet, newTras);
                         break;
 
 
