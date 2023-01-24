@@ -8,7 +8,6 @@ using System.Transactions;
 
 namespace Session_11 {
     public class Transaction {
-        public List<Transaction> Transactions { get; set; }
         public Guid TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }
         public Guid CustomerID { get; set; }
