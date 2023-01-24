@@ -12,7 +12,8 @@ namespace Session_11
         {
             Bird,
             Cat,
-            Dog
+            Dog,
+            None
         }
         public enum PetStatusEnum
         {
@@ -29,6 +30,8 @@ namespace Session_11
         public double Price { get; set; }
         public double Cost { get; set; }
 
+
+
         public Pet(){
             PetID = Guid.NewGuid();
             if(AnimalType== AnimalTypeEnum.Bird)
@@ -36,7 +39,7 @@ namespace Session_11
                 Price = 10;
                 Cost= 2;
             }
-            else if(AnimalType== AnimalTypeEnum.Cat)
+            else if(AnimalType==AnimalTypeEnum.Cat)
             {
                 Price = 20;
 

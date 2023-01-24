@@ -8,10 +8,10 @@ namespace Session_11
 {
     public class PetShop
     {
-        public List<Pet>? Pets { get; set; }
-        public List<Customer>? Customers { get; set; }
-        public List<Employee>? Employees { get; set; }
-        public List<PetFood>? Petfoods { get; set; }
-        public List<Transaction>? Transactions { get; set; }
+        public List<Pet> Pets { get; set; }
+        public List<Customer> Customers { get; set; }
+        public List<Employee> Employees { get; set; }
+        public List<PetFood> PetFoods { get; set; }
+        public List<Transaction> Transactions { get; set; }
     }
 }

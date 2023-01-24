@@ -28,5 +28,7 @@ namespace Session_11 {
             SalaryPerMonth = salaryPerMonth;
             EmployeeType = employeeType;
         }
+
+    
     }
 }
