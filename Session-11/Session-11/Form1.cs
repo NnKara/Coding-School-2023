@@ -53,16 +53,16 @@ namespace Session_11
                         newTras = SelectBird(pet);
                         break;
 
-                    case Pet.AnimalTypeEnum.Cat:
-                        break;
+                case Pet.AnimalTypeEnum.Cat:
+                    break;
 
-                    case Pet.AnimalTypeEnum.Dog:
-                        break;
+                case Pet.AnimalTypeEnum.Dog:
+                    break;
 
 
-                    default:
+                default:
 
-                        break;
+                    break;
 
                 }
 
@@ -94,18 +94,16 @@ namespace Session_11
         {
             AnimalType = Pet.AnimalTypeEnum.Cat,
             Status = Pet.PetStatusEnum.OK,
-            Breed = "black",
-            Price = 10,
-            Cost = 10
+            Breed = "black"
+           
 
         };
         static Pet petDog = new Pet()
         {
             AnimalType = Pet.AnimalTypeEnum.Dog,
             Status = Pet.PetStatusEnum.OK,
-            Breed = "black",
-            Price = 10,
-            Cost = 10
+            Breed = "black"
+            
 
         };
         static
@@ -113,9 +111,8 @@ namespace Session_11
         {
             AnimalType = Pet.AnimalTypeEnum.Bird,
             Status = Pet.PetStatusEnum.OK,
-            Breed = "black",
-            Price = 10,
-            Cost = 10
+            Breed = "black"
+            
 
         };
 
@@ -124,7 +121,7 @@ namespace Session_11
         PetShop petShop = new PetShop()
         {
 
-            pets = new List<Pet>() {
+            Pets = new List<Pet>() {
                 petcat, petDog,petBird
             }
 

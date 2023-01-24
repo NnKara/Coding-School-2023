@@ -20,7 +20,7 @@ namespace Session_11 {
             year = Year;
             month = Month;
             totalSolds= totalSold;
-
+            
         }
     }
 }

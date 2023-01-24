@@ -30,7 +30,23 @@ namespace Session_11
         public double Cost { get; set; }
 
         public Pet(){
-            PetID = Guid.NewGuid();           
+            PetID = Guid.NewGuid();
+            if(AnimalType== AnimalTypeEnum.Bird)
+            {
+                Price = 10;
+                Cost= 2;
+            }
+            else if(AnimalType== AnimalTypeEnum.Cat)
+            {
+                Price = 20;
+
+                Cost= 3;
+            }
+            else
+            {
+                Price = 15;
+                Cost= 4;
+            }
         }
 
       
