@@ -48,11 +48,11 @@ namespace Session_11
              
             Transaction newTras=new Transaction();
 
-                switch (pet.AnimalType)
-                {
-                    case Pet.AnimalTypeEnum.Bird:
-                        newTras = SelectBird(pet);
-                        break;
+            switch (pet.AnimalType)
+            {
+                case Pet.AnimalTypeEnum.Bird:
+                    newTras = SelectBird(pet);
+                    break;
 
                 case Pet.AnimalTypeEnum.Cat:
                     newTras = SelectCat(pet);
@@ -67,15 +67,15 @@ namespace Session_11
                     //TODO MESSAGE BOX(OUT OF STOCK)
                     break;
 
-                }
-
-                return newTras;
-
-
             }
 
-           public Transaction SelectBird(Pet pet)
-            {
+            return newTras;
+
+
+        }
+
+        public Transaction SelectBird(Pet pet)
+        {
             Transaction tras = new Transaction();
             if (pet.Status.ToString() == "Unhealthy")
             {
@@ -91,7 +91,7 @@ namespace Session_11
                 tras.TransactionDate = DateTime.Now;
                 tras.TotalPrice = pet.Price + (tras.PetFoodPrice * (tras.PetFoodQty - 1));
                 //Transaction message save
-                
+
             }
             return tras;
         }
@@ -118,9 +118,9 @@ namespace Session_11
                 }
             }
             else
-        {
+            {
                 //pring out of stock
-           
+
             }
         }
 
@@ -133,14 +133,14 @@ namespace Session_11
                 Surname = "Chrysoulas",
                 EmployeeType = Employee.EmployeeTypeEnum.Manager
 
-        };
+            };
             petShop.Employees.Add(employee1);
             Employee employee2 = new Employee()
-        {
+            {
                 Name = "Alex",
                 Surname = "Gad",
                 EmployeeType = Employee.EmployeeTypeEnum.Staff
-            
+
             };
             petShop.Employees.Add(employee2);
 
@@ -156,15 +156,15 @@ namespace Session_11
                 AnimalType = Pet.AnimalTypeEnum.Dog,
                 Price = 100
 
-        };
+            };
             petShop.Pets.Add(pet1);
             Pet pet2 = new Pet()
-        {
+            {
                 PetID = Guid.NewGuid(),
                 Breed = "Pigeon",
-            AnimalType = Pet.AnimalTypeEnum.Bird,
+                AnimalType = Pet.AnimalTypeEnum.Bird,
                 Price = 30
-            
+
             };
             petShop.Pets.Add(pet2);
             Pet pet3 = new Pet()
@@ -174,7 +174,7 @@ namespace Session_11
                 AnimalType = Pet.AnimalTypeEnum.Cat,
                 Price = 20
 
-        };
+            };
             petShop.Pets.Add(pet3);
         }
 
@@ -186,8 +186,8 @@ namespace Session_11
 
         public void CheckStock(Stock stock, double petFoodQty)
         {
-
-            }
+            
+        }
 
 
         //static Pet petcat = new Pet()
