@@ -18,7 +18,7 @@ namespace Session_11 {
 
             Employee newEmployee = addNewEmployee();//koumpi add gia employee
             Customer newCustomer = addNewCustomer();//koumpi add gia customer
-            populateCustomers();
+            PopulateCustomers();
             PopulatePets();
             PopulateEmployee();
 
@@ -50,9 +50,9 @@ namespace Session_11 {
         }
 
         //gia controll view show every single customer
-        public List<Customer> populateCustomers() {
-            return petShop.Customers;
-        }
+        //public List<Customer> populateCustomers() {
+        //    return petShop.Customers;
+        //}
 
 
 
@@ -257,6 +257,7 @@ namespace Session_11 {
                 Phone = "6978453324",
                 TIN = "4567332"
             };
+            customerBindingSource.DataSource = petShop.Customers;
         }
 
 
