@@ -78,8 +78,51 @@ namespace Session_11 {
             }
             return tras;
         }
-        
-        
+        private void PopulatePets() {
+
+            Pet pet1 = new Pet() {
+                PetID = Guid.NewGuid(),
+                Breed = "Haski",
+                AnimalType = Pet.AnimalTypeEnum.Dog,
+                Price = 100
+
+            };
+            petShop.Pets.Add(pet1);
+            Pet pet2 = new Pet() {
+                PetID = Guid.NewGuid(),
+                Breed = "Pigeon",
+                AnimalType = Pet.AnimalTypeEnum.Bird,
+                Price = 30
+
+            };
+            petShop.Pets.Add(pet2);
+            Pet pet3 = new Pet() {
+                PetID = Guid.NewGuid(),
+                Breed = "Black",
+                AnimalType = Pet.AnimalTypeEnum.Cat,
+                Price = 20
+
+            };
+            petShop.Pets.Add(pet3);
+        }
+        private void PopulateEmployee() {
+
+            Employee employee1 = new Employee() {
+                Name = "Fotis",
+                Surname = "Chrysoulas",
+                EmployeeType = Employee.EmployeeTypeEnum.Manager
+
+            };
+            petShop.Employees.Add(employee1);
+            Employee employee2 = new Employee() {
+                Name = "Alex",
+                Surname = "Gad",
+                EmployeeType = Employee.EmployeeTypeEnum.Staff
+
+            };
+            petShop.Employees.Add(employee2);
+
+        }
 
         List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
 
