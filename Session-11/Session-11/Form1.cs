@@ -42,25 +42,28 @@ namespace Session_11
         public Transaction Buy(Customer customer, Pet pet) {
 
             Transaction newTras = new Transaction();
-
-                switch (pet.AnimalType)
-                {
+            try {
+                switch (pet.AnimalType) {
                     case Pet.AnimalTypeEnum.Bird:
                         newTras = SelectBird(pet);
                         break;
 
-                case Pet.AnimalTypeEnum.Cat:
-                    newTras = SelectCat(pet);
-                    break;
+                    case Pet.AnimalTypeEnum.Cat:
+                        newTras = SelectCat(pet);
+                        break;
 
-                case Pet.AnimalTypeEnum.Dog:
-                    newTras = SelectDog(pet);
-                    break;
+                    case Pet.AnimalTypeEnum.Dog:
+                        newTras = SelectDog(pet);
+                        break;
 
 
-                default:
-                    //TODO MESSAGE BOX(OUT OF STOCK)
-                    break;
+                    default:
+                        MessageBox.Show("Currently Out of Pets");
+                        break;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Something Went Wrong");
 
             }
 
@@ -85,7 +88,7 @@ namespace Session_11
                 tras.PetID = pet.PetID;
                 tras.TransactionDate = DateTime.Now;
                 tras.TotalPrice = pet.Price + (tras.PetFoodPrice * (tras.PetFoodQty - 1));
-                //Transaction message save
+  
 
             }
             return tras;
@@ -109,14 +112,18 @@ namespace Session_11
                     tras.TransactionDate = DateTime.Now;
                     tras.PetFoodQty = animalStock.PetFoodQty - tras.PetFoodQty;
                     tras.TransactionID = pet.PetID;
-
+    
                 }
             }
             else
             {
-                //pring out of stock
+                MessageBox.Show("Currently Out of Stock");
 
             }
+            //public Transaction SelectDog(Pet pet)
+            //{
+            //    Transaction newTras=new Transaction();
+            //}
         }
 
         private void PopulateEmployee()
@@ -173,10 +180,7 @@ namespace Session_11
             petShop.Pets.Add(pet3);
         }
 
-        public Transaction SelectDog(Pet pet)
-        {
-            Transaction newTras=new Transaction();
-        }
+        
 
 
         public void CheckStock(Stock stock, double petFoodQty)
@@ -184,37 +188,6 @@ namespace Session_11
             
         }
 
-
-        //static Pet petcat = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Cat,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        //static Pet petDog = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Dog,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        //static
-        //Pet petBird = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Bird,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-
-        //List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
-
-        //PetShop petShop = new PetShop()
-        //{
-
-        //    Pets = new List<Pet>() {
-        //        petcat, petDog,petBird
-        //    }
-
-        //};
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //pet pricing
