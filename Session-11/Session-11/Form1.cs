@@ -32,7 +32,7 @@ namespace Session_11 {
         }
         public void Buy() {
 
-            transaction = GetTransaction();
+            //transaction = GetTransaction();
 
             //Student student1 = new Student() {
             //    Name = "Dimitris",
@@ -78,7 +78,7 @@ namespace Session_11 {
                         break;
 
                 }
-           
+
                 return tras;
 
 
@@ -88,3 +88,4 @@ namespace Session_11 {
 
         }
     }
+}

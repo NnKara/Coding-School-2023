@@ -24,7 +24,7 @@ namespace Session_11 {
             TransactionID = Guid.NewGuid();
         }
         public Transaction(Guid customerID, Guid employeeID, Guid petID, double petPrice, Guid petFoodID, double petFoodQty, double petFoodPrice, double totalPrice) {
-            TransactionID = new Guid();
+            TransactionID = Guid.NewGuid();
             TransactionDate = DateTime.Now;
             CustomerID = customerID;
             EmployeeID = employeeID;
