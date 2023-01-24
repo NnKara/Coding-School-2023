@@ -13,7 +13,5 @@ namespace Session_11
         public List<Employee> Employees { get; set; }
         public List<PetFood> Petfoods { get; set; }
         public List<Transaction> Transactions { get; set; }
-
-
     }
 }

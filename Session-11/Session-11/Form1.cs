@@ -14,45 +14,40 @@ namespace Session_11
             //dataGridView2.DataSource = pets;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             Pet pet = new Pet();
             Transaction newTras = new Transaction();
-            Customer newCustomer = new Customer()
-            {
+            Customer newCustomer = new Customer() {
                 Name = "Nikos",
                 Surname = "Karamitos",
                 Phone = "6978319622",
                 TIN = "12390812903"
             };
-           
-            Buy(newCustomer,pet);
 
-         
-        }
+            Buy(newCustomer, pet);
 
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void btnCancerl_Click(object sender, EventArgs e)
-        {
+        private void btnOrder_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnCancerl_Click(object sender, EventArgs e) {
 
         }
 
 
 
-            public Transaction Buy(Customer customer, Pet pet)
-            {
-             
-            Transaction newTras=new Transaction();
+        public Transaction Buy(Customer customer, Pet pet) {
 
-            switch (pet.AnimalType)
-            {
-                case Pet.AnimalTypeEnum.Bird:
-                    newTras = SelectBird(pet);
-                    break;
+            Transaction newTras = new Transaction();
+
+                switch (pet.AnimalType)
+                {
+                    case Pet.AnimalTypeEnum.Bird:
+                        newTras = SelectBird(pet);
+                        break;
 
                 case Pet.AnimalTypeEnum.Cat:
                     newTras = SelectCat(pet);
@@ -225,4 +220,4 @@ namespace Session_11
             //pet pricing
         }
     }
-    }
+}
