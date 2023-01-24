@@ -17,17 +17,16 @@ namespace Session_11
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             Pet pet = new Pet();
             Transaction newTras = new Transaction();
-            Customer newCustomer = new Customer() {
-                Name = "Nikos",
-                Surname = "Karamitos",
-                Phone = "6978319622",
-                TIN = "12390812903"
-            };
+            Customer newCustomer = PopulateCustomer();
 
+            PopulatePets();
+            PopulateEmployee();
             Buy(newCustomer, pet);
 
 
         }
+
+        
 
         private void btnOrder_Click(object sender, EventArgs e) {
 
@@ -42,25 +41,28 @@ namespace Session_11
         public Transaction Buy(Customer customer, Pet pet) {
 
             Transaction newTras = new Transaction();
-
-                switch (pet.AnimalType)
-                {
+            try {
+                switch (pet.AnimalType) {
                     case Pet.AnimalTypeEnum.Bird:
                         newTras = SelectBird(pet);
                         break;
 
-                case Pet.AnimalTypeEnum.Cat:
-                    newTras = SelectCat(pet);
-                    break;
+                    case Pet.AnimalTypeEnum.Cat:
+                        newTras = SelectCat(pet);
+                        break;
 
-                case Pet.AnimalTypeEnum.Dog:
-                    newTras = SelectDog(pet);
-                    break;
+                    case Pet.AnimalTypeEnum.Dog:
+                        newTras = SelectDog(pet);
+                        break;
 
 
-                default:
-                    //TODO MESSAGE BOX(OUT OF STOCK)
-                    break;
+                    default:
+                        MessageBox.Show("Currently Out of Pets");
+                        break;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Something Went Wrong");
 
             }
 
@@ -85,7 +87,7 @@ namespace Session_11
                 tras.PetID = pet.PetID;
                 tras.TransactionDate = DateTime.Now;
                 tras.TotalPrice = pet.Price + (tras.PetFoodPrice * (tras.PetFoodQty - 1));
-                //Transaction message save
+  
 
             }
             return tras;
@@ -109,15 +111,14 @@ namespace Session_11
                     tras.TransactionDate = DateTime.Now;
                     tras.PetFoodQty = animalStock.GetPetFoodStock() - tras.PetFoodQty;
                     tras.TransactionID = pet.PetID;
-
+    
                 }
             }
             else
             {
-                MessageBox.Show("Current Pet Out Of Stock!");
-                
+                //pring out of stock
+
             }
-            return tras;
         }
 
         private void PopulateEmployee()
@@ -135,7 +136,8 @@ namespace Session_11
             {
                 Name = "Alex",
                 Surname = "Gad",
-                EmployeeType = Employee.EmployeeTypeEnum.Staff
+                EmployeeType = Employee.EmployeeTypeEnum.Staff,
+                SalaryPerMonth = 1000
 
             };
             petShop.Employees.Add(employee2);
@@ -181,7 +183,7 @@ namespace Session_11
         }
 
 
-        public bool CheckStock(Stock stock, double petFoodQty)
+        public void CheckStock(Stock stock, double petFoodQty)
         {
 
             if (stock.RemovePetFoodFromStock(petFoodQty) > 0)
