@@ -7,12 +7,9 @@ namespace Session_11 {
 
         public Form1() {
             InitializeComponent();
-            SetControlProperties();
+            //SetControlProperties();
             //var pets = this.list;
             //dataGridView2.DataSource = pets;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             Pet pet = new Pet();
             Transaction newTras = new Transaction();
 
@@ -21,8 +18,12 @@ namespace Session_11 {
             PopulateCustomers();
             PopulatePets();
             PopulateEmployee();
-
             Buy(newCustomer, pet);
+            dataGridViewAnimalMenu.DataSource = petShop.Pets;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+         
         }
 
 
@@ -49,10 +50,7 @@ namespace Session_11 {
             return newEmployee;
         }
 
-        //gia controll view show every single customer
-        //public List<Customer> populateCustomers() {
-        //    return petShop.Customers;
-        //}
+
 
 
 
@@ -216,7 +214,7 @@ namespace Session_11 {
 
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
-            employeeBindingSource.DataSource = petShop.Employees;
+            //employeeBindingSource.DataSource = petShop.Employees;
 
         }
 
@@ -274,13 +272,22 @@ namespace Session_11 {
         private void gridControl1_Click(object sender, EventArgs e) {
 
         }
-        private void SetControlProperties() {
-            grdCustomers.DataSource = grdCustomers;
-            grdEmployees.DataSource = grdEmployees;
-            grdPets.DataSource = grdPets;
-            grdPetFoods.DataSource = grdPetFoods;
-            grdTransactions.DataSource = grdTransactions;
+        //private void SetControlProperties() {
+        //    grdCustomers.DataSource = grdCustomers;
+        //    grdEmployees.DataSource = grdEmployees;
+        //    grdPets.DataSource = grdPets;
+        //    grdPetFoods.DataSource = grdPetFoods;
+        //    grdTransactions.DataSource = grdTransactions;
+        //}
+
+        private void employeeBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
 
+        private void dataGridViewAnimalMenu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
