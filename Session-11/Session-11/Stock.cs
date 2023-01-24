@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Session_11 {
     public class Stock {
-        public double PetFoodQty { get; set; }  
-        public int PetsNumber { get; set; } 
-        public Stock() { }
+        public double PetFoodQty { get; set; }
+        public int PetsNumber { get; set; }
+        public Stock() {
+            PetFoodQty = 30;
+            PetsNumber = 15;
+        }
         public Stock(double petFoodQty) {
             PetFoodQty = petFoodQty;
         }
@@ -21,11 +24,30 @@ namespace Session_11 {
         }
 
         public double GetPetFoodStock() {
-            return PetFoodQty;  
+            return PetFoodQty;
         }
 
-        public double GetPetsNumberStock() {
+            return PetsNumber;
+        }
+
+        public double AddPetFoodToStock(double petFoodQuantity) {
+            PetFoodQty = GetPetFoodStock() + petFoodQuantity;
+            return PetFoodQty;
+        }
+        public double RemovePetFoodFromStock(double petFoodQuantity) {
+            PetFoodQty = GetPetFoodStock() - petFoodQuantity;
+            return PetFoodQty;
+        }
+
+        public int AddPetsToStock(int petNumber) {
+            PetsNumber = GetPetsNumberStock() + petNumber;  
+            return PetsNumber;  
+        }
+
+        public int RemovePetsFromStock(int petNumber) {
+            PetsNumber = GetPetsNumberStock() - petNumber;
             return PetsNumber;
         }
     }
 }
+
