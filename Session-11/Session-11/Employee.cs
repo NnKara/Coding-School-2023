@@ -17,5 +17,11 @@ namespace Session_11 {
         public Employee(Guid id) : base(id) {
             EmployeeID = id;
         }
+
+        public Employee(Guid employeeID, double salaryPerMonth, EmployeeTypeEnum employeeType) : this(employeeID)
+        {
+            SalaryPerMonth = salaryPerMonth;
+            EmployeeType = employeeType;
+        }
     }
 }
