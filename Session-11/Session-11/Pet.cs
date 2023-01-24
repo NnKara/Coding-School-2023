@@ -20,6 +20,8 @@ namespace Session_11
             Unhealthy,
             Recovering
         }
+
+
         public Guid PetID { get; set; }
         public string Breed { get; set; }
          public AnimalTypeEnum AnimalType { get; set; }
