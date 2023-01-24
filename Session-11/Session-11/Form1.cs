@@ -9,6 +9,8 @@ namespace Session_11
         public Form1()
         {
             InitializeComponent();
+            var pets = this.list;
+            dataGridView2.DataSource = pets;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -88,8 +90,48 @@ namespace Session_11
             }
             return tras;
         }
+        static Pet petcat = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Cat,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black",
+            Price = 10,
+            Cost = 10
 
+        };
+        static Pet petDog = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Dog,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black",
+            Price = 10,
+            Cost = 10
 
+        };
+        static
+        Pet petBird = new Pet()
+        {
+            AnimalType = Pet.AnimalTypeEnum.Bird,
+            Status = Pet.PetStatusEnum.OK,
+            Breed = "black",
+            Price = 10,
+            Cost = 10
 
+        };
+
+        List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
+
+        PetShop petShop = new PetShop()
+        {
+
+            pets = new List<Pet>() {
+                petcat, petDog,petBird
+            }
+
+        };
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //pet pricing
         }
+    }
     }
