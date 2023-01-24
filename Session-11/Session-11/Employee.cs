@@ -14,8 +14,17 @@ namespace Session_11 {
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
 
+        public Employee() {
+
+        }
+
         public Employee(Guid id) : base(id) {
-            EmployeeID = id;
+            EmployeeID = Guid.NewGuid();
+        }
+
+        public Employee(Guid employeeID, double salaryPerMonth, EmployeeTypeEnum employeeType) : this(employeeID) {
+            SalaryPerMonth = salaryPerMonth;
+            EmployeeType = employeeType;
         }
     }
 }
