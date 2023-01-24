@@ -29,25 +29,24 @@ namespace Session_11 {
             return PetFoodQty;
         }
 
-             public double AddPetFoodToStock(double petFoodQuantity)
-        {
+        public int GetPetsNumberStock() {
+            return PetsNumber;
+        }
+        public double AddPetFoodToStock(double petFoodQuantity) {
             PetFoodQty = GetPetFoodStock() + petFoodQuantity;
             return PetFoodQty;
         }
-        public double RemovePetFoodFromStock(double petFoodQuantity)
-        {
+        public double RemovePetFoodFromStock(double petFoodQuantity) {
             PetFoodQty = GetPetFoodStock() - petFoodQuantity;
             return PetFoodQty;
         }
 
-        public int AddPetsToStock(int petNumber)
-        {
+        public int AddPetsToStock(int petNumber){
             PetsNumber = GetPetsNumberStock() + petNumber;
             return PetsNumber;
         }
 
-        public int RemovePetsFromStock(int petNumber)
-        {
+        public int RemovePetsFromStock(int petNumber){
             PetsNumber = GetPetsNumberStock() - petNumber;
             return PetsNumber;
         }
