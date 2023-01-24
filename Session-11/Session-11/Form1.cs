@@ -53,16 +53,16 @@ namespace Session_11
                         newTras = SelectBird(pet);
                         break;
 
-                    case Pet.AnimalTypeEnum.Cat:
-                        break;
+                case Pet.AnimalTypeEnum.Cat:
+                    break;
 
-                    case Pet.AnimalTypeEnum.Dog:
-                        break;
+                case Pet.AnimalTypeEnum.Dog:
+                    break;
 
 
-                    default:
+                default:
 
-                        break;
+                    break;
 
                 }
 
