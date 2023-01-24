@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Session_11 {
     public class Stock {
-        public double PetFoodQty { get; set; }
-        public int PetsNumber { get; set; }
+        private double PetFoodQty { get; set; }
+        private int PetsNumber { get; set; }
+
+        
         public Stock() {
             PetFoodQty = 30;
             PetsNumber = 15;
