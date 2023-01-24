@@ -1,6 +1,3 @@
-using System.Formats.Asn1;
-using System.Security.Cryptography.X509Certificates;
-
 namespace Session_11 {
     public partial class Form1 : Form {
 
@@ -24,7 +21,7 @@ namespace Session_11 {
             populateCustomers();
             PopulatePets();
             PopulateEmployee();
-           
+
             Buy(newCustomer, pet);
         }
 
@@ -39,24 +36,21 @@ namespace Session_11 {
         }
 
         //Koumpi add gia customer
-        public Customer addNewCustomer()
-        {
-            Customer newCust = new Customer();        
+        public Customer addNewCustomer() {
+            Customer newCust = new Customer();
             petShop.Customers.Add(newCust);
             return newCust;
         }
 
         //Koumpi add gia employee
-        public Employee addNewEmployee()
-        {
+        public Employee addNewEmployee() {
             Employee newEmployee = new Employee();
             petShop.Employees.Add(newEmployee);
             return newEmployee;
         }
 
         //gia controll view show every single customer
-        public List<Customer> populateCustomers()
-        {
+        public List<Customer> populateCustomers() {
             return petShop.Customers;
         }
 
@@ -77,13 +71,13 @@ namespace Session_11 {
                         break;
 
                     case Pet.AnimalTypeEnum.Dog:
-                        newTras = SelectDog(pet, newTras);
+                        //  newTras = SelectDog(pet, newTras);
                         break;
 
 
                     default:
                         //ola ta values set se null.
-                        
+
                         MessageBox.Show("Order Cancelled");
                         break;
                 }
@@ -118,63 +112,52 @@ namespace Session_11 {
             return trans;
         }
 
-        public Transaction SelectCat(Pet pet)
-        {
+        public Transaction SelectCat(Pet pet, Transaction trans) {
             Stock stock = new Stock();
             PetFood petFood = new PetFood();
-            Transaction tras = new Transaction();
-            if (stock.GetPetsNumberStock() > 0)
-            {
-                if (pet.Status.ToString() == "Unhealthy")
-                {
+            if (stock.GetPetsNumberStock() > 0) {
+                if (pet.Status.ToString() == "Unhealthy") {
                     return null;
                 }
-                else
-                {
-                    tras.PetPrice = pet.Price;
-                    tras.PetFoodPrice = petFood.PetFoodPrice;
-                    tras.TransactionDate = DateTime.Now;
-                    tras.PetFoodQty = stock.GetPetFoodStock() - tras.PetFoodQty;
-                    tras.TransactionID = pet.PetID;
-                        
+                else {
+                    trans.PetPrice = pet.Price;
+                    trans.PetFoodPrice = petFood.PetFoodPrice;
+                    trans.TransactionDate = DateTime.Now;
+                    trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
+                    trans.TransactionID = pet.PetID;
+
                 }
             }
-            else
-            {
-               
+            else {
+
                 MessageBox.Show("Cat is Out of Stock!");
 
             }
-            return tras;
+            return trans;
         }
 
 
-        public Transaction SelectDog(Pet pet)
-        {
-            Transaction tras=new Transaction();
-            Stock stock=new Stock();
-            PetFood petFood=new PetFood();
-            if (stock.GetPetsNumberStock() > 0)
-            {
-                if (pet.Status.ToString() == "Unhealthy")
-                {
+        public Transaction SelectDog(Pet pet, Transaction trans) {
+       
+            Stock stock = new Stock();
+            PetFood petFood = new PetFood();
+            if (stock.GetPetsNumberStock() > 0) {
+                if (pet.Status.ToString() == "Unhealthy") {
                     return null;
                 }
-                else
-                {
-                    tras.PetPrice = pet.Price;
-                    tras.PetFoodPrice = petFood.PetFoodPrice;
-                    tras.TransactionDate = DateTime.Now;
-                    tras.PetFoodQty = stock.GetPetFoodStock() - tras.PetFoodQty;
-                    tras.TransactionID = pet.PetID;
+                else {
+                    trans.PetPrice = pet.Price;
+                    trans.PetFoodPrice = petFood.PetFoodPrice;
+                    trans.TransactionDate = DateTime.Now;
+                    trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
+                    trans.TransactionID = pet.PetID;
                 }
 
             }
-            else
-            {
+            else {
                 MessageBox.Show("Dog is Out of Stock!");
             }
-            return tras;
+            return trans;
         }
 
 
@@ -191,7 +174,7 @@ namespace Session_11 {
         //    Status = Pet.PetStatusEnum.OK,
         //    Breed = "black"
         //};
-        
+
         //Pet petBird = new Pet()
         //{
         //    AnimalType = Pet.AnimalTypeEnum.Bird,
@@ -210,12 +193,10 @@ namespace Session_11 {
         //    }
 
         //};
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             //pet pricing
         }
-        private void PopulateEmployee()
-        {
+        private void PopulateEmployee() {
 
             Employee employee1 = new Employee() {
                 Name = "Fotis",
@@ -225,8 +206,7 @@ namespace Session_11 {
 
             };
 
-            Employee employee2 = new Employee()
-            {
+            Employee employee2 = new Employee() {
                 Name = "Alex",
                 Surname = "Gad",
                 EmployeeType = Employee.EmployeeTypeEnum.Staff,
@@ -269,6 +249,16 @@ namespace Session_11 {
             petBindingSource1.DataSource = petShop.Pets;
         }
 
+        public void PopulateCustomers() {
+            Customer cust1 = new Customer() {
+                CustomerID = Guid.NewGuid(),
+                Name = "Nikos",
+                Surname = "Karamitos",
+                Phone = "6978453324",
+                TIN = "4567332"
+            };
+        }
+
 
 
 
@@ -276,20 +266,20 @@ namespace Session_11 {
 
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            //pet pricing
-        }
+        //private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        //    //pet pricing
+        //}
 
         private void gridControl1_Click(object sender, EventArgs e) {
 
         }
-        private void SetControlProperties() { 
-        grdCustomers.DataSource = grdCustomers;
-        grdEmployees.DataSource = grdEmployees;
-        grdPets.DataSource= grdPets;
-        grdPetFoods.DataSource = grdPetFoods;
-        grdTransactions.DataSource = grdTransactions;   
+        private void SetControlProperties() {
+            grdCustomers.DataSource = grdCustomers;
+            grdEmployees.DataSource = grdEmployees;
+            grdPets.DataSource = grdPets;
+            grdPetFoods.DataSource = grdPetFoods;
+            grdTransactions.DataSource = grdTransactions;
         }
 
-        }
+    }
 }

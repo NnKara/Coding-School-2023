@@ -71,31 +71,31 @@
             this.colBreed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit15 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit16 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.grdTransactions = new DevExpress.XtraGrid.GridControl();
             this.grdTransaction = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTransactionID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTextEdit17 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemDateTimeOffsetEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateTimeOffsetEdit();
             this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemTextEdit21 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colEmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemTextEdit18 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit19 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit20 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemDateTimeOffsetEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateTimeOffsetEdit();
-            this.repositoryItemTextEdit21 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colPetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetFoodID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetFoodQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit18 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit17 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit19 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit20 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -124,20 +124,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdPet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionBindingSource
@@ -191,6 +191,7 @@
             // 
             this.colName.Caption = "Name";
             this.colName.ColumnEdit = this.repositoryItemTextEdit3;
+            this.colName.FieldName = "Name";
             this.colName.Name = "colName";
             // 
             // repositoryItemTextEdit3
@@ -202,6 +203,7 @@
             // 
             this.colSurname.Caption = "Surname";
             this.colSurname.ColumnEdit = this.repositoryItemTextEdit2;
+            this.colSurname.FieldName = "Surname";
             this.colSurname.Name = "colSurname";
             // 
             // repositoryItemTextEdit2
@@ -213,6 +215,7 @@
             // 
             this.colPhone.Caption = "Phone";
             this.colPhone.ColumnEdit = this.repositoryItemTextEdit1;
+            this.colPhone.FieldName = "Phone";
             this.colPhone.Name = "colPhone";
             // 
             // repositoryItemTextEdit1
@@ -224,6 +227,7 @@
             // 
             this.colTin.Caption = "TIN";
             this.colTin.ColumnEdit = this.repositoryItemTextEdit4;
+            this.colTin.FieldName = "TIN";
             this.colTin.Name = "colTin";
             // 
             // repositoryItemTextEdit4
@@ -261,6 +265,7 @@
             // 
             this.colEmployeeName.Caption = "Name";
             this.colEmployeeName.ColumnEdit = this.repositoryItemTextEdit5;
+            this.colEmployeeName.FieldName = "Name";
             this.colEmployeeName.Name = "colEmployeeName";
             this.colEmployeeName.Visible = true;
             this.colEmployeeName.VisibleIndex = 0;
@@ -274,6 +279,7 @@
             // 
             this.colEmployeeSurname.Caption = "Surname";
             this.colEmployeeSurname.ColumnEdit = this.repositoryItemTextEdit6;
+            this.colEmployeeSurname.FieldName = "Surname";
             this.colEmployeeSurname.Name = "colEmployeeSurname";
             this.colEmployeeSurname.Visible = true;
             this.colEmployeeSurname.VisibleIndex = 1;
@@ -287,6 +293,7 @@
             // 
             this.colEmployeeType.Caption = "EmployeeType";
             this.colEmployeeType.ColumnEdit = this.repositoryItemTextEdit7;
+            this.colEmployeeType.FieldName = "EmployeeType";
             this.colEmployeeType.Name = "colEmployeeType";
             this.colEmployeeType.Visible = true;
             this.colEmployeeType.VisibleIndex = 2;
@@ -300,6 +307,7 @@
             // 
             this.colSalary.Caption = "Salary ";
             this.colSalary.ColumnEdit = this.repositoryItemTextEdit8;
+            this.colSalary.FieldName = "Salary ";
             this.colSalary.Name = "colSalary";
             this.colSalary.Visible = true;
             this.colSalary.VisibleIndex = 3;
@@ -339,6 +347,7 @@
             // 
             this.colAnimalType.Caption = "AnimalType";
             this.colAnimalType.ColumnEdit = this.repositoryItemComboBox1;
+            this.colAnimalType.FieldName = "AnimalType";
             this.colAnimalType.Name = "colAnimalType";
             // 
             // repositoryItemComboBox1
@@ -352,6 +361,7 @@
             // 
             this.colPetFoodPrice.Caption = "PetFoodPrice";
             this.colPetFoodPrice.ColumnEdit = this.repositoryItemTextEdit10;
+            this.colPetFoodPrice.FieldName = "PetFoodPrice";
             this.colPetFoodPrice.Name = "colPetFoodPrice";
             // 
             // repositoryItemTextEdit10
@@ -363,6 +373,7 @@
             // 
             this.colPetFoodCost.Caption = "PetFoodCost";
             this.colPetFoodCost.ColumnEdit = this.repositoryItemTextEdit11;
+            this.colPetFoodCost.FieldName = "PetFoodCost";
             this.colPetFoodCost.Name = "colPetFoodCost";
             // 
             // repositoryItemTextEdit11
@@ -413,6 +424,7 @@
             // 
             this.AnimalType.Caption = "AnimalType";
             this.AnimalType.ColumnEdit = this.repositoryItemComboBox2;
+            this.AnimalType.FieldName = "AnimalType";
             this.AnimalType.Name = "AnimalType";
             // 
             // repositoryItemComboBox2
@@ -426,6 +438,7 @@
             // 
             this.colBreed.Caption = "Breed";
             this.colBreed.ColumnEdit = this.repositoryItemTextEdit13;
+            this.colBreed.FieldName = "Breed";
             this.colBreed.Name = "colBreed";
             // 
             // repositoryItemTextEdit13
@@ -437,7 +450,31 @@
             // 
             this.colStatus.Caption = "Status";
             this.colStatus.ColumnEdit = this.repositoryItemComboBox3;
+            this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
+            // 
+            // repositoryItemComboBox3
+            // 
+            this.repositoryItemComboBox3.AutoHeight = false;
+            this.repositoryItemComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
+            // 
+            // colPrice
+            // 
+            this.colPrice.Caption = "Price";
+            this.colPrice.FieldName = "Price";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.Visible = true;
+            this.colPrice.VisibleIndex = 0;
+            // 
+            // colCost
+            // 
+            this.colCost.Caption = "Cost";
+            this.colCost.FieldName = "Cost";
+            this.colCost.Name = "colCost";
+            this.colCost.Visible = true;
+            this.colCost.VisibleIndex = 1;
             // 
             // repositoryItemTextEdit14
             // 
@@ -453,27 +490,6 @@
             // 
             this.repositoryItemTextEdit16.AutoHeight = false;
             this.repositoryItemTextEdit16.Name = "repositoryItemTextEdit16";
-            // 
-            // colPrice
-            // 
-            this.colPrice.Caption = "Price";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 0;
-            // 
-            // colCost
-            // 
-            this.colCost.Caption = "Cost";
-            this.colCost.Name = "colCost";
-            this.colCost.Visible = true;
-            this.colCost.VisibleIndex = 1;
-            // 
-            // repositoryItemComboBox3
-            // 
-            this.repositoryItemComboBox3.AutoHeight = false;
-            this.repositoryItemComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
             // 
             // grdTransactions
             // 
@@ -514,6 +530,7 @@
             // 
             this.colTransactionID.Caption = "TransactionID";
             this.colTransactionID.ColumnEdit = this.repositoryItemComboBox4;
+            this.colTransactionID.FieldName = "TransactionID";
             this.colTransactionID.Name = "colTransactionID";
             // 
             // repositoryItemComboBox4
@@ -527,29 +544,32 @@
             // 
             this.colTransactionDate.Caption = "TransactionDate";
             this.colTransactionDate.ColumnEdit = this.repositoryItemDateTimeOffsetEdit1;
+            this.colTransactionDate.FieldName = "TransactionDate";
             this.colTransactionDate.Name = "colTransactionDate";
             // 
-            // repositoryItemTextEdit17
+            // repositoryItemDateTimeOffsetEdit1
             // 
-            this.repositoryItemTextEdit17.AutoHeight = false;
-            this.repositoryItemTextEdit17.Name = "repositoryItemTextEdit17";
+            this.repositoryItemDateTimeOffsetEdit1.AutoHeight = false;
+            this.repositoryItemDateTimeOffsetEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateTimeOffsetEdit1.Name = "repositoryItemDateTimeOffsetEdit1";
             // 
             // colCustomerID
             // 
             this.colCustomerID.Caption = "CustomerID";
             this.colCustomerID.ColumnEdit = this.repositoryItemTextEdit21;
+            this.colCustomerID.FieldName = "CustomerID";
             this.colCustomerID.Name = "colCustomerID";
             // 
-            // repositoryItemComboBox5
+            // repositoryItemTextEdit21
             // 
-            this.repositoryItemComboBox5.AutoHeight = false;
-            this.repositoryItemComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
+            this.repositoryItemTextEdit21.AutoHeight = false;
+            this.repositoryItemTextEdit21.Name = "repositoryItemTextEdit21";
             // 
             // colEmployeeID
             // 
             this.colEmployeeID.Caption = "EmployeeID";
+            this.colEmployeeID.FieldName = "EmployeeID";
             this.colEmployeeID.Name = "colEmployeeID";
             this.colEmployeeID.Visible = true;
             this.colEmployeeID.VisibleIndex = 0;
@@ -557,14 +577,52 @@
             // colPetID
             // 
             this.colPetID.Caption = "PetID";
+            this.colPetID.FieldName = "PetID";
             this.colPetID.Name = "colPetID";
             this.colPetID.Visible = true;
             this.colPetID.VisibleIndex = 1;
+            // 
+            // colPetPrice
+            // 
+            this.colPetPrice.Caption = "PetPrice";
+            this.colPetPrice.FieldName = "PetPrice";
+            this.colPetPrice.Name = "colPetPrice";
+            this.colPetPrice.Visible = true;
+            this.colPetPrice.VisibleIndex = 2;
+            // 
+            // colPetFoodID
+            // 
+            this.colPetFoodID.Caption = "PetFoodID";
+            this.colPetFoodID.FieldName = "PetFoodID";
+            this.colPetFoodID.Name = "colPetFoodID";
+            this.colPetFoodID.Visible = true;
+            this.colPetFoodID.VisibleIndex = 3;
+            // 
+            // colPetFoodQty
+            // 
+            this.colPetFoodQty.Caption = "PetFoodQty";
+            this.colPetFoodQty.FieldName = "PetFoodQty";
+            this.colPetFoodQty.Name = "colPetFoodQty";
+            this.colPetFoodQty.Visible = true;
+            this.colPetFoodQty.VisibleIndex = 4;
+            // 
+            // colTotalPrice
+            // 
+            this.colTotalPrice.Caption = "TotalPrice";
+            this.colTotalPrice.FieldName = "TotalPrice";
+            this.colTotalPrice.Name = "colTotalPrice";
+            this.colTotalPrice.Visible = true;
+            this.colTotalPrice.VisibleIndex = 5;
             // 
             // repositoryItemTextEdit18
             // 
             this.repositoryItemTextEdit18.AutoHeight = false;
             this.repositoryItemTextEdit18.Name = "repositoryItemTextEdit18";
+            // 
+            // repositoryItemTextEdit17
+            // 
+            this.repositoryItemTextEdit17.AutoHeight = false;
+            this.repositoryItemTextEdit17.Name = "repositoryItemTextEdit17";
             // 
             // repositoryItemTextEdit19
             // 
@@ -576,45 +634,12 @@
             this.repositoryItemTextEdit20.AutoHeight = false;
             this.repositoryItemTextEdit20.Name = "repositoryItemTextEdit20";
             // 
-            // repositoryItemDateTimeOffsetEdit1
+            // repositoryItemComboBox5
             // 
-            this.repositoryItemDateTimeOffsetEdit1.AutoHeight = false;
-            this.repositoryItemDateTimeOffsetEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemComboBox5.AutoHeight = false;
+            this.repositoryItemComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateTimeOffsetEdit1.Name = "repositoryItemDateTimeOffsetEdit1";
-            // 
-            // repositoryItemTextEdit21
-            // 
-            this.repositoryItemTextEdit21.AutoHeight = false;
-            this.repositoryItemTextEdit21.Name = "repositoryItemTextEdit21";
-            // 
-            // colPetPrice
-            // 
-            this.colPetPrice.Caption = "PetPrice";
-            this.colPetPrice.Name = "colPetPrice";
-            this.colPetPrice.Visible = true;
-            this.colPetPrice.VisibleIndex = 2;
-            // 
-            // colPetFoodID
-            // 
-            this.colPetFoodID.Caption = "PetFoodID";
-            this.colPetFoodID.Name = "colPetFoodID";
-            this.colPetFoodID.Visible = true;
-            this.colPetFoodID.VisibleIndex = 3;
-            // 
-            // colPetFoodQty
-            // 
-            this.colPetFoodQty.Caption = "PetFoodQty";
-            this.colPetFoodQty.Name = "colPetFoodQty";
-            this.colPetFoodQty.Visible = true;
-            this.colPetFoodQty.VisibleIndex = 4;
-            // 
-            // colTotalPrice
-            // 
-            this.colTotalPrice.Caption = "TotalPrice";
-            this.colTotalPrice.Name = "colTotalPrice";
-            this.colTotalPrice.Visible = true;
-            this.colTotalPrice.VisibleIndex = 5;
+            this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
             // 
             // Form1
             // 
@@ -657,20 +682,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdPet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
