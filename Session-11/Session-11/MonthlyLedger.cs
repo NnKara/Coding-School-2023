@@ -32,7 +32,7 @@ namespace Session_11
             Total = income - (rent + expenses);
         }
 
-        public string showMonthlyLedger() {
+        public string ShowMonthlyLedger() {
             string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";
             return result;
         }
