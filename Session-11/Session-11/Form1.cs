@@ -70,7 +70,7 @@ namespace Session_11 {
                 Name = "Alex",
                 Surname = "Gad",
                 Phone = "6973132822",
-                TIN = "38239102"
+                TIN = "38239102" 
             };
 
 
