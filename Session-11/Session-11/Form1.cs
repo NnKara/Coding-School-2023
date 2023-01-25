@@ -13,15 +13,20 @@ namespace Session_11 {
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             petShop=new PetShop();
+            
             PopulateEmployee();
             PopulateCustomers();
-            dataGridViewCustomers.DataSource = petShop.Customers;
+            PopulatePets();
+            
+            dataGridViewCustomers.DataSource = customerBindingSource1;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
             dataGridViewPetFoodMenu.DataSource = petShop.PetFoods;
             dataGridViewEmployess.DataSource = petShop.Employees;
-            dataGridView1.DataSource = petShop.Transactions;
-
+            transactionBindingSource.DataSource = petShop.Transactions;
+            grvTransactions.DataSource = transactionBindingSource;
+            SetControls();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -39,7 +44,7 @@ namespace Session_11 {
         }
 
 
-        public List<Customer> PopulateCustomers()
+        public void PopulateCustomers()
         {
 
             Customer Cust1 = new Customer()
@@ -60,7 +65,7 @@ namespace Session_11 {
 
             petShop.Customers.Add(Cust1);
             petShop.Customers.Add(cust2);
-            return petShop.Customers;
+            customerBindingSource1.DataSource = petShop.Customers;
         }
 
         //Koumpi add gia employee
@@ -201,7 +206,7 @@ namespace Session_11 {
             };           
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
-
+            employeeBindingSource.DataSource = petShop.Employees;   
 
         }
 
@@ -216,12 +221,25 @@ namespace Session_11 {
             };
 
             petShop.Pets.AddRange(pets);
+            petBindingSource.DataSource = petShop.Pets; 
             return petShop.Pets;
 
         }
 
-
-
+        public void SetControls() {
+            DataGridViewComboBoxColumn colCustomer = grvTransactions.Columns["colCustomer"] as DataGridViewComboBoxColumn;
+            colCustomer.DataSource = petShop.Customers;
+            colCustomer.DisplayMember = "Surname";
+            colCustomer.ValueMember = "CustomerID";
+            DataGridViewComboBoxColumn colEmployee = grvTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
+            colEmployee.DataSource = petShop.Employees;
+            colEmployee.DisplayMember = "FullName";
+            colEmployee.ValueMember = "EmployeeID";
+            DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
+            colAnimalType.DataSource = petShop.Pets;
+            colAnimalType.DisplayMember = "AnimalType";
+         
+        }
 
 
 
@@ -245,6 +263,14 @@ namespace Session_11 {
 
         }
 
+        
 
+        private void button1_Click(object sender, EventArgs e) {
+            transactionBindingSource.AddNew();
+           // grvTransactions.Focused
+           
+        }
+
+   
     }
 }

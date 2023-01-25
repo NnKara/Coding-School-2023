@@ -14,6 +14,12 @@ namespace Session_11 {
         public double SalaryPerMonth { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
 
+        public string FullName {
+            get {
+                return Name + " " + Surname;
+            }
+        }
+
         public Employee() {
 
         }
