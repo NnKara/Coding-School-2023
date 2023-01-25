@@ -20,17 +20,9 @@ namespace Session_11
             Year = year;    
             Month = month;  
             Income = income;    
-            Expenses = 2000 + expenses;    // at initialization only rent is an expense, so Expenses = rent + expenses
-            Total = income - (2000 + expenses);
+            Expenses = expenses;    
+            Total = income - expenses;
         }
-
-        //public MonthlyLedger(int year,int month, double income, double expenses, int rent) {
-        //    Year = year;
-        //    Month = month;
-        //    Income = income;
-        //    Expenses = rent + expenses;    
-        //    Total = income - (rent + expenses);
-        //}
 
         public string ShowMonthlyLedger() {
             string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";

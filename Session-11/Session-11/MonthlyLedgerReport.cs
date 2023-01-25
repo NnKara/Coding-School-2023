@@ -14,6 +14,8 @@ namespace Session_11 {
         public MonthlyLedger MonthlyLedger { get; set; }
         public List<Transaction> Transactions { get; set; }
         public Settings Settings { get; set; }
+
+       
         public MonthlyLedgerReport(List<Transaction> transactions, Settings settings) {
             Year = DateTime.Today.Month;
             Month = DateTime.Today.Year;
@@ -25,28 +27,36 @@ namespace Session_11 {
             int year = DateTime.Today.Year;
             int month = DateTime.Today.Month;
             Settings settings = new Settings(); 
-            double income = CalculateIncome(transactions, settings);
-            double expenses = CalculateExpenses(transactions, settings);
-            
+            double income = CalculateIncome(transactions);
+            double expenses = CalculateExpenses(transactions);                   
             MonthlyLedger monthlyLedger = new MonthlyLedger(year, month, income, expenses);
             monthlyLedger.ShowMonthlyLedger();
 
 
-        }
+        }           
 
-        private double CalculateExpenses(List<Transaction> transactions, Settings settings) {
-            
+        private double CalculateExpenses(List<Transaction> transactions) {
+            PetFood petFood = new PetFood();
+            Settings settings = new Settings();
+            Pet pet = new Pet();
             double sumExpenses = 0;
-            for (int i = 0; i < transactions.Count -1; i++) {
-                sumExpenses += (transactions[i].PetFoodPrice * transactions[i].PetFoodQty) + transactions[i].PetPrice + settings.Rent + settings.StaffSalary;
-                
+            foreach (Transaction transaction in transactions) {
+                sumExpenses += settings.Rent + (transaction.PetFoodQty * petFood.PetFoodCost) + settings.StaffSalary + pet.Cost;
             }
             return sumExpenses;
-
         }
 
-        private double CalculateIncome(List<Transaction> transactions, Settings settings) {
-            throw new NotImplementedException();
+        private double CalculateIncome(List<Transaction> transactions) {
+            PetFood petFood = new PetFood();
+            Settings settings = new Settings();
+            Pet pet = new Pet();
+            double sumIncome = 0;
+            foreach (Transaction transaction in transactions) {
+                sumIncome += ((transaction.PetFoodQty - 1) * transaction.PetFoodPrice) + pet.Price;
+            }
+            return sumIncome;
         }
+
+      
     }
 }
