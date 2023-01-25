@@ -13,13 +13,13 @@ namespace Session_11
         {
             string jsonString = JsonSerializer.Serialize(petShop);
 
-            File.WriteAllText(fileName, jsonString);
+            System.IO.File.WriteAllText(fileName, jsonString);
         }
 
         public T DeserializeFromFile<T>(string fileName)
         {
 
-            string jsonString = File.ReadAllText(fileName);
+            string jsonString = System.IO.File.ReadAllText(fileName);
 
             T? petShop = JsonSerializer.Deserialize<T>(jsonString);
 
