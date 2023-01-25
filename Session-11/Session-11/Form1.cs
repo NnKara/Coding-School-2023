@@ -16,6 +16,8 @@ namespace Session_11 {
             petShop=new PetShop();
             PopulateEmployee();
             PopulateCustomers();
+            PopulatePets();
+            PopulatePetFoods();
             dataGridViewCustomers.DataSource = petShop.Customers;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
             dataGridViewPetFoodMenu.DataSource = petShop.PetFoods;
@@ -39,6 +41,20 @@ namespace Session_11 {
         }
 
 
+        public List<PetFood> PopulatePetFoods()
+        {
+            var petsFood = new List<PetFood>
+            {
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},    
+            };
+            petShop.PetFoods.AddRange(petsFood);
+            return petShop.PetFoods;
+        }
         public List<Customer> PopulateCustomers()
         {
 
@@ -53,7 +69,7 @@ namespace Session_11 {
             {
                 Name = "Alex",
                 Surname = "Gad",
-                Phone = "693132822",
+                Phone = "6973132822",
                 TIN = "38239102"
             };
 
@@ -182,7 +198,7 @@ namespace Session_11 {
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             
         }
-        private void PopulateEmployee() {
+        private List<Employee> PopulateEmployee() {
 
             Employee employee1 = new Employee() {
                 Name = "Fotis",
@@ -201,24 +217,31 @@ namespace Session_11 {
             };           
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
+            return petShop.Employees;
 
 
         }
 
-        private List<Pet> PopulatePets() {
-
+        private List<Pet> PopulatePets()
+        {
 
             var pets = new List<Pet>
             {
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog, Price = 100, Cost = 50},
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat, Price = 20, Cost = 10},
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird, Price = 30, Cost = 15}
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,Price = 100, Cost = 70,Breed="French Bulldog"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,Price =80, Cost = 30,Breed="Akita"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Unhealthy ,Price =0, Cost = 20,Breed="Beagle"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK, Price = 100, Cost = 80,Breed="Persian"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, Price = 80, Cost = 60,Breed="Maine Coon"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Unhealthy, Price = 0, Cost = 20,Breed="Ragdoll"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, Price = 80, Cost = 50,Breed="Canary"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, Price = 60, Cost = 40,Breed="Amazon Parrot"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Unhealthy, Price = 30, Cost = 15,Breed="African Grey Parrot"}
             };
-
             petShop.Pets.AddRange(pets);
             return petShop.Pets;
 
         }
+
 
 
 

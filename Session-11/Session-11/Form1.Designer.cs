@@ -33,13 +33,6 @@
             this.petFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewPetFoodMenu = new System.Windows.Forms.DataGridView();
-            this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.breedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewAnimalMenu = new System.Windows.Forms.DataGridView();
@@ -86,6 +79,10 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.petBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
@@ -125,12 +122,9 @@
             this.dataGridViewPetFoodMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPetFoodMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.animalTypeDataGridViewTextBoxColumn1,
+            this.Status,
             this.petFoodPriceDataGridViewTextBoxColumn1,
-            this.petFoodCostDataGridViewTextBoxColumn,
-            this.breedDataGridViewTextBoxColumn1,
-            this.statusDataGridViewTextBoxColumn1,
-            this.priceDataGridViewTextBoxColumn1,
-            this.costDataGridViewTextBoxColumn1});
+            this.petFoodCostDataGridViewTextBoxColumn});
             this.dataGridViewPetFoodMenu.DataSource = this.petFoodBindingSource1;
             this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(74, 520);
             this.dataGridViewPetFoodMenu.Name = "dataGridViewPetFoodMenu";
@@ -138,55 +132,6 @@
             this.dataGridViewPetFoodMenu.RowTemplate.Height = 29;
             this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(737, 188);
             this.dataGridViewPetFoodMenu.TabIndex = 0;
-            // 
-            // animalTypeDataGridViewTextBoxColumn1
-            // 
-            this.animalTypeDataGridViewTextBoxColumn1.DataPropertyName = "AnimalType";
-            this.animalTypeDataGridViewTextBoxColumn1.HeaderText = "AnimalType";
-            this.animalTypeDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.animalTypeDataGridViewTextBoxColumn1.Name = "animalTypeDataGridViewTextBoxColumn1";
-            // 
-            // petFoodPriceDataGridViewTextBoxColumn1
-            // 
-            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
-            // 
-            // petFoodCostDataGridViewTextBoxColumn
-            // 
-            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
-            // 
-            // breedDataGridViewTextBoxColumn1
-            // 
-            this.breedDataGridViewTextBoxColumn1.DataPropertyName = "Breed";
-            this.breedDataGridViewTextBoxColumn1.HeaderText = "Breed";
-            this.breedDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.breedDataGridViewTextBoxColumn1.Name = "breedDataGridViewTextBoxColumn1";
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            // 
-            // priceDataGridViewTextBoxColumn1
-            // 
-            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            // 
-            // costDataGridViewTextBoxColumn1
-            // 
-            this.costDataGridViewTextBoxColumn1.DataPropertyName = "Cost";
-            this.costDataGridViewTextBoxColumn1.HeaderText = "Cost";
-            this.costDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.costDataGridViewTextBoxColumn1.Name = "costDataGridViewTextBoxColumn1";
             // 
             // petFoodBindingSource1
             // 
@@ -587,6 +532,34 @@
             // 
             this.petBindingSource1.DataSource = typeof(Session_11.Pet);
             // 
+            // animalTypeDataGridViewTextBoxColumn1
+            // 
+            this.animalTypeDataGridViewTextBoxColumn1.DataPropertyName = "AnimalType";
+            this.animalTypeDataGridViewTextBoxColumn1.HeaderText = "AnimalType";
+            this.animalTypeDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.animalTypeDataGridViewTextBoxColumn1.Name = "animalTypeDataGridViewTextBoxColumn1";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            // 
+            // petFoodPriceDataGridViewTextBoxColumn1
+            // 
+            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
+            // 
+            // petFoodCostDataGridViewTextBoxColumn
+            // 
+            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -665,13 +638,6 @@
         private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn petFoodCostDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn breedDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn costDataGridViewTextBoxColumn1;
         private BindingSource petFoodBindingSource1;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn petFoodQtyDataGridViewTextBoxColumn;
@@ -694,5 +660,9 @@
         private DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private BindingSource monthlyLedgerBindingSource;
         private BindingSource petBindingSource1;
+        private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn petFoodCostDataGridViewTextBoxColumn;
     }
 }

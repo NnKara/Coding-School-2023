@@ -9,23 +9,23 @@ namespace Session_11
 {
     public class Serializer
     {
-        public void SerializeToFile(PetShop petShop, string fileName)
-        {
-            string jsonString = JsonSerializer.Serialize(petShop);
+        //public void SerializeToFile(PetShop petShop, string fileName)
+        //{
+        //    string jsonString = JsonSerializer.Serialize(petShop);
 
-            File.WriteAllText(fileName, jsonString);
-        }
+        //    File.WriteAllText(fileName, jsonString);
+        //}
 
-        public T DeserializeFromFile<T>(string fileName)
-        {
+        //public T DeserializeFromFile<T>(string fileName)
+        //{
 
-            string jsonString = File.ReadAllText(fileName);
+        //    string jsonString = File.ReadAllText(fileName);
 
-            T? petShop = JsonSerializer.Deserialize<T>(jsonString);
+        //    T? petShop = JsonSerializer.Deserialize<T>(jsonString);
 
-            return petShop;
+        //    return petShop;
 
 
-        }
+        //}
     }
     }
