@@ -34,6 +34,8 @@ namespace Session_11
         public Pet() {
 
         }
+        public Pet(){
+            PetID = Guid.NewGuid();
 
         public Pet (AnimalTypeEnum animalType) {
             AnimalType = animalType;    

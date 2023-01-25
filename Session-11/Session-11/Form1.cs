@@ -3,23 +3,27 @@ namespace Session_11 {
 
         public Transaction transaction;
         public PetShop petShop;
-
+        public Customer customer;
 
         public Form1() {
-            InitializeComponent();
-            //SetControlProperties();
-            //var pets = this.list;
-            //dataGridView2.DataSource = pets;
-            Pet pet = new Pet();
-            Transaction newTras = new Transaction();
 
-            Employee newEmployee = addNewEmployee();//koumpi add gia employee
-            Customer newCustomer = addNewCustomer();//koumpi add gia customer
+
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            petShop=new PetShop();
+            PopulateEmployee();
             PopulateCustomers();
             PopulatePets();
-            PopulateEmployee();
-            Buy(newCustomer, pet); 
+            PopulatePetFoods();
+            dataGridViewCustomers.DataSource = petShop.Customers;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
+            dataGridViewPetFoodMenu.DataSource = petShop.PetFoods;
+            dataGridViewEmployess.DataSource = petShop.Employees;
+            dataGridView1.DataSource = petShop.Transactions;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -36,11 +40,43 @@ namespace Session_11 {
 
         }
 
-        //Koumpi add gia customer
-        public Customer addNewCustomer() {
-            Customer newCust = new Customer();
-            petShop.Customers.Add(newCust);
-            return newCust;
+
+        public List<PetFood> PopulatePetFoods()
+        {
+            var petsFood = new List<PetFood>
+            {
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},    
+            };
+            petShop.PetFoods.AddRange(petsFood);
+            return petShop.PetFoods;
+        }
+        public List<Customer> PopulateCustomers()
+        {
+
+            Customer Cust1 = new Customer()
+            {
+                Name = "Nikos",
+                Surname = "Karamitos",
+                Phone = "6978319532",
+                TIN = "37482910"
+            };
+            Customer cust2 = new Customer()
+            {
+                Name = "Alex",
+                Surname = "Gad",
+                Phone = "6973132822",
+                TIN = "38239102" 
+            };
+
+
+            petShop.Customers.Add(Cust1);
+            petShop.Customers.Add(cust2);
+            return petShop.Customers;
         }
 
         //Koumpi add gia employee
@@ -159,42 +195,10 @@ namespace Session_11 {
         }
 
 
-
-        // Pet petcat = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Cat,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        // Pet petDog = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Dog,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-
-        //Pet petBird = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Bird,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-
-        //List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
-
-
-        //PetShop petShop = new PetShop()
-        //{
-
-        //    Pets = new List<Pet>() {
-        //        petcat, petDog,petBird
-        //    }
-
-        //};
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            //pet pricing
+            
         }
-        private void PopulateEmployee() {
+        private List<Employee> PopulateEmployee() {
 
             Employee employee1 = new Employee() {
                 Name = "Fotis",
@@ -210,56 +214,36 @@ namespace Session_11 {
                 EmployeeType = Employee.EmployeeTypeEnum.Staff,
                 SalaryPerMonth = 1000
 
-            };
-
+            };           
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
-            //employeeBindingSource.DataSource = petShop.Employees;
+            return petShop.Employees;
+
 
         }
 
-        private void PopulatePets() {
+        private List<Pet> PopulatePets()
+        {
 
-            Pet pet1 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Haski",
-                AnimalType = Pet.AnimalTypeEnum.Dog,
-                Status = Pet.PetStatusEnum.OK,
-                Price = 100
-
+            var pets = new List<Pet>
+            {
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,Price = 100, Cost = 70,Breed="French Bulldog"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,Price =80, Cost = 30,Breed="Akita"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Unhealthy ,Price =0, Cost = 20,Breed="Beagle"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK, Price = 100, Cost = 80,Breed="Persian"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, Price = 80, Cost = 60,Breed="Maine Coon"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Unhealthy, Price = 0, Cost = 20,Breed="Ragdoll"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, Price = 80, Cost = 50,Breed="Canary"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, Price = 60, Cost = 40,Breed="Amazon Parrot"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Unhealthy, Price = 30, Cost = 15,Breed="African Grey Parrot"}
             };
-            petShop.Pets.Add(pet1);
-            Pet pet2 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Pigeon",
-                AnimalType = Pet.AnimalTypeEnum.Bird,
-                Status = Pet.PetStatusEnum.Unhealthy,
-                Price = 30
+            petShop.Pets.AddRange(pets);
+            return petShop.Pets;
 
-            };
-            petShop.Pets.Add(pet2);
-            Pet pet3 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Black",
-                AnimalType = Pet.AnimalTypeEnum.Cat,
-                Status = Pet.PetStatusEnum.Recovering,
-                Price = 20
-
-            };
-            petShop.Pets.Add(pet3);
-            petBindingSource1.DataSource = petShop.Pets;
         }
 
-        public void PopulateCustomers() {
-            Customer cust1 = new Customer() {
-                CustomerID = Guid.NewGuid(),
-                Name = "Nikos",
-                Surname = "Karamitos",
-                Phone = "6978453324",
-                TIN = "4567332"
-            };
-            customerBindingSource.DataSource = petShop.Customers;
-        }
+
+
 
 
 
@@ -268,20 +252,11 @@ namespace Session_11 {
 
         }
 
-        //private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-        //    //pet pricing
-        //}
+
 
         private void gridControl1_Click(object sender, EventArgs e) {
 
         }
-        //private void SetControlProperties() {
-        //    grdCustomers.DataSource = grdCustomers;
-        //    grdEmployees.DataSource = grdEmployees;
-        //    grdPets.DataSource = grdPets;
-        //    grdPetFoods.DataSource = grdPetFoods;
-        //    grdTransactions.DataSource = grdTransactions;
-        //}
 
         private void employeeBindingSource_CurrentChanged(object sender, EventArgs e)
         {
@@ -292,5 +267,7 @@ namespace Session_11 {
         {
 
         }
+
+
     }
 }
