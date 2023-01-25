@@ -10,6 +10,12 @@ namespace Session_11 {
         public string Phone { get; set; }
         public string TIN { get; set; }
 
+        public string FullName {
+            get {
+                return Name + " " + Surname;
+            }
+        }
+
 
         public Customer(Guid customerID, String name,String surname, string phone, string tIN) : base(name,surname)
         {

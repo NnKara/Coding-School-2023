@@ -30,15 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.petFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewPetFoodMenu = new System.Windows.Forms.DataGridView();
             this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.breedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewAnimalMenu = new System.Windows.Forms.DataGridView();
@@ -52,23 +48,22 @@
             this.grvTransactions = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
-            this.customerIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
+            this.grvEmployee = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salaryPerMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salaryPerMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.btnRemoveCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnRemoveTrans = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnRemoveEmployee = new System.Windows.Forms.Button();
@@ -83,16 +78,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.petBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddTrans = new System.Windows.Forms.Button();
-            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmployee = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colEmployee = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAnimalType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).BeginInit();
@@ -100,7 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).BeginInit();
@@ -111,10 +103,6 @@
             // 
             this.transactionBindingSource.DataSource = typeof(Session_11.Transaction);
             // 
-            // petFoodBindingSource
-            // 
-            this.petFoodBindingSource.DataSource = typeof(Session_11.PetFood);
-            // 
             // dataGridViewPetFoodMenu
             // 
             this.dataGridViewPetFoodMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -124,14 +112,11 @@
             this.dataGridViewPetFoodMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPetFoodMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.animalTypeDataGridViewTextBoxColumn1,
+            this.Status,
             this.petFoodPriceDataGridViewTextBoxColumn1,
-            this.petFoodCostDataGridViewTextBoxColumn,
-            this.breedDataGridViewTextBoxColumn1,
-            this.statusDataGridViewTextBoxColumn1,
-            this.priceDataGridViewTextBoxColumn1,
-            this.costDataGridViewTextBoxColumn1});
+            this.petFoodCostDataGridViewTextBoxColumn});
             this.dataGridViewPetFoodMenu.DataSource = this.petFoodBindingSource1;
-            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(65, 390);
+            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(65, 407);
             this.dataGridViewPetFoodMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewPetFoodMenu.Name = "dataGridViewPetFoodMenu";
             this.dataGridViewPetFoodMenu.RowHeadersWidth = 51;
@@ -145,6 +130,13 @@
             this.animalTypeDataGridViewTextBoxColumn1.HeaderText = "AnimalType";
             this.animalTypeDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.animalTypeDataGridViewTextBoxColumn1.Name = "animalTypeDataGridViewTextBoxColumn1";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
             // 
             // petFoodPriceDataGridViewTextBoxColumn1
             // 
@@ -160,34 +152,6 @@
             this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
             // 
-            // breedDataGridViewTextBoxColumn1
-            // 
-            this.breedDataGridViewTextBoxColumn1.DataPropertyName = "Breed";
-            this.breedDataGridViewTextBoxColumn1.HeaderText = "Breed";
-            this.breedDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.breedDataGridViewTextBoxColumn1.Name = "breedDataGridViewTextBoxColumn1";
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            // 
-            // priceDataGridViewTextBoxColumn1
-            // 
-            this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
-            // 
-            // costDataGridViewTextBoxColumn1
-            // 
-            this.costDataGridViewTextBoxColumn1.DataPropertyName = "Cost";
-            this.costDataGridViewTextBoxColumn1.HeaderText = "Cost";
-            this.costDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.costDataGridViewTextBoxColumn1.Name = "costDataGridViewTextBoxColumn1";
-            // 
             // petFoodBindingSource1
             // 
             this.petFoodBindingSource1.DataSource = typeof(Session_11.PetFood);
@@ -195,7 +159,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 364);
+            this.label1.Location = new System.Drawing.Point(65, 390);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 1;
@@ -222,7 +186,7 @@
             this.dataGridViewAnimalMenu.Name = "dataGridViewAnimalMenu";
             this.dataGridViewAnimalMenu.RowHeadersWidth = 51;
             this.dataGridViewAnimalMenu.RowTemplate.Height = 29;
-            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(440, 141);
             this.dataGridViewAnimalMenu.TabIndex = 2;
             this.dataGridViewAnimalMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
             // 
@@ -268,7 +232,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 184);
+            this.label2.Location = new System.Drawing.Point(65, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 3;
@@ -276,16 +240,15 @@
             // 
             // grvTransactions
             // 
+            this.grvTransactions.AllowUserToAddRows = false;
             this.grvTransactions.AutoGenerateColumns = false;
             this.grvTransactions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grvTransactions.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.grvTransactions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvTransactions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.transactionDateDataGridViewTextBoxColumn,
-            this.colAnimalType,
             this.colCustomer,
             this.colEmployee,
-            this.petPriceDataGridViewTextBoxColumn,
+            this.colAnimalType,
             this.petFoodQtyDataGridViewTextBoxColumn,
             this.petFoodPriceDataGridViewTextBoxColumn,
             this.totalPriceDataGridViewTextBoxColumn});
@@ -312,37 +275,18 @@
             this.dataGridViewCustomers.AutoGenerateColumns = false;
             this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerIDDataGridViewTextBoxColumn1,
-            this.phoneDataGridViewTextBoxColumn,
-            this.tINDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn});
+            this.surnameDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.tINDataGridViewTextBoxColumn});
             this.dataGridViewCustomers.DataSource = this.customerBindingSource1;
             this.dataGridViewCustomers.Location = new System.Drawing.Point(806, 20);
             this.dataGridViewCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewCustomers.Name = "dataGridViewCustomers";
             this.dataGridViewCustomers.RowHeadersWidth = 51;
             this.dataGridViewCustomers.RowTemplate.Height = 29;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(454, 141);
             this.dataGridViewCustomers.TabIndex = 6;
-            // 
-            // customerIDDataGridViewTextBoxColumn1
-            // 
-            this.customerIDDataGridViewTextBoxColumn1.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn1.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn1.Name = "customerIDDataGridViewTextBoxColumn1";
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            // 
-            // tINDataGridViewTextBoxColumn
-            // 
-            this.tINDataGridViewTextBoxColumn.DataPropertyName = "TIN";
-            this.tINDataGridViewTextBoxColumn.HeaderText = "TIN";
-            this.tINDataGridViewTextBoxColumn.Name = "tINDataGridViewTextBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -355,6 +299,18 @@
             this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
             this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
             this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            // 
+            // tINDataGridViewTextBoxColumn
+            // 
+            this.tINDataGridViewTextBoxColumn.DataPropertyName = "TIN";
+            this.tINDataGridViewTextBoxColumn.HeaderText = "TIN";
+            this.tINDataGridViewTextBoxColumn.Name = "tINDataGridViewTextBoxColumn";
             // 
             // customerBindingSource1
             // 
@@ -369,23 +325,23 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Customers";
             // 
-            // dataGridViewEmployess
+            // grvEmployee
             // 
-            this.dataGridViewEmployess.AutoGenerateColumns = false;
-            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grvEmployee.AutoGenerateColumns = false;
+            this.grvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn1,
             this.surnameDataGridViewTextBoxColumn1,
-            this.salaryPerMonthDataGridViewTextBoxColumn,
-            this.employeeTypeDataGridViewTextBoxColumn});
-            this.dataGridViewEmployess.DataSource = this.employeeBindingSource;
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(813, 248);
-            this.dataGridViewEmployess.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
-            this.dataGridViewEmployess.RowHeadersWidth = 51;
-            this.dataGridViewEmployess.RowTemplate.Height = 29;
-            this.dataGridViewEmployess.Size = new System.Drawing.Size(370, 141);
-            this.dataGridViewEmployess.TabIndex = 8;
+            this.employeeTypeDataGridViewTextBoxColumn,
+            this.salaryPerMonthDataGridViewTextBoxColumn});
+            this.grvEmployee.DataSource = this.employeeBindingSource;
+            this.grvEmployee.Location = new System.Drawing.Point(867, 214);
+            this.grvEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grvEmployee.Name = "grvEmployee";
+            this.grvEmployee.RowHeadersWidth = 51;
+            this.grvEmployee.RowTemplate.Height = 29;
+            this.grvEmployee.Size = new System.Drawing.Size(393, 141);
+            this.grvEmployee.TabIndex = 8;
             // 
             // nameDataGridViewTextBoxColumn1
             // 
@@ -393,7 +349,7 @@
             this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.Width = 125;
+            this.nameDataGridViewTextBoxColumn1.Width = 80;
             // 
             // surnameDataGridViewTextBoxColumn1
             // 
@@ -401,15 +357,7 @@
             this.surnameDataGridViewTextBoxColumn1.HeaderText = "Surname";
             this.surnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.surnameDataGridViewTextBoxColumn1.Name = "surnameDataGridViewTextBoxColumn1";
-            this.surnameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // salaryPerMonthDataGridViewTextBoxColumn
-            // 
-            this.salaryPerMonthDataGridViewTextBoxColumn.DataPropertyName = "SalaryPerMonth";
-            this.salaryPerMonthDataGridViewTextBoxColumn.HeaderText = "SalaryPerMonth";
-            this.salaryPerMonthDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salaryPerMonthDataGridViewTextBoxColumn.Name = "salaryPerMonthDataGridViewTextBoxColumn";
-            this.salaryPerMonthDataGridViewTextBoxColumn.Width = 125;
+            this.surnameDataGridViewTextBoxColumn1.Width = 80;
             // 
             // employeeTypeDataGridViewTextBoxColumn
             // 
@@ -417,7 +365,15 @@
             this.employeeTypeDataGridViewTextBoxColumn.HeaderText = "EmployeeType";
             this.employeeTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employeeTypeDataGridViewTextBoxColumn.Name = "employeeTypeDataGridViewTextBoxColumn";
-            this.employeeTypeDataGridViewTextBoxColumn.Width = 125;
+            this.employeeTypeDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // salaryPerMonthDataGridViewTextBoxColumn
+            // 
+            this.salaryPerMonthDataGridViewTextBoxColumn.DataPropertyName = "SalaryPerMonth";
+            this.salaryPerMonthDataGridViewTextBoxColumn.HeaderText = "SalaryPerMonth";
+            this.salaryPerMonthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.salaryPerMonthDataGridViewTextBoxColumn.Name = "salaryPerMonthDataGridViewTextBoxColumn";
+            this.salaryPerMonthDataGridViewTextBoxColumn.Width = 90;
             // 
             // employeeBindingSource
             // 
@@ -426,7 +382,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(817, 230);
+            this.label5.Location = new System.Drawing.Point(867, 214);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 15);
             this.label5.TabIndex = 9;
@@ -434,7 +390,7 @@
             // 
             // btnRemoveCustomer
             // 
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(1094, 166);
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(1178, 167);
             this.btnRemoveCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
             this.btnRemoveCustomer.Size = new System.Drawing.Size(82, 22);
@@ -444,7 +400,7 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(1006, 166);
+            this.btnAddCustomer.Location = new System.Drawing.Point(1090, 167);
             this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(82, 22);
@@ -452,15 +408,16 @@
             this.btnAddCustomer.Text = "ADD";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
             // 
-            // btnCancel
+            // btnRemoveTrans
             // 
-            this.btnCancel.Location = new System.Drawing.Point(499, 175);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 22);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnRemoveTrans.Location = new System.Drawing.Point(129, 167);
+            this.btnRemoveTrans.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveTrans.Name = "btnRemoveTrans";
+            this.btnRemoveTrans.Size = new System.Drawing.Size(57, 22);
+            this.btnRemoveTrans.TabIndex = 12;
+            this.btnRemoveTrans.Text = "-";
+            this.btnRemoveTrans.UseVisualStyleBackColor = true;
+            this.btnRemoveTrans.Click += new System.EventHandler(this.btnRemoveTrans_Click);
             // 
             // btnOrder
             // 
@@ -474,23 +431,25 @@
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(1018, 393);
+            this.btnAddEmployee.Location = new System.Drawing.Point(1169, 364);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnAddEmployee.Size = new System.Drawing.Size(42, 22);
             this.btnAddEmployee.TabIndex = 14;
-            this.btnAddEmployee.Text = "ADD";
+            this.btnAddEmployee.Text = "+";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(1106, 393);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(1217, 364);
             this.btnRemoveEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(43, 22);
             this.btnRemoveEmployee.TabIndex = 15;
-            this.btnRemoveEmployee.Text = "Remove";
+            this.btnRemoveEmployee.Text = "-";
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click);
             // 
             // dataGridViewMonthlyLedger
             // 
@@ -503,12 +462,12 @@
             this.expensesDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn});
             this.dataGridViewMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
-            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(813, 441);
+            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(775, 407);
             this.dataGridViewMonthlyLedger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewMonthlyLedger.Name = "dataGridViewMonthlyLedger";
             this.dataGridViewMonthlyLedger.RowHeadersWidth = 51;
             this.dataGridViewMonthlyLedger.RowTemplate.Height = 29;
-            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(485, 141);
             this.dataGridViewMonthlyLedger.TabIndex = 16;
             // 
             // yearDataGridViewTextBoxColumn
@@ -568,7 +527,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(817, 416);
+            this.label6.Location = new System.Drawing.Point(806, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 15);
             this.label6.TabIndex = 18;
@@ -580,25 +539,28 @@
             // 
             // btnAddTrans
             // 
-            this.btnAddTrans.Location = new System.Drawing.Point(153, 177);
+            this.btnAddTrans.Location = new System.Drawing.Point(65, 166);
             this.btnAddTrans.Name = "btnAddTrans";
-            this.btnAddTrans.Size = new System.Drawing.Size(75, 23);
+            this.btnAddTrans.Size = new System.Drawing.Size(58, 23);
             this.btnAddTrans.TabIndex = 19;
-            this.btnAddTrans.Text = "ADD";
+            this.btnAddTrans.Text = "+";
             this.btnAddTrans.UseVisualStyleBackColor = true;
             this.btnAddTrans.Click += new System.EventHandler(this.button1_Click);
             // 
-            // totalPriceDataGridViewTextBoxColumn
+            // colCustomer
             // 
-            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
-            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
-            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
+            this.colCustomer.HeaderText = "Customer";
+            this.colCustomer.Name = "colCustomer";
             // 
-            // petFoodPriceDataGridViewTextBoxColumn
+            // colEmployee
             // 
-            this.petFoodPriceDataGridViewTextBoxColumn.DataPropertyName = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn.Name = "petFoodPriceDataGridViewTextBoxColumn";
+            this.colEmployee.HeaderText = "Employee";
+            this.colEmployee.Name = "colEmployee";
+            // 
+            // colAnimalType
+            // 
+            this.colAnimalType.HeaderText = "AnimalType";
+            this.colAnimalType.Name = "colAnimalType";
             // 
             // petFoodQtyDataGridViewTextBoxColumn
             // 
@@ -606,32 +568,17 @@
             this.petFoodQtyDataGridViewTextBoxColumn.HeaderText = "PetFoodQty";
             this.petFoodQtyDataGridViewTextBoxColumn.Name = "petFoodQtyDataGridViewTextBoxColumn";
             // 
-            // petPriceDataGridViewTextBoxColumn
+            // petFoodPriceDataGridViewTextBoxColumn
             // 
-            this.petPriceDataGridViewTextBoxColumn.DataPropertyName = "PetPrice";
-            this.petPriceDataGridViewTextBoxColumn.HeaderText = "PetPrice";
-            this.petPriceDataGridViewTextBoxColumn.Name = "petPriceDataGridViewTextBoxColumn";
+            this.petFoodPriceDataGridViewTextBoxColumn.DataPropertyName = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn.HeaderText = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn.Name = "petFoodPriceDataGridViewTextBoxColumn";
             // 
-            // colEmployee
+            // totalPriceDataGridViewTextBoxColumn
             // 
-            this.colEmployee.HeaderText = "Employee";
-            this.colEmployee.Name = "colEmployee";
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.HeaderText = "Customer";
-            this.colCustomer.Name = "colCustomer";
-            // 
-            // colAnimalType
-            // 
-            this.colAnimalType.HeaderText = "AnimalType";
-            this.colAnimalType.Name = "colAnimalType";
-            // 
-            // transactionDateDataGridViewTextBoxColumn
-            // 
-            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
+            this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             // 
             // Form1
             // 
@@ -645,11 +592,11 @@
             this.Controls.Add(this.btnRemoveEmployee);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.btnOrder);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnRemoveTrans);
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.btnRemoveCustomer);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dataGridViewEmployess);
+            this.Controls.Add(this.grvEmployee);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridViewCustomers);
             this.Controls.Add(this.label3);
@@ -663,7 +610,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).EndInit();
@@ -671,7 +617,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).EndInit();
@@ -683,7 +629,6 @@
 
         #endregion
         private BindingSource transactionBindingSource;
-        private BindingSource petFoodBindingSource;
         private DataGridView dataGridViewPetFoodMenu;
         private Label label1;
         private DataGridView dataGridViewAnimalMenu;
@@ -692,11 +637,11 @@
         private Label label3;
         private DataGridView dataGridViewCustomers;
         private Label label4;
-        private DataGridView dataGridViewEmployess;
+        private DataGridView grvEmployee;
         private Label label5;
         private Button btnRemoveCustomer;
         private Button btnAddCustomer;
-        private Button btnCancel;
+        private Button btnRemoveTrans;
         private Button btnOrder;
         private Button btnAddEmployee;
         private Button btnRemoveEmployee;
@@ -709,13 +654,6 @@
         private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn costDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn petFoodCostDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn breedDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn costDataGridViewTextBoxColumn1;
         private BindingSource petFoodBindingSource1;
         private BindingSource customerBindingSource1;
         private BindingSource employeeBindingSource;
@@ -726,23 +664,26 @@
         private DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private BindingSource monthlyLedgerBindingSource;
         private BindingSource petBindingSource1;
-        private DataGridViewTextBoxColumn salaryPerMonthDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn employeeTypeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn petFoodCostDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn tINDataGridViewTextBoxColumn;
+        private Button btnAddTrans;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
-        private Button btnAddTrans;
+        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tINDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn employeeTypeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salaryPerMonthDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn petPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private DataGridViewComboBoxColumn colAnimalType;
         private DataGridViewComboBoxColumn colCustomer;
         private DataGridViewComboBoxColumn colEmployee;
-        private DataGridViewTextBoxColumn petPriceDataGridViewTextBoxColumn;
+        private DataGridViewComboBoxColumn colAnimalType;
         private DataGridViewTextBoxColumn petFoodQtyDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;

@@ -19,11 +19,15 @@ namespace Session_11 {
             PopulateEmployee();
             PopulateCustomers();
             PopulatePets();
+            PopulatePetFoods();
+            dataGridViewCustomers.DataSource = petShop.Customers;
+            PopulatePets();
             
             dataGridViewCustomers.DataSource = customerBindingSource1;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
             dataGridViewPetFoodMenu.DataSource = petShop.PetFoods;
-            dataGridViewEmployess.DataSource = petShop.Employees;
+            employeeBindingSource.DataSource = petShop.Employees;            
+            grvEmployee.DataSource = employeeBindingSource;
             transactionBindingSource.DataSource = petShop.Transactions;
             grvTransactions.DataSource = transactionBindingSource;
             SetControls();
@@ -44,6 +48,21 @@ namespace Session_11 {
         }
 
 
+        public List<PetFood> PopulatePetFoods()
+        {
+            //var petsFood = new List<PetFood>
+            //{
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
+            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},    
+            //};
+            //petShop.PetFoods.AddRange(petsFood);
+            petFoodBindingSource1.DataSource = petShop.PetFoods; 
+            return petShop.PetFoods;
+        }
         public void PopulateCustomers()
         {
 
@@ -58,8 +77,8 @@ namespace Session_11 {
             {
                 Name = "Alex",
                 Surname = "Gad",
-                Phone = "693132822",
-                TIN = "38239102"
+                Phone = "6973132822",
+                TIN = "38239102" 
             };
 
 
@@ -90,11 +109,11 @@ namespace Session_11 {
                         break;
 
                     case Pet.AnimalTypeEnum.Cat:
-                         newTras = SelectCat(pet, newTras);
+                    //     newTras = SelectCat(pet, newTras);
                         break;
 
                     case Pet.AnimalTypeEnum.Dog:
-                          newTras = SelectDog(pet, newTras);
+                     //     newTras = SelectDog(pet, newTras);
                         break;
 
 
@@ -135,53 +154,53 @@ namespace Session_11 {
             return trans;
         }
 
-        public Transaction SelectCat(Pet pet, Transaction trans) {
-            Stock stock = new Stock();
-            PetFood petFood = new PetFood();
-            if (stock.GetPetsNumberStock() > 0) {
-                if (pet.Status.ToString() == "Unhealthy") {
-                    return null;
-                }
-                else {
-                    trans.PetPrice = pet.Price;
-                    trans.PetFoodPrice = petFood.PetFoodPrice;
-                    trans.TransactionDate = DateTime.Now;
-                    trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
-                    trans.TransactionID = pet.PetID;
+        //public Transaction SelectCat(Pet pet, Transaction trans) {
+        //    Stock stock = new Stock();
+        //    PetFood petFood = new PetFood();
+        //    if (stock.GetPetsNumberStock() > 0) {
+        //        if (pet.Status.ToString() == "Unhealthy") {
+        //            return null;
+        //        }
+        //        else {
+        //            trans.PetPrice = pet.Price;
+        //            trans.PetFoodPrice = petFood.PetFoodPrice;
+        //            trans.TransactionDate = DateTime.Now;
+        //            trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
+        //            trans.TransactionID = pet.PetID;
 
-                }
-            }
-            else {
+        //        }
+        //    }
+        //    else {
 
-                MessageBox.Show("Cat is Out of Stock!");
+        //        MessageBox.Show("Cat is Out of Stock!");
 
-            }
-            return trans;
-        }
+        //    }
+        //    return trans;
+        //}
 
 
-        public Transaction SelectDog(Pet pet, Transaction trans) {
+        //public Transaction SelectDog(Pet pet, Transaction trans) {
        
-            Stock stock = new Stock();
-            PetFood petFood = new PetFood();
-            if (stock.GetPetsNumberStock() > 0) {
-                if (pet.Status.ToString() == "Unhealthy") {
-                    return null;
-                }
-                else {
-                    trans.PetPrice = pet.Price;
-                    trans.PetFoodPrice = petFood.PetFoodPrice;
-                    trans.TransactionDate = DateTime.Now;
-                    trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
-                    trans.TransactionID = pet.PetID;
-                }
+        //    Stock stock = new Stock();
+        //    PetFood petFood = new PetFood();
+        //    if (stock.GetPetsNumberStock() > 0) {
+        //        if (pet.Status.ToString() == "Unhealthy") {
+        //            return null;
+        //        }
+        //        else {
+        //            trans.PetPrice = pet.Price;
+        //            trans.PetFoodPrice = petFood.PetFoodPrice;
+        //            trans.TransactionDate = DateTime.Now;
+        //            trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
+        //            trans.TransactionID = pet.PetID;
+        //        }
 
-            }
-            else {
-                MessageBox.Show("Dog is Out of Stock!");
-            }
-            return trans;
-        }
+        //    }
+        //    else {
+        //        MessageBox.Show("Dog is Out of Stock!");
+        //    }
+        //    return trans;
+        //}
 
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -210,16 +229,21 @@ namespace Session_11 {
 
         }
 
-        private List<Pet> PopulatePets() {
-
+        private List<Pet> PopulatePets()
+        {
 
             var pets = new List<Pet>
             {
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog, Price = 100, Cost = 50},
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat, Price = 20, Cost = 10},
-                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird, Price = 30, Cost = 15}
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,Price = 100, Cost = 70,Breed="French Bulldog"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,Price =80, Cost = 30,Breed="Akita"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Unhealthy ,Price =0, Cost = 20,Breed="Beagle"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK, Price = 100, Cost = 80,Breed="Persian"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, Price = 80, Cost = 60,Breed="Maine Coon"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Unhealthy, Price = 0, Cost = 20,Breed="Ragdoll"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, Price = 80, Cost = 50,Breed="Canary"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, Price = 60, Cost = 40,Breed="Amazon Parrot"},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Unhealthy, Price = 30, Cost = 15,Breed="African Grey Parrot"}
             };
-
             petShop.Pets.AddRange(pets);
             petBindingSource.DataSource = petShop.Pets; 
             return petShop.Pets;
@@ -227,9 +251,11 @@ namespace Session_11 {
         }
 
         public void SetControls() {
+            //DataGridViewComboBoxColumn colTransactionDate = grvTransactions.Columns["colTransactionDate"] as DataGridViewComboBoxColumn;
+            //colTransactionDate.DataSource = DateTime.Now;
             DataGridViewComboBoxColumn colCustomer = grvTransactions.Columns["colCustomer"] as DataGridViewComboBoxColumn;
             colCustomer.DataSource = petShop.Customers;
-            colCustomer.DisplayMember = "Surname";
+            colCustomer.DisplayMember = "FullName";
             colCustomer.ValueMember = "CustomerID";
             DataGridViewComboBoxColumn colEmployee = grvTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
             colEmployee.DataSource = petShop.Employees;
@@ -237,9 +263,13 @@ namespace Session_11 {
             colEmployee.ValueMember = "EmployeeID";
             DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
             colAnimalType.DataSource = petShop.Pets;
-            colAnimalType.DisplayMember = "AnimalType";
-         
+            colAnimalType.DisplayMember = "AnimalBreed";
+            //DataGridViewComboBoxColumn colPetPrice = grvTransactions.Columns["colPetPrice"] as DataGridViewComboBoxColumn;
+            //colPetPrice.DataSource = petShop.Pets;
+            //colPetPrice.DisplayMember = "Price";
+
         }
+
 
 
 
@@ -271,6 +301,16 @@ namespace Session_11 {
            
         }
 
-   
+        private void btnRemoveTrans_Click(object sender, EventArgs e) {
+            transactionBindingSource.RemoveCurrent();
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e) {
+            employeeBindingSource.AddNew();
+        }
+
+        private void btnRemoveEmployee_Click(object sender, EventArgs e) {
+            employeeBindingSource.RemoveCurrent();
+        }
     }
 }
