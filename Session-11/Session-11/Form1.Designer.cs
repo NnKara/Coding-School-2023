@@ -30,10 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.petBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.petFoodBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewPetFoodMenu = new System.Windows.Forms.DataGridView();
+            this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.breedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewAnimalMenu = new System.Windows.Forms.DataGridView();
             this.breedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,10 +51,24 @@
             this.petBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridViewEmployess = new System.Windows.Forms.DataGridView();
+            this.salaryPerMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.btnRemoveCustomer = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
@@ -56,61 +77,36 @@
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnRemoveEmployee = new System.Windows.Forms.Button();
             this.dataGridViewMonthlyLedger = new System.Windows.Forms.DataGridView();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.transactionBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salaryPerMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthlyLedgerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.incomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expensesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.breedDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthlyLedgerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.petBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionBindingSource
             // 
             this.transactionBindingSource.DataSource = typeof(Session_11.Transaction);
-            // 
-            // petBindingSource1
-            // 
-            this.petBindingSource1.DataSource = typeof(Session_11.Pet);
             // 
             // petFoodBindingSource
             // 
@@ -136,386 +132,13 @@
             this.priceDataGridViewTextBoxColumn1,
             this.costDataGridViewTextBoxColumn1});
             this.dataGridViewPetFoodMenu.DataSource = this.petFoodBindingSource1;
-            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(74, 520);
+            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(65, 390);
+            this.dataGridViewPetFoodMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewPetFoodMenu.Name = "dataGridViewPetFoodMenu";
             this.dataGridViewPetFoodMenu.RowHeadersWidth = 51;
             this.dataGridViewPetFoodMenu.RowTemplate.Height = 29;
-            this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(737, 188);
+            this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(645, 141);
             this.dataGridViewPetFoodMenu.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 485);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Pet Food Menu";
-            // 
-            // dataGridViewAnimalMenu
-            // 
-            this.dataGridViewAnimalMenu.AllowUserToDeleteRows = false;
-            this.dataGridViewAnimalMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridViewAnimalMenu.AutoGenerateColumns = false;
-            this.dataGridViewAnimalMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAnimalMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewAnimalMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAnimalMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.breedDataGridViewTextBoxColumn,
-            this.animalTypeDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.costDataGridViewTextBoxColumn});
-            this.dataGridViewAnimalMenu.DataSource = this.petBindingSource;
-            this.dataGridViewAnimalMenu.Location = new System.Drawing.Point(74, 285);
-            this.dataGridViewAnimalMenu.Name = "dataGridViewAnimalMenu";
-            this.dataGridViewAnimalMenu.RowHeadersWidth = 51;
-            this.dataGridViewAnimalMenu.RowTemplate.Height = 29;
-            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(423, 188);
-            this.dataGridViewAnimalMenu.TabIndex = 2;
-            this.dataGridViewAnimalMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
-            // 
-            // breedDataGridViewTextBoxColumn
-            // 
-            this.breedDataGridViewTextBoxColumn.DataPropertyName = "Breed";
-            this.breedDataGridViewTextBoxColumn.HeaderText = "Breed";
-            this.breedDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.breedDataGridViewTextBoxColumn.Name = "breedDataGridViewTextBoxColumn";
-            // 
-            // animalTypeDataGridViewTextBoxColumn
-            // 
-            this.animalTypeDataGridViewTextBoxColumn.DataPropertyName = "AnimalType";
-            this.animalTypeDataGridViewTextBoxColumn.HeaderText = "AnimalType";
-            this.animalTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.animalTypeDataGridViewTextBoxColumn.Name = "animalTypeDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // costDataGridViewTextBoxColumn
-            // 
-            this.costDataGridViewTextBoxColumn.DataPropertyName = "Cost";
-            this.costDataGridViewTextBoxColumn.HeaderText = "Cost";
-            this.costDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
-            // 
-            // petBindingSource
-            // 
-            this.petBindingSource.DataSource = typeof(Session_11.Pet);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 246);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Pet Menu";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.transactionDateDataGridViewTextBoxColumn,
-            this.petFoodQtyDataGridViewTextBoxColumn,
-            this.totalPriceDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.transactionBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(74, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(605, 188);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(74, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Transaction";
-            // 
-            // dataGridViewCustomers
-            // 
-            this.dataGridViewCustomers.AutoGenerateColumns = false;
-            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.phoneDataGridViewTextBoxColumn,
-            this.tINDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.surnameDataGridViewTextBoxColumn});
-            this.dataGridViewCustomers.DataSource = this.customerBindingSource1;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(921, 27);
-            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
-            this.dataGridViewCustomers.RowHeadersWidth = 51;
-            this.dataGridViewCustomers.RowTemplate.Height = 29;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(423, 188);
-            this.dataGridViewCustomers.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(929, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 20);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Customers";
-            // 
-            // dataGridViewEmployess
-            // 
-            this.dataGridViewEmployess.AutoGenerateColumns = false;
-            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.salaryPerMonthDataGridViewTextBoxColumn,
-            this.employeeTypeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn1,
-            this.surnameDataGridViewTextBoxColumn1});
-            this.dataGridViewEmployess.DataSource = this.employeeBindingSource;
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(929, 330);
-            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
-            this.dataGridViewEmployess.RowHeadersWidth = 51;
-            this.dataGridViewEmployess.RowTemplate.Height = 29;
-            this.dataGridViewEmployess.Size = new System.Drawing.Size(423, 188);
-            this.dataGridViewEmployess.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(934, 307);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Employes";
-            // 
-            // btnRemoveCustomer
-            // 
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(1250, 221);
-            this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(94, 29);
-            this.btnRemoveCustomer.TabIndex = 10;
-            this.btnRemoveCustomer.Text = "Remove";
-            this.btnRemoveCustomer.UseVisualStyleBackColor = true;
-            // 
-            // btnAddCustomer
-            // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(1150, 221);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(94, 29);
-            this.btnAddCustomer.TabIndex = 11;
-            this.btnAddCustomer.Text = "ADD";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(570, 233);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(94, 29);
-            this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.Location = new System.Drawing.Point(443, 233);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(94, 29);
-            this.btnOrder.TabIndex = 13;
-            this.btnOrder.Text = "Order";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(1164, 524);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(94, 29);
-            this.btnAddEmployee.TabIndex = 14;
-            this.btnAddEmployee.Text = "ADD";
-            this.btnAddEmployee.UseVisualStyleBackColor = true;
-            // 
-            // btnRemoveEmployee
-            // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(1264, 524);
-            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(94, 29);
-            this.btnRemoveEmployee.TabIndex = 15;
-            this.btnRemoveEmployee.Text = "Remove";
-            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewMonthlyLedger
-            // 
-            this.dataGridViewMonthlyLedger.AutoGenerateColumns = false;
-            this.dataGridViewMonthlyLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMonthlyLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.yearDataGridViewTextBoxColumn,
-            this.monthDataGridViewTextBoxColumn,
-            this.incomeDataGridViewTextBoxColumn,
-            this.expensesDataGridViewTextBoxColumn,
-            this.totalDataGridViewTextBoxColumn});
-            this.dataGridViewMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
-            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(929, 588);
-            this.dataGridViewMonthlyLedger.Name = "dataGridViewMonthlyLedger";
-            this.dataGridViewMonthlyLedger.RowHeadersWidth = 51;
-            this.dataGridViewMonthlyLedger.RowTemplate.Height = 29;
-            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(423, 188);
-            this.dataGridViewMonthlyLedger.TabIndex = 16;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(1250, 782);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(94, 29);
-            this.btnLoad.TabIndex = 17;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(934, 555);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 20);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Monthly Ledger";
-            // 
-            // transactionBindingSource1
-            // 
-            this.transactionBindingSource1.DataSource = typeof(Session_11.Transaction);
-            // 
-            // customerBindingSource1
-            // 
-            this.customerBindingSource1.DataSource = typeof(Session_11.Customer);
-            // 
-            // employeeBindingSource
-            // 
-            this.employeeBindingSource.DataSource = typeof(Session_11.Employee);
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tINDataGridViewTextBoxColumn
-            // 
-            this.tINDataGridViewTextBoxColumn.DataPropertyName = "TIN";
-            this.tINDataGridViewTextBoxColumn.HeaderText = "TIN";
-            this.tINDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tINDataGridViewTextBoxColumn.Name = "tINDataGridViewTextBoxColumn";
-            this.tINDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            this.surnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // salaryPerMonthDataGridViewTextBoxColumn
-            // 
-            this.salaryPerMonthDataGridViewTextBoxColumn.DataPropertyName = "SalaryPerMonth";
-            this.salaryPerMonthDataGridViewTextBoxColumn.HeaderText = "SalaryPerMonth";
-            this.salaryPerMonthDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.salaryPerMonthDataGridViewTextBoxColumn.Name = "salaryPerMonthDataGridViewTextBoxColumn";
-            this.salaryPerMonthDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // employeeTypeDataGridViewTextBoxColumn
-            // 
-            this.employeeTypeDataGridViewTextBoxColumn.DataPropertyName = "EmployeeType";
-            this.employeeTypeDataGridViewTextBoxColumn.HeaderText = "EmployeeType";
-            this.employeeTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.employeeTypeDataGridViewTextBoxColumn.Name = "employeeTypeDataGridViewTextBoxColumn";
-            this.employeeTypeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // surnameDataGridViewTextBoxColumn1
-            // 
-            this.surnameDataGridViewTextBoxColumn1.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn1.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.surnameDataGridViewTextBoxColumn1.Name = "surnameDataGridViewTextBoxColumn1";
-            this.surnameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // monthlyLedgerBindingSource
-            // 
-            this.monthlyLedgerBindingSource.DataSource = typeof(Session_11.MonthlyLedger);
-            // 
-            // yearDataGridViewTextBoxColumn
-            // 
-            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
-            this.yearDataGridViewTextBoxColumn.HeaderText = "Year";
-            this.yearDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
-            this.yearDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // monthDataGridViewTextBoxColumn
-            // 
-            this.monthDataGridViewTextBoxColumn.DataPropertyName = "Month";
-            this.monthDataGridViewTextBoxColumn.HeaderText = "Month";
-            this.monthDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.monthDataGridViewTextBoxColumn.Name = "monthDataGridViewTextBoxColumn";
-            this.monthDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // incomeDataGridViewTextBoxColumn
-            // 
-            this.incomeDataGridViewTextBoxColumn.DataPropertyName = "Income";
-            this.incomeDataGridViewTextBoxColumn.HeaderText = "Income";
-            this.incomeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.incomeDataGridViewTextBoxColumn.Name = "incomeDataGridViewTextBoxColumn";
-            this.incomeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // expensesDataGridViewTextBoxColumn
-            // 
-            this.expensesDataGridViewTextBoxColumn.DataPropertyName = "Expenses";
-            this.expensesDataGridViewTextBoxColumn.HeaderText = "Expenses";
-            this.expensesDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.expensesDataGridViewTextBoxColumn.Name = "expensesDataGridViewTextBoxColumn";
-            this.expensesDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            this.totalDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // petFoodBindingSource1
-            // 
-            this.petFoodBindingSource1.DataSource = typeof(Session_11.PetFood);
             // 
             // animalTypeDataGridViewTextBoxColumn1
             // 
@@ -566,6 +189,111 @@
             this.costDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.costDataGridViewTextBoxColumn1.Name = "costDataGridViewTextBoxColumn1";
             // 
+            // petFoodBindingSource1
+            // 
+            this.petFoodBindingSource1.DataSource = typeof(Session_11.PetFood);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(65, 364);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Pet Food Menu";
+            // 
+            // dataGridViewAnimalMenu
+            // 
+            this.dataGridViewAnimalMenu.AllowUserToDeleteRows = false;
+            this.dataGridViewAnimalMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewAnimalMenu.AutoGenerateColumns = false;
+            this.dataGridViewAnimalMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewAnimalMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewAnimalMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAnimalMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.breedDataGridViewTextBoxColumn,
+            this.animalTypeDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.costDataGridViewTextBoxColumn});
+            this.dataGridViewAnimalMenu.DataSource = this.petBindingSource;
+            this.dataGridViewAnimalMenu.Location = new System.Drawing.Point(65, 214);
+            this.dataGridViewAnimalMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewAnimalMenu.Name = "dataGridViewAnimalMenu";
+            this.dataGridViewAnimalMenu.RowHeadersWidth = 51;
+            this.dataGridViewAnimalMenu.RowTemplate.Height = 29;
+            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewAnimalMenu.TabIndex = 2;
+            this.dataGridViewAnimalMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
+            // 
+            // breedDataGridViewTextBoxColumn
+            // 
+            this.breedDataGridViewTextBoxColumn.DataPropertyName = "Breed";
+            this.breedDataGridViewTextBoxColumn.HeaderText = "Breed";
+            this.breedDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.breedDataGridViewTextBoxColumn.Name = "breedDataGridViewTextBoxColumn";
+            // 
+            // animalTypeDataGridViewTextBoxColumn
+            // 
+            this.animalTypeDataGridViewTextBoxColumn.DataPropertyName = "AnimalType";
+            this.animalTypeDataGridViewTextBoxColumn.HeaderText = "AnimalType";
+            this.animalTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.animalTypeDataGridViewTextBoxColumn.Name = "animalTypeDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // costDataGridViewTextBoxColumn
+            // 
+            this.costDataGridViewTextBoxColumn.DataPropertyName = "Cost";
+            this.costDataGridViewTextBoxColumn.HeaderText = "Cost";
+            this.costDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.costDataGridViewTextBoxColumn.Name = "costDataGridViewTextBoxColumn";
+            // 
+            // petBindingSource
+            // 
+            this.petBindingSource.DataSource = typeof(Session_11.Pet);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(65, 184);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Pet Menu";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.transactionDateDataGridViewTextBoxColumn,
+            this.petFoodQtyDataGridViewTextBoxColumn,
+            this.totalPriceDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.transactionBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(65, 29);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(529, 141);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // transactionDateDataGridViewTextBoxColumn
             // 
             this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
@@ -587,11 +315,296 @@
             this.totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             // 
+            // transactionBindingSource1
+            // 
+            this.transactionBindingSource1.DataSource = typeof(Session_11.Transaction);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(65, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Transaction";
+            // 
+            // dataGridViewCustomers
+            // 
+            this.dataGridViewCustomers.AutoGenerateColumns = false;
+            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.phoneDataGridViewTextBoxColumn,
+            this.tINDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn});
+            this.dataGridViewCustomers.DataSource = this.customerBindingSource1;
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(806, 20);
+            this.dataGridViewCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
+            this.dataGridViewCustomers.RowHeadersWidth = 51;
+            this.dataGridViewCustomers.RowTemplate.Height = 29;
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewCustomers.TabIndex = 6;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tINDataGridViewTextBoxColumn
+            // 
+            this.tINDataGridViewTextBoxColumn.DataPropertyName = "TIN";
+            this.tINDataGridViewTextBoxColumn.HeaderText = "TIN";
+            this.tINDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tINDataGridViewTextBoxColumn.Name = "tINDataGridViewTextBoxColumn";
+            this.tINDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // customerBindingSource1
+            // 
+            this.customerBindingSource1.DataSource = typeof(Session_11.Customer);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(813, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Customers";
+            // 
+            // dataGridViewEmployess
+            // 
+            this.dataGridViewEmployess.AutoGenerateColumns = false;
+            this.dataGridViewEmployess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.salaryPerMonthDataGridViewTextBoxColumn,
+            this.employeeTypeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn1,
+            this.surnameDataGridViewTextBoxColumn1});
+            this.dataGridViewEmployess.DataSource = this.employeeBindingSource;
+            this.dataGridViewEmployess.Location = new System.Drawing.Point(813, 248);
+            this.dataGridViewEmployess.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewEmployess.Name = "dataGridViewEmployess";
+            this.dataGridViewEmployess.RowHeadersWidth = 51;
+            this.dataGridViewEmployess.RowTemplate.Height = 29;
+            this.dataGridViewEmployess.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewEmployess.TabIndex = 8;
+            // 
+            // salaryPerMonthDataGridViewTextBoxColumn
+            // 
+            this.salaryPerMonthDataGridViewTextBoxColumn.DataPropertyName = "SalaryPerMonth";
+            this.salaryPerMonthDataGridViewTextBoxColumn.HeaderText = "SalaryPerMonth";
+            this.salaryPerMonthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.salaryPerMonthDataGridViewTextBoxColumn.Name = "salaryPerMonthDataGridViewTextBoxColumn";
+            this.salaryPerMonthDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // employeeTypeDataGridViewTextBoxColumn
+            // 
+            this.employeeTypeDataGridViewTextBoxColumn.DataPropertyName = "EmployeeType";
+            this.employeeTypeDataGridViewTextBoxColumn.HeaderText = "EmployeeType";
+            this.employeeTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.employeeTypeDataGridViewTextBoxColumn.Name = "employeeTypeDataGridViewTextBoxColumn";
+            this.employeeTypeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // surnameDataGridViewTextBoxColumn1
+            // 
+            this.surnameDataGridViewTextBoxColumn1.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn1.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.surnameDataGridViewTextBoxColumn1.Name = "surnameDataGridViewTextBoxColumn1";
+            this.surnameDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataSource = typeof(Session_11.Employee);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(817, 230);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 15);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Employes";
+            // 
+            // btnRemoveCustomer
+            // 
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(1094, 166);
+            this.btnRemoveCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveCustomer.Name = "btnRemoveCustomer";
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(82, 22);
+            this.btnRemoveCustomer.TabIndex = 10;
+            this.btnRemoveCustomer.Text = "Remove";
+            this.btnRemoveCustomer.UseVisualStyleBackColor = true;
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Location = new System.Drawing.Point(1006, 166);
+            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(82, 22);
+            this.btnAddCustomer.TabIndex = 11;
+            this.btnAddCustomer.Text = "ADD";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(499, 175);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(82, 22);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.Location = new System.Drawing.Point(388, 175);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(82, 22);
+            this.btnOrder.TabIndex = 13;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.Location = new System.Drawing.Point(1018, 393);
+            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnAddEmployee.TabIndex = 14;
+            this.btnAddEmployee.Text = "ADD";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveEmployee
+            // 
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(1106, 393);
+            this.btnRemoveEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnRemoveEmployee.TabIndex = 15;
+            this.btnRemoveEmployee.Text = "Remove";
+            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewMonthlyLedger
+            // 
+            this.dataGridViewMonthlyLedger.AutoGenerateColumns = false;
+            this.dataGridViewMonthlyLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMonthlyLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.yearDataGridViewTextBoxColumn,
+            this.monthDataGridViewTextBoxColumn,
+            this.incomeDataGridViewTextBoxColumn,
+            this.expensesDataGridViewTextBoxColumn,
+            this.totalDataGridViewTextBoxColumn});
+            this.dataGridViewMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
+            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(813, 441);
+            this.dataGridViewMonthlyLedger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewMonthlyLedger.Name = "dataGridViewMonthlyLedger";
+            this.dataGridViewMonthlyLedger.RowHeadersWidth = 51;
+            this.dataGridViewMonthlyLedger.RowTemplate.Height = 29;
+            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewMonthlyLedger.TabIndex = 16;
+            // 
+            // yearDataGridViewTextBoxColumn
+            // 
+            this.yearDataGridViewTextBoxColumn.DataPropertyName = "Year";
+            this.yearDataGridViewTextBoxColumn.HeaderText = "Year";
+            this.yearDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.yearDataGridViewTextBoxColumn.Name = "yearDataGridViewTextBoxColumn";
+            this.yearDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // monthDataGridViewTextBoxColumn
+            // 
+            this.monthDataGridViewTextBoxColumn.DataPropertyName = "Month";
+            this.monthDataGridViewTextBoxColumn.HeaderText = "Month";
+            this.monthDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.monthDataGridViewTextBoxColumn.Name = "monthDataGridViewTextBoxColumn";
+            this.monthDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // incomeDataGridViewTextBoxColumn
+            // 
+            this.incomeDataGridViewTextBoxColumn.DataPropertyName = "Income";
+            this.incomeDataGridViewTextBoxColumn.HeaderText = "Income";
+            this.incomeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.incomeDataGridViewTextBoxColumn.Name = "incomeDataGridViewTextBoxColumn";
+            this.incomeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // expensesDataGridViewTextBoxColumn
+            // 
+            this.expensesDataGridViewTextBoxColumn.DataPropertyName = "Expenses";
+            this.expensesDataGridViewTextBoxColumn.HeaderText = "Expenses";
+            this.expensesDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.expensesDataGridViewTextBoxColumn.Name = "expensesDataGridViewTextBoxColumn";
+            this.expensesDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // monthlyLedgerBindingSource
+            // 
+            this.monthlyLedgerBindingSource.DataSource = typeof(Session_11.MonthlyLedger);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(1094, 586);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(82, 22);
+            this.btnLoad.TabIndex = 17;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(817, 416);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Monthly Ledger";
+            // 
+            // petBindingSource1
+            // 
+            this.petBindingSource1.DataSource = typeof(Session_11.Pet);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 816);
+            this.ClientSize = new System.Drawing.Size(1288, 612);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.dataGridViewMonthlyLedger);
@@ -611,25 +624,25 @@
             this.Controls.Add(this.dataGridViewAnimalMenu);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewPetFoodMenu);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,7 +650,6 @@
 
         #endregion
         private BindingSource transactionBindingSource;
-        private BindingSource petBindingSource1;
         private BindingSource petFoodBindingSource;
         private BindingSource customerBindingSource;
         private DataGridView dataGridViewPetFoodMenu;
@@ -693,5 +705,6 @@
         private DataGridViewTextBoxColumn expensesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private BindingSource monthlyLedgerBindingSource;
+        private BindingSource petBindingSource1;
     }
 }

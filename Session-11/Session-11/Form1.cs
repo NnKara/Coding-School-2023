@@ -224,6 +224,7 @@ namespace Session_11 {
                 PetID = Guid.NewGuid(),
                 Breed = "Haski",
                 AnimalType = Pet.AnimalTypeEnum.Dog,
+                Status = Pet.PetStatusEnum.OK,
                 Price = 100
 
             };
@@ -232,6 +233,7 @@ namespace Session_11 {
                 PetID = Guid.NewGuid(),
                 Breed = "Pigeon",
                 AnimalType = Pet.AnimalTypeEnum.Bird,
+                Status = Pet.PetStatusEnum.Unhealthy,
                 Price = 30
 
             };
@@ -240,6 +242,7 @@ namespace Session_11 {
                 PetID = Guid.NewGuid(),
                 Breed = "Black",
                 AnimalType = Pet.AnimalTypeEnum.Cat,
+                Status = Pet.PetStatusEnum.Recovering,
                 Price = 20
 
             };
