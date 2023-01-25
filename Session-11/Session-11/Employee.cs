@@ -20,13 +20,11 @@ namespace Session_11 {
             }
         }
 
-        public Employee() {
-
+        public Employee()
+        {
+            EmployeeID = Guid.NewGuid();
         }
 
-        public Employee(Guid id) : base() {
-            EmployeeID = id;
-        }
 
         public Employee(Guid employeeID, String name, String surname, double salaryPerMonth, EmployeeTypeEnum employeeType) : base(name,surname)
         {

@@ -321,6 +321,7 @@
             // 
             // grvCustomers
             // 
+            this.grvCustomers.AllowUserToAddRows = false;
             this.grvCustomers.AutoGenerateColumns = false;
             this.grvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -482,6 +483,7 @@
             this.btnOrder.TabIndex = 13;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click_1);
             // 
             // btnAddEmployee
             // 

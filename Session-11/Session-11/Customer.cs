@@ -26,11 +26,10 @@ namespace Session_11 {
 
         public Customer()
         {
+            CustomerID = Guid.NewGuid();
         }
 
-        public Customer(Guid id) : base() {
-            CustomerID = id;
-        }
+
        
         
     }
