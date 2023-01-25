@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 namespace Session_11 {
     public class Stock {
         private double PetFoodQty { get; set; }
-        private int PetsNumber { get; set; }
-
-        
+        private int PetsNumber { get; set; }        
         public Stock() {
             PetFoodQty = 30;
             PetsNumber = 15;
         }
-
 
         public Stock(double petFoodQty) {
             PetFoodQty = petFoodQty;
@@ -52,9 +49,7 @@ namespace Session_11 {
             PetsNumber = GetPetsNumberStock() - petNumber;
             return PetsNumber;
         }
-    }
-
-       
-    }
+    }       
+}
 
 

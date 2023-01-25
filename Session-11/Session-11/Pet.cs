@@ -19,7 +19,6 @@ namespace Session_11 {
             Recovering
         }
 
-
         public Guid PetID { get; set; }
         public string Breed { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
@@ -30,7 +29,7 @@ namespace Session_11 {
 
         public string AnimalBreed {
             get {
-                return AnimalType + " " + Breed;
+                return String.Format("{0} {1}",AnimalType,Breed);
             }
         }
 
