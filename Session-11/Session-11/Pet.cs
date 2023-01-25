@@ -19,7 +19,6 @@ namespace Session_11 {
             Recovering
         }
 
-
         public Guid PetID { get; set; }
         public string Breed { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
@@ -29,35 +28,14 @@ namespace Session_11 {
 
         public string AnimalBreed {
             get {
-                return AnimalType + " " + Breed;
+                return String.Format("{0} {1}",AnimalType,Breed);
             }
         }
-
 
         public Pet() {
             PetID=Guid.NewGuid();
         }
     
-            //public Pet(){
-            //    PetID = Guid.NewGuid();
-            //    if(AnimalType== AnimalTypeEnum.Bird)
-            //    {
-            //        Price = 10;
-            //        Cost= 2;
-            //    }
-            //    else if(AnimalType==AnimalTypeEnum.Cat)
-            //    {
-            //        Price = 20;
-
-            //        Cost= 3;
-            //    }
-            //    else
-            //    {
-            //        Price = 15;
-            //        Cost= 4;
-            //    }
-            //}
-
             public Pet(Guid petID, string breed, AnimalTypeEnum animalType, PetStatusEnum status, double price, double cost) {
                 PetID = petID;
                 Breed = breed;
@@ -66,10 +44,6 @@ namespace Session_11 {
                 Price = price;
                 Cost = cost;
             }
-
-
-
-
         }
     }
 
