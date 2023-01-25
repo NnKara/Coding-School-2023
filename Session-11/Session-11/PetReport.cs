@@ -9,39 +9,48 @@ namespace Session_11 {
         public int Year { get; set; }
         public int Month { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
-        public double TotalSold { get; set; }
+        public int TotalSold { get; set; }
 
-        public PetReport(int year,int month, AnimalTypeEnum animalType, double totalSold) {
+        public PetReport(int year,int month, AnimalTypeEnum animalType, int totalSold) {
             Year = year;
             Month = month;
             AnimalType = animalType;    
             TotalSold = totalSold;            
         }
 
-        public string ShowPetReport () {
-            string result = $"Year: {Year} Month: {Month} Animal Type: {AnimalType} Total Sold: {TotalSold}";
+        public string ShowPetReport (AnimalTypeEnum animalType, int totalSold) {
+            string result = $"Year: {Year} Month: {Month} Animal Type: {animalType} Total Sold: {totalSold}";
             return result; 
         }
 
-        public void CreatePetReport(List<Transaction> transactions, List<Pet> pets) {
-            
-            foreach(Transaction transcation in transactions) {
+        
+        public List<string> CreatePetReport(List<Transaction> transactions, List<Pet> pets) {
+            int totalSoldBird = 0;
+            int totalSoldDog = 0;
+            int totalSoldCat = 0;
+            foreach (Transaction transaction in transactions) {
                 foreach(Pet pet in pets) {
                     switch (pet.AnimalType) {
                         case AnimalTypeEnum.Bird:
+                            totalSoldBird++;
                             break;
                         case AnimalTypeEnum.Cat:
+                            totalSoldCat++;
                             break;
                         case AnimalTypeEnum.Dog:
-                            break;
-                        case AnimalTypeEnum.None:
-                            break;
+                            totalSoldDog++;
+                            break;                       
                         default:
+                            MessageBox.Show("Invalid Animal Type");
                             break;
                     }
-                }
-                
+                }                
             }
+            List<string> petReport = new List<String>();
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Bird, totalSoldBird));
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Cat, totalSoldCat)); 
+            petReport.Add(ShowPetReport(AnimalTypeEnum.Dog, totalSoldDog));
+            return petReport;
         }
 
 
