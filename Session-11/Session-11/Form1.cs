@@ -1,10 +1,12 @@
+using System.ComponentModel;
+
 namespace Session_11 {
     public partial class Form1 : Form {
 
         public Transaction transaction;
         public PetShop petShop;
         public Customer customer;
-
+       
         public Form1() {
 
 
@@ -13,15 +15,18 @@ namespace Session_11 {
 
         private void Form1_Load(object sender, EventArgs e) {
 
+
+           List<Customer>customers= new List<Customer>();
+
             petShop = new PetShop();
+
 
             PopulateEmployee();
             PopulateCustomers();
             PopulatePets();
             PopulatePetFoods();
-
-            SetControllers();//bindings 
-            SetControls(); //transaction datamembers
+            SetControllers();
+            SetControls(); 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -29,14 +34,6 @@ namespace Session_11 {
         }
 
 
-
-        private void btnOrder_Click(object sender, EventArgs e) {
-
-        }
-
-        private void btnCancerl_Click(object sender, EventArgs e) {
-
-        }
 
 
         public void PopulatePetFoods() {
@@ -55,14 +52,15 @@ namespace Session_11 {
         public void PopulateCustomers() {
 
             Customer Cust1 = new Customer() {
-                CustomerID = Guid.NewGuid(),
+
                 Name = "Nikos",
                 Surname = "Karamitos",
                 Phone = "6978319532",
-                TIN = "37482910"
+                TIN = "37482910",
+               
             };
             Customer cust2 = new Customer() {
-                CustomerID = Guid.NewGuid(),
+
                 Name = "Alex",
                 Surname = "Gad",
                 Phone = "6973132822",
@@ -72,85 +70,9 @@ namespace Session_11 {
 
             petShop.Customers.Add(Cust1);
             petShop.Customers.Add(cust2);
-           
+
         }
 
-        //Koumpi add gia employee
-        //public Employee addNewEmployee() {
-        //    Employee newEmployee = new Employee();
-        //    petShop.Employees.Add(newEmployee);
-        //    return newEmployee;
-        //}
-
-        //public Transaction SelectBird(Pet pet, Transaction trans) {
-
-        //    if (pet.Status.ToString() == "Unhealthy") {
-        //        return null;
-        //    }
-        //    else {
-
-        //        trans.PetFoodPrice = 5;
-        //        trans.PetFoodQty = 3;
-        //        trans.PetPrice = pet.Price;
-        //        trans.PetID = pet.PetID;
-        //        trans.TransactionDate = DateTime.Now;
-        //        trans.TotalPrice = pet.Price + (trans.PetFoodPrice * (trans.PetFoodQty - 1));
-
-
-        //    }
-        //    return trans;
-        //}
-
-        //public Transaction SelectCat(Pet pet, Transaction trans) {
-        //    Stock stock = new Stock();
-        //    PetFood petFood = new PetFood();
-        //    if (stock.GetPetsNumberStock() > 0) {
-        //        if (pet.Status.ToString() == "Unhealthy") {
-        //            return null;
-        //        }
-        //        else {
-        //            trans.PetPrice = pet.Price;
-        //            trans.PetFoodPrice = petFood.PetFoodPrice;
-        //            trans.TransactionDate = DateTime.Now;
-        //            trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
-        //            trans.TransactionID = pet.PetID;
-
-        //        }
-        //    }
-        //    else {
-
-        //        MessageBox.Show("Cat is Out of Stock!");
-
-        //    }
-        //    return trans;
-        //}
-
-
-        //public Transaction SelectDog(Pet pet, Transaction trans) {
-
-        //    Stock stock = new Stock();
-        //    PetFood petFood = new PetFood();
-        //    if (stock.GetPetsNumberStock() > 0) {
-        //        if (pet.Status.ToString() == "Unhealthy") {
-        //            return null;
-        //        }
-        //        else {
-        //            trans.PetPrice = pet.Price;
-        //            trans.PetFoodPrice = petFood.PetFoodPrice;
-        //            trans.TransactionDate = DateTime.Now;
-        //            trans.PetFoodQty = stock.GetPetFoodStock() - trans.PetFoodQty;
-        //            trans.TransactionID = pet.PetID;
-        //        }
-
-        //    }
-        //    else {
-        //        MessageBox.Show("Dog is Out of Stock!");
-        //    }
-        //    return trans;
-        //}
-
-
-     
         private void PopulateEmployee() {
 
             Employee employee1 = new Employee() {
@@ -209,8 +131,6 @@ namespace Session_11 {
             DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
             colAnimalType.DataSource = petShop.Pets;
             colAnimalType.DisplayMember = "AnimalBreed";
-            
-
         }
 
         public void SetControllers() {
@@ -271,12 +191,31 @@ namespace Session_11 {
 
         private void btnSave_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
-            serializer.SerializeToFile(petShop, "test.json");
+            serializer.SerializeToFile(petShop, "test.json");  //TODO CHANGE NAME 
         }
 
         private void btnLoad_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
             petShop = serializer.Deserialize<PetShop>("test.json");
+            PopulateLastChanges();
+
+            MessageBox.Show("Data load!");
+        }
+
+        public void PopulateLastChanges()
+        {
+            BindingList<Customer> customers=new BindingList<Customer>(petShop.Customers);
+            grvCustomers.DataSource=new BindingSource() { DataSource=customers };
+
+            BindingList<Employee> employees =   new BindingList<Employee>(petShop.Employees);
+            grvEmployee.DataSource=new BindingSource() { DataSource=employees };
+            
+            
+            BindingList<PetFood> petFoods=new BindingList<PetFood>(petShop.PetFoods);
+            grvPetFood.DataSource=new BindingSource() { DataSource= petFoods };
+
+
+            
         }
 
         private void btnAddPet_Click(object sender, EventArgs e)
@@ -304,14 +243,28 @@ namespace Session_11 {
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            Customer newCust = new Customer();
-            
+            Customer newCust = new Customer();           
             customerBindingSource1.Add(newCust);
         }
 
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
         {
             customerBindingSource1.RemoveCurrent();
+        }
+
+        private void btnOrder_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancerl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

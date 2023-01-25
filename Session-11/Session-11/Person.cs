@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Session_11 {
     public class Person {
 
+
+
         public string Name { get; set; }
         public string Surname { get; set; }
 
@@ -15,10 +17,9 @@ namespace Session_11 {
             Name = name;
             Surname = surname;
         }
+        public Person() { }
+        
 
-        public Person() {
-
-        }
 
     }
 

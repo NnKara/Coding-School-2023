@@ -35,12 +35,9 @@ namespace Session_11 {
 
 
         public Pet() {
-
+            PetID=Guid.NewGuid();
         }
     
-       
-
-
             //public Pet(){
             //    PetID = Guid.NewGuid();
             //    if(AnimalType== AnimalTypeEnum.Bird)
