@@ -14,8 +14,9 @@ namespace Session_11
         public double PetFoodPrice { get; set; }
         public double PetFoodCost { get; set; }
 
-        public PetFood( AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost) {
-            //PetFoodID= petFoodID;   
+            
+        public PetFood(Guid petFoodID,AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost) {
+            PetFoodID= petFoodID;   
             AnimalType= animalType;
             PetFoodPrice = petFoodPrice;    
             PetFoodCost = petFoodCost;  

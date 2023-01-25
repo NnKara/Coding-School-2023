@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewPetFoodMenu = new System.Windows.Forms.DataGridView();
+            this.grvPetFood = new System.Windows.Forms.DataGridView();
             this.animalTypeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewAnimalMenu = new System.Windows.Forms.DataGridView();
+            this.grvPets = new System.Windows.Forms.DataGridView();
             this.breedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.animalTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +49,12 @@
             this.colCustomer = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colEmployee = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colAnimalType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colPetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.grvCustomers = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,7 +74,7 @@
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnAddEmployee = new System.Windows.Forms.Button();
             this.btnRemoveEmployee = new System.Windows.Forms.Button();
-            this.dataGridViewMonthlyLedger = new System.Windows.Forms.DataGridView();
+            this.grvMonthlyLedger = new System.Windows.Forms.DataGridView();
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.incomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,50 +83,46 @@
             this.monthlyLedgerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnLoad = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.petBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddTrans = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvPets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvMonthlyLedger)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionBindingSource
             // 
             this.transactionBindingSource.DataSource = typeof(Session_11.Transaction);
             // 
-            // dataGridViewPetFoodMenu
+            // grvPetFood
             // 
-            this.dataGridViewPetFoodMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridViewPetFoodMenu.AutoGenerateColumns = false;
-            this.dataGridViewPetFoodMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPetFoodMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewPetFoodMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPetFoodMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grvPetFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.grvPetFood.AutoGenerateColumns = false;
+            this.grvPetFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grvPetFood.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grvPetFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvPetFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.animalTypeDataGridViewTextBoxColumn1,
             this.Status,
             this.petFoodPriceDataGridViewTextBoxColumn1,
             this.petFoodCostDataGridViewTextBoxColumn});
-            this.dataGridViewPetFoodMenu.DataSource = this.petFoodBindingSource1;
-            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(74, 543);
-            this.dataGridViewPetFoodMenu.Name = "dataGridViewPetFoodMenu";
-            this.dataGridViewPetFoodMenu.RowHeadersWidth = 51;
-            this.dataGridViewPetFoodMenu.RowTemplate.Height = 29;
-            this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(737, 188);
-            this.dataGridViewPetFoodMenu.TabIndex = 0;
+            this.grvPetFood.DataSource = this.petFoodBindingSource1;
+            this.grvPetFood.Location = new System.Drawing.Point(65, 407);
+            this.grvPetFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grvPetFood.Name = "grvPetFood";
+            this.grvPetFood.RowHeadersWidth = 51;
+            this.grvPetFood.RowTemplate.Height = 29;
+            this.grvPetFood.Size = new System.Drawing.Size(645, 141);
+            this.grvPetFood.TabIndex = 0;
             // 
             // animalTypeDataGridViewTextBoxColumn1
             // 
@@ -168,29 +165,30 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Pet Food Menu";
             // 
-            // dataGridViewAnimalMenu
+            // grvPets
             // 
-            this.dataGridViewAnimalMenu.AllowUserToDeleteRows = false;
-            this.dataGridViewAnimalMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grvPets.AllowUserToDeleteRows = false;
+            this.grvPets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridViewAnimalMenu.AutoGenerateColumns = false;
-            this.dataGridViewAnimalMenu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAnimalMenu.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewAnimalMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAnimalMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grvPets.AutoGenerateColumns = false;
+            this.grvPets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grvPets.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grvPets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvPets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.breedDataGridViewTextBoxColumn,
             this.animalTypeDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn});
-            this.dataGridViewAnimalMenu.DataSource = this.petBindingSource;
-            this.dataGridViewAnimalMenu.Location = new System.Drawing.Point(74, 285);
-            this.dataGridViewAnimalMenu.Name = "dataGridViewAnimalMenu";
-            this.dataGridViewAnimalMenu.RowHeadersWidth = 51;
-            this.dataGridViewAnimalMenu.RowTemplate.Height = 29;
-            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(503, 188);
-            this.dataGridViewAnimalMenu.TabIndex = 2;
-            this.dataGridViewAnimalMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
+            this.grvPets.DataSource = this.petBindingSource;
+            this.grvPets.Location = new System.Drawing.Point(65, 214);
+            this.grvPets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grvPets.Name = "grvPets";
+            this.grvPets.RowHeadersWidth = 51;
+            this.grvPets.RowTemplate.Height = 29;
+            this.grvPets.Size = new System.Drawing.Size(440, 141);
+            this.grvPets.TabIndex = 2;
+            this.grvPets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
             // 
             // breedDataGridViewTextBoxColumn
             // 
@@ -251,6 +249,7 @@
             this.colCustomer,
             this.colEmployee,
             this.colAnimalType,
+            this.colPetPrice,
             this.petFoodQtyDataGridViewTextBoxColumn,
             this.petFoodPriceDataGridViewTextBoxColumn,
             this.totalPriceDataGridViewTextBoxColumn});
@@ -265,40 +264,39 @@
             // colCustomer
             // 
             this.colCustomer.HeaderText = "Customer";
-            this.colCustomer.MinimumWidth = 6;
             this.colCustomer.Name = "colCustomer";
             // 
             // colEmployee
             // 
             this.colEmployee.HeaderText = "Employee";
-            this.colEmployee.MinimumWidth = 6;
             this.colEmployee.Name = "colEmployee";
             // 
             // colAnimalType
             // 
             this.colAnimalType.HeaderText = "AnimalType";
-            this.colAnimalType.MinimumWidth = 6;
             this.colAnimalType.Name = "colAnimalType";
+            // 
+            // colPetPrice
+            // 
+            this.colPetPrice.HeaderText = "PetPrice";
+            this.colPetPrice.Name = "colPetPrice";
             // 
             // petFoodQtyDataGridViewTextBoxColumn
             // 
             this.petFoodQtyDataGridViewTextBoxColumn.DataPropertyName = "PetFoodQty";
             this.petFoodQtyDataGridViewTextBoxColumn.HeaderText = "PetFoodQty";
-            this.petFoodQtyDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.petFoodQtyDataGridViewTextBoxColumn.Name = "petFoodQtyDataGridViewTextBoxColumn";
             // 
             // petFoodPriceDataGridViewTextBoxColumn
             // 
             this.petFoodPriceDataGridViewTextBoxColumn.DataPropertyName = "PetFoodPrice";
             this.petFoodPriceDataGridViewTextBoxColumn.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.petFoodPriceDataGridViewTextBoxColumn.Name = "petFoodPriceDataGridViewTextBoxColumn";
             // 
             // totalPriceDataGridViewTextBoxColumn
             // 
             this.totalPriceDataGridViewTextBoxColumn.DataPropertyName = "TotalPrice";
             this.totalPriceDataGridViewTextBoxColumn.HeaderText = "TotalPrice";
-            this.totalPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.totalPriceDataGridViewTextBoxColumn.Name = "totalPriceDataGridViewTextBoxColumn";
             // 
             // label3
@@ -310,22 +308,23 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Transaction";
             // 
-            // dataGridViewCustomers
+            // grvCustomers
             // 
-            this.dataGridViewCustomers.AutoGenerateColumns = false;
-            this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grvCustomers.AutoGenerateColumns = false;
+            this.grvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
             this.phoneDataGridViewTextBoxColumn,
             this.tINDataGridViewTextBoxColumn});
-            this.dataGridViewCustomers.DataSource = this.customerBindingSource1;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(921, 27);
-            this.dataGridViewCustomers.Name = "dataGridViewCustomers";
-            this.dataGridViewCustomers.RowHeadersWidth = 51;
-            this.dataGridViewCustomers.RowTemplate.Height = 29;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(519, 188);
-            this.dataGridViewCustomers.TabIndex = 6;
+            this.grvCustomers.DataSource = this.customerBindingSource1;
+            this.grvCustomers.Location = new System.Drawing.Point(806, 20);
+            this.grvCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grvCustomers.Name = "grvCustomers";
+            this.grvCustomers.RowHeadersWidth = 51;
+            this.grvCustomers.RowTemplate.Height = 29;
+            this.grvCustomers.Size = new System.Drawing.Size(454, 141);
+            this.grvCustomers.TabIndex = 6;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -428,11 +427,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(989, 263);
+            this.label5.Location = new System.Drawing.Point(867, 197);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
+            this.label5.Size = new System.Drawing.Size(64, 15);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Employes";
+            this.label5.Text = "Employees";
             // 
             // btnRemoveCustomer
             // 
@@ -491,23 +490,24 @@
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
             this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click);
             // 
-            // dataGridViewMonthlyLedger
+            // grvMonthlyLedger
             // 
-            this.dataGridViewMonthlyLedger.AutoGenerateColumns = false;
-            this.dataGridViewMonthlyLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMonthlyLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grvMonthlyLedger.AutoGenerateColumns = false;
+            this.grvMonthlyLedger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvMonthlyLedger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.yearDataGridViewTextBoxColumn,
             this.monthDataGridViewTextBoxColumn,
             this.incomeDataGridViewTextBoxColumn,
             this.expensesDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn});
-            this.dataGridViewMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
-            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(886, 543);
-            this.dataGridViewMonthlyLedger.Name = "dataGridViewMonthlyLedger";
-            this.dataGridViewMonthlyLedger.RowHeadersWidth = 51;
-            this.dataGridViewMonthlyLedger.RowTemplate.Height = 29;
-            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(554, 188);
-            this.dataGridViewMonthlyLedger.TabIndex = 16;
+            this.grvMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
+            this.grvMonthlyLedger.Location = new System.Drawing.Point(775, 407);
+            this.grvMonthlyLedger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grvMonthlyLedger.Name = "grvMonthlyLedger";
+            this.grvMonthlyLedger.RowHeadersWidth = 51;
+            this.grvMonthlyLedger.RowTemplate.Height = 29;
+            this.grvMonthlyLedger.Size = new System.Drawing.Size(485, 141);
+            this.grvMonthlyLedger.TabIndex = 16;
             // 
             // yearDataGridViewTextBoxColumn
             // 
@@ -555,12 +555,14 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(1250, 781);
+            this.btnLoad.Location = new System.Drawing.Point(12, 579);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(94, 29);
             this.btnLoad.TabIndex = 17;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // label6
             // 
@@ -570,10 +572,6 @@
             this.label6.Size = new System.Drawing.Size(113, 20);
             this.label6.TabIndex = 18;
             this.label6.Text = "Monthly Ledger";
-            // 
-            // petBindingSource1
-            // 
-            this.petBindingSource1.DataSource = typeof(Session_11.Pet);
             // 
             // btnAddTrans
             // 
@@ -586,59 +584,27 @@
             this.btnAddTrans.UseVisualStyleBackColor = true;
             this.btnAddTrans.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(419, 479);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 29);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Add ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(79, 737);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 30);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Add ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(506, 479);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(71, 29);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(173, 738);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(71, 29);
-            this.button4.TabIndex = 23;
-            this.button4.Text = "Remove";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnSave.Location = new System.Drawing.Point(1194, 579);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(82, 22);
+            this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1472, 816);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1288, 612);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAddTrans);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.dataGridViewMonthlyLedger);
+            this.Controls.Add(this.grvMonthlyLedger);
             this.Controls.Add(this.btnRemoveEmployee);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.btnOrder);
@@ -648,30 +614,29 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.grvEmployee);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridViewCustomers);
+            this.Controls.Add(this.grvCustomers);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.grvTransactions);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridViewAnimalMenu);
+            this.Controls.Add(this.grvPets);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridViewPetFoodMenu);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Controls.Add(this.grvPetFood);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPetFoodMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAnimalMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvPets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMonthlyLedger)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grvMonthlyLedger)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monthlyLedgerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.petBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -679,13 +644,13 @@
 
         #endregion
         private BindingSource transactionBindingSource;
-        private DataGridView dataGridViewPetFoodMenu;
+        private DataGridView grvPetFood;
         private Label label1;
-        private DataGridView dataGridViewAnimalMenu;
+        private DataGridView grvPets;
         private Label label2;
         private DataGridView grvTransactions;
         private Label label3;
-        private DataGridView dataGridViewCustomers;
+        private DataGridView grvCustomers;
         private Label label4;
         private DataGridView grvEmployee;
         private Label label5;
@@ -695,7 +660,7 @@
         private Button btnOrder;
         private Button btnAddEmployee;
         private Button btnRemoveEmployee;
-        private DataGridView dataGridViewMonthlyLedger;
+        private DataGridView grvMonthlyLedger;
         private Button btnLoad;
         private Label label6;
         private BindingSource petBindingSource;
@@ -713,7 +678,6 @@
         private DataGridViewTextBoxColumn expensesDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private BindingSource monthlyLedgerBindingSource;
-        private BindingSource petBindingSource1;
         private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Status;
         private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
@@ -737,9 +701,7 @@
         private DataGridViewTextBoxColumn petFoodQtyDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnSave;
+        private DataGridViewTextBoxColumn colPetPrice;
     }
 }
