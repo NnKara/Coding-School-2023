@@ -20,6 +20,9 @@ namespace Session_11
             PetFoodPrice = petFoodPrice;    
             PetFoodCost = petFoodCost;  
         }
+        public PetFood()
+        {
 
+        }
     }
 }

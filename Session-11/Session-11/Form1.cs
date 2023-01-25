@@ -21,7 +21,7 @@ namespace Session_11 {
             PopulatePets();
             PopulatePetFoods();
             dataGridViewCustomers.DataSource = petShop.Customers;
-            PopulatePets();
+            
             
             dataGridViewCustomers.DataSource = customerBindingSource1;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
@@ -50,16 +50,16 @@ namespace Session_11 {
 
         public List<PetFood> PopulatePetFoods()
         {
-            //var petsFood = new List<PetFood>
-            //{
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
-            //    new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},    
-            //};
-            //petShop.PetFoods.AddRange(petsFood);
+            var petsFood = new List<PetFood>
+            {
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
+                new PetFood {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},
+            };
+            petShop.PetFoods.AddRange(petsFood);
             petFoodBindingSource1.DataSource = petShop.PetFoods; 
             return petShop.PetFoods;
         }
@@ -245,7 +245,7 @@ namespace Session_11 {
                 new Pet {AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Unhealthy, Price = 30, Cost = 15,Breed="African Grey Parrot"}
             };
             petShop.Pets.AddRange(pets);
-            petBindingSource.DataSource = petShop.Pets; 
+            petBindingSource.DataSource = petShop.Pets;
             return petShop.Pets;
 
         }
@@ -311,6 +311,26 @@ namespace Session_11 {
 
         private void btnRemoveEmployee_Click(object sender, EventArgs e) {
             employeeBindingSource.RemoveCurrent();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            petBindingSource.AddNew();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            petBindingSource.RemoveCurrent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            petFoodBindingSource1.AddNew();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            petFoodBindingSource1.RemoveCurrent();
         }
     }
 }
