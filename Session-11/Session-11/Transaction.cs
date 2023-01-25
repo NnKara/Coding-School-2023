@@ -34,12 +34,6 @@ namespace Session_11 {
             PetFoodPrice = petFoodPrice;
             TotalPrice = totalPrice;
         }
-
-      
-
-
-
-
     }
 
 }

@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Session_11 {
     public partial class Form1 : Form {
@@ -18,7 +19,7 @@ namespace Session_11 {
            List<Customer>customers= new List<Customer>();
 
             petShop = new PetShop();
-         
+
             PopulateEmployee();
             PopulateCustomers();
             PopulatePets();
@@ -27,7 +28,7 @@ namespace Session_11 {
             SetControls();
         }
 
-        public Transaction newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer)
+        public TransactionSummary newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer)
         {
             Transaction transaction = new Transaction();
             transaction.TransactionID = Guid.NewGuid();
@@ -40,7 +41,20 @@ namespace Session_11 {
             transaction.PetFoodID = petFood.PetFoodID;
 
             petShop.Transactions.Add(transaction);
-            return transaction;
+
+            TransactionSummary summary = new TransactionSummary();
+            summary.TransactionID = transaction.TransactionID;
+            summary.EmployeeID = transaction.EmployeeID;
+            summary.EmployeeName = employee.Name;
+            summary.CustomerID = transaction.CustomerID;
+            summary.CustomerName = customer.Name;
+            summary.PetPrice = transaction.PetPrice;
+            summary.PetFoodPrice = transaction.PetFoodPrice;
+            summary.PetID = transaction.PetID;
+            summary.TransactionDateTime = transaction.TransactionDate;
+            summary.PetFoodID = transaction.PetFoodID;
+
+            return summary;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -206,7 +220,7 @@ namespace Session_11 {
             petShop = serializer.Deserialize<PetShop>("test.json");
             PopulateLastChanges();
 
-            MessageBox.Show("Data load!");
+            MessageBox.Show("Data Load Correctly!");
         }
 
         public void PopulateLastChanges()
@@ -272,10 +286,12 @@ namespace Session_11 {
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            Customer newCust = new Customer();
-            Employee employee = new Employee();
-            PetFood petFood = new PetFood();
-            Pet newPet = new Pet();
+            PopulateLastChanges();
+            Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
+            Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
+            PetFood petFood = (PetFood)grvPetFood.SelectedRows[0].DataBoundItem;
+            Pet newPet = (Pet)grvPets.SelectedRows[0].DataBoundItem;
+
             newTransaction(employee, newPet, petFood, newCust);
         }
 

@@ -23,7 +23,7 @@ namespace Session_11
         }
         public PetFood()
         {
-
+            PetFoodID= Guid.NewGuid();
         }
     }
 }
