@@ -3,23 +3,25 @@ namespace Session_11 {
 
         public Transaction transaction;
         public PetShop petShop;
-
+        public Customer customer;
 
         public Form1() {
-            InitializeComponent();
-            //SetControlProperties();
-            //var pets = this.list;
-            //dataGridView2.DataSource = pets;
-            Pet pet = new Pet();
-            Transaction newTras = new Transaction();
 
-            Employee newEmployee = addNewEmployee();//koumpi add gia employee
-            Customer newCustomer = addNewCustomer();//koumpi add gia customer
-            PopulateCustomers();
-            PopulatePets();
+
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            petShop=new PetShop();
             PopulateEmployee();
-            Buy(newCustomer, pet); 
+            PopulateCustomers();
+            dataGridViewCustomers.DataSource = petShop.Customers;
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
+            dataGridViewPetFoodMenu.DataSource = petShop.PetFoods;
+            dataGridViewEmployess.DataSource = petShop.Employees;
+            dataGridView1.DataSource = petShop.Transactions;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -36,11 +38,29 @@ namespace Session_11 {
 
         }
 
-        //Koumpi add gia customer
-        public Customer addNewCustomer() {
-            Customer newCust = new Customer();
-            petShop.Customers.Add(newCust);
-            return newCust;
+
+        public List<Customer> PopulateCustomers()
+        {
+
+            Customer Cust1 = new Customer()
+            {
+                Name = "Nikos",
+                Surname = "Karamitos",
+                Phone = "6978319532",
+                TIN = "37482910"
+            };
+            Customer cust2 = new Customer()
+            {
+                Name = "Alex",
+                Surname = "Gad",
+                Phone = "693132822",
+                TIN = "38239102"
+            };
+
+
+            petShop.Customers.Add(Cust1);
+            petShop.Customers.Add(cust2);
+            return petShop.Customers;
         }
 
         //Koumpi add gia employee
@@ -159,40 +179,8 @@ namespace Session_11 {
         }
 
 
-
-        // Pet petcat = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Cat,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-        // Pet petDog = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Dog,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-
-        //Pet petBird = new Pet()
-        //{
-        //    AnimalType = Pet.AnimalTypeEnum.Bird,
-        //    Status = Pet.PetStatusEnum.OK,
-        //    Breed = "black"
-        //};
-
-        //List<Pet> list = new List<Pet>() { petcat, petDog, petBird };
-
-
-        //PetShop petShop = new PetShop()
-        //{
-
-        //    Pets = new List<Pet>() {
-        //        petcat, petDog,petBird
-        //    }
-
-        //};
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            //pet pricing
+            
         }
         private void PopulateEmployee() {
 
@@ -210,56 +198,29 @@ namespace Session_11 {
                 EmployeeType = Employee.EmployeeTypeEnum.Staff,
                 SalaryPerMonth = 1000
 
-            };
-
+            };           
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
-            //employeeBindingSource.DataSource = petShop.Employees;
+
 
         }
 
-        private void PopulatePets() {
+        private List<Pet> PopulatePets() {
 
-            Pet pet1 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Haski",
-                AnimalType = Pet.AnimalTypeEnum.Dog,
-                Status = Pet.PetStatusEnum.OK,
-                Price = 100
 
+            var pets = new List<Pet>
+            {
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Dog, Price = 100, Cost = 50},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Cat, Price = 20, Cost = 10},
+                new Pet {AnimalType = Pet.AnimalTypeEnum.Bird, Price = 30, Cost = 15}
             };
-            petShop.Pets.Add(pet1);
-            Pet pet2 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Pigeon",
-                AnimalType = Pet.AnimalTypeEnum.Bird,
-                Status = Pet.PetStatusEnum.Unhealthy,
-                Price = 30
 
-            };
-            petShop.Pets.Add(pet2);
-            Pet pet3 = new Pet() {
-                PetID = Guid.NewGuid(),
-                Breed = "Black",
-                AnimalType = Pet.AnimalTypeEnum.Cat,
-                Status = Pet.PetStatusEnum.Recovering,
-                Price = 20
+            petShop.Pets.AddRange(pets);
+            return petShop.Pets;
 
-            };
-            petShop.Pets.Add(pet3);
-            petBindingSource1.DataSource = petShop.Pets;
         }
 
-        public void PopulateCustomers() {
-            Customer cust1 = new Customer() {
-                CustomerID = Guid.NewGuid(),
-                Name = "Nikos",
-                Surname = "Karamitos",
-                Phone = "6978453324",
-                TIN = "4567332"
-            };
-            customerBindingSource.DataSource = petShop.Customers;
-        }
+
 
 
 
@@ -268,20 +229,11 @@ namespace Session_11 {
 
         }
 
-        //private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-        //    //pet pricing
-        //}
+
 
         private void gridControl1_Click(object sender, EventArgs e) {
 
         }
-        //private void SetControlProperties() {
-        //    grdCustomers.DataSource = grdCustomers;
-        //    grdEmployees.DataSource = grdEmployees;
-        //    grdPets.DataSource = grdPets;
-        //    grdPetFoods.DataSource = grdPetFoods;
-        //    grdTransactions.DataSource = grdTransactions;
-        //}
 
         private void employeeBindingSource_CurrentChanged(object sender, EventArgs e)
         {
@@ -292,5 +244,7 @@ namespace Session_11 {
         {
 
         }
+
+
     }
 }

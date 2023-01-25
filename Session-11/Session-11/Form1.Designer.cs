@@ -132,12 +132,11 @@
             this.priceDataGridViewTextBoxColumn1,
             this.costDataGridViewTextBoxColumn1});
             this.dataGridViewPetFoodMenu.DataSource = this.petFoodBindingSource1;
-            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(65, 390);
-            this.dataGridViewPetFoodMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewPetFoodMenu.Location = new System.Drawing.Point(74, 520);
             this.dataGridViewPetFoodMenu.Name = "dataGridViewPetFoodMenu";
             this.dataGridViewPetFoodMenu.RowHeadersWidth = 51;
             this.dataGridViewPetFoodMenu.RowTemplate.Height = 29;
-            this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(645, 141);
+            this.dataGridViewPetFoodMenu.Size = new System.Drawing.Size(737, 188);
             this.dataGridViewPetFoodMenu.TabIndex = 0;
             // 
             // animalTypeDataGridViewTextBoxColumn1
@@ -196,9 +195,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 364);
+            this.label1.Location = new System.Drawing.Point(74, 485);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 15);
+            this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pet Food Menu";
             // 
@@ -218,12 +217,11 @@
             this.priceDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn});
             this.dataGridViewAnimalMenu.DataSource = this.petBindingSource;
-            this.dataGridViewAnimalMenu.Location = new System.Drawing.Point(65, 214);
-            this.dataGridViewAnimalMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewAnimalMenu.Location = new System.Drawing.Point(74, 285);
             this.dataGridViewAnimalMenu.Name = "dataGridViewAnimalMenu";
             this.dataGridViewAnimalMenu.RowHeadersWidth = 51;
             this.dataGridViewAnimalMenu.RowTemplate.Height = 29;
-            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewAnimalMenu.Size = new System.Drawing.Size(423, 188);
             this.dataGridViewAnimalMenu.TabIndex = 2;
             this.dataGridViewAnimalMenu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
             // 
@@ -269,9 +267,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 184);
+            this.label2.Location = new System.Drawing.Point(74, 245);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Pet Menu";
             // 
@@ -286,12 +284,11 @@
             this.petFoodQtyDataGridViewTextBoxColumn,
             this.totalPriceDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.transactionBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(65, 29);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(74, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(529, 141);
+            this.dataGridView1.Size = new System.Drawing.Size(605, 188);
             this.dataGridView1.TabIndex = 4;
             // 
             // transactionDateDataGridViewTextBoxColumn
@@ -322,9 +319,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(65, 7);
+            this.label3.Location = new System.Drawing.Point(74, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Transaction";
             // 
@@ -338,12 +335,11 @@
             this.nameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn});
             this.dataGridViewCustomers.DataSource = this.customerBindingSource1;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(806, 20);
-            this.dataGridViewCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(921, 27);
             this.dataGridViewCustomers.Name = "dataGridViewCustomers";
             this.dataGridViewCustomers.RowHeadersWidth = 51;
             this.dataGridViewCustomers.RowTemplate.Height = 29;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(423, 188);
             this.dataGridViewCustomers.TabIndex = 6;
             // 
             // phoneDataGridViewTextBoxColumn
@@ -385,9 +381,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(813, 3);
+            this.label4.Location = new System.Drawing.Point(929, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.Size = new System.Drawing.Size(78, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Customers";
             // 
@@ -401,12 +397,11 @@
             this.nameDataGridViewTextBoxColumn1,
             this.surnameDataGridViewTextBoxColumn1});
             this.dataGridViewEmployess.DataSource = this.employeeBindingSource;
-            this.dataGridViewEmployess.Location = new System.Drawing.Point(813, 248);
-            this.dataGridViewEmployess.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewEmployess.Location = new System.Drawing.Point(929, 331);
             this.dataGridViewEmployess.Name = "dataGridViewEmployess";
             this.dataGridViewEmployess.RowHeadersWidth = 51;
             this.dataGridViewEmployess.RowTemplate.Height = 29;
-            this.dataGridViewEmployess.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewEmployess.Size = new System.Drawing.Size(423, 188);
             this.dataGridViewEmployess.TabIndex = 8;
             // 
             // salaryPerMonthDataGridViewTextBoxColumn
@@ -448,68 +443,62 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(817, 230);
+            this.label5.Location = new System.Drawing.Point(934, 307);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 15);
+            this.label5.Size = new System.Drawing.Size(73, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Employes";
             // 
             // btnRemoveCustomer
             // 
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(1094, 166);
-            this.btnRemoveCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(1250, 221);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(82, 22);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(94, 29);
             this.btnRemoveCustomer.TabIndex = 10;
             this.btnRemoveCustomer.Text = "Remove";
             this.btnRemoveCustomer.UseVisualStyleBackColor = true;
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(1006, 166);
-            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddCustomer.Location = new System.Drawing.Point(1150, 221);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(82, 22);
+            this.btnAddCustomer.Size = new System.Drawing.Size(94, 29);
             this.btnAddCustomer.TabIndex = 11;
             this.btnAddCustomer.Text = "ADD";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(499, 175);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Location = new System.Drawing.Point(570, 233);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 22);
+            this.btnCancel.Size = new System.Drawing.Size(94, 29);
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(388, 175);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOrder.Location = new System.Drawing.Point(443, 233);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(82, 22);
+            this.btnOrder.Size = new System.Drawing.Size(94, 29);
             this.btnOrder.TabIndex = 13;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(1018, 393);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddEmployee.Location = new System.Drawing.Point(1163, 524);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnAddEmployee.Size = new System.Drawing.Size(94, 29);
             this.btnAddEmployee.TabIndex = 14;
             this.btnAddEmployee.Text = "ADD";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(1106, 393);
-            this.btnRemoveEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(1264, 524);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(82, 22);
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(94, 29);
             this.btnRemoveEmployee.TabIndex = 15;
             this.btnRemoveEmployee.Text = "Remove";
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
@@ -525,12 +514,11 @@
             this.expensesDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn});
             this.dataGridViewMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
-            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(813, 441);
-            this.dataGridViewMonthlyLedger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewMonthlyLedger.Location = new System.Drawing.Point(929, 588);
             this.dataGridViewMonthlyLedger.Name = "dataGridViewMonthlyLedger";
             this.dataGridViewMonthlyLedger.RowHeadersWidth = 51;
             this.dataGridViewMonthlyLedger.RowTemplate.Height = 29;
-            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(370, 141);
+            this.dataGridViewMonthlyLedger.Size = new System.Drawing.Size(423, 188);
             this.dataGridViewMonthlyLedger.TabIndex = 16;
             // 
             // yearDataGridViewTextBoxColumn
@@ -579,10 +567,9 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(1094, 586);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoad.Location = new System.Drawing.Point(1250, 781);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(82, 22);
+            this.btnLoad.Size = new System.Drawing.Size(94, 29);
             this.btnLoad.TabIndex = 17;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -590,9 +577,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(817, 416);
+            this.label6.Location = new System.Drawing.Point(934, 555);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.Size = new System.Drawing.Size(113, 20);
             this.label6.TabIndex = 18;
             this.label6.Text = "Monthly Ledger";
             // 
@@ -602,9 +589,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1288, 612);
+            this.ClientSize = new System.Drawing.Size(1472, 816);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.dataGridViewMonthlyLedger);
@@ -624,9 +611,10 @@
             this.Controls.Add(this.dataGridViewAnimalMenu);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewPetFoodMenu);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
