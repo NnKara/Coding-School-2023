@@ -13,9 +13,11 @@ namespace Session_11
         public double PetFoodPrice { get; set; }
         public double PetFoodCost { get; set; }
 
-        public PetFood()
-        {
-
+        public PetFood( AnimalTypeEnum animalType, double petFoodPrice, double petFoodCost) :base(animalType){
+            //PetFoodID= petFoodID;   
+            AnimalType= animalType;
+            PetFoodPrice = petFoodPrice;    
+            PetFoodCost = petFoodCost;  
         }
 
     }
