@@ -10,13 +10,13 @@ using System.Xml.Schema;
 namespace Session_11
 {
     public class MonthlyLedger {
-        public DateTime Year { get; set; }        
-        public DateTime Month { get; set; }
+        public int Year { get; set; }        
+        public int Month { get; set; }
         public double Income { get; set; }
         public double Expenses { get; set; }
         public double Total { get; set; }        
 
-        public MonthlyLedger(DateTime year, DateTime month, double income, double expenses) {
+        public MonthlyLedger(int year, int month, double income, double expenses) {
             Year = year;    
             Month = month;  
             Income = income;    
@@ -24,13 +24,13 @@ namespace Session_11
             Total = income - (2000 + expenses);
         }
 
-        public MonthlyLedger(DateTime year, DateTime month, double income, double expenses, int rent) {
-            Year = year;
-            Month = month;
-            Income = income;
-            Expenses = rent + expenses;    
-            Total = income - (rent + expenses);
-        }
+        //public MonthlyLedger(int year,int month, double income, double expenses, int rent) {
+        //    Year = year;
+        //    Month = month;
+        //    Income = income;
+        //    Expenses = rent + expenses;    
+        //    Total = income - (rent + expenses);
+        //}
 
         public string ShowMonthlyLedger() {
             string result = $"Year: {Year} Month: {Month} Income: {Income} Expenses: {Expenses} Total Profit: {Total}";
