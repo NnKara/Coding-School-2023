@@ -18,7 +18,7 @@ namespace Session_11 {
             PopulateCustomers();
             PopulatePets();
             PopulateEmployee();
-            Buy(newCustomer, pet);
+            Buy(newCustomer, pet); 
             dataGridViewAnimalMenu.DataSource = petShop.Pets;
         }
 
