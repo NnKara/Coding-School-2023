@@ -13,8 +13,6 @@ namespace Session_11
         public void Serialize(object obj) {
             string jsonString = JsonSerializer.Serialize(obj);
         }
-
-
         public void SerializeToFile(object obj, string fileName) {
 
             var options = new JsonSerializerOptions { WriteIndented = true };
@@ -22,7 +20,6 @@ namespace Session_11
 
             File.WriteAllText(fileName, jsonString);
         }
-
 
         public T Deserialize<T>(string fileName) {
 
