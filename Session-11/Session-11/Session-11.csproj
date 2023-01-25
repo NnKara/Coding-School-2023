@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Data" Version="22.2.3" />
+    <PackageReference Include="DevExpress.DataAccess.UI" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
     <PackageReference Include="DevExpress.Xpo" Version="22.2.3" />
   </ItemGroup>
 

@@ -18,12 +18,13 @@ namespace Session_11 {
 
         }
 
-        public Employee(Guid id) : base(id) {
+        public Employee(Guid id) : base() {
             EmployeeID = id;
         }
 
-        public Employee(Guid employeeID, double salaryPerMonth, EmployeeTypeEnum employeeType) : this(employeeID)
+        public Employee(Guid employeeID, String name, String surname, double salaryPerMonth, EmployeeTypeEnum employeeType) : base(name,surname)
         {
+            EmployeeID = employeeID;
             SalaryPerMonth = salaryPerMonth;
             EmployeeType = employeeType;
         }

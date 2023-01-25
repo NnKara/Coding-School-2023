@@ -11,9 +11,9 @@ namespace Session_11 {
         public string TIN { get; set; }
 
 
-        public Customer(Guid id, String name,String surname, string phone, string tIN) : base(id,name,surname)
+        public Customer(Guid customerID, String name,String surname, string phone, string tIN) : base(name,surname)
         {
-            
+            CustomerID = customerID;
             Phone = phone;
             TIN = tIN;
         }
@@ -22,9 +22,10 @@ namespace Session_11 {
         {
         }
 
-        public Customer(Guid id) : base(id) {
+        public Customer(Guid id) : base() {
             CustomerID = id;
         }
-
+       
+        
     }
 }
