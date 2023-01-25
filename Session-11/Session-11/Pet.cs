@@ -24,8 +24,9 @@ namespace Session_11 {
         public string Breed { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
         public PetStatusEnum Status { get; set; }
-        public double Price { get; set; }
+        public double Price { get; set;}
         public double Cost { get; set; }
+
 
         public string AnimalBreed {
             get {
@@ -34,38 +35,22 @@ namespace Session_11 {
         }
 
 
-        public Pet() {
+        public Pet()
+        {
             PetID=Guid.NewGuid();
         }
     
-            //public Pet(){
-            //    PetID = Guid.NewGuid();
-            //    if(AnimalType== AnimalTypeEnum.Bird)
-            //    {
-            //        Price = 10;
-            //        Cost= 2;
-            //    }
-            //    else if(AnimalType==AnimalTypeEnum.Cat)
-            //    {
-            //        Price = 20;
 
-            //        Cost= 3;
-            //    }
-            //    else
-            //    {
-            //        Price = 15;
-            //        Cost= 4;
-            //    }
-            //}
 
-            public Pet(Guid petID, string breed, AnimalTypeEnum animalType, PetStatusEnum status, double price, double cost) {
+        public Pet(Guid petID, string breed, AnimalTypeEnum animalType, PetStatusEnum status, double price, double cost)
+        {
                 PetID = petID;
                 Breed = breed;
                 AnimalType = animalType;
                 Status = status;
                 Price = price;
                 Cost = cost;
-            }
+        }
 
 
 
