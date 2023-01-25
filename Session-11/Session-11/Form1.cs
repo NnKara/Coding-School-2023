@@ -40,16 +40,16 @@ namespace Session_11 {
 
 
         public void PopulatePetFoods() {
-            //var petsFood = new List<PetFood>
-            //{
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
-            //    new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},
-            //};
-           // petShop.PetFoods.AddRange(petsFood);
+            var petsFood = new List<PetFood>
+            {
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.Recovering ,PetFoodPrice =60,PetFoodCost = 50},
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.OK,PetFoodPrice = 50, PetFoodCost = 30},
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Cat,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 40, PetFoodCost = 30},
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.OK, PetFoodPrice = 80, PetFoodCost = 30},
+                new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Bird,Status=Pet.PetStatusEnum.Recovering, PetFoodPrice = 80, PetFoodCost = 30},
+            };
+            petShop.PetFoods.AddRange(petsFood);
             petFoodBindingSource1.DataSource = petShop.PetFoods;
         }
         public void PopulateCustomers() {
@@ -72,7 +72,7 @@ namespace Session_11 {
 
             petShop.Customers.Add(Cust1);
             petShop.Customers.Add(cust2);
-            customerBindingSource1.DataSource = petShop.Customers;
+           
         }
 
         //Koumpi add gia employee
@@ -82,24 +82,24 @@ namespace Session_11 {
         //    return newEmployee;
         //}
 
-        public Transaction SelectBird(Pet pet, Transaction trans) {
+        //public Transaction SelectBird(Pet pet, Transaction trans) {
 
-            if (pet.Status.ToString() == "Unhealthy") {
-                return null;
-            }
-            else {
+        //    if (pet.Status.ToString() == "Unhealthy") {
+        //        return null;
+        //    }
+        //    else {
 
-                trans.PetFoodPrice = 5;
-                trans.PetFoodQty = 3;
-                trans.PetPrice = pet.Price;
-                trans.PetID = pet.PetID;
-                trans.TransactionDate = DateTime.Now;
-                trans.TotalPrice = pet.Price + (trans.PetFoodPrice * (trans.PetFoodQty - 1));
+        //        trans.PetFoodPrice = 5;
+        //        trans.PetFoodQty = 3;
+        //        trans.PetPrice = pet.Price;
+        //        trans.PetID = pet.PetID;
+        //        trans.TransactionDate = DateTime.Now;
+        //        trans.TotalPrice = pet.Price + (trans.PetFoodPrice * (trans.PetFoodQty - 1));
 
 
-            }
-            return trans;
-        }
+        //    }
+        //    return trans;
+        //}
 
         //public Transaction SelectCat(Pet pet, Transaction trans) {
         //    Stock stock = new Stock();
@@ -224,8 +224,10 @@ namespace Session_11 {
             grvEmployee.DataSource = employeeBindingSource;
             transactionBindingSource.DataSource = petShop.Transactions;
             grvTransactions.DataSource = transactionBindingSource;
-            //monthlyLedgerBindingSource.DataSource = petShop.monthlyLegers;
-            //grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
+            customerBindingSource1.DataSource=petShop.Customers;
+            grvCustomers.DataSource = customerBindingSource1;
+            monthlyLedgerBindingSource.DataSource = petShop.MonthlyLedgers;
+            grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
         }
 
 
@@ -250,9 +252,8 @@ namespace Session_11 {
 
 
         private void button1_Click(object sender, EventArgs e) {
-            transactionBindingSource.AddNew();
-            // grvTransactions.Focused
-
+            Transaction tras=new Transaction();
+            transactionBindingSource.Add(tras);
         }
 
         private void btnRemoveTrans_Click(object sender, EventArgs e) {
@@ -260,7 +261,8 @@ namespace Session_11 {
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e) {
-            employeeBindingSource.AddNew();
+            Employee newEmployee= new Employee();
+            employeeBindingSource.Add(newEmployee);
         }
 
         private void btnRemoveEmployee_Click(object sender, EventArgs e) {
@@ -275,6 +277,41 @@ namespace Session_11 {
         private void btnLoad_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
             petShop = serializer.Deserialize<PetShop>("test.json");
+        }
+
+        private void btnAddPet_Click(object sender, EventArgs e)
+        {
+            Pet pet=new Pet();
+            petBindingSource.Add(pet);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            petBindingSource.RemoveCurrent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PetFood petFood= new PetFood();          
+            petFoodBindingSource1.Add(petFood);
+          
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            petFoodBindingSource1.RemoveCurrent();
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            Customer newCust = new Customer();
+            
+            customerBindingSource1.Add(newCust);
+        }
+
+        private void btnRemoveCustomer_Click(object sender, EventArgs e)
+        {
+            customerBindingSource1.RemoveCurrent();
         }
     }
 }

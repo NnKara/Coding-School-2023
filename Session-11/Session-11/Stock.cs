@@ -14,6 +14,8 @@ namespace Session_11 {
             PetFoodQty = 30;
             PetsNumber = 15;
         }
+
+
         public Stock(double petFoodQty) {
             PetFoodQty = petFoodQty;
         }

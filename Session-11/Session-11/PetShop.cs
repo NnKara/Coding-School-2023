@@ -16,6 +16,8 @@ namespace Session_11
         public List<Employee>? Employees { get; set; }
         public List<PetFood>? PetFoods { get; set; }
         public List<Transaction>? Transactions { get; set; }
+
+        public List<MonthlyLedger>? MonthlyLedgers { get; set; }    
         public Stock stock { get; set; }
 
 
@@ -111,6 +113,7 @@ namespace Session_11
             Employees = new List<Employee>();
             PetFoods= new List<PetFood>();
             Transactions = new List<Transaction>();
+            MonthlyLedgers = new List<MonthlyLedger>();
             stock=new Stock();
         }
     }
