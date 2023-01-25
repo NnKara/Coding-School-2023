@@ -16,7 +16,7 @@ namespace Session_11 {
 
         public string FullName {
             get {
-                return Name + " " + Surname;
+                return String.Format("{0} {1}", Name, Surname);
             }
         }
 
