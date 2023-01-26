@@ -29,25 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bsTransaction = new System.Windows.Forms.BindingSource(this.components);
-            this.grvPetFood = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsPetFood = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.bsPet = new System.Windows.Forms.BindingSource(this.components);
             this.bsCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.label4 = new System.Windows.Forms.Label();
             this.bsEmployee = new System.Windows.Forms.BindingSource(this.components);
             this.monthlyLedgerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnimalType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,10 +60,11 @@
             this.grcPets = new DevExpress.XtraGrid.GridControl();
             this.grvPets = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colAnimalType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemTextEdit26 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colBreed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.Cost = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,19 +74,22 @@
             this.grcPetFoods = new DevExpress.XtraGrid.GridControl();
             this.grvPetFoods = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colAnimalTypeFood = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.repositoryItemTextEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.colPetFoodStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEdit27 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colFoodPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.colFoodCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tabTransactions = new DevExpress.XtraTab.XtraTabPage();
             this.grcTransactions = new DevExpress.XtraGrid.GridControl();
             this.grvTransactions = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.CustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -129,8 +121,9 @@
             this.repositoryItemTextEdit18 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit21 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransaction)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPetFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).BeginInit();
@@ -149,19 +142,21 @@
             this.tabPets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grcPets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPets)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).BeginInit();
             this.tabPetFoods.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grcPetFoods)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPetFoods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
             this.tabTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grcTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).BeginInit();
@@ -196,79 +191,6 @@
             // 
             this.bsTransaction.DataSource = typeof(Session_11.Transaction);
             // 
-            // grvPetFood
-            // 
-            this.grvPetFood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.grvPetFood.AutoGenerateColumns = false;
-            this.grvPetFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grvPetFood.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grvPetFood.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.grvPetFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grvPetFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.Status,
-            this.petFoodPriceDataGridViewTextBoxColumn1,
-            this.petFoodCostDataGridViewTextBoxColumn});
-            this.grvPetFood.DataSource = this.bsPetFood;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grvPetFood.DefaultCellStyle = dataGridViewCellStyle5;
-            this.grvPetFood.Location = new System.Drawing.Point(428, 249);
-            this.grvPetFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grvPetFood.Name = "grvPetFood";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grvPetFood.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.grvPetFood.RowHeadersWidth = 51;
-            this.grvPetFood.RowTemplate.Height = 29;
-            this.grvPetFood.Size = new System.Drawing.Size(404, 172);
-            this.grvPetFood.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "AnimalType";
-            this.dataGridViewTextBoxColumn2.HeaderText = "AnimalType";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            // 
-            // petFoodPriceDataGridViewTextBoxColumn1
-            // 
-            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
-            // 
-            // petFoodCostDataGridViewTextBoxColumn
-            // 
-            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
-            // 
             // bsPetFood
             // 
             this.bsPetFood.DataSource = typeof(Session_11.PetFood);
@@ -291,15 +213,6 @@
             this.bsCustomer.DataSource = typeof(Session_11.Customer);
             this.bsCustomer.CurrentChanged += new System.EventHandler(this.customerBindingSource1_CurrentChanged);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(399, 454);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Customers";
-            // 
             // bsEmployee
             // 
             this.bsEmployee.DataSource = typeof(Session_11.Employee);
@@ -307,37 +220,6 @@
             // monthlyLedgerBindingSource
             // 
             this.monthlyLedgerBindingSource.DataSource = typeof(Session_11.MonthlyLedger);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(643, 425);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 22);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(731, 425);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 22);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(873, 230);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 15);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Pet Report";
             // 
             // Year
             // 
@@ -365,7 +247,10 @@
             // 
             // tabsform
             // 
-            this.tabsform.Location = new System.Drawing.Point(252, 91);
+            this.tabsform.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabsform.Location = new System.Drawing.Point(13, 14);
             this.tabsform.Name = "tabsform";
             this.tabsform.SelectedTabPage = this.tabCustomer;
             this.tabsform.Size = new System.Drawing.Size(712, 406);
@@ -383,16 +268,20 @@
             // 
             this.tabCustomer.Controls.Add(this.grcCustomers);
             this.tabCustomer.Name = "tabCustomer";
+            this.tabCustomer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.tabCustomer.Size = new System.Drawing.Size(710, 381);
             this.tabCustomer.Text = "Customers";
             // 
             // grcCustomers
             // 
+            this.grcCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grcCustomers.DataSource = this.bsCustomer;
-            this.grcCustomers.Location = new System.Drawing.Point(3, 13);
+            this.grcCustomers.Location = new System.Drawing.Point(8, 13);
             this.grcCustomers.MainView = this.grvCustomers;
             this.grcCustomers.Name = "grcCustomers";
-            this.grcCustomers.Size = new System.Drawing.Size(704, 361);
+            this.grcCustomers.Size = new System.Drawing.Size(699, 361);
             this.grcCustomers.TabIndex = 2;
             this.grcCustomers.UseEmbeddedNavigator = true;
             this.grcCustomers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -526,8 +415,10 @@
             // tabPets
             // 
             this.tabPets.Controls.Add(this.grcPets);
+            this.tabPets.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.tabPets.Name = "tabPets";
             this.tabPets.Size = new System.Drawing.Size(710, 381);
+            this.tabPets.TabPageWidth = 30;
             this.tabPets.Text = "Pets";
             // 
             // grcPets
@@ -541,7 +432,8 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3,
             this.repositoryItemTextEdit4,
-            this.repositoryItemComboBox2});
+            this.repositoryItemComboBox2,
+            this.repositoryItemTextEdit26});
             this.grcPets.Size = new System.Drawing.Size(704, 357);
             this.grcPets.TabIndex = 2;
             this.grcPets.UseEmbeddedNavigator = true;
@@ -564,18 +456,16 @@
             // colAnimalType
             // 
             this.colAnimalType.Caption = "AnimalType";
-            this.colAnimalType.ColumnEdit = this.repositoryItemComboBox2;
+            this.colAnimalType.ColumnEdit = this.repositoryItemTextEdit26;
             this.colAnimalType.FieldName = "AnimalType";
             this.colAnimalType.Name = "colAnimalType";
             this.colAnimalType.Visible = true;
             this.colAnimalType.VisibleIndex = 0;
             // 
-            // repositoryItemComboBox2
+            // repositoryItemTextEdit26
             // 
-            this.repositoryItemComboBox2.AutoHeight = false;
-            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
+            this.repositoryItemTextEdit26.AutoHeight = false;
+            this.repositoryItemTextEdit26.Name = "repositoryItemTextEdit26";
             // 
             // colBreed
             // 
@@ -599,6 +489,13 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
             this.colStatus.VisibleIndex = 2;
+            // 
+            // repositoryItemComboBox2
+            // 
+            this.repositoryItemComboBox2.AutoHeight = false;
+            this.repositoryItemComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox2.Name = "repositoryItemComboBox2";
             // 
             // colPrice
             // 
@@ -651,7 +548,8 @@
             this.repositoryItemTextEdit8,
             this.repositoryItemTextEdit6,
             this.repositoryItemTextEdit9,
-            this.repositoryItemComboBox3});
+            this.repositoryItemComboBox3,
+            this.repositoryItemTextEdit27});
             this.grcPetFoods.Size = new System.Drawing.Size(704, 357);
             this.grcPetFoods.TabIndex = 3;
             this.grcPetFoods.UseEmbeddedNavigator = true;
@@ -662,6 +560,7 @@
             // 
             this.grvPetFoods.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colAnimalTypeFood,
+            this.colPetFoodStatus,
             this.colFoodPrice,
             this.colFoodCost});
             this.grvPetFoods.GridControl = this.grcPetFoods;
@@ -671,27 +570,39 @@
             // colAnimalTypeFood
             // 
             this.colAnimalTypeFood.Caption = "AnimalType";
-            this.colAnimalTypeFood.ColumnEdit = this.repositoryItemComboBox3;
+            this.colAnimalTypeFood.ColumnEdit = this.repositoryItemTextEdit9;
             this.colAnimalTypeFood.FieldName = "AnimalType";
             this.colAnimalTypeFood.Name = "colAnimalTypeFood";
             this.colAnimalTypeFood.Visible = true;
             this.colAnimalTypeFood.VisibleIndex = 0;
             // 
-            // repositoryItemComboBox3
+            // repositoryItemTextEdit9
             // 
-            this.repositoryItemComboBox3.AutoHeight = false;
-            this.repositoryItemComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
+            this.repositoryItemTextEdit9.AutoHeight = false;
+            this.repositoryItemTextEdit9.Name = "repositoryItemTextEdit9";
+            // 
+            // colPetFoodStatus
+            // 
+            this.colPetFoodStatus.Caption = "AnimalStatus";
+            this.colPetFoodStatus.ColumnEdit = this.repositoryItemTextEdit27;
+            this.colPetFoodStatus.FieldName = "Status";
+            this.colPetFoodStatus.Name = "colPetFoodStatus";
+            this.colPetFoodStatus.Visible = true;
+            this.colPetFoodStatus.VisibleIndex = 1;
+            // 
+            // repositoryItemTextEdit27
+            // 
+            this.repositoryItemTextEdit27.AutoHeight = false;
+            this.repositoryItemTextEdit27.Name = "repositoryItemTextEdit27";
             // 
             // colFoodPrice
             // 
             this.colFoodPrice.Caption = "Price";
             this.colFoodPrice.ColumnEdit = this.repositoryItemTextEdit7;
-            this.colFoodPrice.FieldName = "Price";
+            this.colFoodPrice.FieldName = "PetFoodPrice";
             this.colFoodPrice.Name = "colFoodPrice";
             this.colFoodPrice.Visible = true;
-            this.colFoodPrice.VisibleIndex = 1;
+            this.colFoodPrice.VisibleIndex = 2;
             // 
             // repositoryItemTextEdit7
             // 
@@ -702,10 +613,10 @@
             // 
             this.colFoodCost.Caption = "Cost";
             this.colFoodCost.ColumnEdit = this.repositoryItemTextEdit7;
-            this.colFoodCost.FieldName = "Cost";
+            this.colFoodCost.FieldName = "PetFoodCost";
             this.colFoodCost.Name = "colFoodCost";
             this.colFoodCost.Visible = true;
-            this.colFoodCost.VisibleIndex = 2;
+            this.colFoodCost.VisibleIndex = 3;
             // 
             // repositoryItemTextEdit8
             // 
@@ -717,10 +628,12 @@
             this.repositoryItemTextEdit6.AutoHeight = false;
             this.repositoryItemTextEdit6.Name = "repositoryItemTextEdit6";
             // 
-            // repositoryItemTextEdit9
+            // repositoryItemComboBox3
             // 
-            this.repositoryItemTextEdit9.AutoHeight = false;
-            this.repositoryItemTextEdit9.Name = "repositoryItemTextEdit9";
+            this.repositoryItemComboBox3.AutoHeight = false;
+            this.repositoryItemComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
             // 
             // tabTransactions
             // 
@@ -754,8 +667,9 @@
             // grvTransactions
             // 
             this.grvTransactions.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCustomerID,
             this.colTransactionDate,
-            this.CustomerName,
+            this.colCustomerName,
             this.colEmployeeName,
             this.colPetID,
             this.colPetPrice,
@@ -766,6 +680,12 @@
             this.grvTransactions.GridControl = this.grcTransactions;
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.OptionsView.ShowGroupPanel = false;
+            // 
+            // colCustomerID
+            // 
+            this.colCustomerID.Caption = "CustomerID";
+            this.colCustomerID.FieldName = "CustomerID";
+            this.colCustomerID.Name = "colCustomerID";
             // 
             // colTransactionDate
             // 
@@ -783,14 +703,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox4.Name = "repositoryItemComboBox4";
             // 
-            // CustomerName
+            // colCustomerName
             // 
-            this.CustomerName.Caption = "CustomerName";
-            this.CustomerName.ColumnEdit = this.repositoryItemComboBox4;
-            this.CustomerName.FieldName = "CustomerID";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.Visible = true;
-            this.CustomerName.VisibleIndex = 1;
+            this.colCustomerName.Caption = "CustomerName";
+            this.colCustomerName.ColumnEdit = this.repositoryItemComboBox4;
+            this.colCustomerName.FieldName = "CustomerID";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 1;
             // 
             // colEmployeeName
             // 
@@ -1011,25 +931,43 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox6.Name = "repositoryItemComboBox6";
             // 
+            // btnLoad
+            // 
+            this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoad.Location = new System.Drawing.Point(506, 431);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(104, 42);
+            this.btnLoad.TabIndex = 34;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click_1);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(621, 431);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(104, 42);
+            this.btnSave.TabIndex = 35;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 685);
+            this.ClientSize = new System.Drawing.Size(743, 485);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.tabsform);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.grvPetFood);
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PetShop";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bsTransaction)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPetFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).EndInit();
@@ -1048,19 +986,21 @@
             this.tabPets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grcPets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPets)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit4)).EndInit();
             this.tabPetFoods.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grcPetFoods)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPetFoods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
             this.tabTransactions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grcTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTransactions)).EndInit();
@@ -1096,9 +1036,7 @@
 
         #endregion
         private BindingSource bsTransaction;
-        private DataGridView grvPetFood;
         private Label label1;
-        private Label label4;
         private BindingSource bsPet;
         private BindingSource bsPetFood;
         private BindingSource bsCustomer;
@@ -1108,17 +1046,10 @@
         private DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn petPriceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
-        private Button button2;
-        private Button button3;
         private DataGridViewTextBoxColumn animalTypeDataGridViewTextBoxColumn1;
-        private Label label7;
         private DataGridViewTextBoxColumn Year;
         private DataGridViewTextBoxColumn Month;
         private DataGridViewTextBoxColumn AnimalType;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn petFoodPriceDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn petFoodCostDataGridViewTextBoxColumn;
         private DevExpress.XtraTab.XtraTabControl tabsform;
         private DevExpress.XtraTab.XtraTabPage tabCustomer;
         private DevExpress.XtraTab.XtraTabPage tabEmployee;
@@ -1165,7 +1096,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView grvTransactions;
         private DevExpress.XtraGrid.Columns.GridColumn colTransactionDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox4;
-        private DevExpress.XtraGrid.Columns.GridColumn CustomerName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn colEmployeeName;
         private DevExpress.XtraGrid.Columns.GridColumn colPetID;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit11;
@@ -1197,5 +1128,11 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit19;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit20;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit21;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit26;
+        private DevExpress.XtraGrid.Columns.GridColumn colPetFoodStatus;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit27;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerID;
+        private Button btnLoad;
+        private Button btnSave;
     }
 }

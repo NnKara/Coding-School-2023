@@ -1,3 +1,4 @@
+using DevExpress.XtraGrid.Columns;
 using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 
@@ -8,15 +9,15 @@ namespace Session_11 {
         public PetShop petShop;
         public Customer customer;
         public MonthlyLedgerReport monthlyLedgerReport;
-       
+
         public Form1() {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
 
-            
-           List<Customer>customers= new List<Customer>();
+
+            List<Customer> customers = new List<Customer>();
 
             petShop = new PetShop();
 
@@ -24,7 +25,7 @@ namespace Session_11 {
             PopulateCustomers();
             PopulatePets();
             PopulatePetFoods();
-            SetControllers();
+            SetBindings();
             SetControls();
 
             //PopulateLastChanges();
@@ -32,8 +33,7 @@ namespace Session_11 {
             //monthlyLedgerReport.CreateMonthlyLedgerReport(transactions);
         }
 
-        public TransactionSummary newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer)
-        {
+        public TransactionSummary newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer) {
             Transaction transaction = new Transaction();
             transaction.TransactionID = Guid.NewGuid();
             transaction.EmployeeID = employee.EmployeeID;
@@ -66,8 +66,7 @@ namespace Session_11 {
         }
 
 
-        public void PopulatePets()
-        {
+        public void PopulatePets() {
 
             var pets = new List<Pet>
             {
@@ -84,8 +83,7 @@ namespace Session_11 {
             petShop.Pets.AddRange(pets);
         }
 
-        public void PopulatePetFoods()
-        {
+        public void PopulatePetFoods() {
             var petsFood = new List<PetFood>
             {
                 new PetFood {PetFoodID= Guid.NewGuid(),AnimalType = Pet.AnimalTypeEnum.Dog,Status=Pet.PetStatusEnum.OK ,PetFoodPrice = 70, PetFoodCost = 50},
@@ -105,7 +103,7 @@ namespace Session_11 {
                 Surname = "Karamitos",
                 Phone = "6978319532",
                 TIN = "37482910",
-               
+
             };
             Customer cust2 = new Customer() {
 
@@ -147,33 +145,38 @@ namespace Session_11 {
         }
 
         public void SetControls() {
-           
-           // DataGridViewComboBoxColumn colCustomer = grvTransactions.Columns["colCustomer"] as DataGridViewComboBoxColumn;
-         //   colCustomer.DataSource = petShop.Customers;
-         //   colCustomer.DisplayMember = "FullName";
-         //   colCustomer.ValueMember = "CustomerID";
-         ////   DataGridViewComboBoxColumn colEmployee = grvTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
-         //   colEmployee.DataSource = petShop.Employees;
-         //   colEmployee.DisplayMember = "FullName";
-         //   colEmployee.ValueMember = "EmployeeID";
-         // //  DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
-         //   colAnimalType.DataSource = petShop.Pets;
-         //   colAnimalType.DisplayMember = "AnimalBreed";
+
+            GridColumn colCustomer = grvTransactions.Columns["colCustomerName"] as GridColumn;
+            //grvTransactions.CustomColumnDisplayText += GrvTransactions_CustomColumnDisplayText;
+            // colCustomer.DataSource = petShop.Customers;
+            //colCustomer.DisplayMember = "FullName";
+            // colCustomer.ValueMember = "CustomerID";
+            GridColumn colEmployee = grvTransactions.Columns["colEmployeeName"] as GridColumn;
+
+            // colEmployee.DataSource = petShop.Employees;
+            //  colEmployee.DisplayMember = "FullName";
+            // colEmployee.ValueMember = "EmployeeID";
+            GridColumn colAnimalType = grvTransactions.Columns["colPetID"] as GridColumn;
+            //  colAnimalType.DataSource = petShop.Pets;
+            // colAnimalType.DisplayMember = "AnimalBreed";
         }
 
-        public void SetControllers() {
+        //private void GrvTransactions_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e) {
+        //    GridColumn col = e.Column;
+        //    if (e.Column.FieldName == "CustomerID") {
+        //        var x = bsCustomer.DataSource as List<Customer>;
+        //        var z = x.Where(y => y.CustomerID == (e.Value) as Guid);
+        //        //    e.DisplayText = 
+        //    }
+        //}
+
+        public void SetBindings() {
             bsCustomer.DataSource = petShop.Customers;
-           // grvCustomers.DataSource = customerBindingSource1;
             bsPet.DataSource = petShop.Pets;
-          //  grvPets.DataSource = petBindingSource;
             bsPetFood.DataSource = petShop.PetFoods;
-            grvPetFood.DataSource = bsPetFood;
             bsEmployee.DataSource = petShop.Employees;
-          //  grvEmployee.DataSource = employeeBindingSource;
             bsTransaction.DataSource = petShop.Transactions;
-          //  grvTransactions.DataSource = transactionBindingSource;
             monthlyLedgerBindingSource.DataSource = petShop.MonthlyLedgers;
-          //  grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
         }
 
 
@@ -198,7 +201,7 @@ namespace Session_11 {
 
 
         private void button1_Click(object sender, EventArgs e) {
-            Transaction tras=new Transaction();
+            Transaction tras = new Transaction();
             bsTransaction.Add(tras);
         }
 
@@ -207,7 +210,7 @@ namespace Session_11 {
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e) {
-            Employee newEmployee= new Employee();
+            Employee newEmployee = new Employee();
             bsEmployee.Add(newEmployee);
         }
 
@@ -216,55 +219,42 @@ namespace Session_11 {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            Serializer serializer = new Serializer();
-            serializer.SerializeToFile(petShop, "PetShop.json");  
+            
         }
 
         private void btnLoad_Click(object sender, EventArgs e) {
-            Serializer serializer = new Serializer();
-            petShop = serializer.Deserialize<PetShop>("PetShop.json");
-            //PopulateLastChanges();
-            SetControllers();
-
-            MessageBox.Show("Data Load Correctly!");
+            
         }
 
-        private void btnAddPet_Click(object sender, EventArgs e)
-        {
-            Pet pet=new Pet();
+        private void btnAddPet_Click(object sender, EventArgs e) {
+            Pet pet = new Pet();
             bsPet.Add(pet);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
+        private void button1_Click_1(object sender, EventArgs e) {
             bsPet.RemoveCurrent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            PetFood petFood= new PetFood();          
+        private void button2_Click(object sender, EventArgs e) {
+            PetFood petFood = new PetFood();
             bsPetFood.Add(petFood);
-          
+
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+        private void button3_Click(object sender, EventArgs e) {
             bsPetFood.RemoveCurrent();
         }
 
-        private void btnAddCustomer_Click(object sender, EventArgs e)
-        {
-            Customer newCust = new Customer();           
+        private void btnAddCustomer_Click(object sender, EventArgs e) {
+            Customer newCust = new Customer();
             bsCustomer.Add(newCust);
         }
 
-        private void btnRemoveCustomer_Click(object sender, EventArgs e)
-        {
+        private void btnRemoveCustomer_Click(object sender, EventArgs e) {
             bsCustomer.RemoveCurrent();
         }
 
-        private void btnOrder_Click_1(object sender, EventArgs e)
-        {
+        private void btnOrder_Click_1(object sender, EventArgs e) {
             //PopulateLastChanges();
             //Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
             //Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
@@ -274,13 +264,11 @@ namespace Session_11 {
             //newTransaction(employee, newPet, petFood, newCust);
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
-      
+        private void btnOrder_Click(object sender, EventArgs e) {
+
         }
 
-        private void btnCancerl_Click(object sender, EventArgs e)
-        {
+        private void btnCancerl_Click(object sender, EventArgs e) {
 
         }
 
@@ -294,6 +282,20 @@ namespace Session_11 {
 
         private void gridControl2_Click(object sender, EventArgs e) {
 
+        }
+
+        private void btnLoad_Click_1(object sender, EventArgs e) {
+            Serializer serializer = new Serializer();
+            petShop = serializer.Deserialize<PetShop>("PetShop.json");
+            //PopulateLastChanges();
+            SetBindings();
+
+            MessageBox.Show("Data Load Correctly!");
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e) {
+            Serializer serializer = new Serializer();
+            serializer.SerializeToFile(petShop, "PetShop.json");
         }
     }
 }
