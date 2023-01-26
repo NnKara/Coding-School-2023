@@ -166,11 +166,11 @@ namespace Session_11 {
            // grvCustomers.DataSource = customerBindingSource1;
             bsPet.DataSource = petShop.Pets;
           //  grvPets.DataSource = petBindingSource;
-            petFoodBindingSource1.DataSource = petShop.PetFoods;
-            grvPetFood.DataSource = petFoodBindingSource1;
+            bsPetFood.DataSource = petShop.PetFoods;
+            grvPetFood.DataSource = bsPetFood;
             bsEmployee.DataSource = petShop.Employees;
           //  grvEmployee.DataSource = employeeBindingSource;
-            transactionBindingSource.DataSource = petShop.Transactions;
+            bsTransaction.DataSource = petShop.Transactions;
           //  grvTransactions.DataSource = transactionBindingSource;
             monthlyLedgerBindingSource.DataSource = petShop.MonthlyLedgers;
           //  grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
@@ -199,11 +199,11 @@ namespace Session_11 {
 
         private void button1_Click(object sender, EventArgs e) {
             Transaction tras=new Transaction();
-            transactionBindingSource.Add(tras);
+            bsTransaction.Add(tras);
         }
 
         private void btnRemoveTrans_Click(object sender, EventArgs e) {
-            transactionBindingSource.RemoveCurrent();
+            bsTransaction.RemoveCurrent();
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e) {
@@ -243,13 +243,13 @@ namespace Session_11 {
         private void button2_Click(object sender, EventArgs e)
         {
             PetFood petFood= new PetFood();          
-            petFoodBindingSource1.Add(petFood);
+            bsPetFood.Add(petFood);
           
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            petFoodBindingSource1.RemoveCurrent();
+            bsPetFood.RemoveCurrent();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
