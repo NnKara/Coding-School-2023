@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grvPetFood = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.grvPets = new System.Windows.Forms.DataGridView();
@@ -96,10 +100,6 @@
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnimalType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
@@ -133,13 +133,41 @@
             this.petFoodPriceDataGridViewTextBoxColumn1,
             this.petFoodCostDataGridViewTextBoxColumn});
             this.grvPetFood.DataSource = this.petFoodBindingSource1;
-            this.grvPetFood.Location = new System.Drawing.Point(489, 332);
+            this.grvPetFood.Location = new System.Drawing.Point(428, 249);
             this.grvPetFood.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvPetFood.Name = "grvPetFood";
             this.grvPetFood.RowHeadersWidth = 51;
             this.grvPetFood.RowTemplate.Height = 29;
-            this.grvPetFood.Size = new System.Drawing.Size(462, 230);
+            this.grvPetFood.Size = new System.Drawing.Size(404, 172);
             this.grvPetFood.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "AnimalType";
+            this.dataGridViewTextBoxColumn2.HeaderText = "AnimalType";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            // 
+            // petFoodPriceDataGridViewTextBoxColumn1
+            // 
+            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
+            // 
+            // petFoodCostDataGridViewTextBoxColumn
+            // 
+            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
             // 
             // petFoodBindingSource1
             // 
@@ -148,9 +176,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(489, 307);
+            this.label1.Location = new System.Drawing.Point(428, 230);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
+            this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pet Food Menu";
             // 
@@ -170,12 +198,12 @@
             this.priceDataGridViewTextBoxColumn,
             this.costDataGridViewTextBoxColumn});
             this.grvPets.DataSource = this.petBindingSource;
-            this.grvPets.Location = new System.Drawing.Point(12, 332);
+            this.grvPets.Location = new System.Drawing.Point(10, 249);
             this.grvPets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvPets.Name = "grvPets";
             this.grvPets.RowHeadersWidth = 51;
             this.grvPets.RowTemplate.Height = 29;
-            this.grvPets.Size = new System.Drawing.Size(457, 230);
+            this.grvPets.Size = new System.Drawing.Size(400, 172);
             this.grvPets.TabIndex = 2;
             this.grvPets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAnimalMenu_CellContentClick);
             // 
@@ -221,9 +249,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 307);
+            this.label2.Location = new System.Drawing.Point(10, 230);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Pet Menu";
             // 
@@ -243,12 +271,14 @@
             this.petFoodPriceDataGridViewTextBoxColumn,
             this.totalPriceDataGridViewTextBoxColumn});
             this.grvTransactions.DataSource = this.transactionBindingSource;
-            this.grvTransactions.Location = new System.Drawing.Point(53, 33);
+            this.grvTransactions.Location = new System.Drawing.Point(46, 25);
+            this.grvTransactions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvTransactions.Name = "grvTransactions";
             this.grvTransactions.RowHeadersWidth = 51;
             this.grvTransactions.RowTemplate.Height = 29;
-            this.grvTransactions.Size = new System.Drawing.Size(814, 188);
+            this.grvTransactions.Size = new System.Drawing.Size(712, 141);
             this.grvTransactions.TabIndex = 4;
+            this.grvTransactions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvTransactions_CellContentClick);
             // 
             // colCustomer
             // 
@@ -298,9 +328,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(102, 9);
+            this.label3.Location = new System.Drawing.Point(89, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 20);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Transaction";
             // 
@@ -315,12 +345,12 @@
             this.phoneDataGridViewTextBoxColumn,
             this.tINDataGridViewTextBoxColumn});
             this.grvCustomers.DataSource = this.customerBindingSource1;
-            this.grvCustomers.Location = new System.Drawing.Point(456, 638);
+            this.grvCustomers.Location = new System.Drawing.Point(399, 478);
             this.grvCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvCustomers.Name = "grvCustomers";
             this.grvCustomers.RowHeadersWidth = 51;
             this.grvCustomers.RowTemplate.Height = 29;
-            this.grvCustomers.Size = new System.Drawing.Size(509, 188);
+            this.grvCustomers.Size = new System.Drawing.Size(445, 141);
             this.grvCustomers.TabIndex = 6;
             // 
             // nameDataGridViewTextBoxColumn
@@ -362,9 +392,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(456, 605);
+            this.label4.Location = new System.Drawing.Point(399, 454);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 20);
+            this.label4.Size = new System.Drawing.Size(64, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "Customers";
             // 
@@ -378,11 +408,12 @@
             this.employeeTypeDataGridViewTextBoxColumn,
             this.salaryPerMonthDataGridViewTextBoxColumn});
             this.grvEmployee.DataSource = this.employeeBindingSource;
-            this.grvEmployee.Location = new System.Drawing.Point(12, 638);
+            this.grvEmployee.Location = new System.Drawing.Point(10, 478);
+            this.grvEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvEmployee.Name = "grvEmployee";
             this.grvEmployee.RowHeadersWidth = 51;
             this.grvEmployee.RowTemplate.Height = 29;
-            this.grvEmployee.Size = new System.Drawing.Size(394, 188);
+            this.grvEmployee.Size = new System.Drawing.Size(345, 141);
             this.grvEmployee.TabIndex = 8;
             // 
             // nameDataGridViewTextBoxColumn1
@@ -424,17 +455,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 605);
+            this.label5.Location = new System.Drawing.Point(10, 454);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 20);
+            this.label5.Size = new System.Drawing.Size(64, 15);
             this.label5.TabIndex = 9;
             this.label5.Text = "Employees";
             // 
             // btnRemoveCustomer
             // 
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(857, 832);
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(750, 624);
+            this.btnRemoveCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(94, 29);
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(82, 22);
             this.btnRemoveCustomer.TabIndex = 10;
             this.btnRemoveCustomer.Text = "Remove";
             this.btnRemoveCustomer.UseVisualStyleBackColor = true;
@@ -442,9 +474,10 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(757, 832);
+            this.btnAddCustomer.Location = new System.Drawing.Point(662, 624);
+            this.btnAddCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(94, 29);
+            this.btnAddCustomer.Size = new System.Drawing.Size(82, 22);
             this.btnAddCustomer.TabIndex = 11;
             this.btnAddCustomer.Text = "Add";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
@@ -452,9 +485,10 @@
             // 
             // btnRemoveTrans
             // 
-            this.btnRemoveTrans.Location = new System.Drawing.Point(198, 227);
+            this.btnRemoveTrans.Location = new System.Drawing.Point(173, 170);
+            this.btnRemoveTrans.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveTrans.Name = "btnRemoveTrans";
-            this.btnRemoveTrans.Size = new System.Drawing.Size(85, 31);
+            this.btnRemoveTrans.Size = new System.Drawing.Size(74, 23);
             this.btnRemoveTrans.TabIndex = 12;
             this.btnRemoveTrans.Text = "Remove";
             this.btnRemoveTrans.UseVisualStyleBackColor = true;
@@ -462,9 +496,10 @@
             // 
             // btnOrder
             // 
-            this.btnOrder.Location = new System.Drawing.Point(741, 227);
+            this.btnOrder.Location = new System.Drawing.Point(648, 170);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(94, 29);
+            this.btnOrder.Size = new System.Drawing.Size(82, 22);
             this.btnOrder.TabIndex = 13;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
@@ -472,9 +507,10 @@
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(229, 832);
+            this.btnAddEmployee.Location = new System.Drawing.Point(200, 624);
+            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(79, 29);
+            this.btnAddEmployee.Size = new System.Drawing.Size(69, 22);
             this.btnAddEmployee.TabIndex = 14;
             this.btnAddEmployee.Text = "Add ";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
@@ -482,9 +518,10 @@
             // 
             // btnRemoveEmployee
             // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(326, 832);
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(285, 624);
+            this.btnRemoveEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(71, 29);
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(62, 22);
             this.btnRemoveEmployee.TabIndex = 15;
             this.btnRemoveEmployee.Text = "Remove";
             this.btnRemoveEmployee.UseVisualStyleBackColor = true;
@@ -503,13 +540,13 @@
             this.expensesDataGridViewTextBoxColumn,
             this.totalDataGridViewTextBoxColumn});
             this.grvMonthlyLedger.DataSource = this.monthlyLedgerBindingSource;
-            this.grvMonthlyLedger.Location = new System.Drawing.Point(998, 51);
+            this.grvMonthlyLedger.Location = new System.Drawing.Point(873, 38);
             this.grvMonthlyLedger.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grvMonthlyLedger.Name = "grvMonthlyLedger";
             this.grvMonthlyLedger.ReadOnly = true;
             this.grvMonthlyLedger.RowHeadersWidth = 51;
             this.grvMonthlyLedger.RowTemplate.Height = 29;
-            this.grvMonthlyLedger.Size = new System.Drawing.Size(469, 181);
+            this.grvMonthlyLedger.Size = new System.Drawing.Size(410, 136);
             this.grvMonthlyLedger.TabIndex = 16;
             // 
             // yearDataGridViewTextBoxColumn
@@ -558,10 +595,10 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(1138, 619);
+            this.btnLoad.Location = new System.Drawing.Point(996, 464);
             this.btnLoad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(94, 29);
+            this.btnLoad.Size = new System.Drawing.Size(82, 22);
             this.btnLoad.TabIndex = 17;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
@@ -570,18 +607,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(998, 20);
+            this.label6.Location = new System.Drawing.Point(873, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 20);
+            this.label6.Size = new System.Drawing.Size(91, 15);
             this.label6.TabIndex = 18;
             this.label6.Text = "Monthly Ledger";
             // 
             // btnAddTrans
             // 
-            this.btnAddTrans.Location = new System.Drawing.Point(102, 227);
-            this.btnAddTrans.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddTrans.Location = new System.Drawing.Point(89, 170);
             this.btnAddTrans.Name = "btnAddTrans";
-            this.btnAddTrans.Size = new System.Drawing.Size(66, 31);
+            this.btnAddTrans.Size = new System.Drawing.Size(58, 23);
             this.btnAddTrans.TabIndex = 19;
             this.btnAddTrans.Text = "Add";
             this.btnAddTrans.UseVisualStyleBackColor = true;
@@ -589,10 +625,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1238, 619);
+            this.btnSave.Location = new System.Drawing.Point(1083, 464);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(94, 29);
+            this.btnSave.Size = new System.Drawing.Size(82, 22);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -600,9 +636,10 @@
             // 
             // btnAddPet
             // 
-            this.btnAddPet.Location = new System.Drawing.Point(275, 567);
+            this.btnAddPet.Location = new System.Drawing.Point(241, 425);
+            this.btnAddPet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddPet.Name = "btnAddPet";
-            this.btnAddPet.Size = new System.Drawing.Size(94, 29);
+            this.btnAddPet.Size = new System.Drawing.Size(82, 22);
             this.btnAddPet.TabIndex = 21;
             this.btnAddPet.Text = "Add";
             this.btnAddPet.UseVisualStyleBackColor = true;
@@ -610,9 +647,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(375, 567);
+            this.button1.Location = new System.Drawing.Point(328, 425);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.Size = new System.Drawing.Size(82, 22);
             this.button1.TabIndex = 22;
             this.button1.Text = "Remove";
             this.button1.UseVisualStyleBackColor = true;
@@ -620,9 +658,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(735, 567);
+            this.button2.Location = new System.Drawing.Point(643, 425);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.Size = new System.Drawing.Size(82, 22);
             this.button2.TabIndex = 23;
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
@@ -630,9 +669,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(835, 567);
+            this.button3.Location = new System.Drawing.Point(731, 425);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 29);
+            this.button3.Size = new System.Drawing.Size(82, 22);
             this.button3.TabIndex = 24;
             this.button3.Text = "Remove";
             this.button3.UseVisualStyleBackColor = true;
@@ -648,12 +688,13 @@
             this.dataGridViewTextBoxColumn1,
             this.colAnimalTypeReport,
             this.colTotalSold});
-            this.dataGridViewPetReport.Location = new System.Drawing.Point(998, 332);
+            this.dataGridViewPetReport.Location = new System.Drawing.Point(873, 249);
+            this.dataGridViewPetReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewPetReport.Name = "dataGridViewPetReport";
             this.dataGridViewPetReport.ReadOnly = true;
             this.dataGridViewPetReport.RowHeadersWidth = 51;
             this.dataGridViewPetReport.RowTemplate.Height = 29;
-            this.dataGridViewPetReport.Size = new System.Drawing.Size(482, 230);
+            this.dataGridViewPetReport.Size = new System.Drawing.Size(422, 172);
             this.dataGridViewPetReport.TabIndex = 25;
             // 
             // colYearReport
@@ -687,18 +728,19 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1138, 667);
+            this.pictureBox1.Location = new System.Drawing.Point(996, 500);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(437, 264);
+            this.pictureBox1.Size = new System.Drawing.Size(382, 198);
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(998, 307);
+            this.label7.Location = new System.Drawing.Point(873, 230);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 20);
+            this.label7.Size = new System.Drawing.Size(62, 15);
             this.label7.TabIndex = 27;
             this.label7.Text = "Pet Report";
             // 
@@ -726,39 +768,11 @@
             this.AnimalType.ReadOnly = true;
             this.AnimalType.Width = 125;
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "AnimalType";
-            this.dataGridViewTextBoxColumn2.HeaderText = "AnimalType";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            // 
-            // petFoodPriceDataGridViewTextBoxColumn1
-            // 
-            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
-            // 
-            // petFoodCostDataGridViewTextBoxColumn
-            // 
-            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1531, 913);
+            this.ClientSize = new System.Drawing.Size(1340, 685);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridViewPetReport);

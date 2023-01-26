@@ -266,12 +266,12 @@ namespace Session_11 {
         private void btnOrder_Click_1(object sender, EventArgs e)
         {
             //PopulateLastChanges();
-            //Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
-            //Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
-            //PetFood petFood = (PetFood)grvPetFood.SelectedRows[0].DataBoundItem;
-            //Pet newPet = (Pet)grvPets.SelectedRows[0].DataBoundItem;
+            Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
+            Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
+            PetFood petFood = (PetFood)grvPetFood.SelectedRows[0].DataBoundItem;
+            Pet newPet = (Pet)grvPets.SelectedRows[0].DataBoundItem;
 
-            //newTransaction(employee, newPet, petFood, newCust);
+            newTransaction(employee, newPet, petFood, newCust);
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
@@ -281,6 +281,10 @@ namespace Session_11 {
 
         private void btnCancerl_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void grvTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
     }

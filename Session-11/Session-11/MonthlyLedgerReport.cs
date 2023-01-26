@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data;
+using DevExpress.Office.Utils;
 using DevExpress.XtraGantt.Scheduling;
 using System;
 using System.Collections.Generic;
@@ -23,17 +24,45 @@ namespace Session_11 {
             Settings = settings;                
         }
 
-        public void CreateMonthlyLedgerReport(List<Transaction> transactions){          
+        public void CreateMonthlyLedgerReportCurrent(List<Transaction> transactions){          
             int year = DateTime.Today.Year;
             int month = DateTime.Today.Month;
-            Settings settings = new Settings(); 
-            double income = CalculateIncome(transactions);
-            double expenses = CalculateExpenses(transactions);                   
+            Settings settings = new Settings();             
+            List<Transaction> transactionsListByCurrentMonthAndYear = FilterTransactions(transactions, year, month);
+            
+            //double income = CalculateIncome(transactions);
+            //double expenses = CalculateExpenses(transactions);
+
+            double income = CalculateIncome(transactionsListByCurrentMonthAndYear);
+            double expenses = CalculateExpenses(transactionsListByCurrentMonthAndYear);
             MonthlyLedger monthlyLedger = new MonthlyLedger(year, month, income, expenses);
             monthlyLedger.ShowMonthlyLedger();
+        }
 
+        private List<Transaction> FilterTransactions(List<Transaction> transactions, int year, int month) {
+            List<Transaction> filteredTransactions = new List<Transaction>();
 
-        }           
+            foreach(Transaction transaction in transactions) { 
+                if(CheckYear(transaction, year) && CheckMonth(transaction, month)) {
+                    filteredTransactions.Add(transaction);  
+                }
+            }
+            return filteredTransactions;    
+        }
+
+        private bool CheckMonth(Transaction transaction, int month) {
+            if (transaction.TransactionDate.Month == month) {
+                return true;
+            }
+            return false;
+        }
+
+        private bool CheckYear(Transaction transaction, int year) {
+            if(transaction.TransactionDate.Year== year) {
+                return true;
+            }
+            return false;   
+        }
 
         private double CalculateExpenses(List<Transaction> transactions) {
             PetFood petFood = new PetFood();
