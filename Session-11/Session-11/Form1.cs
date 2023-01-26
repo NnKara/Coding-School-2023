@@ -295,5 +295,30 @@ namespace Session_11 {
         private void gridControl2_Click(object sender, EventArgs e) {
 
         }
+
+        private void gridControl4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridControl6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
