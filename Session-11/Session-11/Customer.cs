@@ -11,26 +11,19 @@ namespace Session_11 {
         public string TIN { get; set; }
 
         public string FullName {
-            get {
-                return String.Format("{0} {1}", Name, Surname);
-            }
+            get { return String.Format("{0} {1}", Name, Surname); }
         }
 
 
-        public Customer(Guid customerID, String name,String surname, string phone, string tIN) : base(name,surname)
-        {
+        public Customer(Guid customerID, String name,String surname, string phone, string tIN) : base(name,surname) {
             CustomerID = customerID;
             Phone = phone;
             TIN = tIN;
         }
 
-        public Customer()
-        {
+        public Customer() {
             CustomerID = Guid.NewGuid();
-        }
-
-
-       
+        }    
         
     }
 }

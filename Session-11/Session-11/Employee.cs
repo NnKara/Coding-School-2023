@@ -15,24 +15,18 @@ namespace Session_11 {
         public EmployeeTypeEnum EmployeeType { get; set; }
 
         public string FullName {
-            get {
-                return String.Format("{0} {1}", Name, Surname);
-            }
+            get { return String.Format("{0} {1}", Name, Surname); }
         }
 
-        public Employee()
-        {
+        public Employee() {
             EmployeeID = Guid.NewGuid();
         }
 
 
-        public Employee(Guid employeeID, String name, String surname, double salaryPerMonth, EmployeeTypeEnum employeeType) : base(name,surname)
-        {
+        public Employee(Guid employeeID, String name, String surname, double salaryPerMonth, EmployeeTypeEnum employeeType) : base(name,surname) {
             EmployeeID = employeeID;
             SalaryPerMonth = salaryPerMonth;
             EmployeeType = employeeType;
-        }
-
-    
+        }    
     }
 }

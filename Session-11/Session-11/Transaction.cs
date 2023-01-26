@@ -35,5 +35,4 @@ namespace Session_11 {
             TotalPrice = totalPrice;
         }
     }
-
 }

@@ -26,17 +26,12 @@ namespace Session_11 {
 
         public MonthlyLedger CreateMonthlyLedgerReportCurrent(List<Transaction> transactions){          
             int year = DateTime.Today.Year;
-            int month = DateTime.Today.Month;
-            //Settings settings = new Settings();             
-            List<Transaction> transactionsListByCurrentMonthAndYear = FilterTransactions(transactions, year, month);
-            
-            //double income = CalculateIncome(transactions);
-            //double expenses = CalculateExpenses(transactions);
-
+            int month = DateTime.Today.Month;                         
+            List<Transaction> transactionsListByCurrentMonthAndYear = FilterTransactions(transactions, year, month); 
             double income = CalculateIncome(transactionsListByCurrentMonthAndYear);
             double expenses = CalculateExpenses(transactionsListByCurrentMonthAndYear);
             MonthlyLedger monthlyLedger = new MonthlyLedger(year, month, income, expenses);
-            string result = monthlyLedger.ShowMonthlyLedger(); // if we show it in simple textbox with string input
+            string result = monthlyLedger.ShowMonthlyLedger(); // if we show it in simple textbox
             return monthlyLedger;
         }
 
@@ -99,8 +94,6 @@ namespace Session_11 {
         }
 
         private double CalculateIncome(List<Transaction> transactions) {
-            //PetFood petFood = new PetFood();
-            //Settings settings = new Settings();
             Pet pet = new Pet();
             double sumIncome = 0;
             foreach (Transaction transaction in transactions) {

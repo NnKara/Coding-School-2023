@@ -18,7 +18,5 @@ namespace Session_11 {
         public void SetTotalPrice() {
             TotalPrice = Transactions.Sum( x => x.TotalPrice); 
         }
-
-
     }
 }

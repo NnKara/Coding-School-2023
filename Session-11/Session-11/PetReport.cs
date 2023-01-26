@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_11 {
-    public class PetReport :Pet {
+    public class PetReport : Pet {
         public int Year { get; set; }
         public int Month { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
@@ -52,8 +52,5 @@ namespace Session_11 {
             petReport.Add(ShowPetReport(AnimalTypeEnum.Dog, totalSoldDog));
             return petReport;
         }
-
-
     }
-
 }

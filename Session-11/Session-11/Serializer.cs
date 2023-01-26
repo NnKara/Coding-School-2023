@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Session_11
 {
-    public class Serializer
-    {
+    public class Serializer {
         public void Serialize(object obj) {
             string jsonString = JsonSerializer.Serialize(obj);
         }
@@ -28,6 +27,5 @@ namespace Session_11
 
             return obj;
         }
-
     }
 }
