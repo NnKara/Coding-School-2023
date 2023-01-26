@@ -27,9 +27,9 @@ namespace Session_11 {
             SetControllers();
             SetControls();
 
-            PopulateLastChanges();
-            List<Transaction> transactions = petShop.Transactions;
-            monthlyLedgerReport.CreateMonthlyLedgerReport(transactions);
+            //PopulateLastChanges();
+            //List<Transaction> transactions = petShop.Transactions;
+            //monthlyLedgerReport.CreateMonthlyLedgerReport(transactions);
         }
 
         public TransactionSummary newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer)
@@ -65,15 +65,6 @@ namespace Session_11 {
 
         }
 
-        public void PopulateTransaction()
-        {
-            Pet pet = new Pet();
-            Transaction newTras = new Transaction()
-            {
-                PetPrice = pet.Price,
-
-            };
-        }
 
         public void PopulatePets()
         {
@@ -226,37 +217,16 @@ namespace Session_11 {
 
         private void btnSave_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
-            serializer.SerializeToFile(petShop, "test.json");  //TODO CHANGE NAME 
+            serializer.SerializeToFile(petShop, "PetShop.json");  
         }
 
         private void btnLoad_Click(object sender, EventArgs e) {
             Serializer serializer = new Serializer();
-            petShop = serializer.Deserialize<PetShop>("test.json");
-            PopulateLastChanges();
+            petShop = serializer.Deserialize<PetShop>("PetShop.json");
+            //PopulateLastChanges();
+            SetControllers();
 
             MessageBox.Show("Data Load Correctly!");
-        }
-
-        public void PopulateLastChanges()
-        {
-            customerBindingSource1.DataSource = petShop.Customers;
-            grvCustomers.DataSource = customerBindingSource1;
-
-            employeeBindingSource.DataSource = petShop.Employees;
-            grvEmployee.DataSource = employeeBindingSource;
-
-
-            petFoodBindingSource1.DataSource = petShop.PetFoods;
-            grvPetFood.DataSource = petFoodBindingSource1;
-
-            monthlyLedgerBindingSource.DataSource = petShop.MonthlyLedgers;
-            grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
-
-            transactionBindingSource.DataSource = petShop.Transactions;
-            grvTransactions.DataSource = transactionBindingSource;
-
-            petBindingSource.DataSource = petShop.Pets;
-            grvPets.DataSource = petBindingSource;
         }
 
         private void btnAddPet_Click(object sender, EventArgs e)
@@ -295,34 +265,23 @@ namespace Session_11 {
 
         private void btnOrder_Click_1(object sender, EventArgs e)
         {
+            //PopulateLastChanges();
+            //Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
+            //Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
+            //PetFood petFood = (PetFood)grvPetFood.SelectedRows[0].DataBoundItem;
+            //Pet newPet = (Pet)grvPets.SelectedRows[0].DataBoundItem;
 
+            //newTransaction(employee, newPet, petFood, newCust);
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            PopulateLastChanges();
-            Customer newCust = (Customer)grvCustomers.SelectedRows[0].DataBoundItem;
-            Employee employee = (Employee)grvEmployee.SelectedRows[0].DataBoundItem;
-            PetFood petFood = (PetFood)grvPetFood.SelectedRows[0].DataBoundItem;
-            Pet newPet = (Pet)grvPets.SelectedRows[0].DataBoundItem;
-
-            newTransaction(employee, newPet, petFood, newCust);
+      
         }
 
         private void btnCancerl_Click(object sender, EventArgs e)
         {
 
         }
-
-        //public Transaction Buy(Customer customer, Pet pet)
-        //{
-
-
-        //    Transaction newTras = new Transaction();
-        //    customer.CustomerID = pet.PetID;
-            
-
-
-        //}
     }
 }
