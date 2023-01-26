@@ -142,38 +142,38 @@ namespace Session_11 {
             };
             petShop.Employees.Add(employee1);
             petShop.Employees.Add(employee2);
-            employeeBindingSource.DataSource = petShop.Employees;
+            bsEmployee.DataSource = petShop.Employees;
 
         }
 
         public void SetControls() {
            
-            DataGridViewComboBoxColumn colCustomer = grvTransactions.Columns["colCustomer"] as DataGridViewComboBoxColumn;
-            colCustomer.DataSource = petShop.Customers;
-            colCustomer.DisplayMember = "FullName";
-            colCustomer.ValueMember = "CustomerID";
-            DataGridViewComboBoxColumn colEmployee = grvTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
-            colEmployee.DataSource = petShop.Employees;
-            colEmployee.DisplayMember = "FullName";
-            colEmployee.ValueMember = "EmployeeID";
-            DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
-            colAnimalType.DataSource = petShop.Pets;
-            colAnimalType.DisplayMember = "AnimalBreed";
+           // DataGridViewComboBoxColumn colCustomer = grvTransactions.Columns["colCustomer"] as DataGridViewComboBoxColumn;
+         //   colCustomer.DataSource = petShop.Customers;
+         //   colCustomer.DisplayMember = "FullName";
+         //   colCustomer.ValueMember = "CustomerID";
+         ////   DataGridViewComboBoxColumn colEmployee = grvTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
+         //   colEmployee.DataSource = petShop.Employees;
+         //   colEmployee.DisplayMember = "FullName";
+         //   colEmployee.ValueMember = "EmployeeID";
+         // //  DataGridViewComboBoxColumn colAnimalType = grvTransactions.Columns["colAnimalType"] as DataGridViewComboBoxColumn;
+         //   colAnimalType.DataSource = petShop.Pets;
+         //   colAnimalType.DisplayMember = "AnimalBreed";
         }
 
         public void SetControllers() {
-            customerBindingSource1.DataSource = petShop.Customers;
-            grvCustomers.DataSource = customerBindingSource1;
-            petBindingSource.DataSource = petShop.Pets;
-            grvPets.DataSource = petBindingSource;
-            petFoodBindingSource1.DataSource = petShop.PetFoods;
-            grvPetFood.DataSource = petFoodBindingSource1;
-            employeeBindingSource.DataSource = petShop.Employees;
-            grvEmployee.DataSource = employeeBindingSource;
-            transactionBindingSource.DataSource = petShop.Transactions;
-            grvTransactions.DataSource = transactionBindingSource;
+            bsCustomer.DataSource = petShop.Customers;
+           // grvCustomers.DataSource = customerBindingSource1;
+            bsPet.DataSource = petShop.Pets;
+          //  grvPets.DataSource = petBindingSource;
+            bsPetFood.DataSource = petShop.PetFoods;
+            grvPetFood.DataSource = bsPetFood;
+            bsEmployee.DataSource = petShop.Employees;
+          //  grvEmployee.DataSource = employeeBindingSource;
+            bsTransaction.DataSource = petShop.Transactions;
+          //  grvTransactions.DataSource = transactionBindingSource;
             monthlyLedgerBindingSource.DataSource = petShop.MonthlyLedgers;
-            grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
+          //  grvMonthlyLedger.DataSource = monthlyLedgerBindingSource;
         }
 
 
@@ -199,20 +199,20 @@ namespace Session_11 {
 
         private void button1_Click(object sender, EventArgs e) {
             Transaction tras=new Transaction();
-            transactionBindingSource.Add(tras);
+            bsTransaction.Add(tras);
         }
 
         private void btnRemoveTrans_Click(object sender, EventArgs e) {
-            transactionBindingSource.RemoveCurrent();
+            bsTransaction.RemoveCurrent();
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e) {
             Employee newEmployee= new Employee();
-            employeeBindingSource.Add(newEmployee);
+            bsEmployee.Add(newEmployee);
         }
 
         private void btnRemoveEmployee_Click(object sender, EventArgs e) {
-            employeeBindingSource.RemoveCurrent();
+            bsEmployee.RemoveCurrent();
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
@@ -232,35 +232,35 @@ namespace Session_11 {
         private void btnAddPet_Click(object sender, EventArgs e)
         {
             Pet pet=new Pet();
-            petBindingSource.Add(pet);
+            bsPet.Add(pet);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            petBindingSource.RemoveCurrent();
+            bsPet.RemoveCurrent();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             PetFood petFood= new PetFood();          
-            petFoodBindingSource1.Add(petFood);
+            bsPetFood.Add(petFood);
           
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            petFoodBindingSource1.RemoveCurrent();
+            bsPetFood.RemoveCurrent();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             Customer newCust = new Customer();           
-            customerBindingSource1.Add(newCust);
+            bsCustomer.Add(newCust);
         }
 
         private void btnRemoveCustomer_Click(object sender, EventArgs e)
         {
-            customerBindingSource1.RemoveCurrent();
+            bsCustomer.RemoveCurrent();
         }
 
         private void btnOrder_Click_1(object sender, EventArgs e)
@@ -280,6 +280,43 @@ namespace Session_11 {
         }
 
         private void btnCancerl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customerBindingSource1_CurrentChanged(object sender, EventArgs e) {
+
+        }
+
+        private void gridControl3_Click(object sender, EventArgs e) {
+
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e) {
+
+        }
+
+        private void gridControl4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridControl6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelControl6_Click(object sender, EventArgs e)
         {
 
         }
