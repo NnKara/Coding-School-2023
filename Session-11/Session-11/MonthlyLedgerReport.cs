@@ -24,10 +24,10 @@ namespace Session_11 {
             Settings = settings;                
         }
 
-        public void CreateMonthlyLedgerReportCurrent(List<Transaction> transactions){          
+        public MonthlyLedger CreateMonthlyLedgerReportCurrent(List<Transaction> transactions){          
             int year = DateTime.Today.Year;
             int month = DateTime.Today.Month;
-            Settings settings = new Settings();             
+            //Settings settings = new Settings();             
             List<Transaction> transactionsListByCurrentMonthAndYear = FilterTransactions(transactions, year, month);
             
             //double income = CalculateIncome(transactions);
@@ -36,8 +36,31 @@ namespace Session_11 {
             double income = CalculateIncome(transactionsListByCurrentMonthAndYear);
             double expenses = CalculateExpenses(transactionsListByCurrentMonthAndYear);
             MonthlyLedger monthlyLedger = new MonthlyLedger(year, month, income, expenses);
-            monthlyLedger.ShowMonthlyLedger();
+            string result = monthlyLedger.ShowMonthlyLedger(); // if we show it in simple textbox with string input
+            return monthlyLedger;
         }
+
+
+        public List<MonthlyLedger> CreateWholeYearLedgerReport(List<Transaction> transactions) {
+            List<MonthlyLedger> ledgerPerMonth = new List<MonthlyLedger>();
+            List<string> ledgerStringPerMonth = new List<string>();  // if we don't show it in a grid
+
+            int currentYear = DateTime.Today.Year;
+
+
+            for (int month = 1; month <= 12; month++) {
+                List<Transaction> transactionsByMonth = FilterTransactions(transactions, currentYear, month);
+                double income = CalculateIncome(transactionsByMonth);
+                double expenses = CalculateExpenses(transactionsByMonth);
+                MonthlyLedger monthlyLedger = new MonthlyLedger(currentYear, month, income, expenses);
+                string result = monthlyLedger.ShowMonthlyLedger();
+                ledgerStringPerMonth.Add(result);  // if we show it in simple textbox 
+                ledgerPerMonth.Add(monthlyLedger);
+            }
+
+            return ledgerPerMonth;
+        }
+
 
         private List<Transaction> FilterTransactions(List<Transaction> transactions, int year, int month) {
             List<Transaction> filteredTransactions = new List<Transaction>();
@@ -76,8 +99,8 @@ namespace Session_11 {
         }
 
         private double CalculateIncome(List<Transaction> transactions) {
-            PetFood petFood = new PetFood();
-            Settings settings = new Settings();
+            //PetFood petFood = new PetFood();
+            //Settings settings = new Settings();
             Pet pet = new Pet();
             double sumIncome = 0;
             foreach (Transaction transaction in transactions) {
