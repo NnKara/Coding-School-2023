@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.transactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grvPetFood = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.petFoodBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.grvPets = new System.Windows.Forms.DataGridView();
@@ -96,10 +100,6 @@
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Month = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AnimalType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.petFoodCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.transactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvPetFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.petFoodBindingSource1)).BeginInit();
@@ -140,6 +140,34 @@
             this.grvPetFood.RowTemplate.Height = 29;
             this.grvPetFood.Size = new System.Drawing.Size(462, 230);
             this.grvPetFood.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "AnimalType";
+            this.dataGridViewTextBoxColumn2.HeaderText = "AnimalType";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            // 
+            // petFoodPriceDataGridViewTextBoxColumn1
+            // 
+            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
+            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
+            // 
+            // petFoodCostDataGridViewTextBoxColumn
+            // 
+            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
+            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
             // 
             // petFoodBindingSource1
             // 
@@ -306,7 +334,6 @@
             // 
             // grvCustomers
             // 
-            this.grvCustomers.AllowUserToAddRows = false;
             this.grvCustomers.AutoGenerateColumns = false;
             this.grvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -492,6 +519,7 @@
             // 
             // grvMonthlyLedger
             // 
+            this.grvMonthlyLedger.AllowUserToAddRows = false;
             this.grvMonthlyLedger.AutoGenerateColumns = false;
             this.grvMonthlyLedger.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grvMonthlyLedger.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -725,34 +753,6 @@
             this.AnimalType.Name = "AnimalType";
             this.AnimalType.ReadOnly = true;
             this.AnimalType.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "AnimalType";
-            this.dataGridViewTextBoxColumn2.HeaderText = "AnimalType";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            // 
-            // petFoodPriceDataGridViewTextBoxColumn1
-            // 
-            this.petFoodPriceDataGridViewTextBoxColumn1.DataPropertyName = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.HeaderText = "PetFoodPrice";
-            this.petFoodPriceDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.petFoodPriceDataGridViewTextBoxColumn1.Name = "petFoodPriceDataGridViewTextBoxColumn1";
-            // 
-            // petFoodCostDataGridViewTextBoxColumn
-            // 
-            this.petFoodCostDataGridViewTextBoxColumn.DataPropertyName = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.HeaderText = "PetFoodCost";
-            this.petFoodCostDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.petFoodCostDataGridViewTextBoxColumn.Name = "petFoodCostDataGridViewTextBoxColumn";
             // 
             // Form1
             // 
