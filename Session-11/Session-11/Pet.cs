@@ -39,6 +39,21 @@ namespace Session_11 {
         public Pet()
         {
             PetID=Guid.NewGuid();
+            switch(AnimalType)
+            {
+                  
+                    case AnimalTypeEnum.Cat:
+                    Price = 100;
+                    break;
+                    case AnimalTypeEnum.Dog:
+                    Price = 120;
+                    break;
+                    case AnimalTypeEnum.Bird:
+                    Price= 200;
+                    break;
+                    
+
+            }
         }
     
 
