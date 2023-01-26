@@ -16,5 +16,10 @@ namespace Session_11
         {
             InitializeComponent();
         }
+
+        private void gridControl3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
