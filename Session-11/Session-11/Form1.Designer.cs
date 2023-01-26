@@ -824,7 +824,6 @@
             // 
             // gridControl6
             // 
-            this.gridControl6.DataSource = this.bsPet;
             this.gridControl6.Location = new System.Drawing.Point(3, 12);
             this.gridControl6.MainView = this.gridView6;
             this.gridControl6.Name = "gridControl6";
@@ -882,7 +881,6 @@
             // 
             // gridControl7
             // 
-            this.gridControl7.DataSource = this.bsPet;
             this.gridControl7.Location = new System.Drawing.Point(3, 12);
             this.gridControl7.MainView = this.gridView7;
             this.gridControl7.Name = "gridControl7";
