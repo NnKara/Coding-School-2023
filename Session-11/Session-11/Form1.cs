@@ -7,7 +7,7 @@ namespace Session_11 {
         public Transaction transaction;
         public PetShop petShop;
         public Customer customer;
-
+        public MonthlyLedgerReport monthlyLedgerReport;
        
         public Form1() {
             InitializeComponent();
@@ -26,6 +26,10 @@ namespace Session_11 {
             PopulatePetFoods();
             SetControllers();
             SetControls();
+
+            PopulateLastChanges();
+            List<Transaction> transactions = petShop.Transactions;
+            monthlyLedgerReport.CreateMonthlyLedgerReport(transactions);
         }
 
         public TransactionSummary newTransaction(Employee employee, Pet pet, PetFood petFood, Customer customer)
@@ -59,6 +63,16 @@ namespace Session_11 {
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
+        }
+
+        public void PopulateTransaction()
+        {
+            Pet pet = new Pet();
+            Transaction newTras = new Transaction()
+            {
+                PetPrice = pet.Price,
+
+            };
         }
 
         public void PopulatePets()

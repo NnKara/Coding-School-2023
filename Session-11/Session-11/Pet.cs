@@ -33,6 +33,8 @@ namespace Session_11 {
             }
         }
 
+ 
+
 
         public Pet()
         {
@@ -50,9 +52,6 @@ namespace Session_11 {
                 Price = price;
                 Cost = cost;
         }
-
-
-
 
         }
     }
