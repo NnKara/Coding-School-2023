@@ -17,7 +17,8 @@ namespace Session_11 {
             Name = name;
             Surname = surname;
         }
-        public Person() { }
+        public Person()
+        { }
         
 
 

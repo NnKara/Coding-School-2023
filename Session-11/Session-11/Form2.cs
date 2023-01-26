@@ -8,9 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Session_11 {
-    public partial class Form2 : Form {
-        public Form2() {
+namespace Session_11
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
             InitializeComponent();
         }
     }

@@ -1,5 +1,7 @@
-﻿namespace Session_11 {
-    partial class Form2 {
+﻿namespace Session_11
+{
+    partial class Form2
+    {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -9,8 +11,10 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -22,15 +26,11 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent() {
-            this.SuspendLayout();
-            // 
-            // Form2
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 593);
-            this.Name = "Form2";
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "Form2";
             this.ResumeLayout(false);
 
