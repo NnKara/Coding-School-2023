@@ -17,8 +17,9 @@ namespace Session_11
         public List<PetFood>? PetFoods { get; set; }
         public List<Transaction>? Transactions { get; set; }
         public List<MonthlyLedger>? MonthlyLedgers { get; set; }    
-        public Stock stock { get; set; }
-        private void Initialize() {
+        public Stock Stock { get; set; }
+
+        public void Initialize() {
             Stock stock = new Stock();
             Employee staffEmployee = CreateEmployee();
             Customer customer = CreateCustomer();
@@ -27,7 +28,7 @@ namespace Session_11
             double petFoodCost = 9.2;
             double petFoodPrice = petFoodQty * petFoodCost;
         }
-        private Pet CreatePet(string breed) {
+        public Pet CreatePet(string breed) {
 
             Pet pet = new Pet() {
                 PetID = Guid.NewGuid(),
@@ -39,7 +40,7 @@ namespace Session_11
             };
             return pet;
         }
-        private Customer CreateCustomer() {
+        public Customer CreateCustomer() {
             Customer customer = new Customer() {
                 CustomerID = Guid.NewGuid(),
                 Name = "John",
@@ -49,7 +50,7 @@ namespace Session_11
             };
             return customer;
         }
-        private Employee CreateEmployee() {
+        public Employee CreateEmployee() {
             Employee employee = new Employee() {
                 EmployeeID = Guid.NewGuid(),
                 Name = "Jane",
@@ -59,7 +60,7 @@ namespace Session_11
             };
             return employee;
         }
-        private void AddTransaction(Employee employee, Customer customer, Pet pet, PetFood petFood, double petFoodQty, double profit) {
+        public void AddTransaction(Employee employee, Customer customer, Pet pet, PetFood petFood, double petFoodQty, double profit) {
             List<Transaction> transactions = new List<Transaction>();
             Transaction transaction = CreateTransaction(employee, customer, pet, petFood, petFoodQty, profit);
             transactions.Add(transaction);
@@ -79,15 +80,14 @@ namespace Session_11
             };
             return transaction;
         }       
-        public PetShop()
-        {
+        public PetShop() {
             Pets = new List<Pet>();
             Customers = new List<Customer>();
             Employees = new List<Employee>();
-            PetFoods= new List<PetFood>();
+            PetFoods = new List<PetFood>();
             Transactions = new List<Transaction>();
-            MonthlyLedgers=new List<MonthlyLedger>();
-            stock=new Stock();
+            MonthlyLedgers = new List<MonthlyLedger>();
+            Stock = new Stock();
         }
     }   
 }

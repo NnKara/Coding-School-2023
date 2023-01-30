@@ -10,11 +10,9 @@ namespace Session_11 {
         public double Rent { get; set; }
         public double StaffSalary { get; set; }
 
-
         public Settings() {
             Rent = 2000;
             StaffSalary = 700;
         }
-
     }
 }

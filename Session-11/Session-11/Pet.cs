@@ -25,22 +25,14 @@ namespace Session_11 {
         public PetStatusEnum Status { get; set; }
         public double Price { get; set;}
         public double Cost { get; set; }
-
-
         public string AnimalBreed {
-            get {
-                return String.Format("{0} {1}",AnimalType,Breed);
-            }
+            get { return String.Format("{0} {1}", AnimalType, Breed); }
+            set { Breed = value; }  
         }
 
- 
-
-
-        public Pet()
-        {
+        public Pet() {
             PetID=Guid.NewGuid();
-            switch(AnimalType)
-            {
+            switch(AnimalType) {
                   
                     case AnimalTypeEnum.Cat:
                     Price = 100;
@@ -51,12 +43,8 @@ namespace Session_11 {
                     case AnimalTypeEnum.Bird:
                     Price= 200;
                     break;
-                    
-
             }
         }
-    
-
 
         public Pet(Guid petID, string breed, AnimalTypeEnum animalType, PetStatusEnum status, double price, double cost)
         {
@@ -67,7 +55,6 @@ namespace Session_11 {
                 Price = price;
                 Cost = cost;
         }
-
-        }
     }
+}
 
