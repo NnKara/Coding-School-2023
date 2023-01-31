@@ -14,6 +14,12 @@ namespace Orm.Configuration
             builder.HasKey(pet => pet.PetID);
             builder.Property(pet=>pet.PetID).ValueGeneratedOnAdd();
             builder.Property(pet => pet.Breed).HasMaxLength(15);
+            builder.Property(pet => pet.Price).HasPrecision(10, 5);
+            builder.Property(pet => pet.Cost).HasPrecision(10, 5);
+            builder.HasOne(pet => pet.Transaction)
+                .WithOne(transaction => transaction.Pet)
+                .HasForeignKey<Pet>(pet => pet.TransactionID).OnDelete(DeleteBehavior.ClientSetNull);
+    
         }
     }
 }

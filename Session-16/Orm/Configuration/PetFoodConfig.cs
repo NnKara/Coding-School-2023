@@ -15,8 +15,14 @@ namespace Orm.Configuration
         public void Configure(EntityTypeBuilder<PetFood> builder)
         {
             builder.ToTable("PetFood");
-            builder.HasKey(petfood => petfood.PetID);
-            builder.Property(petfood=>petfood.PetID).ValueGeneratedOnAdd();               
+            builder.HasKey(petfood => petfood.PetFoodID);
+            builder.Property(petfood => petfood.PetFoodID).ValueGeneratedOnAdd();
+            builder.Property(petfood => petfood.Cost).HasPrecision(10, 5);
+            builder.Property(petfood => petfood.Price).HasPrecision(10, 5);
+
+            builder.HasOne(petfood => petfood.Transaction)
+                .WithOne(transaction => transaction.PetFood)
+                .HasForeignKey<PetFood>(petfood => petfood.TransactionID).OnDelete(DeleteBehavior.ClientSetNull); 
         }
     }
 }

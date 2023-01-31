@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShopWindowsFORM", "Session-16\PetShopWindowsFORM.csproj", "{ED916DC5-7FC9-49ED-B974-64EDC3194303}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Session-16", "Session-16\Session-16.csproj", "{ED916DC5-7FC9-49ED-B974-64EDC3194303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8FCC1D31-56D8-49A7-87E7-3C2C8F3444CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{8FCC1D31-56D8-49A7-87E7-3C2C8F3444CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orm", "Orm\Orm.csproj", "{F42BE6CB-8EFD-4A44-B95C-31D35BBA5C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orm", "Orm\Orm.csproj", "{F42BE6CB-8EFD-4A44-B95C-31D35BBA5C31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

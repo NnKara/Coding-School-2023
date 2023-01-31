@@ -18,5 +18,14 @@ namespace Model
         public int PetFoodQty { get; set; }
         public decimal PetFoodPrice { get; set; }
         public decimal TotalPrice { get; set; }
+        public Pet Pet { get; set; } = null!;
+        public PetFood PetFood { get; set; } = null!;
+        public Customer Customer { get; set; } = null!;
+        public Employee Employee { get; set; } = null!;
+
+        public Transaction()
+        {
+            TransactionID = Guid.NewGuid();
+        }
     }
 }
