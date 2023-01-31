@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Orm.Repository
 {
-    internal class EmployeeRepo : EntityInterface<Employee>
+    public class EmployeeRepo : EntityInterface<Employee>
     {
         public void Add(Employee entity)
         {
