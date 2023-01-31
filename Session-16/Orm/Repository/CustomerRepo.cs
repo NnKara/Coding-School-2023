@@ -32,22 +32,14 @@ namespace Orm.Repository
         public IList<Customer> GetAll()
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Customers.Include(customer => customer.CustomerID)
-                .Include(customer => customer.CustomerName)
-                .Include(customer => customer.CustomerSurname)
-                .Include(customer => customer.Phone)
-                .Include(customer => customer.TIN).ToList();
+            return petShopContext.Customers.ToList();
                 
         }
 
         public Customer? GetById(Guid id)
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Customers.Include(customer => customer.CustomerID)
-               .Include(customer => customer.CustomerName)
-               .Include(customer => customer.CustomerSurname)
-               .Include(customer => customer.Phone)
-               .Include(customer => customer.TIN).SingleOrDefault();
+            return petShopContext.Customers.SingleOrDefault();
 
         }
 

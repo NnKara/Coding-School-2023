@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orm.Context;
 
@@ -11,9 +12,11 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    partial class PetShopContextModelSnapshot : ModelSnapshot
+    [Migration("20230131143821_LastMigration")]
+    partial class LastMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,6 +161,29 @@ namespace Orm.Migrations
                         .IsUnique();
 
                     b.ToTable("PetFood", (string)null);
+                });
+
+            modelBuilder.Entity("Model.PetReport", b =>
+                {
+                    b.Property<Guid>("PetReportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AnimalType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetReportMonth")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PetReportTotalSold")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PetReportYear")
+                        .HasColumnType("int");
+
+                    b.HasKey("PetReportID");
+
+                    b.ToTable("PetReports");
                 });
 
             modelBuilder.Entity("Model.Transaction", b =>

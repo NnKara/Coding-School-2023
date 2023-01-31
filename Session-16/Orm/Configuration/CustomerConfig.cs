@@ -15,7 +15,6 @@ namespace Orm.Configuration
         {
             builder.ToTable("Customer");
             builder.HasKey(customer => customer.CustomerID);
-            builder.Property(customer => customer.CustomerID).ValueGeneratedOnAdd();
             builder.Property(customer => customer.CustomerName).HasMaxLength(15).IsRequired(true);
             builder.Property(customer=>customer.CustomerSurname).HasMaxLength(15).IsRequired(true);
             builder.Property(customer=>customer.Phone).HasMaxLength(10).IsRequired(true);
