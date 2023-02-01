@@ -15,16 +15,16 @@ namespace Model
         }
         public Guid EmployeeID { get; set; }
 
-        public string EmployeeName { get; set; } = null!;
+        public string EmployeeName { get; set; }
 
-        public string EmployeeSurname { get; set; } = null!;
+        public string EmployeeSurname { get; set; } 
 
         public decimal SallaryPerMonth { get; set; }
 
         public EmployeeWorkType EmployeeType { get; set; }
 
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
+        public List<Transaction> Transactions { get; set; } 
+
 
         public Employee() 
         {

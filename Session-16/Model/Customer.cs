@@ -13,12 +13,15 @@ namespace Model
         public string CustomerSurname { get; set; } = null!;
         public string Phone { get; set; } = null!;
         public string TIN { get; set; } = null!;
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
+
+        //relations
+        public List<Transaction> Transactions { get; set; }
+ 
 
         public Customer()
         {
             CustomerID = Guid.NewGuid();
+            Transactions=new List<Transaction>();
         }
 
     }

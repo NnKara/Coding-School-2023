@@ -29,8 +29,8 @@ namespace Model
         public decimal Cost { get; set; }
         public PetFood PetFood { get; set; }
 
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
+        public List<Transaction> Transactions { get; set; } 
+
 
         public Pet()
         {

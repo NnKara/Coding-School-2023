@@ -18,9 +18,8 @@ namespace Orm.Configuration
             builder.Property(employee => employee.EmployeeName).HasMaxLength(10);
             builder.Property(employee => employee.EmployeeSurname).HasMaxLength(10);
             builder.Property(employee => employee.SallaryPerMonth).HasPrecision(10,5);
-            builder.HasOne(employee => employee.Transaction)
-                .WithOne(transaction => transaction.Employee)
-                .HasForeignKey<Employee>(employee => employee.TransactionID).OnDelete(DeleteBehavior.ClientSetNull); 
+
+
         }
     }
 }

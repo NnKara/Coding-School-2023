@@ -19,9 +19,8 @@ namespace Orm.Configuration
             builder.Property(customer=>customer.CustomerSurname).HasMaxLength(15).IsRequired(true);
             builder.Property(customer=>customer.Phone).HasMaxLength(10).IsRequired(true);
             builder.Property(customer => customer.TIN).HasMaxLength(9);
-            builder.HasOne(customer => customer.Transaction)
-                    .WithOne(transaction => transaction.Customer)
-                    .HasForeignKey<Transaction>(customer => customer.CustomerID).OnDelete(DeleteBehavior.ClientSetNull);
+
+           
         }
     }
 }

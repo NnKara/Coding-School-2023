@@ -19,9 +19,6 @@ namespace Orm.Configuration
             builder.Property(petfood => petfood.Cost).HasPrecision(10, 5);
             builder.Property(petfood => petfood.Price).HasPrecision(10, 5);
 
-            builder.HasOne(petfood => petfood.Transaction)
-                .WithOne(transaction => transaction.PetFood)
-                .HasForeignKey<PetFood>(petfood => petfood.TransactionID).OnDelete(DeleteBehavior.ClientSetNull); 
         }
     }
 }

@@ -12,10 +12,8 @@ namespace Model
         public Pet.AnimalType PetFoodType { get; set; }
         public decimal Price { get; set; }
         public decimal Cost { get; set; }
-        public Transaction Transaction { get; set; } = null!;
-        public Guid TransactionID { get; set; }
-        public Guid PetID { get; set; }
-        public Pet Pet { get; set; }
+        public List<Transaction> Transactions { get; set; }
+
 
         public PetFood()
         {

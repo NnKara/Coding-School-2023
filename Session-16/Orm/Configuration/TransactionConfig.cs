@@ -21,6 +21,23 @@ namespace Orm.Configuration
             builder.Property(transaction => transaction.TransactionDate).HasMaxLength(20);
 
 
+            builder.HasOne(transaction => transaction.Customer)
+                    .WithMany(customer => customer.Transactions)
+                    .HasForeignKey(transaction => transaction.CustomerID);
+
+            builder.HasOne(transaction => transaction.Employee)
+                .WithMany(employee => employee.Transactions)
+                .HasForeignKey(transaction => transaction.EmployeeID);
+
+            builder.HasOne(transaction => transaction.Pet)
+                .WithMany(pet => pet.Transactions)
+                .HasForeignKey(transaction => transaction.PetID);
+
+
+            builder.HasOne(transaction => transaction.PetFood)
+                .WithMany(petfood => petfood.Transactions)
+                .HasForeignKey(transaction => transaction.PetFoodID);
+
         }
     }
 }
