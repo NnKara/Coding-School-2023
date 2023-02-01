@@ -52,7 +52,7 @@ namespace Orm.Repository
             dbTransaction.Pet = entity.Pet;
             dbTransaction.PetPrice = entity.PetPrice;
             dbTransaction.PetFoodQty = entity.PetFoodQty;
-            dbTransaction.PetFood = entity.PetFood;
+            //dbTransaction.PetFood = entity.PetFood;
             dbTransaction.TotalPrice = entity.TotalPrice;
             petShopContext.SaveChanges();
         }

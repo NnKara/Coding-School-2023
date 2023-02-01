@@ -29,6 +29,7 @@ namespace Model
         public Employee() 
         {
             EmployeeID= Guid.NewGuid();
+            Transactions= new List<Transaction>();
         }
         
     }

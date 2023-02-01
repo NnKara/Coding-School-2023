@@ -18,6 +18,7 @@ namespace Model
         public PetFood()
         {
             PetFoodID= Guid.NewGuid();
+            Transactions=new List<Transaction>();
         }
 
     }

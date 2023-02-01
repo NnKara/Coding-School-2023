@@ -150,7 +150,7 @@ namespace Orm.Migrations
                     b.Property<Guid>("EmployeeID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PetFoodID")
+                    b.Property<Guid?>("PetFoodID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("PetFoodPrice")
@@ -213,11 +213,9 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.PetFood", "PetFood")
+                    b.HasOne("Model.PetFood", null)
                         .WithMany("Transactions")
-                        .HasForeignKey("PetFoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PetFoodID");
 
                     b.HasOne("Model.Pet", "Pet")
                         .WithMany("Transactions")
@@ -230,8 +228,6 @@ namespace Orm.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Pet");
-
-                    b.Navigation("PetFood");
                 });
 
             modelBuilder.Entity("Model.Customer", b =>

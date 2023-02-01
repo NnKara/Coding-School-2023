@@ -18,8 +18,8 @@ namespace Model
         //relations
         public Pet Pet { get; set; } = null!;
         public Guid PetID { get; set; }
-        public PetFood PetFood { get; set; } = null!;
-        public Guid PetFoodID { get; set; }
+        //public PetFood PetFood { get; set; } = null!;
+        //public Guid PetFoodID { get; set; }
         public Customer Customer { get; set; } = null!;
         public Guid CustomerID { get; set; }
         public Employee Employee { get; set; } = null!;

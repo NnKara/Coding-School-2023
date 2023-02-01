@@ -35,6 +35,7 @@ namespace Model
         public Pet()
         {
             PetID = Guid.NewGuid();
+            Transactions=new List<Transaction>();
         }
 
     }
