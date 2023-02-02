@@ -39,7 +39,7 @@ namespace Orm.Repository
         public Customer? GetById(Guid id)
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Customers.SingleOrDefault();
+            return petShopContext.Customers.Where(customer=>customer.CustomerID==id).SingleOrDefault();
 
         }
 

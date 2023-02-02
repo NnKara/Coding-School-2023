@@ -73,8 +73,8 @@ namespace Orm.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("SallaryPerMonth")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("EmployeeID");
 
@@ -93,8 +93,8 @@ namespace Orm.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<decimal>("Cost")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<Guid>("PetFoodID")
                         .HasColumnType("uniqueidentifier");
@@ -123,15 +123,15 @@ namespace Orm.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Cost")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("PetFoodType")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("PetFoodID");
 

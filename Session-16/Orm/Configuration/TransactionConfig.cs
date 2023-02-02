@@ -33,11 +33,6 @@ namespace Orm.Configuration
                 .WithMany(pet => pet.Transactions)
                 .HasForeignKey(transaction => transaction.PetID);
 
-
-            //builder.HasOne(transaction => transaction.PetFood)
-            //    .WithMany(petfood => petfood.Transactions)
-            //    .HasForeignKey(transaction => transaction.PetFoodID);
-
         }
     }
 }

@@ -16,8 +16,8 @@ namespace Orm.Configuration
         {
             builder.ToTable("PetFood");
             builder.HasKey(petfood => petfood.PetFoodID);
-            builder.Property(petfood => petfood.Cost).HasPrecision(10, 5);
-            builder.Property(petfood => petfood.Price).HasPrecision(10, 5);
+            builder.Property(petfood => petfood.Cost).HasPrecision(10, 2);
+            builder.Property(petfood => petfood.Price).HasPrecision(10, 2);
 
         }
     }

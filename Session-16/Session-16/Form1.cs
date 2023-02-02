@@ -2,11 +2,11 @@ using Model;
 using Orm.Repository;
 using System.Data;
 using System.Data.SqlClient;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 
-namespace Session_16
-{
-    public partial class Form1 : Form
-    {
+namespace Session_16 {
+    public partial class PetShopForm : Form {
 
         private CustomerRepo _customerRepo;
         private EmployeeRepo _employeeRepo;
@@ -15,14 +15,12 @@ namespace Session_16
         private MonthlyLedger _monthlyLedger;
         private PetReport _petReport;
         private TransactionRepo _transactionRepo;
-        public List<Customer> customers=new List<Customer>();
-        public Form1()
-        {
+
+        public PetShopForm() {
             InitializeComponent();
         }
 
-        private void btnTestData_Click(object sender, EventArgs e)
-        {
+        private void btnTestData_Click(object sender, EventArgs e) {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "data source=localhost; initial catalog=AdventureWorks2019; integrated security=SSPI;";
             conn.Open();
@@ -34,79 +32,55 @@ namespace Session_16
             ds.WriteXml("nikos.xml");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            var customerList=new List<Customer>();
-            PopulateCustomers();
+        private void Form1_Load(object sender, EventArgs e) {
+            SetControllers();
         }
 
+        private void SetControllers() {
+            CustomerRepo customerRepo = new CustomerRepo();
+            bindingSource1.DataSource = customerRepo.GetAll();
+            grdCustomers.DataSource = bindingSource1;
 
+        }
 
-        public List<Customer> PopulateCustomers()
-        {
-            
-            Customer Cust1 = new Customer()
+        private void gridControl1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btnPopulate_Click(object sender, EventArgs e) {
+            CustomerRepo customerRepo = new CustomerRepo();
+            Populate populateEntitys = new Populate();
+            List<Customer> customers = populateEntitys.PopulateCustomers();
+            foreach (Customer customer in customers) {
+                customerRepo.Add(customer);
+            }
+        }
+
+        private void gridView1_ValidateRow(object sender, ValidateRowEventArgs e) {
+
+            GridView view = sender as GridView;
+            CustomerRepo customerRepo = new CustomerRepo();
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colCustomerID).ToString());
+            if (e.Valid)
             {
-
-                CustomerName = "Nikos",
-                CustomerSurname = "Karamitos",
-                Phone = "6978319532",
-                TIN = "37482910",
-
-            };
-            Customer cust2 = new Customer()
-            {
-
-                CustomerName = "Alex",
-                CustomerSurname = "Gad",
-                Phone = "6973132822",
-                TIN = "38239102"
-            };
-
-            customers.Add(Cust1);
-            customers.Add(cust2);
-            return customers;
-            
+                if (customerRepo.GetById(id) == null) {
+                    customerRepo.Add((Customer)bindingSource1.Current);
+                } else {
+                    customerRepo.Update(id,(Customer)bindingSource1.Current);
+                }
+            }
         }
 
+        private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
 
-        private void PopulateEmployee()
-        {
-
-            Employee employee1 = new Employee()
-            {
-                EmployeeID = Guid.NewGuid(),
-                EmployeeName = "Nikos",
-                EmployeeSurname = "Karamitos",
-                EmployeeType = Employee.EmployeeWorkType.MANAGER,
-                SallaryPerMonth = 1000
-
-            };
-
-            Employee employee2 = new Employee()
-            {
-                EmployeeID = Guid.NewGuid(),
-                EmployeeName = "Alex",
-                EmployeeSurname = "Gad",
-                EmployeeType = Employee.EmployeeWorkType.STAFF,
-                SallaryPerMonth = 1000
-
-            };
-        }
-        private void SetControllers()
-        {
-            bindingSource1.DataSource = PopulateCustomers();
-            
-        }
-
-        private void gridControl1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-            
+            GridView view = sender as GridView;
+            CustomerRepo customerRepo = new CustomerRepo();
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colCustomerID).ToString());
+            customerRepo.Delete(id);
         }
     }
 }

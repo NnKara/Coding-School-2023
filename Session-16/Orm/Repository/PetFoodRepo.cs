@@ -37,7 +37,7 @@ namespace Orm.Repository
         public PetFood? GetById(Guid id)
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.PetFoods.SingleOrDefault();
+            return petShopContext.PetFoods.Where(petfood => petfood.PetFoodID == id).SingleOrDefault();
         }
 
         public void Update(Guid id, PetFood entity)

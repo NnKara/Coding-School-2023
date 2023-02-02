@@ -17,7 +17,7 @@ namespace Orm.Configuration
             builder.HasKey(employee => employee.EmployeeID);
             builder.Property(employee => employee.EmployeeName).HasMaxLength(10);
             builder.Property(employee => employee.EmployeeSurname).HasMaxLength(10);
-            builder.Property(employee => employee.SallaryPerMonth).HasPrecision(10,5);
+            builder.Property(employee => employee.SallaryPerMonth).HasPrecision(10,2);
 
 
         }

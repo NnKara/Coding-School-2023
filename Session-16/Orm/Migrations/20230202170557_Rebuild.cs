@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class neww : Migration
+    public partial class Rebuild : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,7 @@ namespace Orm.Migrations
                     EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmployeeName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     EmployeeSurname = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    SallaryPerMonth = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
+                    SallaryPerMonth = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     EmployeeType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -47,8 +47,8 @@ namespace Orm.Migrations
                 {
                     PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PetFoodType = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,7 +64,7 @@ namespace Orm.Migrations
                     PetType = table.Column<int>(type: "int", nullable: false),
                     PetStatus = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
