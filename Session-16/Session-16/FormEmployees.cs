@@ -57,5 +57,12 @@ namespace Session_16 {
                 }
             }
         }
+
+        private void grdEmployees_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
+            GridView view = sender as GridView;
+            EmployeeRepo employeeRepo = new EmployeeRepo();
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colEmployeeID).ToString());
+            employeeRepo.Delete(id);
+        }
     }
 }

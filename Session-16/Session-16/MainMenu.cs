@@ -27,5 +27,15 @@ namespace Session_16
             FormEmployees employeeForm = new FormEmployees();
             employeeForm.ShowDialog();
         }
+
+        private void btnPet_Click(object sender, EventArgs e) {
+            PetForm petForm = new PetForm();
+            petForm.ShowDialog();
+        }
+
+        private void btnPetFood_Click(object sender, EventArgs e) {
+            PetFoodForm petFoodForm = new PetFoodForm();
+            petFoodForm.ShowDialog();
+        }
     }
 }

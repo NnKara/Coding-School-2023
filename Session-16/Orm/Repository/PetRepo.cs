@@ -50,9 +50,7 @@ namespace Orm.Repository
             dbPet.PetType = entity.PetType;
             dbPet.Price = entity.Price;
             dbPet.Cost = entity.Cost;
-            dbPet.Breed = entity.Breed;
-            dbPet.PetFood = entity.PetFood;
-            
+            dbPet.Breed = entity.Breed;          
             petShopContext.SaveChanges();
         }
     }

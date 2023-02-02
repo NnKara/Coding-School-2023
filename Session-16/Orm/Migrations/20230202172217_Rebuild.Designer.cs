@@ -12,7 +12,7 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    [Migration("20230202170557_Rebuild")]
+    [Migration("20230202172217_Rebuild")]
     partial class Rebuild
     {
         /// <inheritdoc />
@@ -99,9 +99,6 @@ namespace Orm.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<Guid>("PetFoodID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("PetStatus")
                         .HasColumnType("int");
 
@@ -109,12 +106,10 @@ namespace Orm.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(10, 5)
-                        .HasColumnType("decimal(10,5)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("PetID");
-
-                    b.HasIndex("PetFoodID");
 
                     b.ToTable("Pet", (string)null);
                 });
@@ -189,17 +184,6 @@ namespace Orm.Migrations
                     b.HasIndex("PetID");
 
                     b.ToTable("Transaction", (string)null);
-                });
-
-            modelBuilder.Entity("Model.Pet", b =>
-                {
-                    b.HasOne("Model.PetFood", "PetFood")
-                        .WithMany()
-                        .HasForeignKey("PetFoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PetFood");
                 });
 
             modelBuilder.Entity("Model.Transaction", b =>

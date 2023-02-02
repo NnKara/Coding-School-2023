@@ -30,6 +30,8 @@
         {
             this.btnCustomers = new System.Windows.Forms.Button();
             this.btnEmployees = new System.Windows.Forms.Button();
+            this.btnPet = new System.Windows.Forms.Button();
+            this.btnPetFood = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCustomers
@@ -52,11 +54,33 @@
             this.btnEmployees.UseVisualStyleBackColor = true;
             this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
+            // btnPet
+            // 
+            this.btnPet.Location = new System.Drawing.Point(12, 219);
+            this.btnPet.Name = "btnPet";
+            this.btnPet.Size = new System.Drawing.Size(94, 29);
+            this.btnPet.TabIndex = 2;
+            this.btnPet.Text = "Pets";
+            this.btnPet.UseVisualStyleBackColor = true;
+            this.btnPet.Click += new System.EventHandler(this.btnPet_Click);
+            // 
+            // btnPetFood
+            // 
+            this.btnPetFood.Location = new System.Drawing.Point(12, 301);
+            this.btnPetFood.Name = "btnPetFood";
+            this.btnPetFood.Size = new System.Drawing.Size(94, 29);
+            this.btnPetFood.TabIndex = 3;
+            this.btnPetFood.Text = "PetFoods";
+            this.btnPetFood.UseVisualStyleBackColor = true;
+            this.btnPetFood.Click += new System.EventHandler(this.btnPetFood_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPetFood);
+            this.Controls.Add(this.btnPet);
             this.Controls.Add(this.btnEmployees);
             this.Controls.Add(this.btnCustomers);
             this.Name = "MainMenu";
@@ -69,5 +93,7 @@
 
         private Button btnCustomers;
         private Button btnEmployees;
+        private Button btnPet;
+        private Button btnPetFood;
     }
 }

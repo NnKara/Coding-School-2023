@@ -27,7 +27,6 @@ namespace Model
         public AnimalStatus PetStatus { get; set; } 
         public decimal Price { get; set; }
         public decimal Cost { get; set; }
-        public PetFood PetFood { get; set; }
 
         public List<Transaction> Transactions { get; set; } 
 

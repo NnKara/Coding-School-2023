@@ -42,6 +42,22 @@ namespace Orm.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pet",
+                columns: table => new
+                {
+                    PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Breed = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    PetType = table.Column<int>(type: "int", nullable: false),
+                    PetStatus = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
+                    Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pet", x => x.PetID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PetFood",
                 columns: table => new
                 {
@@ -53,29 +69,6 @@ namespace Orm.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PetFood", x => x.PetFoodID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pet",
-                columns: table => new
-                {
-                    PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Breed = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    PetType = table.Column<int>(type: "int", nullable: false),
-                    PetStatus = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
-                    PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pet", x => x.PetID);
-                    table.ForeignKey(
-                        name: "FK_Pet_PetFood_PetFoodID",
-                        column: x => x.PetFoodID,
-                        principalTable: "PetFood",
-                        principalColumn: "PetFoodID",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,11 +115,6 @@ namespace Orm.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pet_PetFoodID",
-                table: "Pet",
-                column: "PetFoodID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Transaction_CustomerID",
                 table: "Transaction",
                 column: "CustomerID");
@@ -160,10 +148,10 @@ namespace Orm.Migrations
                 name: "Employee");
 
             migrationBuilder.DropTable(
-                name: "Pet");
+                name: "PetFood");
 
             migrationBuilder.DropTable(
-                name: "PetFood");
+                name: "Pet");
         }
     }
 }

@@ -19,8 +19,6 @@ namespace Orm.Configuration
             builder.Property(customer=>customer.CustomerSurname).HasMaxLength(15).IsRequired(true);
             builder.Property(customer=>customer.Phone).HasMaxLength(10).IsRequired(true);
             builder.Property(customer => customer.TIN).HasMaxLength(9);
-
-           
         }
     }
 }

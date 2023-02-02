@@ -10,6 +10,8 @@ namespace Model
     {
         private List<Customer> customerList=new List<Customer>();
         private List<Employee> employeeList=new List<Employee>();
+        private List<Pet> petList=new List<Pet>();
+        private List<PetFood> petFoodList = new List<PetFood>();
         
         public List<Customer> PopulateCustomers()
         {
@@ -70,8 +72,66 @@ namespace Model
             return employeeList;
         }
 
-        //public List<Pet> PopulatePets() {
+        public List<Pet> PopulatePets() {
 
-        //}
+
+            Pet pet1 = new Pet() {
+                PetType=Pet.AnimalType.Bird,
+                Breed="Blue Parrot",
+                Cost=200,
+                Price=400,
+                PetStatus=Pet.AnimalStatus.OK
+            };
+            
+            Pet pet2 = new Pet() {
+                PetType=Pet.AnimalType.Dog,
+                Breed="Huski",
+                Cost=500,
+                Price=800,
+                PetStatus=Pet.AnimalStatus.OK
+            };
+            
+            Pet pet3 = new Pet() {
+                PetType=Pet.AnimalType.Cat,
+                Breed="Black Cat",
+                Cost=300,
+                Price=400,
+                PetStatus=Pet.AnimalStatus.UNHEALTHY
+            };
+
+            petList.Add(pet1); 
+            petList.Add(pet2);
+            petList.Add(pet3);
+            return petList;
+        }
+
+
+        public List<PetFood> PopulatePetFood() {
+            PetFood petFood1 = new PetFood() {
+            PetFoodType=Pet.AnimalType.Bird,
+            Price=50,
+            Cost=25
+            };
+            
+            PetFood petFood2 = new PetFood() {
+            PetFoodType=Pet.AnimalType.Dog,
+            Price=90,
+            Cost=60
+            };
+            
+            PetFood petFood3 = new PetFood() {
+            PetFoodType=Pet.AnimalType.Cat,
+            Price=70,
+            Cost=40
+            };
+
+            petFoodList.Add(petFood1);
+            petFoodList.Add(petFood2);
+            petFoodList.Add(petFood3);
+            return petFoodList;
+        }
+        
+        
+    
     }
 }
