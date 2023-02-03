@@ -23,10 +23,24 @@ namespace Model
         public Employee Employee { get; set; } = null!;
         public Guid EmployeeID { get; set; }
 
-        public Transaction()
-        {
+        public Transaction() {
             TransactionID = Guid.NewGuid();
             TransactionDate = DateTime.Now;
+        }
+
+        public Transaction(Guid transactionID, DateTime transactionDate, decimal petPrice, int petFoodQty, decimal petFoodPrice, decimal totalPrice, Pet pet, Guid petID, Customer customer, Guid customerID, Employee employee, Guid employeeID) {
+            TransactionID = transactionID;
+            TransactionDate = transactionDate;
+            PetPrice = petPrice;
+            PetFoodQty = petFoodQty;
+            PetFoodPrice = petFoodPrice;
+            TotalPrice = totalPrice;
+            Pet = pet;
+            PetID = petID;
+            Customer = customer;
+            CustomerID = customerID;
+            Employee = employee;
+            EmployeeID = employeeID;
         }
     }
 }

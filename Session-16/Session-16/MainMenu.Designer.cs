@@ -32,6 +32,7 @@
             this.btnEmployees = new System.Windows.Forms.Button();
             this.btnPet = new System.Windows.Forms.Button();
             this.btnPetFood = new System.Windows.Forms.Button();
+            this.btTransactions = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCustomers
@@ -74,11 +75,22 @@
             this.btnPetFood.UseVisualStyleBackColor = true;
             this.btnPetFood.Click += new System.EventHandler(this.btnPetFood_Click);
             // 
+            // btTransactions
+            // 
+            this.btTransactions.Location = new System.Drawing.Point(276, 176);
+            this.btTransactions.Name = "btTransactions";
+            this.btTransactions.Size = new System.Drawing.Size(94, 29);
+            this.btTransactions.TabIndex = 4;
+            this.btTransactions.Text = "Transactions";
+            this.btTransactions.UseVisualStyleBackColor = true;
+            this.btTransactions.Click += new System.EventHandler(this.btTransactions_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btTransactions);
             this.Controls.Add(this.btnPetFood);
             this.Controls.Add(this.btnPet);
             this.Controls.Add(this.btnEmployees);
@@ -95,5 +107,6 @@
         private Button btnEmployees;
         private Button btnPet;
         private Button btnPetFood;
+        private Button btTransactions;
     }
 }

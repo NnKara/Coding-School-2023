@@ -37,5 +37,10 @@ namespace Session_16
             PetFoodForm petFoodForm = new PetFoodForm();
             petFoodForm.ShowDialog();
         }
+
+        private void btTransactions_Click(object sender, EventArgs e) {
+            TransactionForm newTras = new TransactionForm();
+            newTras.ShowDialog();
+        }
     }
 }

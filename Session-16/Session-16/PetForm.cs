@@ -46,7 +46,10 @@ namespace Session_16 {
         }
 
         private void gridViewPet_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
-
+            GridView view = sender as GridView;
+            PetRepo employeeRepo = new PetRepo();
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
+            employeeRepo.Delete(id);
         }
 
         
