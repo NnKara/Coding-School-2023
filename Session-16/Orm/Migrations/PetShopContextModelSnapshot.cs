@@ -92,8 +92,8 @@ namespace Orm.Migrations
 
                     b.Property<string>("Breed")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Cost")
                         .HasPrecision(10, 2)
@@ -145,7 +145,7 @@ namespace Orm.Migrations
                     b.Property<Guid>("EmployeeID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("PetFoodID")
+                    b.Property<Guid>("PetFoodID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("PetFoodPrice")
@@ -197,9 +197,11 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.PetFood", null)
+                    b.HasOne("Model.PetFood", "PetFood")
                         .WithMany("Transactions")
-                        .HasForeignKey("PetFoodID");
+                        .HasForeignKey("PetFoodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Model.Pet", "Pet")
                         .WithMany("Transactions")
@@ -212,6 +214,8 @@ namespace Orm.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Pet");
+
+                    b.Navigation("PetFood");
                 });
 
             modelBuilder.Entity("Model.Customer", b =>

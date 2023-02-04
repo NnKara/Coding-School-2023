@@ -32,7 +32,7 @@ namespace Session_16 {
         }
 
 
-        private void gridViewPet_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
+        private void gridViewPet_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
             PetRepo petRepo = new PetRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());

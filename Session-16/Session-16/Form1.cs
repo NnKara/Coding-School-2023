@@ -37,9 +37,10 @@ namespace Session_16 {
         }
 
         private void SetControllers() {
+
             CustomerRepo customerRepo = new CustomerRepo();
-            bindingSource1.DataSource = customerRepo.GetAll();
-            grdCustomers.DataSource = bindingSource1;
+            bsCustomer.DataSource = customerRepo.GetAll();
+            grdCustomers.DataSource = bsCustomer;
 
         }
 
@@ -68,9 +69,9 @@ namespace Session_16 {
             if (e.Valid)
             {
                 if (customerRepo.GetById(id) == null) {
-                    customerRepo.Add((Customer)bindingSource1.Current);
+                    customerRepo.Add((Customer)bsCustomer.Current);
                 } else {
-                    customerRepo.Update(id,(Customer)bindingSource1.Current);
+                    customerRepo.Update(id,(Customer)bsCustomer.Current);
                 }
             }
         }

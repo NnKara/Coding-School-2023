@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class NewBase : Migration
+    public partial class newBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,7 +46,7 @@ namespace Orm.Migrations
                 columns: table => new
                 {
                     PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Breed = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Breed = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     AnimalType = table.Column<int>(type: "int", nullable: false),
                     PetStatus = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
@@ -82,9 +82,9 @@ namespace Orm.Migrations
                     PetFoodPrice = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(10,5)", precision: 10, scale: 5, nullable: false),
                     PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,7 +105,8 @@ namespace Orm.Migrations
                         name: "FK_Transaction_PetFood_PetFoodID",
                         column: x => x.PetFoodID,
                         principalTable: "PetFood",
-                        principalColumn: "PetFoodID");
+                        principalColumn: "PetFoodID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transaction_Pet_PetID",
                         column: x => x.PetID,
