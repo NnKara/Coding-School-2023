@@ -18,7 +18,7 @@ namespace Model
         //relations
         public Pet Pet { get; set; } = null!;
         public Guid PetID { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public Customer Customer { get; set; } =null!;
         public Guid CustomerID { get; set; }
         public Employee Employee { get; set; } = null!;
         public Guid EmployeeID { get; set; }

@@ -31,11 +31,9 @@ namespace Session_16 {
   
 
         private void TransactionForm_Load(object sender, EventArgs e) {
-            //SetControls();
-            List<Customer> customers= new List<Customer>();
-            repoCustomerID.DataSource = _populate.PopulateCustomers();
-            repoCustomerID.ValueMember = "CustomerID";
-            repoCustomerID.DisplayMember = "Surname";
+            SetControls();
+
+
         }
 
         private void grdTransaction_Click(object sender, EventArgs e) {
@@ -62,8 +60,27 @@ namespace Session_16 {
             _transactionRepo.Delete(id);
         }
 
+
         public void SetControls() {
-            bsTransaction.DataSource = _transactionRepo.GetAll();
+            CustomerRepo customerRepo = new CustomerRepo();
+            repoCustomerID.DataSource = customerRepo.GetAll();
+            repoCustomerID.ValueMember = "CustomerID";
+            repoCustomerID.DisplayMember = "CustomerSurname";
+
+            EmployeeRepo employeeRepo = new EmployeeRepo();
+            repoEmployee.DataSource = employeeRepo.GetAll();
+            repoEmployee.ValueMember = "EmployeeID";
+            repoEmployee.DisplayMember = "EmployeeSurname";
+
+            PetRepo petRepo = new PetRepo();
+            repoPet.DataSource = petRepo.GetAll();
+            repoPet.ValueMember = "PetID";
+            repoPet.DisplayMember = "Breed";
+
+            PetFoodRepo petFoodRepo = new PetFoodRepo();
+
+            TransactionRepo transactionRepo = new TransactionRepo();
+            bsTransaction.DataSource = transactionRepo.GetAll();
             grdTransaction.DataSource = bsTransaction;
         }
 

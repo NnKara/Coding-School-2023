@@ -36,7 +36,8 @@ namespace Orm.Repository
         {
             using var petShopContext = new PetShopContext();
             return petShopContext.Customers.ToList();
-                
+
+
         }
 
         public Customer? GetById(Guid id)

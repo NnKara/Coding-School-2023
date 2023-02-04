@@ -28,6 +28,7 @@
             this.colTransactionID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoEmployee = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoCustomerID = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.PetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,14 +44,19 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.repoPet = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repoPetFood = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCustomerID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoFoodQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPetFood)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView1
@@ -83,6 +89,7 @@
             // colPetID
             // 
             this.colPetID.Caption = "PetID";
+            this.colPetID.ColumnEdit = this.repoPet;
             this.colPetID.FieldName = "PetID";
             this.colPetID.MinWidth = 25;
             this.colPetID.Name = "colPetID";
@@ -93,12 +100,20 @@
             // colEmployeeID
             // 
             this.colEmployeeID.Caption = "EmployeeID";
+            this.colEmployeeID.ColumnEdit = this.repoEmployee;
             this.colEmployeeID.FieldName = "EmployeeID";
             this.colEmployeeID.MinWidth = 25;
             this.colEmployeeID.Name = "colEmployeeID";
             this.colEmployeeID.Visible = true;
             this.colEmployeeID.VisibleIndex = 2;
             this.colEmployeeID.Width = 94;
+            // 
+            // repoEmployee
+            // 
+            this.repoEmployee.AutoHeight = false;
+            this.repoEmployee.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoEmployee.Name = "repoEmployee";
             // 
             // colCustomerID
             // 
@@ -177,7 +192,10 @@
             this.grdTransaction.Name = "grdTransaction";
             this.grdTransaction.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoCustomerID,
-            this.repoFoodQty});
+            this.repoFoodQty,
+            this.repoEmployee,
+            this.repoPet,
+            this.repoPetFood});
             this.grdTransaction.Size = new System.Drawing.Size(1063, 217);
             this.grdTransaction.TabIndex = 0;
             this.grdTransaction.UseEmbeddedNavigator = true;
@@ -237,6 +255,20 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // repoPet
+            // 
+            this.repoPet.AutoHeight = false;
+            this.repoPet.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoPet.Name = "repoPet";
+            // 
+            // repoPetFood
+            // 
+            this.repoPetFood.AutoHeight = false;
+            this.repoPetFood.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoPetFood.Name = "repoPetFood";
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -251,12 +283,15 @@
             this.Text = "TransactionForm";
             this.Load += new System.EventHandler(this.TransactionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCustomerID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoFoodQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPetFood)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,5 +317,8 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private Button btnClose;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoEmployee;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoPet;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repoPetFood;
     }
 }
