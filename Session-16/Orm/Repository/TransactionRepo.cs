@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Model;
 using Orm.Context;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,8 @@ namespace Orm.Repository
         public IList<Transaction> GetAll()
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Transactions.ToList();
+            return petShopContext.Transactions.Include(t => t.Customer).Include(t => t.Employee).Include(t => t.Pet)
+                .Include(t => t.PetFood).ToList();
         }
 
         public Transaction? GetById(Guid id)

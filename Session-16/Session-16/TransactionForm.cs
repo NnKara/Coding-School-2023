@@ -130,21 +130,22 @@ namespace Session_16 {
 
 
             IList<Pet> pets = petRepo.GetAll();
-            GridView view=sender as GridView;
+            GridView view = sender as GridView;
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
             // get the PetID value from the selected row in the Transaction grid control
-            Guid selectedPetId = (Guid)view.GetFocusedRowCellValue("PetID");
+            //Guid selectedPetId = (Guid)view.GetFocusedRowCellValue("PetID");
 
             // find the corresponding Pet object in the Pets entity based on the PetID
-            Pet selectedPet = pets.FirstOrDefault(p => p.PetID == selectedPetId);
+            //Pet selectedPet = pets.FirstOrDefault(p => p.PetID == id);
 
-            if (selectedPet != null) {
-                // set the PetPrice column value in the Transaction grid control with the price of the selected Pet
-                view.SetFocusedRowCellValue("PetPrice", selectedPet.Price);
-            }
+            //if (selectedPet != null) {
+            //    // set the PetPrice column value in the Transaction grid control with the price of the selected Pet
+            //    view.SetFocusedRowCellValue("PetPrice", selectedPet.Price);
+            //}
             //int currentRowHandle = gridView1.FocusedRowHandle;
             //if (currentRowHandle >= 0) {
             //    object row = gridView1.GetRow(currentRowHandle);
-            //    Transaction currentTransaction=(Transaction)row;
+            //    Transaction currentTransaction = (Transaction)row;
             //    int currentColumnQty = currentTransaction.PetFoodQty;
             //    pet = currentTransaction.Pet;
             //    newPetFood = currentTransaction.PetFood;
@@ -154,18 +155,16 @@ namespace Session_16 {
             //int rowHandle = gridView.FocusedRowHandle;
             //Guid columnValue = Guid.Parse(gridView.GetRowCellValue(rowHandle, "PetID").ToString());
 
-            //int row = gridView.FocusedRowHandle;
-            //gridView.SetRowCellValue(rowHandle, "Price",Guid.NewGuid() );
+            int row = gridView1.FocusedRowHandle;
+            gridView1.SetRowCellValue(row, "Price", Guid.NewGuid());
 
 
-
-            //int selectedRowIndex = e.RowHandle;
-            //Guid selectedPetID = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
-            //Pet selectedPet = petRepo.GetAll().Where(x => x.PetID == selectedPetID).FirstOrDefault();
+            int selectedRowIndex = e.RowHandle;
+            Guid selectedPetID = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
+            Pet selectedPet = petRepo.GetAll().Where(x => x.PetID == selectedPetID).FirstOrDefault();
 
             //PetFood selectedPetFood = petFoodRepo.GetAll().Where(x => x.AnimalType == selectedPet.AnimalType).FirstOrDefault();
-            //repoPetFoodPrice.DataSource = petFoodRepo.GetAll().Where(x => x.AnimalType == selectedPet.AnimalType).ToList();
-
+            repoPetFoodPrice.DataSource = petFoodRepo.GetAll().Where(x => x.AnimalType == selectedPet.AnimalType).ToList();
         }
 
         private void gridView1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e) {
