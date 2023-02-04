@@ -9,7 +9,7 @@ namespace Model
     public class PetFood
     {
         public Guid PetFoodID { get; set; }
-        public Pet.AnimalType PetFoodType { get; set; }
+        public AnimalType AnimalType { get; set; }
         public decimal Price { get; set; }
         public decimal Cost { get; set; }
         public List<Transaction> Transactions { get; set; }
@@ -20,6 +20,8 @@ namespace Model
             PetFoodID= Guid.NewGuid();
             Transactions=new List<Transaction>();
         }
+
+       
 
     }
 }

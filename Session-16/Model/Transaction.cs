@@ -42,5 +42,13 @@ namespace Model
             Employee = employee;
             EmployeeID = employeeID;
         }
+        public int SetQty(int quantity) {
+
+            Transaction tras = new Transaction();
+               int qty= tras.PetFoodQty=quantity;
+                return qty;
+            }
+
+
+        }
     }
-}

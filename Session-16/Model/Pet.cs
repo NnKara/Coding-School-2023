@@ -8,23 +8,11 @@ namespace Model
 {
     public class Pet
     {
-        public enum AnimalType
-        {
-            Bird,
-            Cat,
-            Dog
-        }
-
-        public enum AnimalStatus
-        {
-            OK,
-            UNHEALTHY,
-            RECOVERING
-        }
+   
         public Guid PetID { get; set; }
         public string Breed { get; set; } = null!;
-        public AnimalType PetType { get; set; }
-        public AnimalStatus PetStatus { get; set; } 
+        public AnimalType AnimalType { get; set; }
+        public PetStatus PetStatus { get; set; } 
         public decimal Price { get; set; }
         public decimal Cost { get; set; }
 

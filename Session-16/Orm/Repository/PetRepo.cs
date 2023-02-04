@@ -14,8 +14,11 @@ namespace Orm.Repository
         public void Add(Pet entity)
         {
             using var petShopContext = new PetShopContext();
-            petShopContext.Add(entity);
-            petShopContext.SaveChanges();
+            var existingPet = petShopContext.Pets.FirstOrDefault(p => p.Breed == entity.Breed);
+            if (existingPet == null) {
+                petShopContext.Add(entity);
+                petShopContext.SaveChanges();
+            }
         }
 
         public void Delete(Guid id)
@@ -37,7 +40,7 @@ namespace Orm.Repository
         public Pet? GetById(Guid id)
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Pets.SingleOrDefault();
+            return petShopContext.Pets.Where(pet => pet.PetID == id).SingleOrDefault();
         }
 
         public void Update(Guid id, Pet entity)
@@ -47,7 +50,7 @@ namespace Orm.Repository
             if (dbPet is null)
                 return;
             dbPet.PetStatus = entity.PetStatus;
-            dbPet.PetType = entity.PetType;
+            dbPet.AnimalType = entity.AnimalType;
             dbPet.Price = entity.Price;
             dbPet.Cost = entity.Cost;
             dbPet.Breed = entity.Breed;          

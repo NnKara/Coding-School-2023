@@ -12,11 +12,18 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using Model;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Session_16 {
     public partial class TransactionForm : DevExpress.XtraEditors.XtraForm {
 
-        public Populate _populate;
+        private Populate _populate;
+        private TransactionRepo _transactionRepo;
+        private PetRepo _petRepo;
+        private PetFoodRepo _petFoodRepo;
+        private CustomerRepo _customerRepo;
+        private EmployeeRepo _employeeRepo;
+        
         public TransactionForm() {
             InitializeComponent();
         }
@@ -24,8 +31,11 @@ namespace Session_16 {
   
 
         private void TransactionForm_Load(object sender, EventArgs e) {
-            SetControls();
-
+            //SetControls();
+            List<Customer> customers= new List<Customer>();
+            repoCustomerID.DataSource = _populate.PopulateCustomers();
+            repoCustomerID.ValueMember = "CustomerID";
+            repoCustomerID.DisplayMember = "Surname";
         }
 
         private void grdTransaction_Click(object sender, EventArgs e) {
@@ -40,22 +50,49 @@ namespace Session_16 {
                 if (trasRepo.GetById(id) == null) {
                     trasRepo.Add((Transaction)bsTransaction.Current);
                 } else {
-                    trasRepo.Update(id, (Transaction)bsTransaction.Current);
+                    trasRepo.Update(id,(Transaction)bsTransaction.Current);
                 }
             }
         }
 
         private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
             GridView view = sender as GridView;
-            TransactionRepo trasRepo = new TransactionRepo();
+            
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
-            trasRepo.Delete(id);
+            _transactionRepo.Delete(id);
         }
 
         public void SetControls() {
-            TransactionRepo newTrasRepo=new TransactionRepo();
-            bsTransaction.DataSource=newTrasRepo.GetAll();
+            bsTransaction.DataSource = _transactionRepo.GetAll();
             grdTransaction.DataSource = bsTransaction;
         }
+
+        private void btnPopulateTransaction_Click(object sender, EventArgs e) {
+            Populate populateEntitys = new Populate();
+            List<Transaction> transactions = populateEntitys.PopulateTransactions();
+            foreach (Transaction transaction in transactions) {
+                _transactionRepo.Add(transaction);
+            }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e) {
+            Transaction newTras=new Transaction();
+            //newTras.Customer = SelectCustomer();
+            
+        }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+
+
+        //public Transaction DoTransaction(Customer customer,Pet pet,Employee employee,PetFood petFood) {
+
+        //    Transaction newTras=new Transaction();
+        //    newTras.CustomerID = customer.CustomerID;
+        //    newTras.PetID= pet.PetID;
+        //    newTras.EmployeeID = employee.EmployeeID;
+        //            }
     }
 }

@@ -67,5 +67,9 @@ namespace Session_16 {
                 petRepo.Add(pet);
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

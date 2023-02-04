@@ -11,11 +11,13 @@ namespace Orm.Repository
 {
     public class PetFoodRepo : EntityInterface<PetFood>
     {
+
         public void Add(PetFood entity)
         {
             using var petShopContext = new PetShopContext();
             petShopContext.Add(entity);
             petShopContext.SaveChanges();
+            
         }
 
         public void Delete(Guid id)
@@ -47,8 +49,7 @@ namespace Orm.Repository
             if (dbPetFood is null)
                 return;
             dbPetFood.Price= entity.Price;
-            dbPetFood.PetFoodType= entity.PetFoodType;
-            dbPetFood.Cost= entity.Cost;
+            dbPetFood.AnimalType= entity.AnimalType;
             dbPetFood.Cost= entity.Cost;
             petShopContext.SaveChanges();
         }

@@ -43,6 +43,7 @@
             this.repositoryItemTextEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnPopulate = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -167,7 +168,7 @@
             // 
             // btnPopulate
             // 
-            this.btnPopulate.Location = new System.Drawing.Point(66, 473);
+            this.btnPopulate.Location = new System.Drawing.Point(772, 78);
             this.btnPopulate.Name = "btnPopulate";
             this.btnPopulate.Size = new System.Drawing.Size(94, 29);
             this.btnPopulate.TabIndex = 2;
@@ -175,11 +176,22 @@
             this.btnPopulate.UseVisualStyleBackColor = true;
             this.btnPopulate.Click += new System.EventHandler(this.btnPopulate_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(772, 133);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // PetShopForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 888);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulate);
             this.Controls.Add(this.grdCustomers);
             this.Controls.Add(this.btnTestData);
@@ -213,5 +225,6 @@
         private BindingSource bindingSource1;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
         private Button btnPopulate;
+        private Button btnClose;
     }
 }

@@ -26,14 +26,15 @@
             this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridViewPet = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colPetType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.coldBreed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPetType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnPopulatePets = new System.Windows.Forms.Button();
             this.bsPet = new System.Windows.Forms.BindingSource(this.components);
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsPet)).BeginInit();
@@ -64,6 +65,16 @@
             this.gridViewPet.Name = "gridViewPet";
             this.gridViewPet.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridViewPet_RowDeleting);
             this.gridViewPet.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridViewPet_ValidateRow);
+            // 
+            // colPetType
+            // 
+            this.colPetType.Caption = "Pet";
+            this.colPetType.FieldName = "AnimalType";
+            this.colPetType.MinWidth = 25;
+            this.colPetType.Name = "colPetType";
+            this.colPetType.Visible = true;
+            this.colPetType.VisibleIndex = 0;
+            this.colPetType.Width = 94;
             // 
             // colPetID
             // 
@@ -113,16 +124,6 @@
             this.colPetCost.VisibleIndex = 4;
             this.colPetCost.Width = 94;
             // 
-            // colPetType
-            // 
-            this.colPetType.Caption = "Pet";
-            this.colPetType.FieldName = "PetType";
-            this.colPetType.MinWidth = 25;
-            this.colPetType.Name = "colPetType";
-            this.colPetType.Visible = true;
-            this.colPetType.VisibleIndex = 0;
-            this.colPetType.Width = 94;
-            // 
             // btnPopulatePets
             // 
             this.btnPopulatePets.Location = new System.Drawing.Point(126, 441);
@@ -133,11 +134,22 @@
             this.btnPopulatePets.UseVisualStyleBackColor = true;
             this.btnPopulatePets.Click += new System.EventHandler(this.btnPopulatePets_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(854, 441);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // PetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 689);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulatePets);
             this.Controls.Add(this.gridControl1);
             this.Name = "PetForm";
@@ -162,5 +174,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPetType;
         private Button btnPopulatePets;
         private BindingSource bsPet;
+        private Button btnClose;
     }
 }

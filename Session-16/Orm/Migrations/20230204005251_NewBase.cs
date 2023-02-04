@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class Rebuild : Migration
+    public partial class NewBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +47,7 @@ namespace Orm.Migrations
                 {
                     PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Breed = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    PetType = table.Column<int>(type: "int", nullable: false),
+                    AnimalType = table.Column<int>(type: "int", nullable: false),
                     PetStatus = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
@@ -62,7 +62,7 @@ namespace Orm.Migrations
                 columns: table => new
                 {
                     PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PetFoodType = table.Column<int>(type: "int", nullable: false),
+                    AnimalType = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
                     Cost = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
                 },

@@ -33,6 +33,7 @@
             this.colEmployeeSalary = new DevExpress.XtraGrid.Columns.GridColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnPopulateEmployees = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -121,11 +122,22 @@
             this.btnPopulateEmployees.UseVisualStyleBackColor = true;
             this.btnPopulateEmployees.Click += new System.EventHandler(this.btnPopulateEmployees_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(727, 473);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(894, 628);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulateEmployees);
             this.Controls.Add(this.gridControl1);
             this.Name = "FormEmployees";
@@ -149,5 +161,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEmployeeSalary;
         private BindingSource employeeBindingSource;
         private Button btnPopulateEmployees;
+        private Button btnClose;
     }
 }

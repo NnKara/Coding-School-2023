@@ -18,6 +18,7 @@ namespace Session_16 {
     public partial class FormEmployees : DevExpress.XtraEditors.XtraForm {
 
         private Populate _populate;
+        private EmployeeRepo _employeeRepo;
         public FormEmployees() {
             InitializeComponent();
         }
@@ -37,7 +38,7 @@ namespace Session_16 {
         }
 
         private void btnPopulateEmployees_Click(object sender, EventArgs e) {
-            EmployeeRepo employeeRepo = new EmployeeRepo();
+            EmployeeRepo employeeRepo=new EmployeeRepo();
             Populate populateEntitys = new Populate();
             List<Employee> employees = populateEntitys.PopulateEmployees();
             foreach (Employee employee in employees) {
@@ -47,22 +48,24 @@ namespace Session_16 {
 
         private void grdEmployees_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
-            EmployeeRepo employeeRepo=new EmployeeRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colEmployeeID).ToString());
             if (e.Valid) {
-                if (employeeRepo.GetById(id) == null) {
-                    employeeRepo.Add((Employee)employeeBindingSource.Current);
+                if (_employeeRepo.GetById(id) == null) {
+                    _employeeRepo.Add((Employee)employeeBindingSource.Current);
                 } else {
-                    employeeRepo.Update(id, (Employee)employeeBindingSource.Current);
+                    _employeeRepo.Update(id, (Employee)employeeBindingSource.Current);
                 }
             }
         }
 
         private void grdEmployees_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
             GridView view = sender as GridView;
-            EmployeeRepo employeeRepo = new EmployeeRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colEmployeeID).ToString());
-            employeeRepo.Delete(id);
+            _employeeRepo.Delete(id);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

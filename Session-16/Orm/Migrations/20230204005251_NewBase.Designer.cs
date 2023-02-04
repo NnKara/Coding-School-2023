@@ -12,8 +12,8 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    [Migration("20230202172217_Rebuild")]
-    partial class Rebuild
+    [Migration("20230204005251_NewBase")]
+    partial class NewBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,6 +90,9 @@ namespace Orm.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AnimalType")
+                        .HasColumnType("int");
+
                     b.Property<string>("Breed")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -100,9 +103,6 @@ namespace Orm.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("PetStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PetType")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -120,12 +120,12 @@ namespace Orm.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AnimalType")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Cost")
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)");
-
-                    b.Property<int>("PetFoodType")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(10, 2)
