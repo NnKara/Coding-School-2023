@@ -5,16 +5,12 @@ using System;
 using System.Linq;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
+using DevExpress.XtraRichEdit.Layout;
 
 namespace Session_16 {
     public partial class TransactionForm : DevExpress.XtraEditors.XtraForm {
 
-        private Populate _populate;
-        private TransactionRepo _transactionRepo;
-        private PetRepo _petRepo;
-        private PetFoodRepo _petFoodRepo;
-        private CustomerRepo _customerRepo;
-        private EmployeeRepo _employeeRepo;
+      
 
         
         public TransactionForm() {
@@ -46,10 +42,10 @@ namespace Session_16 {
         }
 
         private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
-            TransactionRepo transaction = new TransactionRepo();
+            TransactionRepo transactionRepo = new TransactionRepo();
             GridView view = sender as GridView;          
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
-            _transactionRepo.Delete(id);
+            transactionRepo.Delete(id);
         }
 
 
@@ -74,7 +70,7 @@ namespace Session_16 {
             PetFoodRepo petFoodRepo = new PetFoodRepo();
             repoPetFoodID.DataSource = petFoodRepo.GetAll();
             repoPetFoodID.ValueMember = "PetFoodID";
-            repoPetFoodID.DisplayMember = "AnimalType";
+            repoPetFoodID.DisplayMember = "Price";
 
 
             TransactionRepo transactionRepo = new TransactionRepo();
@@ -82,110 +78,60 @@ namespace Session_16 {
             grdTransaction.DataSource = bsTransaction;
         }
 
-        private void btnPopulateTransaction_Click(object sender, EventArgs e) {
-            Populate populateEntitys = new Populate();
-            List<Transaction> transactions = populateEntitys.PopulateTransactions();
-            foreach (Transaction transaction in transactions) {
-                _transactionRepo.Add(transaction);
-            }
-        }
-
         private void btnOrder_Click(object sender, EventArgs e) {
-            //Transaction newTras=new Transaction();
-            //Pet pet = new Pet();
-            //PetFood petFood = new PetFood();
         }
 
         private void btnClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-
-        public decimal SetPetFoods(Pet pet, PetFood petFood, int qty) {
-            int petFoodTotalPrice = 0;
-            PetFoodRepo petFoodRepo = new PetFoodRepo();
-            IList<PetFood> petFoodList = petFoodRepo.GetAll();
-
-            switch (pet.AnimalType) {
-                case AnimalType.Dog:
-                    return petFood.Price = petFoodList[0].Price * qty;
-
-
-                case AnimalType.Cat:
-                    return petFood.Price = petFoodList[1].Price * qty;
-
-
-                case AnimalType.Bird:
-                    return petFood.Price = petFoodList[2].Price * qty;
-            }
-            return petFoodTotalPrice;
-        }
-
         private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e) {
-            PetFood newPetFood = new PetFood();
-            Populate populate = new Populate();
-            Pet pet = new Pet();
+
             PetRepo petRepo = new PetRepo();
             PetFoodRepo petFoodRepo = new PetFoodRepo();
-
-
-            IList<Pet> pets = petRepo.GetAll();
             GridView view = sender as GridView;
-            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
-            // get the PetID value from the selected row in the Transaction grid control
-            //Guid selectedPetId = (Guid)view.GetFocusedRowCellValue("PetID");
+            TransactionRepo trasRepo = new TransactionRepo();
 
-            // find the corresponding Pet object in the Pets entity based on the PetID
-            //Pet selectedPet = pets.FirstOrDefault(p => p.PetID == id);
+            Transaction tras =view.GetFocusedRow() as Transaction;
 
-            //if (selectedPet != null) {
-            //    // set the PetPrice column value in the Transaction grid control with the price of the selected Pet
-            //    view.SetFocusedRowCellValue("PetPrice", selectedPet.Price);
-            //}
-            //int currentRowHandle = gridView1.FocusedRowHandle;
-            //if (currentRowHandle >= 0) {
-            //    object row = gridView1.GetRow(currentRowHandle);
-            //    Transaction currentTransaction = (Transaction)row;
-            //    int currentColumnQty = currentTransaction.PetFoodQty;
-            //    pet = currentTransaction.Pet;
-            //    newPetFood = currentTransaction.PetFood;
-            //    SetPetFoods(pet, newPetFood, currentColumnQty);
-            //}
-            //GridView gridView = gridControl1.DefaultView as GridView;
-            //int rowHandle = gridView.FocusedRowHandle;
-            //Guid columnValue = Guid.Parse(gridView.GetRowCellValue(rowHandle, "PetID").ToString());
+            if (e.Column.Caption == "PetID") {
+                Pet petTmp = petRepo.GetById(tras.PetID);
+                tras.PetID = (Guid)view.GetRowCellValue(view.FocusedRowHandle, colPetID);
+                if(view.GetRowCellValue(view.FocusedRowHandle,colPetID) != null) {
+                    tras.PetPrice = petTmp.Price;
+                    view.SetFocusedRowCellValue("Price", tras.PetPrice);
+                }
+            }
 
-            int row = gridView1.FocusedRowHandle;
-            gridView1.SetRowCellValue(row, "Price", Guid.NewGuid());
+            if (e.Column.Caption == "PetFoodID") {
+                PetFood petFood = petFoodRepo.GetById(tras.PetFoodID);
+                tras.PetFoodID = (Guid)view.GetRowCellValue(view.FocusedRowHandle, colPetFoodID);
+                if(view.GetRowCellValue(view.FocusedRowHandle,colPetFoodID) != null) {
+                    tras.PetFoodPrice = petFood.Price;
+                    view.SetFocusedRowCellValue("Price",tras.PetFoodPrice);                  
+                }
+            }
 
+            //Calculate Total Price
+            decimal petPrice = 0;
+            decimal petFoodPrice = 0;
+            int qty = 0;
 
-            int selectedRowIndex = e.RowHandle;
-            Guid selectedPetID = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
-            Pet selectedPet = petRepo.GetAll().Where(x => x.PetID == selectedPetID).FirstOrDefault();
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetPrice"]) != null)
+                petPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetPrice"]);
 
-            //PetFood selectedPetFood = petFoodRepo.GetAll().Where(x => x.AnimalType == selectedPet.AnimalType).FirstOrDefault();
-            repoPetFoodPrice.DataSource = petFoodRepo.GetAll().Where(x => x.AnimalType == selectedPet.AnimalType).ToList();
-        }
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodPrice"]) != null)
+                petFoodPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodPrice"]);
 
-        private void gridView1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e) {
-            //    // Get the selected pet from the grid
-            //    PetRepo petRepo = new PetRepo();
-            //    Pet pet=new Pet();
-            //    Guid selectedPetId = (Guid)gridView1.GetRowCellValue(e.FocusedRowHandle, "PetID");
-            //    Pet selectedPet = petRepo.GetById(selectedPetId);
-            //    // Create a new transaction
-            //    Transaction transaction = new Transaction();
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodQty"]) != null)
+                qty = (int)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodQty"]);
 
-            //    // Set the PetPrice property of the transaction to the price of the selected pet
-            //    transaction.PetPrice = selectedPet.Price;
-
-            //    // Do other necessary operations for the transaction here...
-            //PetRepo petRepo=new PetRepo();
-            //IList<Pet> pets=petRepo.GetAll();
-            //Guid selectedPetId = (Guid)grdTransaction.GetRowCellValue(e.FocusedRowHandle, "PetID");
-            //Pet selectedPet = pets.FirstOrDefault(p => p.PetID == selectedPetId);
-            //if (selectedPet != null) {
-            //    gridView1.SetRowCellValue(e.FocusedRowHandle, "Price", selectedPet.Price);
+            if ((view.GetRowCellValue(view.FocusedRowHandle,colPetFoodPrice)!=null && petFoodPrice!=0) && (view.GetRowCellValue(view.FocusedRowHandle, colPetPrice) != null && petPrice!=0)&& (view.GetRowCellValue(view.FocusedRowHandle, colPetFoodQty) != null&& qty!=0)) {
+                decimal totalPrice = petPrice + (petFoodPrice * qty);
+                tras.TotalPrice=totalPrice;
+                view.SetFocusedRowCellValue("TotalPrice", tras.TotalPrice);
+                //view.SetRowCellValue(view.FocusedRowHandle, view.Columns["colTotalPrice"], totalPrice);
+            }
 
         }
     }
