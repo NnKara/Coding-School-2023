@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Session_16
 {
-    public partial class MainMenu : Form
+    public partial class PetShop : Form
     {
-        public MainMenu()
+        public PetShop()
         {
             InitializeComponent();
         }
@@ -41,6 +42,22 @@ namespace Session_16
         private void btTransactions_Click(object sender, EventArgs e) {
             TransactionForm newTras = new TransactionForm();
             newTras.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void btnPetReport_Click(object sender, EventArgs e) {
+          
+            PetReportForm petReport = new PetReportForm();
+            petReport.ShowDialog();
+
+        }
+
+        private void btnMonthlyLedger_Click(object sender, EventArgs e) {
+            MonthlyLedgerForm montlyLedger = new MonthlyLedgerForm();
+            montlyLedger.ShowDialog();
         }
     }
 }

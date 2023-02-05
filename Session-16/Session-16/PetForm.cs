@@ -36,12 +36,17 @@ namespace Session_16 {
             GridView view = sender as GridView;
             PetRepo petRepo = new PetRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
-            if (e.Valid) {
-                if (petRepo.GetById(id) == null) {
-                    petRepo.Add((Pet)bsPet.Current);
-                } else {
-                    petRepo.Update(id, (Pet)bsPet.Current);
+            try {
+                if (e.Valid) {
+                
+                    if (petRepo.GetById(id) == null) {
+                        petRepo.Add((Pet)bsPet.Current);
+                    } else {
+                        petRepo.Update(id, (Pet)bsPet.Current);
+                    }
                 }
+            } catch (Exception ex) {
+                MessageBox.Show("You have to fill every Cell!");
             }
         }
 

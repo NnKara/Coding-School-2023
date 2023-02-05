@@ -12,11 +12,14 @@ namespace Model
         public int PetReportYear { get; set; }
         public int PetReportMonth { get; set; }
         public AnimalType AnimalType { get; set; }
-        public decimal PetReportTotalSold { get; set; }
+        public int PetReportTotalSold { get; set; }
+
+        public List<Transaction> Transactions { get; set; }
 
         public PetReport()
         {
             PetReportID = Guid.NewGuid();
+            Transactions = new List<Transaction>();
         }
     }
 }

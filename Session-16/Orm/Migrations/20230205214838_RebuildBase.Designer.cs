@@ -12,8 +12,8 @@ using Orm.Context;
 namespace Orm.Migrations
 {
     [DbContext(typeof(PetShopContext))]
-    [Migration("20230204185142_newBase")]
-    partial class newBase
+    [Migration("20230205214838_RebuildBase")]
+    partial class RebuildBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,35 @@ namespace Orm.Migrations
                     b.ToTable("Employee", (string)null);
                 });
 
+            modelBuilder.Entity("Model.MonthlyLedger", b =>
+                {
+                    b.Property<Guid>("MonthlyLedgerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Expenses")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("Income")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("Month")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Total")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("MonthlyLedgerID");
+
+                    b.ToTable("MonthlyLedger", (string)null);
+                });
+
             modelBuilder.Entity("Model.Pet", b =>
                 {
                     b.Property<Guid>("PetID")
@@ -136,6 +165,29 @@ namespace Orm.Migrations
                     b.ToTable("PetFood", (string)null);
                 });
 
+            modelBuilder.Entity("Model.PetReport", b =>
+                {
+                    b.Property<Guid>("PetReportID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AnimalType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetReportMonth")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetReportTotalSold")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PetReportYear")
+                        .HasColumnType("int");
+
+                    b.HasKey("PetReportID");
+
+                    b.ToTable("PetReport", (string)null);
+                });
+
             modelBuilder.Entity("Model.Transaction", b =>
                 {
                     b.Property<Guid>("TransactionID")
@@ -146,6 +198,9 @@ namespace Orm.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("EmployeeID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MonthlyLedgerID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PetFoodID")
@@ -165,6 +220,9 @@ namespace Orm.Migrations
                         .HasPrecision(10, 5)
                         .HasColumnType("decimal(10,5)");
 
+                    b.Property<Guid>("PetReportID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<decimal>("TotalPrice")
                         .HasPrecision(10, 5)
                         .HasColumnType("decimal(10,5)");
@@ -179,9 +237,13 @@ namespace Orm.Migrations
 
                     b.HasIndex("EmployeeID");
 
+                    b.HasIndex("MonthlyLedgerID");
+
                     b.HasIndex("PetFoodID");
 
                     b.HasIndex("PetID");
+
+                    b.HasIndex("PetReportID");
 
                     b.ToTable("Transaction", (string)null);
                 });
@@ -200,6 +262,12 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Model.MonthlyLedger", "MonthlyLedger")
+                        .WithMany("Transactions")
+                        .HasForeignKey("MonthlyLedgerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Model.PetFood", "PetFood")
                         .WithMany("Transactions")
                         .HasForeignKey("PetFoodID")
@@ -212,13 +280,23 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Model.PetReport", "PetReport")
+                        .WithMany("Transactions")
+                        .HasForeignKey("PetReportID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
 
                     b.Navigation("Employee");
 
+                    b.Navigation("MonthlyLedger");
+
                     b.Navigation("Pet");
 
                     b.Navigation("PetFood");
+
+                    b.Navigation("PetReport");
                 });
 
             modelBuilder.Entity("Model.Customer", b =>
@@ -231,12 +309,22 @@ namespace Orm.Migrations
                     b.Navigation("Transactions");
                 });
 
+            modelBuilder.Entity("Model.MonthlyLedger", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
             modelBuilder.Entity("Model.Pet", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("Model.PetFood", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
+            modelBuilder.Entity("Model.PetReport", b =>
                 {
                     b.Navigation("Transactions");
                 });

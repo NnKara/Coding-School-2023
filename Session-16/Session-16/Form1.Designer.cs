@@ -65,6 +65,7 @@
             // 
             // grdCustomers
             // 
+            this.grdCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.grdCustomers.Location = new System.Drawing.Point(66, 78);
             this.grdCustomers.MainView = this.gridView1;
             this.grdCustomers.Name = "grdCustomers";
@@ -190,6 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(1230, 888);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnPopulate);

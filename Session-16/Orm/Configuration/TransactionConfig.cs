@@ -33,6 +33,14 @@ namespace Orm.Configuration
                 .WithMany(pet => pet.Transactions)
                 .HasForeignKey(transaction => transaction.PetID);
 
+            builder.HasOne(transaction=>transaction.PetReport)
+                .WithMany(petReport=>petReport.Transactions)
+                .HasForeignKey(transaction=>transaction.PetReportID);
+            
+            builder.HasOne(transaction=>transaction.MonthlyLedger)
+                .WithMany(monthlyLedger=>monthlyLedger.Transactions)
+                .HasForeignKey(transaction=>transaction.MonthlyLedgerID);
+
         }
     }
 }

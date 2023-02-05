@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class newBase : Migration
+    public partial class RebuildBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,6 +42,22 @@ namespace Orm.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MonthlyLedger",
+                columns: table => new
+                {
+                    MonthlyLedgerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    Month = table.Column<int>(type: "int", nullable: false),
+                    Income = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
+                    Expenses = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
+                    Total = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MonthlyLedger", x => x.MonthlyLedgerID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pet",
                 columns: table => new
                 {
@@ -72,6 +88,21 @@ namespace Orm.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PetReport",
+                columns: table => new
+                {
+                    PetReportID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PetReportYear = table.Column<int>(type: "int", nullable: false),
+                    PetReportMonth = table.Column<int>(type: "int", nullable: false),
+                    AnimalType = table.Column<int>(type: "int", nullable: false),
+                    PetReportTotalSold = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PetReport", x => x.PetReportID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Transaction",
                 columns: table => new
                 {
@@ -84,7 +115,9 @@ namespace Orm.Migrations
                     PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    MonthlyLedgerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PetReportID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,10 +135,22 @@ namespace Orm.Migrations
                         principalColumn: "EmployeeID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Transaction_MonthlyLedger_MonthlyLedgerID",
+                        column: x => x.MonthlyLedgerID,
+                        principalTable: "MonthlyLedger",
+                        principalColumn: "MonthlyLedgerID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Transaction_PetFood_PetFoodID",
                         column: x => x.PetFoodID,
                         principalTable: "PetFood",
                         principalColumn: "PetFoodID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Transaction_PetReport_PetReportID",
+                        column: x => x.PetReportID,
+                        principalTable: "PetReport",
+                        principalColumn: "PetReportID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transaction_Pet_PetID",
@@ -126,6 +171,11 @@ namespace Orm.Migrations
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Transaction_MonthlyLedgerID",
+                table: "Transaction",
+                column: "MonthlyLedgerID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Transaction_PetFoodID",
                 table: "Transaction",
                 column: "PetFoodID");
@@ -134,6 +184,11 @@ namespace Orm.Migrations
                 name: "IX_Transaction_PetID",
                 table: "Transaction",
                 column: "PetID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transaction_PetReportID",
+                table: "Transaction",
+                column: "PetReportID");
         }
 
         /// <inheritdoc />
@@ -149,7 +204,13 @@ namespace Orm.Migrations
                 name: "Employee");
 
             migrationBuilder.DropTable(
+                name: "MonthlyLedger");
+
+            migrationBuilder.DropTable(
                 name: "PetFood");
+
+            migrationBuilder.DropTable(
+                name: "PetReport");
 
             migrationBuilder.DropTable(
                 name: "Pet");

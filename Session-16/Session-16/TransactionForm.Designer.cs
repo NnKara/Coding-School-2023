@@ -40,6 +40,8 @@
             this.colPetFoodPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPetReportID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMonthlyLedgerID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdTransaction = new DevExpress.XtraGrid.GridControl();
             this.repoPetFoodPrice = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.bsTransaction = new System.Windows.Forms.BindingSource(this.components);
@@ -72,17 +74,20 @@
             // 
             gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colTransactionID,
-            this.colPetID,
             this.colEmployeeID,
-            this.colPetFoodID,
             this.colCustomerID,
-            this.colPetPrice,
+            this.colPetID,
+            this.colPetFoodID,
             this.colPetFoodQty,
+            this.colPetPrice,
             this.colPetFoodPrice,
             this.colTransactionDate,
-            this.colTotalPrice});
+            this.colTotalPrice,
+            this.colPetReportID,
+            this.colMonthlyLedgerID});
             gridView1.GridControl = this.grdTransaction;
             gridView1.Name = "gridView1";
+            gridView1.OptionsView.ShowGroupPanel = false;
             gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView1_RowDeleting);
             gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
@@ -93,19 +98,17 @@
             this.colTransactionID.FieldName = "TransactionID";
             this.colTransactionID.MinWidth = 25;
             this.colTransactionID.Name = "colTransactionID";
-            this.colTransactionID.Visible = true;
-            this.colTransactionID.VisibleIndex = 0;
             this.colTransactionID.Width = 94;
             // 
             // colPetID
             // 
-            this.colPetID.Caption = "PetID";
+            this.colPetID.Caption = "Pet";
             this.colPetID.ColumnEdit = this.repoPet;
             this.colPetID.FieldName = "PetID";
             this.colPetID.MinWidth = 25;
             this.colPetID.Name = "colPetID";
             this.colPetID.Visible = true;
-            this.colPetID.VisibleIndex = 1;
+            this.colPetID.VisibleIndex = 0;
             this.colPetID.Width = 94;
             // 
             // repoPet
@@ -119,13 +122,13 @@
             // 
             // colEmployeeID
             // 
-            this.colEmployeeID.Caption = "EmployeeID";
+            this.colEmployeeID.Caption = "Employee";
             this.colEmployeeID.ColumnEdit = this.repoEmployee;
             this.colEmployeeID.FieldName = "EmployeeID";
             this.colEmployeeID.MinWidth = 25;
             this.colEmployeeID.Name = "colEmployeeID";
             this.colEmployeeID.Visible = true;
-            this.colEmployeeID.VisibleIndex = 2;
+            this.colEmployeeID.VisibleIndex = 1;
             this.colEmployeeID.Width = 94;
             // 
             // repoEmployee
@@ -140,13 +143,13 @@
             // 
             // colPetFoodID
             // 
-            this.colPetFoodID.Caption = "PetFoodID";
+            this.colPetFoodID.Caption = "PetFoodType";
             this.colPetFoodID.ColumnEdit = this.repoPetFoodID;
             this.colPetFoodID.FieldName = "PetFoodID";
             this.colPetFoodID.MinWidth = 25;
             this.colPetFoodID.Name = "colPetFoodID";
             this.colPetFoodID.Visible = true;
-            this.colPetFoodID.VisibleIndex = 3;
+            this.colPetFoodID.VisibleIndex = 2;
             this.colPetFoodID.Width = 94;
             // 
             // repoPetFoodID
@@ -160,13 +163,13 @@
             // 
             // colCustomerID
             // 
-            this.colCustomerID.Caption = "CustomerID";
+            this.colCustomerID.Caption = "Customer";
             this.colCustomerID.ColumnEdit = this.repoCustomerID;
             this.colCustomerID.FieldName = "CustomerID";
             this.colCustomerID.MinWidth = 25;
             this.colCustomerID.Name = "colCustomerID";
             this.colCustomerID.Visible = true;
-            this.colCustomerID.VisibleIndex = 4;
+            this.colCustomerID.VisibleIndex = 3;
             this.colCustomerID.Width = 94;
             // 
             // repoCustomerID
@@ -186,7 +189,7 @@
             this.colPetPrice.MinWidth = 25;
             this.colPetPrice.Name = "colPetPrice";
             this.colPetPrice.Visible = true;
-            this.colPetPrice.VisibleIndex = 5;
+            this.colPetPrice.VisibleIndex = 4;
             this.colPetPrice.Width = 94;
             // 
             // colPetFoodQty
@@ -197,7 +200,7 @@
             this.colPetFoodQty.MinWidth = 25;
             this.colPetFoodQty.Name = "colPetFoodQty";
             this.colPetFoodQty.Visible = true;
-            this.colPetFoodQty.VisibleIndex = 6;
+            this.colPetFoodQty.VisibleIndex = 5;
             this.colPetFoodQty.Width = 94;
             // 
             // repoFoodQty
@@ -214,7 +217,7 @@
             this.colPetFoodPrice.MinWidth = 25;
             this.colPetFoodPrice.Name = "colPetFoodPrice";
             this.colPetFoodPrice.Visible = true;
-            this.colPetFoodPrice.VisibleIndex = 7;
+            this.colPetFoodPrice.VisibleIndex = 6;
             this.colPetFoodPrice.Width = 94;
             // 
             // colTransactionDate
@@ -224,7 +227,7 @@
             this.colTransactionDate.MinWidth = 25;
             this.colTransactionDate.Name = "colTransactionDate";
             this.colTransactionDate.Visible = true;
-            this.colTransactionDate.VisibleIndex = 8;
+            this.colTransactionDate.VisibleIndex = 7;
             this.colTransactionDate.Width = 94;
             // 
             // colTotalPrice
@@ -234,11 +237,28 @@
             this.colTotalPrice.MinWidth = 25;
             this.colTotalPrice.Name = "colTotalPrice";
             this.colTotalPrice.Visible = true;
-            this.colTotalPrice.VisibleIndex = 9;
+            this.colTotalPrice.VisibleIndex = 8;
             this.colTotalPrice.Width = 94;
+            // 
+            // colPetReportID
+            // 
+            this.colPetReportID.Caption = "PetReportID";
+            this.colPetReportID.FieldName = "PetReportID";
+            this.colPetReportID.MinWidth = 25;
+            this.colPetReportID.Name = "colPetReportID";
+            this.colPetReportID.Width = 94;
+            // 
+            // colMonthlyLedgerID
+            // 
+            this.colMonthlyLedgerID.Caption = "MonthlyLedger";
+            this.colMonthlyLedgerID.FieldName = "MonthlyLedgerID";
+            this.colMonthlyLedgerID.MinWidth = 25;
+            this.colMonthlyLedgerID.Name = "colMonthlyLedgerID";
+            this.colMonthlyLedgerID.Width = 94;
             // 
             // grdTransaction
             // 
+            this.grdTransaction.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.grdTransaction.Location = new System.Drawing.Point(154, 57);
             this.grdTransaction.MainView = gridView1;
             this.grdTransaction.Name = "grdTransaction";
@@ -275,6 +295,7 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.gridControl1.Location = new System.Drawing.Point(154, 338);
             this.gridControl1.MainView = this.gridView2;
             this.gridControl1.Name = "gridControl1";
@@ -296,6 +317,7 @@
             this.grdRPetFoodPrice});
             this.gridView2.GridControl = this.gridControl1;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // grdREmployee
             // 
@@ -379,6 +401,8 @@
             // 
             // TransactionForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 715);
@@ -436,5 +460,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFood;
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFoodQty;
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFoodPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colPetReportID;
+        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerID;
     }
 }

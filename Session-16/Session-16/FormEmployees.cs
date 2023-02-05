@@ -49,12 +49,17 @@ namespace Session_16 {
         private void grdEmployees_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colEmployeeID).ToString());
-            if (e.Valid) {
-                if (_employeeRepo.GetById(id) == null) {
-                    _employeeRepo.Add((Employee)employeeBindingSource.Current);
-                } else {
-                    _employeeRepo.Update(id, (Employee)employeeBindingSource.Current);
+            EmployeeRepo employeeRepo = new EmployeeRepo();
+            try {
+                if (e.Valid) {
+                    if (employeeRepo.GetById(id) == null) {
+                        employeeRepo.Add((Employee)employeeBindingSource.Current);
+                    } else {
+                        employeeRepo.Update(id, (Employee)employeeBindingSource.Current);
+                    }
                 }
+            }catch(Exception ex) {
+                MessageBox.Show("Fill every Cell!");
             }
         }
 

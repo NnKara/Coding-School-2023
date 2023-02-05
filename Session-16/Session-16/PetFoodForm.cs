@@ -16,8 +16,6 @@ using DevExpress.XtraGrid.Views.Grid;
 namespace Session_16 {
     public partial class PetFoodForm : DevExpress.XtraEditors.XtraForm {
 
-        private Populate _populate;
-        private PetFoodRepo _petFoodRepo;
         public PetFoodForm() {
             InitializeComponent();
         }
@@ -32,20 +30,27 @@ namespace Session_16 {
 
         private void gridView1_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
+            PetFoodRepo petFoodRepo=new PetFoodRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetFoodID).ToString());
-            if (e.Valid) {
-                if (_petFoodRepo.GetById(id) == null) {
-                    _petFoodRepo.Add((PetFood)bindingSource1.Current);
-                } else {
-                    _petFoodRepo.Update(id, (PetFood)bindingSource1.Current);
+            try {
+                if (e.Valid) {
+               
+                    if (petFoodRepo.GetById(id) == null) {
+                        petFoodRepo.Add((PetFood)bindingSource1.Current);
+                    } else {
+                        petFoodRepo.Update(id, (PetFood)bindingSource1.Current);
+                    }
                 }
+            } catch (Exception ex) {
+                MessageBox.Show("You have to fill every Cell!");
             }
         }
 
         private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
+            PetFoodRepo petFoodRepo = new PetFoodRepo();
             GridView view = sender as GridView;
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetFoodID).ToString());
-            _petFoodRepo.Delete(id);
+            petFoodRepo.Delete(id);
         }
 
         private void SetControls() {

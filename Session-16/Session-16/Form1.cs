@@ -66,13 +66,16 @@ namespace Session_16 {
             GridView view = sender as GridView;
             CustomerRepo customerRepo = new CustomerRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colCustomerID).ToString());
-            if (e.Valid)
-            {
-                if (customerRepo.GetById(id) == null) {
-                    customerRepo.Add((Customer)bsCustomer.Current);
-                } else {
-                    customerRepo.Update(id,(Customer)bsCustomer.Current);
+            try {
+                if (e.Valid) {
+                    if (customerRepo.GetById(id) == null) {
+                        customerRepo.Add((Customer)bsCustomer.Current);
+                    } else {
+                        customerRepo.Update(id, (Customer)bsCustomer.Current);
+                    }
                 }
+            }catch(Exception ex) {
+                MessageBox.Show("Fill every Cell!");
             }
         }
 

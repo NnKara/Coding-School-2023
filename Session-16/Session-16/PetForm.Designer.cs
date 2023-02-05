@@ -42,6 +42,9 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl1.Location = new System.Drawing.Point(126, 74);
             this.gridControl1.MainView = this.gridViewPet;
             this.gridControl1.Name = "gridControl1";
@@ -63,6 +66,7 @@
             this.colPetCost});
             this.gridViewPet.GridControl = this.gridControl1;
             this.gridViewPet.Name = "gridViewPet";
+            this.gridViewPet.OptionsView.ShowGroupPanel = false;
             this.gridViewPet.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridViewPet_RowDeleting);
             this.gridViewPet.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridViewPet_ValidateRow);
             // 
@@ -146,6 +150,8 @@
             // 
             // PetForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 689);

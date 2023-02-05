@@ -6,18 +6,19 @@ using System.Linq;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 using DevExpress.XtraRichEdit.Layout;
+using DevExpress.CodeParser;
 
 namespace Session_16 {
     public partial class TransactionForm : DevExpress.XtraEditors.XtraForm {
 
-      
 
-        
+
+
         public TransactionForm() {
             InitializeComponent();
         }
 
-  
+
 
         private void TransactionForm_Load(object sender, EventArgs e) {
             SetControls();
@@ -29,17 +30,24 @@ namespace Session_16 {
 
         private void gridView1_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
-            TransactionRepo trasRepo = new TransactionRepo();
-            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
+
+            //Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
             if (e.Valid) {
-                if (trasRepo.GetById(id) == null) {
-                    trasRepo.Add((Transaction)bsTransaction.Current);
-                } else {
-                    trasRepo.Update(id,(Transaction)bsTransaction.Current);
+                try {
+                    TransactionRepo trasRepo = new TransactionRepo();
+                    Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
+                    if (trasRepo.GetById(id) == null) {
+                        trasRepo.Add((Transaction)bsTransaction.Current);
+                    } else {
+                        trasRepo.Update(id, (Transaction)bsTransaction.Current);
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show("You have to fill every Cell!");
                 }
             }
-            
         }
+    
+
 
         private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
             TransactionRepo transactionRepo = new TransactionRepo();

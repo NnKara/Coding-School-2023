@@ -12,7 +12,9 @@ namespace Model
         private List<Employee> _employeeList=new List<Employee>();
         private List<Pet> _petList=new List<Pet>();
         private List<PetFood> _petFoodList = new List<PetFood>();
-        private List<Transaction> _transactionList=new List<Transaction>();  
+        private List<MonthlyLedger> _monthlyLedgerList = new List<MonthlyLedger>();
+        private List<PetReport> _petReportList = new List<PetReport>();
+
         
         public List<Customer> PopulateCustomers()
         {
@@ -190,24 +192,45 @@ namespace Model
             return _petFoodList;
         }
 
-
-
-
-
-        public List<Transaction> PopulateTransactions() {
-
-
-            Transaction tranasaction = new Transaction() {
-                CustomerID = _customerList[0].CustomerID,
-                EmployeeID = _employeeList[0].EmployeeID,
-                PetID = _petList[0].PetID,
-                PetFoodPrice = _petFoodList[0].Price,
-                PetFoodQty = 3,
-                PetPrice = _petFoodList[0].Price
+        public List<MonthlyLedger> PopulateMonthlyLedgers() {
+            MonthlyLedger monthly1 = new MonthlyLedger() {
+                Income = 200,
+                Expenses = 500,
+                Year = 2023,
+                Month = 3,
+                Total=800
             };
-            _transactionList.Add(tranasaction);
-            return _transactionList;
+            
+            MonthlyLedger monthly2 = new MonthlyLedger() {
+                Income = 300,
+                Expenses = 400,
+                Year = 2023,
+                Month = 4,
+                Total=900
+            };
+            _monthlyLedgerList.Add(monthly1);
+            _monthlyLedgerList.Add(monthly2);
+            return _monthlyLedgerList;
+        }
 
+        public List<PetReport> PopulatePetReports() {
+            PetReport petReport1 = new PetReport() {
+                AnimalType= AnimalType.Cat,
+                PetReportMonth=3,
+                PetReportYear=2023,
+                PetReportTotalSold=15
+            };
+            
+            PetReport petReport2 = new PetReport() {
+                AnimalType= AnimalType.Dog,
+                PetReportMonth=4,
+                PetReportYear=2023,
+                PetReportTotalSold=16
+            };
+
+            _petReportList.Add(petReport1);
+            _petReportList.Add(petReport2);
+            return _petReportList;
         }
 
 

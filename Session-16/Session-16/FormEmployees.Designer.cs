@@ -61,6 +61,7 @@
             this.colEmployeeSalary});
             this.grdEmployees.GridControl = this.gridControl1;
             this.grdEmployees.Name = "grdEmployees";
+            this.grdEmployees.OptionsView.ShowGroupPanel = false;
             this.grdEmployees.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.grdEmployees_RowDeleting);
             this.grdEmployees.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.grdEmployees_ValidateRow);
             // 

@@ -40,6 +40,9 @@
             // 
             // grdPetFood
             // 
+            this.grdPetFood.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdPetFood.Location = new System.Drawing.Point(143, 31);
             this.grdPetFood.MainView = this.gridView1;
             this.grdPetFood.Name = "grdPetFood";
@@ -59,6 +62,7 @@
             this.colPetFoodCost});
             this.gridView1.GridControl = this.grdPetFood;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView1_RowDeleting);
             this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
@@ -122,6 +126,8 @@
             // 
             // PetFoodForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.SeaGreen;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1239, 808);
