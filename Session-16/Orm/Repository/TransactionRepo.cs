@@ -32,7 +32,7 @@ namespace Orm.Repository
         {
             using var petShopContext = new PetShopContext();
             return petShopContext.Transactions.Include(t => t.Customer).Include(t => t.Employee).Include(t => t.Pet)
-                .Include(t => t.PetFood).Include(t => t.MonthlyLedger).Include(t => t.PetReport).ToList();
+                .Include(t => t.PetFood).ToList();
 
             
         }

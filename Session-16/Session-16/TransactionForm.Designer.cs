@@ -26,22 +26,20 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.Views.Grid.GridView gridView1;
             this.colTransactionID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoPet = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colEmployeeID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoEmployee = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.colPetFoodID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repoPetFoodID = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoCustomerID = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.colPetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPetID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoPet = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colPetFoodID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repoPetFoodID = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colPetFoodQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repoFoodQty = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.colPetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPetFoodPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPetReportID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMonthlyLedgerID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grdTransaction = new DevExpress.XtraGrid.GridControl();
             this.repoPetFoodPrice = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.bsTransaction = new System.Windows.Forms.BindingSource(this.components);
@@ -58,10 +56,10 @@
             this.btnClose = new System.Windows.Forms.Button();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCustomerID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoFoodQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodPrice)).BeginInit();
@@ -82,9 +80,7 @@
             this.colPetPrice,
             this.colPetFoodPrice,
             this.colTransactionDate,
-            this.colTotalPrice,
-            this.colPetReportID,
-            this.colMonthlyLedgerID});
+            this.colTotalPrice});
             gridView1.GridControl = this.grdTransaction;
             gridView1.Name = "gridView1";
             gridView1.OptionsView.ShowGroupPanel = false;
@@ -99,26 +95,6 @@
             this.colTransactionID.MinWidth = 25;
             this.colTransactionID.Name = "colTransactionID";
             this.colTransactionID.Width = 94;
-            // 
-            // colPetID
-            // 
-            this.colPetID.Caption = "Pet";
-            this.colPetID.ColumnEdit = this.repoPet;
-            this.colPetID.FieldName = "PetID";
-            this.colPetID.MinWidth = 25;
-            this.colPetID.Name = "colPetID";
-            this.colPetID.Visible = true;
-            this.colPetID.VisibleIndex = 0;
-            this.colPetID.Width = 94;
-            // 
-            // repoPet
-            // 
-            this.repoPet.AutoHeight = false;
-            this.repoPet.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repoPet.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Breed", "Breed")});
-            this.repoPet.Name = "repoPet";
             // 
             // colEmployeeID
             // 
@@ -141,26 +117,6 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeName", "Name")});
             this.repoEmployee.Name = "repoEmployee";
             // 
-            // colPetFoodID
-            // 
-            this.colPetFoodID.Caption = "PetFoodType";
-            this.colPetFoodID.ColumnEdit = this.repoPetFoodID;
-            this.colPetFoodID.FieldName = "PetFoodID";
-            this.colPetFoodID.MinWidth = 25;
-            this.colPetFoodID.Name = "colPetFoodID";
-            this.colPetFoodID.Visible = true;
-            this.colPetFoodID.VisibleIndex = 2;
-            this.colPetFoodID.Width = 94;
-            // 
-            // repoPetFoodID
-            // 
-            this.repoPetFoodID.AutoHeight = false;
-            this.repoPetFoodID.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repoPetFoodID.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AnimalType", "AnimalType")});
-            this.repoPetFoodID.Name = "repoPetFoodID";
-            // 
             // colCustomerID
             // 
             this.colCustomerID.Caption = "Customer";
@@ -182,15 +138,46 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Name")});
             this.repoCustomerID.Name = "repoCustomerID";
             // 
-            // colPetPrice
+            // colPetID
             // 
-            this.colPetPrice.Caption = "PetPrice";
-            this.colPetPrice.FieldName = "PetPrice";
-            this.colPetPrice.MinWidth = 25;
-            this.colPetPrice.Name = "colPetPrice";
-            this.colPetPrice.Visible = true;
-            this.colPetPrice.VisibleIndex = 4;
-            this.colPetPrice.Width = 94;
+            this.colPetID.Caption = "PetID";
+            this.colPetID.ColumnEdit = this.repoPet;
+            this.colPetID.FieldName = "PetID";
+            this.colPetID.MinWidth = 25;
+            this.colPetID.Name = "colPetID";
+            this.colPetID.Visible = true;
+            this.colPetID.VisibleIndex = 0;
+            this.colPetID.Width = 94;
+            // 
+            // repoPet
+            // 
+            this.repoPet.AutoHeight = false;
+            this.repoPet.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoPet.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Breed", "Breed"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PetStatus", "PetStatus")});
+            this.repoPet.Name = "repoPet";
+            // 
+            // colPetFoodID
+            // 
+            this.colPetFoodID.Caption = "PetFoodID";
+            this.colPetFoodID.ColumnEdit = this.repoPetFoodID;
+            this.colPetFoodID.FieldName = "PetFoodID";
+            this.colPetFoodID.MinWidth = 25;
+            this.colPetFoodID.Name = "colPetFoodID";
+            this.colPetFoodID.Visible = true;
+            this.colPetFoodID.VisibleIndex = 2;
+            this.colPetFoodID.Width = 94;
+            // 
+            // repoPetFoodID
+            // 
+            this.repoPetFoodID.AutoHeight = false;
+            this.repoPetFoodID.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repoPetFoodID.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AnimalType", "AnimalType")});
+            this.repoPetFoodID.Name = "repoPetFoodID";
             // 
             // colPetFoodQty
             // 
@@ -209,6 +196,16 @@
             this.repoFoodQty.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repoFoodQty.Name = "repoFoodQty";
+            // 
+            // colPetPrice
+            // 
+            this.colPetPrice.Caption = "PetPrice";
+            this.colPetPrice.FieldName = "PetPrice";
+            this.colPetPrice.MinWidth = 25;
+            this.colPetPrice.Name = "colPetPrice";
+            this.colPetPrice.Visible = true;
+            this.colPetPrice.VisibleIndex = 4;
+            this.colPetPrice.Width = 94;
             // 
             // colPetFoodPrice
             // 
@@ -239,22 +236,6 @@
             this.colTotalPrice.Visible = true;
             this.colTotalPrice.VisibleIndex = 8;
             this.colTotalPrice.Width = 94;
-            // 
-            // colPetReportID
-            // 
-            this.colPetReportID.Caption = "PetReportID";
-            this.colPetReportID.FieldName = "PetReportID";
-            this.colPetReportID.MinWidth = 25;
-            this.colPetReportID.Name = "colPetReportID";
-            this.colPetReportID.Width = 94;
-            // 
-            // colMonthlyLedgerID
-            // 
-            this.colMonthlyLedgerID.Caption = "MonthlyLedger";
-            this.colMonthlyLedgerID.FieldName = "MonthlyLedgerID";
-            this.colMonthlyLedgerID.MinWidth = 25;
-            this.colMonthlyLedgerID.Name = "colMonthlyLedgerID";
-            this.colMonthlyLedgerID.Width = 94;
             // 
             // grdTransaction
             // 
@@ -414,10 +395,10 @@
             this.Text = "TransactionForm";
             this.Load += new System.EventHandler(this.TransactionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoCustomerID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoFoodQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoPetFoodPrice)).EndInit();
@@ -460,7 +441,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFood;
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFoodQty;
         private DevExpress.XtraGrid.Columns.GridColumn grdRPetFoodPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colPetReportID;
-        private DevExpress.XtraGrid.Columns.GridColumn colMonthlyLedgerID;
     }
 }

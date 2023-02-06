@@ -7,6 +7,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 using DevExpress.XtraRichEdit.Layout;
 using DevExpress.CodeParser;
+using DevExpress.XtraEditors.Repository;
+using System.Windows.Markup.Localizer;
 
 namespace Session_16 {
     public partial class TransactionForm : DevExpress.XtraEditors.XtraForm {
@@ -22,6 +24,7 @@ namespace Session_16 {
 
         private void TransactionForm_Load(object sender, EventArgs e) {
             SetControls();
+
         }
 
         private void grdTransaction_Click(object sender, EventArgs e) {
@@ -46,12 +49,12 @@ namespace Session_16 {
                 }
             }
         }
-    
+
 
 
         private void gridView1_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
             TransactionRepo transactionRepo = new TransactionRepo();
-            GridView view = sender as GridView;          
+            GridView view = sender as GridView;
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colTransactionID).ToString());
             transactionRepo.Delete(id);
         }
@@ -95,28 +98,31 @@ namespace Session_16 {
 
         private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e) {
 
+
             PetRepo petRepo = new PetRepo();
             PetFoodRepo petFoodRepo = new PetFoodRepo();
             GridView view = sender as GridView;
             TransactionRepo trasRepo = new TransactionRepo();
 
-            Transaction tras =view.GetFocusedRow() as Transaction;
+           
 
             if (e.Column.Caption == "PetID") {
+                Transaction tras = view.GetFocusedRow() as Transaction;
                 Pet petTmp = petRepo.GetById(tras.PetID);
                 tras.PetID = (Guid)view.GetRowCellValue(view.FocusedRowHandle, colPetID);
-                if(view.GetRowCellValue(view.FocusedRowHandle,colPetID) != null) {
+                if (view.GetRowCellValue(view.FocusedRowHandle, colPetID) != null) {
                     tras.PetPrice = petTmp.Price;
                     view.SetFocusedRowCellValue("Price", tras.PetPrice);
                 }
             }
 
             if (e.Column.Caption == "PetFoodID") {
+                Transaction tras = view.GetFocusedRow() as Transaction;
                 PetFood petFood = petFoodRepo.GetById(tras.PetFoodID);
                 tras.PetFoodID = (Guid)view.GetRowCellValue(view.FocusedRowHandle, colPetFoodID);
-                if(view.GetRowCellValue(view.FocusedRowHandle,colPetFoodID) != null) {
+                if (view.GetRowCellValue(view.FocusedRowHandle, colPetFoodID) != null) {
                     tras.PetFoodPrice = petFood.Price;
-                    view.SetFocusedRowCellValue("Price",tras.PetFoodPrice);                  
+                    view.SetFocusedRowCellValue("Price", tras.PetFoodPrice);
                 }
             }
 
@@ -125,21 +131,27 @@ namespace Session_16 {
             decimal petFoodPrice = 0;
             int qty = 0;
 
-            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetPrice"]) != null)
-                petPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetPrice"]);
-
-            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodPrice"]) != null)
-                petFoodPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodPrice"]);
-
-            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodQty"]) != null)
-                qty = (int)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["colPetFoodQty"]);
-
-            if ((view.GetRowCellValue(view.FocusedRowHandle,colPetFoodPrice)!=null && petFoodPrice!=0) && (view.GetRowCellValue(view.FocusedRowHandle, colPetPrice) != null && petPrice!=0)&& (view.GetRowCellValue(view.FocusedRowHandle, colPetFoodQty) != null&& qty!=0)) {
-                decimal totalPrice = petPrice + (petFoodPrice * qty);
-                tras.TotalPrice=totalPrice;
-                view.SetFocusedRowCellValue("TotalPrice", tras.TotalPrice);
-                //view.SetRowCellValue(view.FocusedRowHandle, view.Columns["colTotalPrice"], totalPrice);
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetPrice"]) != null) {
+                petPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetPrice"]);
             }
+
+
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetFoodPrice"]) != null) {
+                petFoodPrice = (decimal)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetFoodPrice"]);
+            }
+
+            if (view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetFoodQty"]) != null) {
+                qty = (int)view.GetRowCellValue(view.FocusedRowHandle, view.Columns["PetFoodQty"]);
+            }
+
+            if (petFoodPrice!=0  &&  petFoodPrice!=0 && qty!=0 ) {
+                Transaction tras = view.GetFocusedRow() as Transaction;
+                decimal totalPrice = petPrice + (petFoodPrice * qty);
+                tras.TotalPrice = totalPrice;
+                view.SetRowCellValue(view.FocusedRowHandle, view.Columns["colTotalPrice"], totalPrice);
+            }
+
+
 
         }
     }

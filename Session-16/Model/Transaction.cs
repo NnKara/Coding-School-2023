@@ -24,10 +24,10 @@ namespace Model
         public Guid CustomerID { get; set; }
         public Employee Employee { get; set; } = null!;
         public Guid EmployeeID { get; set; }
-        public MonthlyLedger MonthlyLedger { get; set; }=null!;
-        public Guid MonthlyLedgerID { get; set; }
-        public PetReport PetReport { get; set; } = null!;   
-        public Guid PetReportID { get; set; }
+        //public MonthlyLedger MonthlyLedger { get; set; }=null!;
+        //public Guid MonthlyLedgerID { get; set; }
+        //public PetReport PetReport { get; set; } = null!;   
+        //public Guid PetReportID { get; set; }
 
         public Transaction() {
             TransactionID = Guid.NewGuid();

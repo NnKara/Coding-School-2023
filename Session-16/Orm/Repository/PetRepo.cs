@@ -34,7 +34,7 @@ namespace Orm.Repository
         public IList<Pet> GetAll()
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Pets.ToList();
+            return petShopContext.Pets.Where(pet=>pet.PetStatus!=PetStatus.UNHEALTHY).ToList();
         }
 
         public Pet? GetById(Guid id)

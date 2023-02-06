@@ -197,9 +197,6 @@ namespace Orm.Migrations
                     b.Property<Guid>("EmployeeID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MonthlyLedgerID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("PetFoodID")
                         .HasColumnType("uniqueidentifier");
 
@@ -217,9 +214,6 @@ namespace Orm.Migrations
                         .HasPrecision(10, 5)
                         .HasColumnType("decimal(10,5)");
 
-                    b.Property<Guid>("PetReportID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("TotalPrice")
                         .HasPrecision(10, 5)
                         .HasColumnType("decimal(10,5)");
@@ -234,13 +228,9 @@ namespace Orm.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.HasIndex("MonthlyLedgerID");
-
                     b.HasIndex("PetFoodID");
 
                     b.HasIndex("PetID");
-
-                    b.HasIndex("PetReportID");
 
                     b.ToTable("Transaction", (string)null);
                 });
@@ -259,12 +249,6 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.MonthlyLedger", "MonthlyLedger")
-                        .WithMany("Transactions")
-                        .HasForeignKey("MonthlyLedgerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Model.PetFood", "PetFood")
                         .WithMany("Transactions")
                         .HasForeignKey("PetFoodID")
@@ -277,23 +261,13 @@ namespace Orm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Model.PetReport", "PetReport")
-                        .WithMany("Transactions")
-                        .HasForeignKey("PetReportID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Customer");
 
                     b.Navigation("Employee");
 
-                    b.Navigation("MonthlyLedger");
-
                     b.Navigation("Pet");
 
                     b.Navigation("PetFood");
-
-                    b.Navigation("PetReport");
                 });
 
             modelBuilder.Entity("Model.Customer", b =>
@@ -306,22 +280,12 @@ namespace Orm.Migrations
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("Model.MonthlyLedger", b =>
-                {
-                    b.Navigation("Transactions");
-                });
-
             modelBuilder.Entity("Model.Pet", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("Model.PetFood", b =>
-                {
-                    b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Model.PetReport", b =>
                 {
                     b.Navigation("Transactions");
                 });

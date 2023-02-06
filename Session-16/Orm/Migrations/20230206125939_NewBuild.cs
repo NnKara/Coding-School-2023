@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class RebuildBase : Migration
+    public partial class NewBuild : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -115,9 +115,7 @@ namespace Orm.Migrations
                     PetID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PetFoodID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MonthlyLedgerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PetReportID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EmployeeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,22 +133,10 @@ namespace Orm.Migrations
                         principalColumn: "EmployeeID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Transaction_MonthlyLedger_MonthlyLedgerID",
-                        column: x => x.MonthlyLedgerID,
-                        principalTable: "MonthlyLedger",
-                        principalColumn: "MonthlyLedgerID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Transaction_PetFood_PetFoodID",
                         column: x => x.PetFoodID,
                         principalTable: "PetFood",
                         principalColumn: "PetFoodID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Transaction_PetReport_PetReportID",
-                        column: x => x.PetReportID,
-                        principalTable: "PetReport",
-                        principalColumn: "PetReportID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transaction_Pet_PetID",
@@ -171,11 +157,6 @@ namespace Orm.Migrations
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_MonthlyLedgerID",
-                table: "Transaction",
-                column: "MonthlyLedgerID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Transaction_PetFoodID",
                 table: "Transaction",
                 column: "PetFoodID");
@@ -184,16 +165,17 @@ namespace Orm.Migrations
                 name: "IX_Transaction_PetID",
                 table: "Transaction",
                 column: "PetID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Transaction_PetReportID",
-                table: "Transaction",
-                column: "PetReportID");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MonthlyLedger");
+
+            migrationBuilder.DropTable(
+                name: "PetReport");
+
             migrationBuilder.DropTable(
                 name: "Transaction");
 
@@ -204,13 +186,7 @@ namespace Orm.Migrations
                 name: "Employee");
 
             migrationBuilder.DropTable(
-                name: "MonthlyLedger");
-
-            migrationBuilder.DropTable(
                 name: "PetFood");
-
-            migrationBuilder.DropTable(
-                name: "PetReport");
 
             migrationBuilder.DropTable(
                 name: "Pet");
