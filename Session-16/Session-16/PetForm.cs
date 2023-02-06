@@ -32,21 +32,29 @@ namespace Session_16 {
         }
 
 
-        private void gridViewPet_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e) {
+        private void gridViewPet_ValidateRow(object sender, ValidateRowEventArgs e) {
             GridView view = sender as GridView;
             PetRepo petRepo = new PetRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
-            if (e.Valid) {
-                if (petRepo.GetById(id) == null) {
-                    petRepo.Add((Pet)bsPet.Current);
-                } else {
-                    petRepo.Update(id, (Pet)bsPet.Current);
+            try {
+                if (e.Valid) {
+                
+                    if (petRepo.GetById(id) == null) {
+                        petRepo.Add((Pet)bsPet.Current);
+                    } else {
+                        petRepo.Update(id, (Pet)bsPet.Current);
+                    }
                 }
+            } catch (Exception ex) {
+                MessageBox.Show("You have to fill every Cell!");
             }
         }
 
         private void gridViewPet_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e) {
-
+            GridView view = sender as GridView;
+            PetRepo employeeRepo = new PetRepo();
+            Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colPetID).ToString());
+            employeeRepo.Delete(id);
         }
 
         
@@ -63,6 +71,10 @@ namespace Session_16 {
             foreach (Pet pet in pets) {
                 petRepo.Add(pet);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

@@ -37,9 +37,10 @@ namespace Session_16 {
         }
 
         private void SetControllers() {
+
             CustomerRepo customerRepo = new CustomerRepo();
-            bindingSource1.DataSource = customerRepo.GetAll();
-            grdCustomers.DataSource = bindingSource1;
+            bsCustomer.DataSource = customerRepo.GetAll();
+            grdCustomers.DataSource = bsCustomer;
 
         }
 
@@ -65,13 +66,16 @@ namespace Session_16 {
             GridView view = sender as GridView;
             CustomerRepo customerRepo = new CustomerRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colCustomerID).ToString());
-            if (e.Valid)
-            {
-                if (customerRepo.GetById(id) == null) {
-                    customerRepo.Add((Customer)bindingSource1.Current);
-                } else {
-                    customerRepo.Update(id,(Customer)bindingSource1.Current);
+            try {
+                if (e.Valid) {
+                    if (customerRepo.GetById(id) == null) {
+                        customerRepo.Add((Customer)bsCustomer.Current);
+                    } else {
+                        customerRepo.Update(id, (Customer)bsCustomer.Current);
+                    }
                 }
+            }catch(Exception ex) {
+                MessageBox.Show("Fill every Cell!");
             }
         }
 
@@ -81,6 +85,10 @@ namespace Session_16 {
             CustomerRepo customerRepo = new CustomerRepo();
             Guid id = Guid.Parse(view.GetRowCellValue(view.FocusedRowHandle, colCustomerID).ToString());
             customerRepo.Delete(id);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

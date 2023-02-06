@@ -15,9 +15,12 @@ namespace Model
         public decimal Expenses { get; set; }
         public decimal Total { get; set; }
 
+        public List<Transaction> Transactions { get; set; }
+
         public MonthlyLedger()
         {
             MonthlyLedgerID= Guid.NewGuid();
+            Transactions = new List<Transaction>();
         }
 
     }

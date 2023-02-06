@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Model;
 using Orm.Context;
 using System;
 using System.Collections.Generic;
@@ -30,13 +31,16 @@ namespace Orm.Repository
         public IList<Transaction> GetAll()
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Transactions.ToList();
+            return petShopContext.Transactions.Include(t => t.Customer).Include(t => t.Employee).Include(t => t.Pet)
+                .Include(t => t.PetFood).Include(t => t.MonthlyLedger).Include(t => t.PetReport).ToList();
+
+            
         }
 
         public Transaction? GetById(Guid id)
         {
             using var petShopContext = new PetShopContext();
-            return petShopContext.Transactions.SingleOrDefault();
+            return petShopContext.Transactions.Where(transaction => transaction.TransactionID == id).SingleOrDefault();
         }
 
         public void Update(Guid id, Transaction entity)

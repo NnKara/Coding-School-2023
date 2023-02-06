@@ -17,6 +17,9 @@ namespace Orm.Context
         public DbSet<PetFood> PetFoods {get; set;}
         public DbSet<Transaction> Transactions { get; set; }
 
+        public DbSet<MonthlyLedger> MonthlyLedgers { get; set; }
+        public DbSet<PetReport> PetReports { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomerConfig());
@@ -24,6 +27,8 @@ namespace Orm.Context
             modelBuilder.ApplyConfiguration(new PetFoodConfig());
             modelBuilder.ApplyConfiguration(new EmployeeConfig());
             modelBuilder.ApplyConfiguration(new TransactionConfig());
+            modelBuilder.ApplyConfiguration(new MonthlyLedgerConfig());
+            modelBuilder.ApplyConfiguration(new PetReportConfig());
             base.OnModelCreating(modelBuilder);
         }
 

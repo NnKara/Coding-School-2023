@@ -14,8 +14,11 @@ namespace Orm.Repository
         public void Add(Employee entity)
         {
             using var petShopContext = new PetShopContext();
-            petShopContext.Add(entity);
-            petShopContext.SaveChanges();
+            var existingEmployee = petShopContext.Employees.FirstOrDefault(employee => employee.EmployeeSurname == entity.EmployeeSurname);
+            if (existingEmployee == null) {
+                petShopContext.Add(entity);
+                petShopContext.SaveChanges();
+            }
         }
 
         public void Delete(Guid id)
