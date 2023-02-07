@@ -14,12 +14,12 @@ namespace Model
         public AnimalType AnimalType { get; set; }
         public int PetReportTotalSold { get; set; }
 
-        public List<Transaction> Transactions { get; set; }
+        //public List<Transaction> Transactions { get; set; }
 
         public PetReport()
         {
             PetReportID = Guid.NewGuid();
-            Transactions = new List<Transaction>();
+            //Transactions = new List<Transaction>();
         }
     }
 }
