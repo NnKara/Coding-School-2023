@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="operations.js"></script>   
+  </head>
+  <body>
+    <h1>Exercise 1/2 </h1>
+    <input type="text" id="input">
+    <button onclick="displayResult()">Reverse</button>
+    <div id="output">Result: </div>
+ <br>
+    <h1>Exercise 3</h1>
+    <h1>Customer Details</h1>
+
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <br><br>
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname">
+      <br><br>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age">
+      <br><br>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <br><br>
+      <button type="button" onclick="addCustomer()">Add Customer</button>
+    </form>
+    
+    <table id="customers">
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+        <th>Gender</th>
+      </tr>
+    </table>
+    
+    <br><br>
+    
+    <h2>Selected Customer Details</h2>
+    <label for="selectedName">Name:</label>
+    <input type="text" id="selectedName" disabled>
+    <br><br>
+    <label for="selectedSurname">Surname:</label>
+    <input type="text" id="selectedSurname" disabled>
+    <br><br>
+    <label for="selectedAge">Age:</label>
+    <input type="text" id="selectedAge" disabled>
+    <br><br>
+    <label for="selectedGender">Gender:</label>
+    <input type="text" id="selectedGender" disabled>
+ <br>
+    <h1>Exercise 4</h1>
+    <input type="text" id="inputA">
+    <input type="text" id="inputB">
+    <button onclick="displayResult4()">Multiply</button>
+    <div id="output4">Result: </div>
+<br>
+    <h1>Exercise 5</h1>
+    <input type="text" id="input5">
+    <button onclick="displayResult5()">Increment</button>
+    <div id="output5">Result: </div>  
+  </body>
+</html>
