@@ -31,7 +31,7 @@ namespace PetShop.EF.Repository {
             return petShopContext.Employees.ToList();
         }
 
-        public Employee? GetByID(int id) {
+        public Employee GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
             return petShopContext.Employees.Where(employee => employee.EmployeeID == id).SingleOrDefault();
         }
