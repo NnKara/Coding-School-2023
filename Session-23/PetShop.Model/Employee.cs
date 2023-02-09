@@ -13,7 +13,6 @@ namespace PetShop.Model
             EmployeeSurname = surname;
             EmployeeType = employeeType;
             SalaryPerMonth = salaryPerMonth;
-
             Transactions = new List<Transaction>();
         }
 

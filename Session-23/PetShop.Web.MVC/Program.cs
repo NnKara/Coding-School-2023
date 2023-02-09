@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<EntityInterface<Customer>, CustomerRepo>();
 //builder.Services.AddScoped<EntityInterface<Customer>, MockRepoCustomers>();
 builder.Services.AddScoped<EntityInterface<Employee>, EmployeeRepo>();
-builder.Services.AddScoped<EntityInterface<Employee>, MockRepoEmployees>();
+//builder.Services.AddScoped<EntityInterface<Employee>, MockRepoEmployees>();
 builder.Services.AddScoped<EntityInterface<Pet>, PetRepo>();
 builder.Services.AddScoped<EntityInterface<PetFood>, PetFoodRepo>();
 builder.Services.AddScoped<EntityInterface<Transaction>, TransactionRepo>();

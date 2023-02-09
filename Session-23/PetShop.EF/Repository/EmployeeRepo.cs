@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 namespace PetShop.EF.Repository {
     public class EmployeeRepo : EntityInterface<Employee> {
         public void Add(Employee entity) {
-            using var petShopContext = new PetShopDbContext();
-            var existingEmployee = petShopContext.Employees.FirstOrDefault(employee => employee.EmployeeSurname == entity.EmployeeSurname);
+            using var petShopDbContext = new PetShopDbContext();
+
             if (entity.EmployeeID != 0) {
                 throw new ArgumentException("Given entity should not have ID set", nameof(entity));
             }
-            if (existingEmployee == null) {
-                petShopContext.Add(entity);
-                petShopContext.SaveChanges();
-            }
+
+            petShopDbContext.Add(entity);
+            petShopDbContext.SaveChanges();
+
         }
 
         public void Delete(int id) {

@@ -53,7 +53,7 @@ namespace PetShop.Web.MVC.Controllers {
                 return View();
             }
 
-            var dbCustomer = new Customer(customer.CustomerName,customer.CustomerSurname,customer.TIN,customer.Phone);
+            var dbCustomer = new Customer(customer.CustomerName, customer.CustomerSurname, customer.TIN, customer.Phone);
             _customerRepo.Add(dbCustomer);
             return RedirectToAction("Customer");
         }
