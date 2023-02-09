@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetShop.EF.Repository;
 using PetShop.Model;
+using PetShop.Web.MVC.Models.CustomerDto;
 
 namespace PetShop.Web.MVC.Controllers {
     public class CustomerController : Controller {
@@ -11,14 +12,31 @@ namespace PetShop.Web.MVC.Controllers {
                 _customerRepo=customerRepo;
         }
         // GET: CustomerController
-        public ActionResult Index() {
+        public ActionResult Customer() {
             var customers=_customerRepo.GetAll();
             return View(model:customers);
         }
 
         // GET: CustomerController/Details/5
         public ActionResult Details(int id) {
-            return View();
+            if (id == null) {
+                return NotFound();
+            }
+
+            var dbCustomer = _customerRepo.GetByID(id);
+            if (dbCustomer == null) {
+                return NotFound();
+            }
+
+            var viewCustomer = new CustomerDto {
+                CustomerDtoID = dbCustomer.CustomerID,
+                CustomerDtoName = dbCustomer.CustomerName,
+                CustomerDtoSurname = dbCustomer.CustomerSurname,
+                PhoneDto = dbCustomer.Phone,
+                TINDto = dbCustomer.TIN,
+                Transactions = dbCustomer.Transactions.ToList()
+            };
+            return View(model: viewCustomer);
         }
 
         // GET: CustomerController/Create
@@ -29,44 +47,78 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection) {
-            try {
-                return RedirectToAction(nameof(Index));
-            } catch {
+        public ActionResult Create(Customer customer) {
+
+            if (!ModelState.IsValid) {
                 return View();
             }
+
+            var dbCustomer = new Customer(customer.CustomerName,customer.CustomerSurname,customer.TIN,customer.Phone);
+            _customerRepo.Add(dbCustomer);
+            return RedirectToAction("Customer");
         }
 
         // GET: CustomerController/Edit/5
         public ActionResult Edit(int id) {
-            return View();
+            var dbCustomer = _customerRepo.GetByID(id);
+
+                if (dbCustomer == null) {
+                    return NotFound();
+                }
+
+                var viewCustomer = new CustomerDtoEdit {
+                    CustomerDtoName = dbCustomer.CustomerName,
+                    CustomerDtoSurname = dbCustomer.CustomerSurname,
+                    PhoneDto = dbCustomer.Phone,
+                    TINDto = dbCustomer.TIN,
+                    CustomerDtoID = dbCustomer.CustomerID
+                };
+                return View(model: viewCustomer);
+            
         }
 
         // POST: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection) {
-            try {
-                return RedirectToAction(nameof(Index));
-            } catch {
-                return View();
+        public ActionResult Edit(int id,CustomerDto customerDto) {
+            var dbCustomer = _customerRepo.GetByID(id);
+
+            if (dbCustomer == null) {
+                return NotFound();
             }
+            dbCustomer.CustomerName = customerDto.CustomerDtoName;
+            dbCustomer.CustomerSurname = customerDto.CustomerDtoSurname;
+            dbCustomer.Phone = customerDto.PhoneDto;
+            dbCustomer.TIN = customerDto.TINDto;
+            _customerRepo.Update(id, dbCustomer);
+            return RedirectToAction(nameof(Customer));
         }
 
         // GET: CustomerController/Delete/5
         public ActionResult Delete(int id) {
-            return View();
+
+            var dbCustomer = _customerRepo.GetByID(id);
+            if (dbCustomer == null) {
+                return NotFound();
+            }
+
+            var viewCustomer = new CustomerDtoDelete {
+                CustomerDtoName = dbCustomer.CustomerName,
+                CustomerDtoSurname = dbCustomer.CustomerSurname,
+                PhoneDto = dbCustomer.Phone,
+                TINDto = dbCustomer.TIN,
+               CustomerDtoID = dbCustomer.CustomerID
+            };
+            return View(model: viewCustomer);
         }
 
         // POST: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection) {
-            try {
-                return RedirectToAction(nameof(Index));
-            } catch {
-                return View();
-            }
+
+            _customerRepo.Delete(id);
+            return RedirectToAction(nameof(Customer));
         }
     }
 }

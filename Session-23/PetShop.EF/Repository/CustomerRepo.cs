@@ -1,4 +1,5 @@
-﻿using PetShop.EF.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.EF.Context;
 using PetShop.Model;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,22 @@ namespace PetShop.EF.Repository {
 
         public void Add(Customer entity) {
             using var petShopDbContext = new PetShopDbContext();
-            var existingCustomer = petShopDbContext.Customers.FirstOrDefault(customer => customer.CustomerSurname == entity.CustomerSurname);
-            if(existingCustomer != null) {
+
+            if (entity.CustomerID != 0) {
+                throw new ArgumentException("Given entity should not have ID set", nameof(entity));
+            }
+           
                 petShopDbContext.Add(entity);
                 petShopDbContext.SaveChanges();
-            }
+            
         }
 
         public void Delete(int id) {
             using var petShopContext= new PetShopDbContext();
             var dbCustomer = petShopContext.Customers.Where(customer => customer.CustomerID == id).SingleOrDefault();
             if (dbCustomer is null)
-                return;
-            petShopContext.Remove(dbCustomer);
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            petShopContext.Customers.Remove(dbCustomer);
             petShopContext.SaveChanges();
         }
 
@@ -34,14 +38,20 @@ namespace PetShop.EF.Repository {
 
         public Customer? GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
-            return petShopContext.Customers.Where(customer => customer.CustomerID == id).SingleOrDefault();
+            var dbCustomer = petShopContext.Customers.Where(customer => customer.CustomerID == id).SingleOrDefault();
+            if (dbCustomer is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            } else {
+                return dbCustomer;
+            }
         }
 
         public void Update(int id, Customer entity) {
             using var petShopContext = new PetShopDbContext();
             var dbCustomer=petShopContext.Customers.Where(customer=>customer.CustomerID==id).SingleOrDefault();
-            if(dbCustomer is null)
-                return;
+            if (dbCustomer is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
             dbCustomer.CustomerName=entity.CustomerName;
             dbCustomer.CustomerSurname=entity.CustomerSurname;
             dbCustomer.Phone=entity.Phone;

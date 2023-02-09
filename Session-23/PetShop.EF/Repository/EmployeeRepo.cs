@@ -11,6 +11,9 @@ namespace PetShop.EF.Repository {
         public void Add(Employee entity) {
             using var petShopContext = new PetShopDbContext();
             var existingEmployee = petShopContext.Employees.FirstOrDefault(employee => employee.EmployeeSurname == entity.EmployeeSurname);
+            if (entity.EmployeeID != 0) {
+                throw new ArgumentException("Given entity should not have ID set", nameof(entity));
+            }
             if (existingEmployee == null) {
                 petShopContext.Add(entity);
                 petShopContext.SaveChanges();
@@ -20,8 +23,9 @@ namespace PetShop.EF.Repository {
         public void Delete(int id) {
             using var petShopContext = new PetShopDbContext();
             var dbEmployee = petShopContext.Employees.Where(employee => employee.EmployeeID == id).SingleOrDefault();
-            if (dbEmployee is null)
-                return;
+            if (dbEmployee is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
             petShopContext.Remove(dbEmployee);
             petShopContext.SaveChanges();
         }
@@ -33,14 +37,20 @@ namespace PetShop.EF.Repository {
 
         public Employee GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
-            return petShopContext.Employees.Where(employee => employee.EmployeeID == id).SingleOrDefault();
+            var dbEmployee = petShopContext.Employees.Where(employee => employee.EmployeeID == id).SingleOrDefault();
+            if (dbEmployee is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            } else {
+                return dbEmployee;
+            }
         }
 
         public void Update(int id, Employee entity) {
             using var petShopContext = new PetShopDbContext();
             var dbEmployee = petShopContext.Employees.Where(employee => employee.EmployeeID == id).SingleOrDefault();
-            if (dbEmployee is null)
-                return;
+            if (dbEmployee is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
             dbEmployee.EmployeeName = entity.EmployeeName;
             dbEmployee.EmployeeSurname = entity.EmployeeSurname;
             dbEmployee.SalaryPerMonth = entity.SalaryPerMonth;

@@ -1,0 +1,43 @@
+﻿@using PetShop.Web.MVC.Models.CustomerDto;
+@model CustomerDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>CustomerDetailsView</h1>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerDtoName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerDtoName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerDtoSurname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerDtoSurname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneDto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneDto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TINDto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TINDto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CustomerDtoID">Edit</a> |
+    <a asp-action="Customer">Back to List</a>
+</div>

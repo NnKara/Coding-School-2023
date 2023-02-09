@@ -11,15 +11,19 @@ namespace PetShop.EF.Repository {
         public void Add(PetFood entity) {
 
                 using var petShopContext = new PetShopDbContext();
-                petShopContext.Add(entity);
+            if (entity.PetFoodID != 0) {
+                throw new ArgumentException("Given entity should not have ID set", nameof(entity));
+            }
+            petShopContext.Add(entity);
                 petShopContext.SaveChanges();
             }
 
         public void Delete(int id) {
             using var petShopContext = new PetShopDbContext();
             var dbPetFood = petShopContext.PetFoods.Where(petfood => petfood.PetFoodID == id).SingleOrDefault();
-            if (dbPetFood is null)
-                return;
+            if (dbPetFood is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
             petShopContext.Remove(dbPetFood);
             petShopContext.SaveChanges();
         }
@@ -31,14 +35,20 @@ namespace PetShop.EF.Repository {
 
         public PetFood? GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
-            return petShopContext.PetFoods.Where(petfood => petfood.PetFoodID == id).SingleOrDefault();
+            var dbPetFood= petShopContext.PetFoods.Where(petfood => petfood.PetFoodID == id).SingleOrDefault();
+            if (dbPetFood is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            } else {
+                return dbPetFood;
+            }
         }
 
         public void Update(int id, PetFood entity) {
             using var petShopContext = new PetShopDbContext();
             var dbPetFood = petShopContext.PetFoods.Where(petfood => petfood.PetFoodID == id).SingleOrDefault();
-            if (dbPetFood is null)
-                return;
+            if (dbPetFood is null) {
+                throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
             dbPetFood.Price = entity.Price;
             dbPetFood.AnimalType = entity.AnimalType ;
             dbPetFood.Cost = entity.Cost;

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PetShop.Model.PetFood>
+
+@{
+    ViewData["Title"] = "PetFood";
+}
+
+<h1>PetFood</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnimalType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnimalType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PetFoodID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PetFoodID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PetFoodID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
