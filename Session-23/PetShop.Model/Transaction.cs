@@ -2,6 +2,7 @@
 {
     public class Transaction
     {
+        
         public Transaction(decimal petPrice, int petFoodQty, decimal petFoodPrice, decimal totalPrice)
         {
             Date = DateTime.Now;

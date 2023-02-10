@@ -1,4 +1,5 @@
-﻿using PetShop.Model;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using PetShop.Model;
 
 namespace PetShop.Web.MVC.Models.TransactionDto {
     public class TransactionDtoEdit {
@@ -21,5 +22,10 @@ namespace PetShop.Web.MVC.Models.TransactionDto {
 
         public int PetFoodID { get; set; }
         public PetFood PetFood { get; set; } = null!;
+
+        public List<SelectListItem> Customers { get; } = new List<SelectListItem>();
+        public List<SelectListItem> Employees { get; } = new List<SelectListItem>();
+        public List<SelectListItem> Pets { get; } = new List<SelectListItem>();
+        public List<SelectListItem> PetFoods { get; } = new List<SelectListItem>();
     }
 }

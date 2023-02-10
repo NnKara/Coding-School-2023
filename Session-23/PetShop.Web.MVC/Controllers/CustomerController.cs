@@ -19,9 +19,9 @@ namespace PetShop.Web.MVC.Controllers {
 
         // GET: CustomerController/Details/5
         public ActionResult Details(int id) {
-            if (id == null) {
-                return NotFound();
-            }
+
+
+            
 
             var dbCustomer = _customerRepo.GetByID(id);
             if (dbCustomer == null) {

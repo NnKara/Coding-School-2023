@@ -18,10 +18,10 @@ namespace PetShop.EF.Configurations
 
             // Properties
             builder.Property(t => t.Date).IsRequired();
-            builder.Property(t => t.PetPrice).HasPrecision(4, 2).IsRequired();
+            builder.Property(t => t.PetPrice).HasPrecision(10, 2).IsRequired();
             builder.Property(t => t.PetFoodQty).IsRequired();
-            builder.Property(t => t.PetFoodPrice).HasPrecision(4, 2).IsRequired();
-            builder.Property(t => t.TotalPrice).HasPrecision(5, 2).IsRequired();
+            builder.Property(t => t.PetFoodPrice).HasPrecision(10, 2).IsRequired();
+            builder.Property(t => t.TotalPrice).HasPrecision(10, 2).IsRequired();
 
             // Relations
             builder.HasOne(t => t.Customer)

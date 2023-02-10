@@ -9,7 +9,7 @@ namespace PetShop.EF.Repository {
     public class TransactionRepo : EntityInterface<Transaction> {
         public void Add(Transaction entity) {
             using var petShopContext = new PetShopDbContext();
-            if (entity.PetID != 0) {
+            if (entity.TransactionID != 0) {
                 throw new ArgumentException("Given entity should not have ID set", nameof(entity));
             }
             petShopContext.Add(entity);
@@ -43,11 +43,12 @@ namespace PetShop.EF.Repository {
             if (dbTransaction is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             }
-            dbTransaction.Customer = entity.Customer;
+            dbTransaction.CustomerID = entity.CustomerID;
+            dbTransaction.EmployeeID = entity.EmployeeID;
+            dbTransaction.PetID = entity.PetID;
+            dbTransaction.PetFoodID = entity.PetFoodID;
             dbTransaction.Date = entity.Date;
             dbTransaction.TotalPrice = entity.TotalPrice;
-            dbTransaction.Employee = entity.Employee;
-            dbTransaction.Pet = entity.Pet;
             dbTransaction.PetPrice = entity.PetPrice;
             dbTransaction.PetFoodQty = entity.PetFoodQty;
             dbTransaction.TotalPrice = entity.TotalPrice;
