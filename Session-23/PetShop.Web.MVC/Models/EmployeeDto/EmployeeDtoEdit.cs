@@ -2,9 +2,7 @@
 using PetShop.Model.Enums;
 
 namespace PetShop.Web.MVC.Models.EmployeeDto {
-    public class EmployeeDtoDelete {
-
-
+    public class EmployeeDtoEdit {
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeSurname { get; set; }

@@ -5,6 +5,7 @@ namespace PetShop.Model
     public class Pet
     {
         public Pet() {
+            Transactions = new List<Transaction>();
         }
 
         public Pet(string breed, AnimalType animalType, PetStatus petStatus, decimal price, decimal cost)

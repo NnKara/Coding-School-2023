@@ -3,8 +3,7 @@ using PetShop.Model.Enums;
 
 namespace PetShop.Web.MVC.Models.EmployeeDto {
     public class EmployeeCreateDto {
-        public EmployeeCreateDto() {
-        }
+
 
 
         public int EmployeeID { get; set; }

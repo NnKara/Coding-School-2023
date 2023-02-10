@@ -5,6 +5,7 @@ namespace PetShop.Model
     public class Employee
     {
         public Employee() {
+            Transactions = new List<Transaction>();
         }
 
         public Employee(string name, string surname, EmployeeType employeeType, int salaryPerMonth)

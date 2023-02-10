@@ -69,34 +69,66 @@ namespace PetShop.Web.MVC.Controllers {
 
         // GET: EmployeeController/Edit/5
         public ActionResult Edit(int id) {
-            return View();
+            var dbEmployee = _employeeRepo.GetByID(id);
+            if (dbEmployee == null) {
+                return NotFound();
+            }
+
+            var viewEmployee = new EmployeeDtoEdit {
+                EmployeeName=dbEmployee.EmployeeName,
+                EmployeeSurname=dbEmployee.EmployeeSurname,
+                EmployeeType=dbEmployee.EmployeeType,
+                SalaryPerMonth=dbEmployee.SalaryPerMonth,
+                EmployeeID=dbEmployee.EmployeeID
+               
+            };
+            return View(model: viewEmployee);
         }
 
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection) {
-            try {
-                return RedirectToAction(nameof(Employee));
-            } catch {
-                return View();
+        public ActionResult Edit(int id, EmployeeDtoEdit employee) {
+            //if (!ModelState.IsValid) {
+            //    return View();
+            //}
+
+            var dbEmployee = _employeeRepo.GetByID(id);
+            if (dbEmployee == null) {
+                return NotFound();
             }
+
+            dbEmployee.EmployeeSurname = employee.EmployeeSurname;
+            dbEmployee.EmployeeName = employee.EmployeeName;
+            dbEmployee.SalaryPerMonth = employee.SalaryPerMonth;
+            dbEmployee.EmployeeType = employee.EmployeeType;
+            _employeeRepo.Update(id, dbEmployee);
+            return RedirectToAction(nameof(Employee));
         }
 
         // GET: EmployeeController/Delete/5
         public ActionResult Delete(int id) {
-            return View();
+            var dbEmployee = _employeeRepo.GetByID(id);
+            if (dbEmployee == null) {
+                return NotFound();
+            }
+
+            var viewEmployee = new EmployeeDtoDelete {
+                EmployeeName=dbEmployee.EmployeeName,
+                EmployeeSurname=dbEmployee.EmployeeSurname,
+                EmployeeType=dbEmployee.EmployeeType,
+                SalaryPerMonth=dbEmployee.SalaryPerMonth,
+                EmployeeID=dbEmployee.EmployeeID              
+            };
+            return View(model: viewEmployee);
         }
 
         // POST: EmployeeController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection) {
-            try {
-                return RedirectToAction(nameof(Employee));
-            } catch {
-                return View();
-            }
+            _employeeRepo.Delete(id);
+            return RedirectToAction(nameof(Employee));
         }
     }
 }
