@@ -49,7 +49,8 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: PetFoodController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PetFood petFood) {
+        public ActionResult Create(PetFoodDtoCreate petFood) {
+
             if (!ModelState.IsValid) {
                 return View();
             }

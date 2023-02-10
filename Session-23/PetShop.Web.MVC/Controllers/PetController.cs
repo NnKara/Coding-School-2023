@@ -53,11 +53,11 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: PetController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Pet pet) {
+        public ActionResult Create(PetDtoCreate pet) {
 
-            if (!ModelState.IsValid) {
-                return View();
-            }
+            //if (!ModelState.IsValid) {
+            //    return View();
+            //}
 
             var dbPet=new Pet(pet.Breed,pet.AnimalType,pet.PetStatus,pet.Cost,pet.Price);
             _petRepo.Add(dbPet);

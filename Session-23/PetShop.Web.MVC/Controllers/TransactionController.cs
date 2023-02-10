@@ -51,7 +51,7 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: TransactionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Transaction tras) {
+        public ActionResult Create(TransactionDtoCreate tras) {
             if (!ModelState.IsValid) {
                 return View();
             }

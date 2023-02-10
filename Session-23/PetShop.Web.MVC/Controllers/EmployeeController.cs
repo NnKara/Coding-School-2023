@@ -53,7 +53,7 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: EmployeeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Employee employee) {
+        public ActionResult Create(EmployeeCreateDto employee) {
 
             //if (!ModelState.IsValid) {
             //    return View();

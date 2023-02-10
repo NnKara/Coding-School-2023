@@ -47,13 +47,18 @@ namespace PetShop.Web.MVC.Controllers {
         // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Customer customer) {
+        public ActionResult Create(CustomerDtoCreate customer) {
 
-            if (!ModelState.IsValid) {
-                return View();
-            }
+            //if (!ModelState.IsValid) {
+            //    return View();
+            //}
 
-            var dbCustomer = new Customer(customer.CustomerName, customer.CustomerSurname, customer.TIN, customer.Phone);
+            var dbCustomer = new Customer(customer.CustomerDtoName,
+                customer.CustomerDtoSurname,
+                customer.TINDto,
+                customer.PhoneDto);
+               
+            
             _customerRepo.Add(dbCustomer);
             return RedirectToAction("Customer");
         }
