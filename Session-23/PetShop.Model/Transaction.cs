@@ -1,4 +1,6 @@
-﻿namespace PetShop.Model
+﻿using System.ComponentModel;
+
+namespace PetShop.Model
 {
     public class Transaction
     {
@@ -14,9 +16,17 @@
 
         public int TransactionID { get; set; }
         public DateTime Date { get; set; }
+
+        [DisplayName("Pet-Price")]
         public decimal PetPrice { get; set; }
+
+        [DisplayName("Pet-Food Quantity")]
         public int PetFoodQty { get; set; }
+
+        [DisplayName("Pet-Food Price")]
         public decimal PetFoodPrice { get; set; }
+
+        [DisplayName("Total-Price")]
         public decimal TotalPrice { get; set; }
 
         // Relations
@@ -30,6 +40,7 @@
         public Pet Pet { get; set; } = null!;
 
         public int PetFoodID { get; set; }
+        [DisplayName("Pet-Food")]
         public PetFood PetFood { get; set; } = null!;
     }
 }

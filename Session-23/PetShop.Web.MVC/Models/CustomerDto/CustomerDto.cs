@@ -5,7 +5,7 @@ namespace PetShop.Web.MVC.Models.CustomerDto
 {
     public class CustomerDto
     {
-        [DisplayName("Customer")]
+        
         public int CustomerDtoID { get; set; }
 
         [DisplayName("Name")]

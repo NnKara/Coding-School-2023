@@ -74,14 +74,20 @@ namespace PetShop.Web.MVC.Controllers {
             var petFoods = _petFoodRepo.GetAll();
 
             foreach (var customer in customers) {
-                newTras.Customers.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(customer.CustomerSurname, customer.CustomerID.ToString()));
+                newTras.Customers.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = customer.CustomerName + " " + customer.CustomerSurname,
+                    Value = customer.CustomerID.ToString()
+                });
             } 
             foreach (var employee in employees) {
-                newTras.Employees.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(employee.EmployeeSurname, employee.EmployeeID.ToString()));
+                newTras.Employees.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = employee.EmployeeName +" "+ employee.EmployeeSurname,
+                    Value = employee.EmployeeID.ToString()
+                });
             }
             foreach (var pet in pets) {
                 newTras.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
-                    Text = pet.Breed + " - $" + pet.Price.ToString(),
+                    Text = pet.Breed + " - € " + pet.Price.ToString(),
                     Value = pet.PetID.ToString()
                 });
                 if (newTras.PetID == pet.PetID) {
@@ -90,7 +96,7 @@ namespace PetShop.Web.MVC.Controllers {
             }
             foreach (var petFood in petFoods) {
                 newTras.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
-                    Text = petFood.AnimalType + " - $" + petFood.Price.ToString(),
+                    Text = petFood.AnimalType + " - € " + petFood.Price.ToString(),
                     Value = petFood.PetFoodID.ToString()
                 });
                 if (newTras.PetFoodID == petFood.PetFoodID) {
@@ -115,6 +121,7 @@ namespace PetShop.Web.MVC.Controllers {
             dbTras.EmployeeID= tras.EmployeeID;
             dbTras.PetFoodID= tras.PetFoodID;
             dbTras.PetID= tras.PetID;
+            dbTras.Date=tras.Date;
             var pets = _petRepo.GetAll().ToList();
             var petFoods=_petFoodRepo.GetAll().ToList();
 
@@ -149,7 +156,7 @@ namespace PetShop.Web.MVC.Controllers {
             var trasDto = new TransactionDtoEdit {
                 PetPrice=dbTras.PetPrice,
                 PetFoodPrice=dbTras.PetFoodPrice,
-                PetFood=dbTras.PetFood,
+                PetFoodID=dbTras.PetFoodID,
                 PetFoodQty=dbTras.PetFoodQty,
                 TotalPrice=dbTras.TotalPrice,
                 Date=dbTras.Date,
@@ -162,17 +169,41 @@ namespace PetShop.Web.MVC.Controllers {
             var employees=_employeeRepo.GetAll();
             var pets=_petRepo.GetAll();
             var petFoods=_petFoodRepo.GetAll();
+
+
+
             foreach (var customer in customers) {
-               trasDto.Customers.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(customer.CustomerSurname,customer.CustomerID.ToString()));   
+                trasDto.Customers.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = customer.CustomerName + " " + customer.CustomerSurname,
+                    Value = customer.CustomerID.ToString()
+                });
             }
             foreach (var employee in employees) {
-                trasDto.Employees.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(employee.EmployeeSurname, employee.EmployeeID.ToString()));
+               trasDto.Employees.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = employee.EmployeeName + " " + employee.EmployeeSurname,
+                    Value = employee.EmployeeID.ToString()
+                });
             }
+
+
+
             foreach (var pet in pets) {
-                trasDto.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(pet.Breed, pet.PetID.ToString()));           
+                trasDto.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = pet.Breed + " - € " + pet.Price.ToString(),
+                    Value = pet.PetID.ToString()
+                });
+                if (trasDto.PetID == pet.PetID) {
+                    trasDto.PetPrice = pet.Price;
+                }
             }
             foreach (var petFood in petFoods) {
-                trasDto.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(petFood.AnimalType.ToString(), petFood.PetFoodID.ToString()));
+                trasDto.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = petFood.AnimalType + " - € " + petFood.Price.ToString(),
+                    Value = petFood.PetFoodID.ToString()
+                });
+                if (trasDto.PetFoodID == petFood.PetFoodID) {
+                    trasDto.PetFoodPrice = petFood.Price;
+                }
             }
             return View(model: trasDto);
         }
@@ -182,7 +213,11 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, TransactionDtoEdit tras) {
             var dbTras = _transactionRepo.GetByID(id);
-            //Todo auto update
+
+            if (!ModelState.IsValid) {
+                return View();
+            }
+
             if (dbTras == null) {
                 return NotFound();
             }
@@ -195,6 +230,20 @@ namespace PetShop.Web.MVC.Controllers {
             dbTras.PetID = tras.PetID;
             dbTras.PetFoodID= tras.PetFoodID;
             dbTras.PetFoodQty = tras.PetFoodQty;
+            var pets = _petRepo.GetAll().ToList();
+            var petFoods = _petFoodRepo.GetAll().ToList();
+
+            var selectedPet = pets.FirstOrDefault(pets => pets.PetID == tras.PetID);
+            if (selectedPet != null) {
+                dbTras.PetPrice = selectedPet.Price;
+            }
+
+            var selectedPetFood = petFoods.FirstOrDefault(petf => petf.PetFoodID == tras.PetFoodID);
+            if (selectedPetFood != null) {
+                dbTras.PetFoodPrice = selectedPetFood.Price;
+            }
+            dbTras.TotalPrice = (dbTras.PetFoodQty * dbTras.PetFoodPrice) + dbTras.PetPrice;
+
             _transactionRepo.Update(id, dbTras);
             return RedirectToAction(nameof(Transaction));
         }

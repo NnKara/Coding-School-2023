@@ -20,34 +20,14 @@
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PetPrice" class="control-label"></label>
-                <input asp-for="PetPrice" class="form-control" />
-                <span asp-validation-for="PetPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PetFoodQty" class="control-label"></label>
-                <input asp-for="PetFoodQty" class="form-control" />
-                <span asp-validation-for="PetFoodQty" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PetFoodPrice" class="control-label"></label>
-                <input asp-for="PetFoodPrice" class="form-control" />
-                <span asp-validation-for="PetFoodPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalPrice" class="control-label"></label>
-                <input asp-for="TotalPrice" class="form-control" />
-                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="Model.Employees"></select>
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CustomerID" class="control-label"></label>
                 <select asp-for="CustomerID" class="form-control" asp-items="Model.Customers"></select>
                 <span asp-validation-for="CustomerID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeID" class="control-label"></label>
-                <select asp-for="EmployeeID" class="form-control" asp-items="Model.Employees"></select>
-                <span asp-validation-for="EmployeeID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PetID" class="control-label"></label>
@@ -58,6 +38,16 @@
                 <label asp-for="PetFoodID" class="control-label"></label>
                 <select asp-for="PetFoodID" class="form-control" asp-items="Model.PetFoods"></select>
                 <span asp-validation-for="PetFoodID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PetFoodQty" class="control-label"></label>
+                <input asp-for="PetFoodQty" class="form-control" />
+                <span asp-validation-for="PetFoodQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" readonly />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

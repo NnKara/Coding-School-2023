@@ -55,10 +55,9 @@ namespace PetShop.Web.MVC.Controllers {
 
             var dbCustomer = new Customer(customer.CustomerDtoName,
                 customer.CustomerDtoSurname,
-                customer.TINDto,
-                customer.PhoneDto);
-               
-            
+                customer.PhoneDto,
+                customer.TINDto);
+    
             _customerRepo.Add(dbCustomer);
             return RedirectToAction("Customer");
         }

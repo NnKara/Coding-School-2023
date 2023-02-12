@@ -1,4 +1,5 @@
 ﻿using PetShop.Model.Enums;
+using System.ComponentModel;
 
 namespace PetShop.Model
 {
@@ -21,7 +22,11 @@ namespace PetShop.Model
 
         public int PetID { get; set; }
         public string Breed { get; set; }
+
+        [DisplayName("Type")]
         public AnimalType AnimalType { get; set; }
+
+        [DisplayName("Status")]
         public PetStatus PetStatus { get; set; }
         public decimal Price { get; set; }
         public decimal Cost { get; set; }

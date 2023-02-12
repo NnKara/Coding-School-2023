@@ -35,12 +35,12 @@ namespace PetShop.EF.Repository {
         public Transaction? GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
             return petShopContext.Transactions
-       .Include(transaction => transaction.Customer)
-       .Include(transaction => transaction.Employee)
-       .Include(transaction => transaction.Pet)
-       .Include(transaction => transaction.PetFood)
-       .Where(transaction => transaction.TransactionID == id)
-       .SingleOrDefault();
+                                 .Include(transaction => transaction.Customer)
+                                 .Include(transaction => transaction.Employee)
+                                 .Include(transaction => transaction.Pet)
+                                 .Include(transaction => transaction.PetFood)
+                                 .Where(transaction => transaction.TransactionID == id)
+                                 .SingleOrDefault();
 
         }
 
