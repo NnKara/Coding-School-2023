@@ -33,6 +33,7 @@ namespace PetShop.Web.MVC.Controllers {
 
         // GET: TransactionController/Details/5
         public ActionResult Details(int id) {
+            
 
             if (id == null) {
                 return NotFound();
@@ -45,17 +46,24 @@ namespace PetShop.Web.MVC.Controllers {
 
             var viewTras = new TransactionDto {
                 CustomerID = dbTransaction.CustomerID,
+                Customer = dbTransaction.Customer,
                 EmployeeID = dbTransaction.EmployeeID,
+                Employee = dbTransaction.Employee,
                 PetID = dbTransaction.PetID,
+                Pet=dbTransaction.Pet,
                 PetPrice = dbTransaction.PetPrice,
                 PetFoodID = dbTransaction.PetFoodID,
+                PetFood = dbTransaction.PetFood,
                 PetFoodPrice = dbTransaction.PetFoodPrice,
                 PetFoodQty = dbTransaction.PetFoodQty,
                 TotalPrice = dbTransaction.TotalPrice,
                 Date = dbTransaction.Date
             };
+           
             return View(model: viewTras);
         }
+
+        
 
         // GET: TransactionController/Create
         public ActionResult Create() {
@@ -70,19 +78,29 @@ namespace PetShop.Web.MVC.Controllers {
             } 
             foreach (var employee in employees) {
                 newTras.Employees.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(employee.EmployeeSurname, employee.EmployeeID.ToString()));
-            } 
+            }
             foreach (var pet in pets) {
-                newTras.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(pet.Breed, pet.PetID.ToString()));
-                //TODO
-                newTras.PetPrice = pet.Price;
-            } 
-
-
+                newTras.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = pet.Breed + " - $" + pet.Price.ToString(),
+                    Value = pet.PetID.ToString()
+                });
+                if (newTras.PetID == pet.PetID) {
+                    newTras.PetPrice = pet.Price;
+                }
+            }
             foreach (var petFood in petFoods) {
-                newTras.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(petFood.AnimalType.ToString(),petFood.PetFoodID.ToString()));
-            }       
+                newTras.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {
+                    Text = petFood.AnimalType + " - $" + petFood.Price.ToString(),
+                    Value = petFood.PetFoodID.ToString()
+                });
+                if (newTras.PetFoodID == petFood.PetFoodID) {
+                    newTras.PetFoodPrice = petFood.Price;
+                }
+            }
 
-            
+
+
+
             return View(model: newTras);
         }
 
@@ -92,17 +110,35 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Create(TransactionDtoCreate tras) {
 
-            //if (!ModelState.IsValid) {
-            //    return View();
-            //}
+            if (!ModelState.IsValid) {
+                return View();
+            }
 
             var dbTras = new Transaction(tras.PetPrice,tras.PetFoodQty,tras.PetFoodPrice,tras.TotalPrice);
             dbTras.CustomerID= tras.CustomerID;
             dbTras.EmployeeID= tras.EmployeeID;
             dbTras.PetFoodID= tras.PetFoodID;
             dbTras.PetID= tras.PetID;
-            dbTras.TotalPrice = (tras.PetFoodQty * tras.PetPrice) + tras.PetFoodPrice;
-            
+            var pets = _petRepo.GetAll().ToList();
+            var petFoods=_petFoodRepo.GetAll().ToList();
+
+            var selectedPet = pets.FirstOrDefault(pets => pets.PetID == tras.PetID);
+            if (selectedPet != null) {
+                dbTras.PetPrice = selectedPet.Price;
+            }
+
+            var selectedPetFood=petFoods.FirstOrDefault(petf=>petf.PetFoodID== tras.PetFoodID);
+            if (selectedPetFood != null) {
+                dbTras.PetFoodPrice = selectedPetFood.Price;
+            }
+
+            if (tras.PetFoodQty > 0) {
+                dbTras.PetFoodQty -= 1;
+                dbTras.TotalPrice = (dbTras.PetFoodQty * dbTras.PetFoodPrice) + dbTras.PetPrice;
+            } else {
+                dbTras.TotalPrice = dbTras.PetPrice;
+            }
+
             _transactionRepo.Add(dbTras);
             return RedirectToAction("Transaction");
         }
@@ -139,8 +175,6 @@ namespace PetShop.Web.MVC.Controllers {
             foreach (var pet in pets) {
                 trasDto.Pets.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(pet.Breed, pet.PetID.ToString()));           
             }
-
-
             foreach (var petFood in petFoods) {
                 trasDto.PetFoods.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem(petFood.AnimalType.ToString(), petFood.PetFoodID.ToString()));
             }
@@ -152,7 +186,7 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, TransactionDtoEdit tras) {
             var dbTras = _transactionRepo.GetByID(id);
-
+            //Todo auto update
             if (dbTras == null) {
                 return NotFound();
             }

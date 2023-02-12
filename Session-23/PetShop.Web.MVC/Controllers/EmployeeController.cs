@@ -45,7 +45,7 @@ namespace PetShop.Web.MVC.Controllers {
 
         // GET: EmployeeController/Create
         public ActionResult Create() {
-            var employee = new Employee();
+            var employee = new EmployeeCreateDto();
             var employees = _employeeRepo.GetAll();
             return View(model: employee);
         }
@@ -55,9 +55,9 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeCreateDto employee) {
 
-            //if (!ModelState.IsValid) {
-            //    return View();
-            //}
+            if (!ModelState.IsValid) {
+                return View();
+            }
 
             var dbEmployee = new Employee(employee.EmployeeName, employee.EmployeeSurname, employee.EmployeeType, employee.SalaryPerMonth);
             _employeeRepo.Add(dbEmployee);
@@ -89,9 +89,9 @@ namespace PetShop.Web.MVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, EmployeeDtoEdit employee) {
-            //if (!ModelState.IsValid) {
-            //    return View();
-            //}
+            if (!ModelState.IsValid) {
+                return View();
+            }
 
             var dbEmployee = _employeeRepo.GetByID(id);
             if (dbEmployee == null) {

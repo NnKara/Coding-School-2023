@@ -1,13 +1,21 @@
 ﻿using PetShop.Model;
+using System.ComponentModel;
 
 namespace PetShop.Web.MVC.Models.TransactionDto {
     public class TransactionDto {
 
         public int TransactionID { get; set; }
         public DateTime Date { get; set; }
+        [DisplayName("Pet Price")]
         public decimal PetPrice { get; set; }
+
+        [DisplayName("PetFood Quantity")]
         public int PetFoodQty { get; set; }
+
+        [DisplayName("PetFood Price")]
         public decimal PetFoodPrice { get; set; }
+
+        [DisplayName("Total Price")]
         public decimal TotalPrice { get; set; }
 
         // Relations

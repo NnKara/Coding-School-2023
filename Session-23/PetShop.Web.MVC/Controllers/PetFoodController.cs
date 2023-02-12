@@ -81,6 +81,9 @@ namespace PetShop.Web.MVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PetDtoEdit petFood) {
+            if (!ModelState.IsValid) {
+                return View();
+            }
             var dbPetFood = _petFoodRepo.GetByID(id);
             if (dbPetFood == null) {
                 return NotFound();

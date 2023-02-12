@@ -49,9 +49,9 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Create(CustomerDtoCreate customer) {
 
-            //if (!ModelState.IsValid) {
-            //    return View();
-            //}
+            if (!ModelState.IsValid) {
+                return View();
+            }
 
             var dbCustomer = new Customer(customer.CustomerDtoName,
                 customer.CustomerDtoSurname,
@@ -86,7 +86,12 @@ namespace PetShop.Web.MVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id,CustomerDto customerDto) {
+
+            if (!ModelState.IsValid) {
+                return View();
+            }
             var dbCustomer = _customerRepo.GetByID(id);
+           
 
             if (dbCustomer == null) {
                 return NotFound();
@@ -121,9 +126,10 @@ namespace PetShop.Web.MVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection) {
-
-            _customerRepo.Delete(id);
-            return RedirectToAction(nameof(Customer));
+      
+                _customerRepo.Delete(id);
+                return RedirectToAction(nameof(Customer));
+            }
         }
     }
-}
+

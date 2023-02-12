@@ -27,13 +27,18 @@ namespace PetShop.EF.Repository {
             if (dbPet is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             }
+            var transactions = petShopContext.Transactions.Where(t => t.PetID == id).ToList();
+            if (transactions.Any()) {
+                throw new Exception("Cannot delete pet which has associated transactions. Please delete the transactions first.");
+            }
             petShopContext.Remove(dbPet);
             petShopContext.SaveChanges();
         }
 
         public IList<Pet> GetAll() {
             using var petShopContext = new PetShopDbContext();
-            return petShopContext.Pets.ToList();
+            var pets= petShopContext.Pets.Where(pet=>pet.PetStatus!= PetStatus.Unhealthy).ToList();
+            return pets;
         }
 
         public Pet? GetByID(int id) {

@@ -21,10 +21,15 @@ namespace PetShop.EF.Repository {
         }
 
         public void Delete(int id) {
-            using var petShopContext= new PetShopDbContext();
+            using var petShopContext = new PetShopDbContext();
             var dbCustomer = petShopContext.Customers.Where(customer => customer.CustomerID == id).SingleOrDefault();
-            if (dbCustomer is null)
+            if (dbCustomer is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
+            }
+            var transactions = petShopContext.Transactions.Where(t => t.CustomerID == id).ToList();
+            if (transactions.Any()) {
+                throw new Exception("Cannot delete customer who has associated transactions. Please delete the transactions first.");
+            }
             petShopContext.Customers.Remove(dbCustomer);
             petShopContext.SaveChanges();
         }

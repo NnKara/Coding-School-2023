@@ -55,9 +55,9 @@ namespace PetShop.Web.MVC.Controllers {
         [ValidateAntiForgeryToken]
         public ActionResult Create(PetDtoCreate pet) {
 
-            //if (!ModelState.IsValid) {
-            //    return View();
-            //}
+            if (!ModelState.IsValid) {
+                return View();
+            }
 
             var dbPet=new Pet(pet.Breed,pet.AnimalType,pet.PetStatus,pet.Cost,pet.Price);
             _petRepo.Add(dbPet);
@@ -88,6 +88,9 @@ namespace PetShop.Web.MVC.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, PetDtoEdit pet) {
+            if (!ModelState.IsValid) {
+                return View();
+            }
             var dbPet = _petRepo.GetByID(id);
             if (dbPet == null) {
                 return NotFound();

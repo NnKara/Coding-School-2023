@@ -6,25 +6,28 @@ namespace PetShop.Web.MVC.Models.TransactionDto {
     public class TransactionDtoCreate {
         public int TransactionID { get; set; }
         public DateTime Date { get; set; }
+        [DisplayName("Pet Price")]
         public decimal PetPrice { get; set; }
+
+        [DisplayName("PetFood Quantity")]
         public int PetFoodQty { get; set; }
+
+        [DisplayName("PetFood Price")]
         public decimal PetFoodPrice { get; set; }
 
-        [ReadOnly(true)]
+        [DisplayName("Total Price")]
         public decimal TotalPrice { get; set; }
 
         //Relations
+        [DisplayName("Customer")]
         public int CustomerID { get; set; }
-        public Customer Customer { get; set; } = null!;
 
+        [DisplayName("Employee")]
         public int EmployeeID { get; set; }
-        public Employee Employee { get; set; } = null!;
-
+        [DisplayName("Pet")]
         public int PetID { get; set; }
-        public Pet Pet { get; set; } = null!;
-
+        [DisplayName("Pet Food")]
         public int PetFoodID { get; set; }
-        public PetFood PetFood { get; set; } = null!;
         public List<SelectListItem> Customers { get; } = new List<SelectListItem>();
         public List<SelectListItem> Employees { get; } = new List<SelectListItem>();
         public List<SelectListItem> Pets { get; } = new List<SelectListItem>();

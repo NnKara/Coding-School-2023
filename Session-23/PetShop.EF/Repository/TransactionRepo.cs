@@ -34,7 +34,14 @@ namespace PetShop.EF.Repository {
 
         public Transaction? GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
-            return petShopContext.Transactions.Where(transaction => transaction.TransactionID == id).SingleOrDefault();
+            return petShopContext.Transactions
+       .Include(transaction => transaction.Customer)
+       .Include(transaction => transaction.Employee)
+       .Include(transaction => transaction.Pet)
+       .Include(transaction => transaction.PetFood)
+       .Where(transaction => transaction.TransactionID == id)
+       .SingleOrDefault();
+
         }
 
         public void Update(int id, Transaction entity) {
@@ -54,5 +61,7 @@ namespace PetShop.EF.Repository {
             dbTransaction.TotalPrice = entity.TotalPrice;
             petShopContext.SaveChanges();
         }
+
+
     }
 }

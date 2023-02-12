@@ -26,6 +26,10 @@ namespace PetShop.EF.Repository {
             if (dbEmployee is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             }
+            var transactions = petShopContext.Transactions.Where(t => t.EmployeeID == id).ToList();
+            if (transactions.Any()) {
+                throw new Exception("Cannot delete employee who has associated transactions. Please delete the transactions first.");
+            }
             petShopContext.Remove(dbEmployee);
             petShopContext.SaveChanges();
         }
