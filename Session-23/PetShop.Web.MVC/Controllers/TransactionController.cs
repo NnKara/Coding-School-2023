@@ -97,10 +97,6 @@ namespace PetShop.Web.MVC.Controllers {
                     newTras.PetFoodPrice = petFood.Price;
                 }
             }
-
-
-
-
             return View(model: newTras);
         }
 

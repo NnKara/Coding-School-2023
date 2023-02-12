@@ -13,5 +13,7 @@ namespace PetShop.Model {
 
         public AnimalType AnimalType { get; set; }
         public decimal TotalSold { get; set; }
+
+
     }
 }

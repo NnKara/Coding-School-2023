@@ -12,5 +12,7 @@ namespace PetShop.Model {
         public decimal Income { get; set; }
         public decimal Expenses { get; set; }
         public decimal Total { get; set; }
+
+        List<Transaction> Transactions { get; set; }
     }
 }

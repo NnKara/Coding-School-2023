@@ -38,7 +38,43 @@
         </dd>
     </dl>
 </div>
+
 <div>
+    @if (Model.Transactions.Count() > 0)
+    {
+        <div>
+            <h4>Transactions</h4>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Served-Customer</th>
+                        <th>Pet</th>
+                        <th>Pet Food</th>
+                        <th>Pet Food Qty</th>
+                        <th>Total Price</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.Transactions)
+                    {
+
+                        <tr>
+                            <td>@transaction.Date</td>
+                        <td>@transaction.Customer.CustomerName  @transaction.Customer.CustomerSurname</td>
+                        <td>@transaction.Pet.Breed</td>
+                        <td>@transaction.PetFood.AnimalType</td>   
+                        <td>@transaction.PetFoodQty</td>   
+                        <td>@transaction.TotalPrice</td>   
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>   
+    }
     <a asp-action="Edit" asp-route-id="@Model?.EmployeeID">Edit</a> |
     <a asp-action="Employee">Back to List</a>
 </div>
+

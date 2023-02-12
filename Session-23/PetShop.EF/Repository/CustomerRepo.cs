@@ -41,7 +41,11 @@ namespace PetShop.EF.Repository {
 
         public Customer? GetByID(int id) {
             using var petShopContext = new PetShopDbContext();
-            var dbCustomer = petShopContext.Customers.Where(customer => customer.CustomerID == id).SingleOrDefault();
+            var dbCustomer = petShopContext.Customers.Include(cust=>cust.Transactions)
+                                                     .ThenInclude(trans=>trans.Pet)          
+                                                     .Include(cust=>cust.Transactions)
+                                                     .ThenInclude(trans=>trans.PetFood)
+                                                     .Where(customer => customer.CustomerID == id).SingleOrDefault();
             if (dbCustomer is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             } else {

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>CustomerDetailsView</h1>
+<h1>Customer Details View</h1>
 
 <div>
     <h4>Customer</h4>
@@ -37,7 +37,45 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.CustomerDtoID">Edit</a> |
-    <a asp-action="Customer">Back to List</a>
-</div>
+
+    <div>
+        @if (Model.Transactions.Count() > 0)
+    {
+        <div>
+            <h4>Transactions</h4>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Pet</th>
+                        <th>Pet Price</th>
+                        <th>Pet Food</th>
+                        <th>Pet Food Price</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.Transactions)
+                    {
+                        <tr>
+                            <td>@transaction.Date</td>
+                            <td>@transaction.Pet.Breed</td>
+                            <td>@transaction.PetPrice</td>
+                            <td>@transaction.PetFood.AnimalType</td>
+                            <td>@transaction.PetFoodPrice</td>
+                            <td>@transaction.PetFoodQty</td>
+                            <td>@transaction.PetPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+        </div>
+        }
+        
+        <a asp-action="Edit" asp-route-id="@Model?.CustomerDtoID">Edit</a> |
+        <a asp-action="Customer">Back to List</a>
+    </div>
+
