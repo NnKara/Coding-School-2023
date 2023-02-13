@@ -11,7 +11,7 @@ namespace PetShop.Web.MVC.Models.PetDto {
 
 
         [MaxLength(20, ErrorMessage = "Maximum 20 characters")]
-        [RegularExpression(@"^[a-zA-ZΑ-Ωα-ω΄]+$", ErrorMessage = "Breed can only contain letters")]
+        [RegularExpression(@"^[a-zA-ZΑ]+$", ErrorMessage = "Breed can only contain letters")]
         public string Breed { get; set; }
 
 
