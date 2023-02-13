@@ -1,0 +1,46 @@
+﻿@page "/customerList"
+@using Session_24.Shared;
+
+
+<h3>Customer List @(customerList.Count)</h3>
+
+<input @bind="newCustomerName" placeholder="Giannis"/>
+<input @bind="newCustomerSurname" placeholder="Papafigkos"/>
+<input @bind="newCustomerPhone" placeholder="69.."/>
+<button class="btn btn-primary"  @onclick="OnAddClick">Add</button>
+
+<ul>
+    @foreach(var customerItem in customerList)
+    {
+
+
+         <li>
+             Customer Name: @customerItem.CustomerName
+             CustomerSurname: @customerItem.CustomerSurname
+             Phone: @customerItem.CustomerPhone
+         </li>
+    }
+</ul>
+
+@code {
+    private List<CustomerListDto> customerList = new List<CustomerListDto>();
+    private string newCustomerName;
+    private string newCustomerSurname;
+    private string newCustomerPhone;
+
+
+
+    private void OnAddClick() {
+        customerList.Add(new CustomerListDto
+            {
+                CustomerName = newCustomerName,
+                CustomerSurname=newCustomerSurname,
+                CustomerPhone=newCustomerPhone
+
+            });
+        newCustomerName = null;
+        newCustomerSurname=null;
+        newCustomerPhone = null;
+    }
+}
+
