@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetShop.Model", "PetShop.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetShop.EF", "PetShop.EF\PetShop.EF.csproj", "{E42060DE-F138-4661-B222-95DE1750A19F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.Web.MVC", "PetShop.Web.MVC\PetShop.Web.MVC.csproj", "{323600C1-BAE6-4D9D-B6FA-14A8ED409EA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetShop.Web.MVC", "PetShop.Web.MVC\PetShop.Web.MVC.csproj", "{323600C1-BAE6-4D9D-B6FA-14A8ED409EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Session-24.Server", "Session-24\Server\Session-24.Server.csproj", "{5B476760-5A37-4BA4-A7E5-5E6C727DB28C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Session-24.Client", "Session-24\Client\Session-24.Client.csproj", "{6039AADF-29E7-4883-A8D9-4A013A795EE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Session-24.Shared", "Session-24\Shared\Session-24.Shared.csproj", "{7B1E359C-F699-4017-93AE-26A41A616056}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{323600C1-BAE6-4D9D-B6FA-14A8ED409EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{323600C1-BAE6-4D9D-B6FA-14A8ED409EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{323600C1-BAE6-4D9D-B6FA-14A8ED409EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B476760-5A37-4BA4-A7E5-5E6C727DB28C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B476760-5A37-4BA4-A7E5-5E6C727DB28C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B476760-5A37-4BA4-A7E5-5E6C727DB28C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B476760-5A37-4BA4-A7E5-5E6C727DB28C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6039AADF-29E7-4883-A8D9-4A013A795EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6039AADF-29E7-4883-A8D9-4A013A795EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6039AADF-29E7-4883-A8D9-4A013A795EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6039AADF-29E7-4883-A8D9-4A013A795EE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1E359C-F699-4017-93AE-26A41A616056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1E359C-F699-4017-93AE-26A41A616056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1E359C-F699-4017-93AE-26A41A616056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1E359C-F699-4017-93AE-26A41A616056}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

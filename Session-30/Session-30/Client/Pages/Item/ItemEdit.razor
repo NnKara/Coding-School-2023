@@ -1,0 +1,100 @@
+﻿@page "/itemList/edit/{Id:int?}"
+@using FuelStation.Model;
+@using Session_30.Shared.ItemDto;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+<PageTitle>Fuel Station</PageTitle>
+
+
+<h3>Item Edit</h3>
+
+@if (Item == null) {
+    <p>Loading ...</p>
+
+} else {
+
+    <EditForm Model="@Item" OnValidSubmit="OnSave">
+        <DataAnnotationsValidator />
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Code</label>
+                <input class="form-control" @bind="@Item.Code" />
+                <ValidationMessage For="@(() => Item.Code)" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <input class="form-control" @bind="@Item.Description" />
+                <ValidationMessage For="@(() => Item.Description)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Cost</label>
+                <input class="form-control" type="number" @bind="@Item.Cost" />
+                <ValidationMessage For="@(() => Item.Cost)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Price</label>
+                <input class="form-control" type="number" @bind="@Item.Price" />
+                <ValidationMessage For="@(() => Item.Price)" />
+            </div>
+
+
+             <div class="col-md-6">
+                <label class="form-label">Type</label>
+                <InputSelect class="form-control" @bind-Value="Item.ItemType">
+                    @foreach (var enumValue in Enum.GetValues<ItemType>()) {
+                        <option value="@enumValue">@enumValue</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => Item.ItemType)" />
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    ItemEditDto? Item { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            Item = new();
+        } else {
+            Item = await httpClient.GetFromJsonAsync<ItemEditDto>($"item/{Id}");
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("itemList");
+    }
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("item", Item);
+        } else {
+            response = await httpClient.PutAsJsonAsync("item", Item);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("itemList");
+    }
+
+}
+

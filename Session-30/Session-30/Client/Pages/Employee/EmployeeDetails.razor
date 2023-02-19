@@ -1,0 +1,94 @@
+﻿@page "/employeeList/details/{Id:int?}"
+@using Session_30.Shared;
+@using Session_30.Shared.EmployeeDto;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Fuel Station</PageTitle>
+<h3>Employee Details</h3>
+
+@if (Employee == null) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label">Name</label>
+            <input class="form-control" @bind="@Employee.EmployeeName" disabled />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Surname</label>
+            <input class="form-control" @bind="@Employee.EmployeeSurname" disabled />
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Salary</label>
+            <input class="form-control" @bind="@Employee.SalaryPerMonth" disabled />
+        </div>
+        
+        <div class="col-md-6">
+            <label class="form-label">Hire Date Start</label>
+            <input class="form-control" @bind="@Employee.HireDateStart" disabled />
+        </div>
+        
+        <div class="col-md-6">
+            <label class="form-label">Hire Date End</label>
+            <input class="form-control" @bind="@Employee.HireDateEnd" disabled />
+        </div>
+        
+        <div class="col-md-6">
+            <label class="form-label">Type</label>
+            <input class="form-control" @bind="@Employee.EmployeeType" disabled />
+        </div>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="col">
+                <button class="btn btn-danger" @onclick="OnCancel">Back</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    EmployeeListDto? Employee { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            Employee = new();
+        } else {
+            Employee = await httpClient.GetFromJsonAsync<EmployeeListDto>($"employee/{Id}");
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("employeeList");
+    }
+
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("employee", Employee);
+        } else {
+            response = await httpClient.PutAsJsonAsync("employee", Employee);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/employeeList");
+    }
+
+
+
+
+
+
+
+
+
+
+}
+

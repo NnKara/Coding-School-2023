@@ -1,0 +1,77 @@
+﻿@page "/customerList/edit/{Id:int?}"
+@using Session_30.Shared.CustomerDto;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+<PageTitle>Fuel Station</PageTitle>
+
+
+<h3>Customer Edit</h3>
+
+
+
+
+@if (Customer == null) {
+    <p>Loading ...</p>
+
+} else {
+
+    <EditForm Model="@Customer" OnValidSubmit="OnSave">
+        <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input class="form-control" @bind="@Customer.CustomerName" />
+                <ValidationMessage For="@(() => Customer.CustomerName)" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Surname</label>
+                <input class="form-control" @bind="@Customer.CustomerSurname" />
+                <ValidationMessage For="@(() => Customer.CustomerSurname)" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Card Number</label>
+                <input class="form-control" @bind="@Customer.CardNumber" />
+                <ValidationMessage For="@(() => Customer.CardNumber)" />
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+
+}
+
+
+@code {
+    [Parameter] public int? Id{ get; set; }
+    CustomerEditDto? Customer { get; set; } 
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            Customer = new();
+        } else {
+            Customer = await httpClient.GetFromJsonAsync<CustomerEditDto>($"customer/{Id}");
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("customerList");
+    }
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("customer", Customer);
+        } else {
+            response = await httpClient.PutAsJsonAsync("customer", Customer);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("customerList");
+    }
+
+}

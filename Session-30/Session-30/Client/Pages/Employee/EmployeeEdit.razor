@@ -1,0 +1,105 @@
+﻿@page "/employeeList/edit/{Id:int?}"
+@using FuelStation.Model;
+@using Session_30.Shared.EmployeeDto;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+<PageTitle>Fuel Station</PageTitle>
+
+
+<h3>Employee Edit</h3>
+
+@if (Employee == null) {
+    <p>Loading ...</p>
+
+} else {
+
+    <EditForm Model="@Employee" OnValidSubmit="OnSave">
+        <DataAnnotationsValidator />
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input class="form-control" @bind="@Employee.EmployeeName" />
+                <ValidationMessage For="@(() => Employee.EmployeeName)" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Surname</label>
+                <input class="form-control" @bind="@Employee.EmployeeSurname" />
+                <ValidationMessage For="@(() => Employee.EmployeeSurname)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Salary</label>
+                <input class="form-control" @bind="@Employee.SalaryPerMonth" />
+                <ValidationMessage For="@(() => Employee.SalaryPerMonth)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Hire Date Start</label>
+                <input class="form-control" type="date" @bind="@Employee.HireDateStart" />
+                <ValidationMessage For="@(() => Employee.HireDateStart)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Hire Date End</label>
+                <input class="form-control" type="date" @bind="@Employee.HireDateEnd" />
+                <ValidationMessage For="@(() => Employee.HireDateEnd)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Type</label>
+                <InputSelect class="form-control" @bind-Value="Employee.EmployeeType">
+                    @foreach (var enumValue in Enum.GetValues<EmployeeType>()) {
+                        <option value="@enumValue">@enumValue</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => Employee.EmployeeType)" />
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+            </div>
+        </div>
+    </EditForm>
+
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    EmployeeEditDto? Employee { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            Employee = new();
+        } else {
+            Employee = await httpClient.GetFromJsonAsync<EmployeeEditDto>($"employee/{Id}");
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("employeeList");
+    }
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("employee", Employee);
+        } else {
+            response = await httpClient.PutAsJsonAsync("employee", Employee);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("employeeList");
+    }
+
+}
+

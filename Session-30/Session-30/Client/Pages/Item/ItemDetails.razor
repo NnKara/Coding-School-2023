@@ -1,0 +1,91 @@
+﻿@page "/itemList/details/{Id:int?}"
+@using Session_30.Shared;
+@using Session_30.Shared.ItemDto;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Fuel Station</PageTitle>
+<h3>Item Details</h3>
+
+@if (Item == null) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+    <div class="row">
+        <div class="col-md-6">
+            <label class="form-label">Code</label>
+            <input class="form-control" @bind="@Item.Code" disabled />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Description</label>
+            <input class="form-control" @bind="@Item.Description" disabled />
+        </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Type</label>
+            <input class="form-control" @bind="@Item.ItemType" disabled />
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Cost</label>
+            <input class="form-control" @bind="@Item.Cost" disabled />
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Price</label>
+            <input class="form-control" @bind="@Item.Price" disabled />
+        </div>
+
+
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="col">
+                <button class="btn btn-danger" @onclick="OnCancel">Back</button>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    ItemListDto? Item { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            Item = new();
+        } else {
+            Item = await httpClient.GetFromJsonAsync<ItemListDto>($"item/{Id}");
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("itemList");
+    }
+
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("item", Item);
+        } else {
+            response = await httpClient.PutAsJsonAsync("item", Item);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/itemList");
+    }
+
+
+
+
+
+
+
+
+
+
+}
+
+
