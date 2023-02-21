@@ -22,8 +22,6 @@ namespace Session_30.Shared.CustomerDto
         [RegularExpression(@"^[a-zA-ZΑ-Ωα-ω\u0386-\u03CE\s]+$", ErrorMessage = "Name can only contain letters")]
         public string? CustomerSurname { get; set; }
 
-        [Required(ErrorMessage = "Card Number is required.")]
-        [RegularExpression("^A\\d{8}$", ErrorMessage = "Card Number must start with 'A' and have 8 digits.")]
         public string? CardNumber { get; set; }
 
         public List<Transaction> Transactions { get; set; } = new List<Transaction>();

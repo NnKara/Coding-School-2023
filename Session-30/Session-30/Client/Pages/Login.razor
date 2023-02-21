@@ -1,0 +1,31 @@
+﻿@page "/"
+@using FuelStation.Model;
+@inject NavigationManager navigationManager
+@inject LoggedUser userStatus
+<PageTitle>Login Page</PageTitle>
+
+<h1>Welcome</h1>
+
+<div class="row">
+     <div class="col-md-6">
+        <button type="button" class="btn btn-primary" @onclick='()=> LoginToPage(EmployeeType.Manager)'>Manager</button>
+        <button type="button" class="btn btn-primary" @onclick='()=> LoginToPage(EmployeeType.Staff)'>Staff</button>
+        <button type="button" class="btn btn-primary" @onclick='()=> LoginToPage(EmployeeType.Cashier)'>Cashier</button>
+    </div>
+</div>
+
+@code {
+    //private string? Role { get; set; }
+
+    // TODO: TO MAKE IT ASYNC
+    private void LoginToPage(EmployeeType role) {
+        userStatus.Role = role;
+
+
+        //InvokeAsync(StateHasChanged);
+        //StateHasChanged();
+        //navigationManager.NavigateTo("/customerlist");
+    }
+
+
+}

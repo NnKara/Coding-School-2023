@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace FuelStation.Model {
     public enum EmployeeType {
+
+        None=0,
         Manager = 1,
         Cashier = 2,
-        Stuff = 3
+        Staff = 3
     }
 }

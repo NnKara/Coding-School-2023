@@ -1,6 +1,7 @@
 using FuelStation.EF.Repositorys;
 using FuelStation.Model;
 using Microsoft.AspNetCore.ResponseCompression;
+using Session_30.Shared.Validator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddScoped<IEntityRepo<Employee>, EmployeeRepo>();
 builder.Services.AddScoped<IEntityRepo<Item>, ItemRepo>();
 builder.Services.AddScoped<IEntityRepo<Transaction>, TransactionRepo>();
 builder.Services.AddScoped<IEntityRepo<TransactionLine>, TransactionLineRepo>();
+builder.Services.AddScoped<IValidator, Validator>();
 
 var app = builder.Build();
 

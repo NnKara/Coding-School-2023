@@ -22,7 +22,6 @@ namespace Session_30.Shared.EmployeeDto
         public string? EmployeeSurname { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Salary format is not valid.")]
         public int SalaryPerMonth { get; set; }
 
      

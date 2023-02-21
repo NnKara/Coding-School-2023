@@ -22,17 +22,12 @@ namespace FuelStation.EF.Configurations {
 
             //Properties
             builder.Property(item => item.Code).HasMaxLength(50).IsRequired();
+            builder.HasIndex(item => item.Code).IsUnique();
             builder.Property(item => item.Description).HasMaxLength(50).IsRequired();
             builder.Property(item => item.ItemType).IsRequired();
             builder.Property(item => item.Cost).HasPrecision(10, 2).IsRequired();
             builder.Property(item => item.Price).HasPrecision(10, 2).IsRequired();
 
-            //Relations
-
-            //builder.HasOne(item => item.Transaction)
-            //   .WithMany(item => item.Items)
-            //   .HasForeignKey(item => item.ItemID)
-            //   .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

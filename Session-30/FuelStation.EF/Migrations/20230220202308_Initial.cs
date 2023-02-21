@@ -19,7 +19,7 @@ namespace FuelStation.EF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CustomerSurname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CardNumber = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    CardNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -120,6 +120,12 @@ namespace FuelStation.EF.Migrations
                         principalColumn: "TransactionID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_Code",
+                table: "Items",
+                column: "Code",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TransactionLines_ItemID",

@@ -52,15 +52,21 @@ public class ItemController : ControllerBase {
         }
 
 
-        [HttpPost]
         public async Task<IActionResult> Post(ItemEditDto item) {
 
+            var itemExists = _itemRepo.GetAll().Any(i => i.Code == item.Code);
 
-            var newItem = new Item(item.Code,item.Description,item.ItemType,item.Cost,item.Price);
-            _itemRepo.Add(newItem);
-            return Ok();
+            if (!itemExists) {
+                var newItem = new Item(item.Code, item.Description, item.ItemType, item.Cost, item.Price);
+                _itemRepo.Add(newItem);
+                return Ok();
+            }
 
+            return BadRequest();
         }
+
+
+
 
         [HttpPut]
         public async Task<IActionResult> Put(ItemEditDto item) {
@@ -87,12 +93,8 @@ public class ItemController : ControllerBase {
             if (itemToDelete == null) {
                 return NotFound(); 
             }
-
             _itemRepo.Delete(id);
-
             return Ok(); 
         }
-
-
     }
 }

@@ -22,8 +22,7 @@ namespace FuelStation.Model {
             Transactions = new List<Transaction>();
         }
 
-
-
+        public Ledger() { }
 
         //Relations
 

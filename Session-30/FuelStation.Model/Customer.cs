@@ -8,10 +8,10 @@ using System.Transactions;
 namespace FuelStation.Model {
     public class Customer {
 
-        public Customer(string customerName,string customerSurname,string cartdNumber) {
+        public Customer(string customerName,string customerSurname) {
             CustomerName= customerName;
             CustomerSurname= customerSurname;
-            CardNumber= cartdNumber;
+            CardNumber= GenerateCardNumber();
             Transactions= new List<Transaction>();
         }
         public int CustomerID { get; set; }
@@ -23,6 +23,14 @@ namespace FuelStation.Model {
 
         public Customer() {
             Transactions = new List<Transaction>();
+        }
+
+
+        private string GenerateCardNumber() {
+            string prefix = "A";
+            Guid guid = Guid.NewGuid();
+            string cardNumber = prefix + guid.ToString("N");
+            return cardNumber;
         }
 
 

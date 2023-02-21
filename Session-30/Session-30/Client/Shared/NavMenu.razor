@@ -1,6 +1,8 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using FuelStation.Model;
+@inject LoggedUser loggedUser
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Session-30</a>
+        <a class="navbar-brand" href="">Fuel Station</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,29 +13,42 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <span class="oi oi-home" aria-hidden="true"></span> Login
             </NavLink>
+        </div>
+        @if ( loggedUser.Role== EmployeeType.Manager || loggedUser.Role==EmployeeType.Cashier)
+        {
+            <div class="nav-item px-3">
+
+                <NavLink class="nav-link" href="customerList" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Customers
+                </NavLink>           
+        </div>
+        }
+        @if (loggedUser.Role == EmployeeType.Manager) {
+            <div class="nav-item px-3">
+
+                <NavLink class="nav-link" href="employeeList" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Employees
+                </NavLink>           
+        </div>
+        }
+
+        <div class="nav-item px-3">
+            @if (loggedUser.Role == EmployeeType.Manager || loggedUser.Role == EmployeeType.Staff) {
+                <NavLink class="nav-link" href="ledger" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Ledgers
+                </NavLink>
+            }
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="customerList" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Customers
-            </NavLink>
+            @if (loggedUser.Role == EmployeeType.Manager || loggedUser.Role == EmployeeType.Staff) {
+                <NavLink class="nav-link" href="itemList" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Items
+                </NavLink>
+            }
         </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="employeeList" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Employees
-            </NavLink>
-        </div>
-        
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="itemList" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Items
-            </NavLink>
-        </div>
-     
-      
     </nav>
 </div>
 

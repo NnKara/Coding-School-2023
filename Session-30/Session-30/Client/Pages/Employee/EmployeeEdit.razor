@@ -43,7 +43,7 @@
 
             <div class="col-md-6">
                 <label class="form-label">Hire Date End</label>
-                <input class="form-control" type="date" @bind="@Employee.HireDateEnd" />
+                <input class="form-control"  @bind="@Employee.HireDateEnd" />
                 <ValidationMessage For="@(() => Employee.HireDateEnd)" />
             </div>
 
@@ -56,10 +56,6 @@
                 </InputSelect>
                 <ValidationMessage For="@(() => Employee.EmployeeType)" />
             </div>
-
-
-
-
 
         </div>
         <div class="row mt-2">
@@ -96,9 +92,12 @@
         } else {
             response = await httpClient.PutAsJsonAsync("employee", Employee);
         }
-
-        response.EnsureSuccessStatusCode();
-        navigationManager.NavigateTo("employeeList");
+        if (response.IsSuccessStatusCode) {
+            navigationManager.NavigateTo("/employeelist");
+        } else {
+            var error = await response.Content.ReadAsStringAsync();
+            await jsRuntime.InvokeVoidAsync("alert", error);
+        }
     }
 
 }

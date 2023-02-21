@@ -25,7 +25,7 @@ namespace FuelStation.EF.Configurations {
             builder.Property(emp => emp.SalaryPerMonth).IsRequired();
             builder.Property(emp => emp.EmployeeType).IsRequired();
             builder.Property(emp => emp.HireDateStart).IsRequired();
-            builder.Property(emp => emp.HireDateEnd).IsRequired();
+            builder.Property(emp => emp.HireDateEnd);
 
 
         }

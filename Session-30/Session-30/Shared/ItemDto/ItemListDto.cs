@@ -16,7 +16,7 @@ namespace Session_30.Shared.ItemDto
 
 
     public string? Description { get; set; }
-    public ItemType ItemType { get; set; }
+    public ItemType? ItemType { get; set; }
 
     public decimal Cost { get; set; }
     public decimal Price { get; set; }

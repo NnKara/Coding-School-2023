@@ -3,23 +3,28 @@ using FuelStation.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.EmployeeDto;
+using Session_30.Shared.Validator;
+using System.Data.Common;
 
-namespace Session_30.Server.Controllers
-{
+namespace Session_30.Server.Controllers {
     [Route("[controller]")]
     [ApiController]
-public class EmployeeController : ControllerBase {
+    public class EmployeeController : ControllerBase {
 
         private readonly IEntityRepo<Employee> _employeeRepo;
+        private readonly IValidator _validator;
+        public string? errorMessage = String.Empty;
 
-        public EmployeeController(IEntityRepo<Employee> employeeRepo) {
-            _employeeRepo= employeeRepo;
+        public EmployeeController(IEntityRepo<Employee> employeeRepo,IValidator validator) {
+            _employeeRepo = employeeRepo;
+            _validator = validator;
         }
 
 
-        
+
         [HttpGet]
         public async Task<IEnumerable<EmployeeListDto>> Get() {
             var result = _employeeRepo.GetAll();
@@ -28,9 +33,9 @@ public class EmployeeController : ControllerBase {
                 EmployeeName = x.EmployeeName,
                 EmployeeSurname = x.EmployeeSurname,
                 SalaryPerMonth = x.SalaryPerMonth,
-                HireDateEnd= x.HireDateEnd,
-                HireDateStart= x.HireDateStart,
-                EmployeeType= x.EmployeeType
+                HireDateEnd = x.HireDateEnd,
+                HireDateStart = x.HireDateStart,
+                EmployeeType = x.EmployeeType
             });
         }
 
@@ -47,56 +52,69 @@ public class EmployeeController : ControllerBase {
                 EmployeeName = result.EmployeeName,
                 EmployeeSurname = result.EmployeeSurname,
                 SalaryPerMonth = result.SalaryPerMonth,
-                HireDateStart= result.HireDateStart,
-                HireDateEnd= result.HireDateEnd,
-                EmployeeType= result.EmployeeType
+                HireDateStart = result.HireDateStart,
+                HireDateEnd = result.HireDateEnd,
+                EmployeeType = result.EmployeeType
             };
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(EmployeeEditDto employee) { 
+        public async Task<IActionResult> Post(EmployeeEditDto employee) {
 
-            var newEmployee = new Employee(employee.EmployeeName,employee.EmployeeSurname,employee.SalaryPerMonth
-                                            ,employee.HireDateStart,employee.HireDateEnd,employee.EmployeeType);
-            _employeeRepo.Add(newEmployee);
+            var newEmployee = new Employee(employee.EmployeeName, employee.EmployeeSurname, employee.SalaryPerMonth
+                                            , employee.HireDateStart, employee.HireDateEnd, employee.EmployeeType);
+            var employees = _employeeRepo.GetAll().ToList();
+            if (_validator.ValidateAddEmployee(newEmployee,newEmployee.EmployeeType, employees, out errorMessage)) {
+                try {
+                    _employeeRepo.Add(newEmployee);
 
-            return Ok();
-
+                } catch (DbException ex) {
+                    return BadRequest(ex.Message);
+                }
+                return Ok();
+            }
+            return BadRequest(errorMessage);
         }
+
 
         [HttpPut]
         public async Task<IActionResult> Put(EmployeeEditDto employee) {
-            var itemToUpdate = _employeeRepo.GetByID(employee.EmployeeID);
-
-            if (itemToUpdate == null) {
-                return NotFound();
+            var dbEmployee =  _employeeRepo.GetByID(employee.EmployeeID);
+            if (dbEmployee == null) {
+                return BadRequest($"Employee not found");
+            } else if (_validator.ValidateUpdateEmployee(employee.EmployeeType, dbEmployee, _employeeRepo.GetAll().ToList(), out errorMessage)) {
+                dbEmployee.EmployeeName = employee.EmployeeName;
+                dbEmployee.EmployeeSurname = employee.EmployeeSurname;
+                dbEmployee.SalaryPerMonth = employee.SalaryPerMonth;
+                dbEmployee.EmployeeType = employee.EmployeeType;
+                dbEmployee.HireDateStart = employee.HireDateStart;
+                dbEmployee.HireDateEnd = employee.HireDateStart;
+                try {
+                    _employeeRepo.Update(employee.EmployeeID, dbEmployee);
+                } catch (DbUpdateException ex) {
+                    return BadRequest(ex.Message);
+                }
+                return Ok();
+            } else {
+                return BadRequest(errorMessage);
             }
-
-            itemToUpdate.EmployeeName = employee.EmployeeName;
-            itemToUpdate.EmployeeSurname = employee.EmployeeSurname;
-            itemToUpdate.SalaryPerMonth = employee.SalaryPerMonth;
-            itemToUpdate.HireDateStart= employee.HireDateStart;
-            itemToUpdate.HireDateEnd= employee.HireDateEnd;
-            itemToUpdate.EmployeeType = employee.EmployeeType;
-            _employeeRepo.Update(employee.EmployeeID, itemToUpdate);
-
-            return Ok();
         }
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id) {
-            var itemToDelete = _employeeRepo.GetByID(id);
-
-            if (itemToDelete == null) {
-                return NotFound(); 
+            var employees = _employeeRepo.GetAll().ToList();
+            if (_validator.ValidateDeleteEmployee(employees.Where(e => e.EmployeeID == id).Single().EmployeeType, employees, out errorMessage)) {
+                try {
+                    await Task.Run(() => { _employeeRepo.Delete(id); });
+                } catch (DbUpdateException) {
+                    return BadRequest($"Could not delete this employee because it has transactions");
+                } catch (KeyNotFoundException) {
+                    return BadRequest($"Employee not found");
+                }
+                return Ok();
             }
-
-            _employeeRepo.Delete(id);
-
-            return Ok(); 
+            return BadRequest(errorMessage);
         }
-
-
     }
 }

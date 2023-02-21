@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Session_30.Shared.CustomerDto;
+using Session_30.Shared.Validator;
 
 namespace Session_30.Server.Controllers
 {
@@ -12,14 +13,17 @@ namespace Session_30.Server.Controllers
 public class CustomerController : ControllerBase {
 
         private readonly IEntityRepo<Customer> _customerRepo;
+        private readonly IValidator _validator;
+        private string? _errorMessage;
 
-        public CustomerController(IEntityRepo<Customer> customerRepo) {
+        public CustomerController(IEntityRepo<Customer> customerRepo,IValidator validator) {
             _customerRepo = customerRepo;
+            _validator = validator;
         }
 
         [HttpGet]
         public async Task<IEnumerable<CustomerListDto>> Get() {
-            var result=_customerRepo.GetAll();
+            var result=_customerRepo.GetAll().ToList();
             return result.Select(x => new CustomerListDto {
                 CustomerID= x.CustomerID,
                 CustomerName= x.CustomerName,
@@ -47,12 +51,7 @@ public class CustomerController : ControllerBase {
         [HttpPost]
         public async Task<IActionResult> Post(CustomerEditDto customer) {
 
-
-            if (customer.CardNumber.Length != 9 || !customer.CardNumber.StartsWith("A")) {
-                return BadRequest("Invalid card number");
-            }
-
-            var newCustomer = new Customer(customer.CustomerName, customer.CustomerSurname, customer.CardNumber);
+            var newCustomer = new Customer(customer.CustomerName, customer.CustomerSurname);
             _customerRepo.Add(newCustomer);
 
             return Ok();
@@ -65,9 +64,6 @@ public class CustomerController : ControllerBase {
 
             if (itemToUpdate == null) {
                 return NotFound(); 
-            }
-            if (customer.CardNumber.Length != 9 || !customer.CardNumber.StartsWith("A")) {
-                return BadRequest("Invalid card number");
             }
 
             itemToUpdate.CustomerName = customer.CustomerName;

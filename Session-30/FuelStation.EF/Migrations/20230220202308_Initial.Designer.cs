@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FuelStation.EF.Migrations
 {
     [DbContext(typeof(FuelStasionDbContext))]
-    [Migration("20230217222357_Initial")]
+    [Migration("20230220202308_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -35,8 +35,8 @@ namespace FuelStation.EF.Migrations
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
@@ -118,6 +118,9 @@ namespace FuelStation.EF.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.HasKey("ItemID");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.ToTable("Items", (string)null);
                 });

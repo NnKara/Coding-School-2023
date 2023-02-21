@@ -16,9 +16,11 @@ namespace Session_30.Shared.ItemDto
         [MaxLength(20, ErrorMessage = "Maximum 20 characters")]
         public string? Code { get; set; }
 
+
         [Required(ErrorMessage = "Field is required.")]
         [MaxLength(50, ErrorMessage = "Maximum 50 characters")]
         public string? Description { get; set; }
+
 
         [Required(ErrorMessage = "Field is required.")]
         [Range(1, 3, ErrorMessage = "You must choose a type!")]
