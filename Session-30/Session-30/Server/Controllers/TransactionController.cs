@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
-
+using Session_30.Shared.TransactionDto;
 
 namespace Session_30.Server.Controllers
 {
     [Route("[controller]")]
-[ApiController]
+    [ApiController]
 public class TransactionController : ControllerBase {
 
         private readonly IEntityRepo<Transaction> _trasRepo;

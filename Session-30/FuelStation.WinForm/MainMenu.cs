@@ -39,7 +39,8 @@ namespace FuelStation.WinForm {
         }
 
         private void btnTransactions_Click(object sender, EventArgs e) {
-
+            var trasForm = new TransactionLogin();
+            trasForm.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e) {

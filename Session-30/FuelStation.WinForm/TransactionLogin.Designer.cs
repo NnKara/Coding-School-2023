@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.btnOpenOrder = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnOpenOrder
@@ -35,21 +36,33 @@
             this.btnOpenOrder.TabIndex = 0;
             this.btnOpenOrder.Text = "Open Order";
             this.btnOpenOrder.UseVisualStyleBackColor = true;
-            this.btnOpenOrder.Click += new System.EventHandler(this.btnOpenOrder_Click);
+            this.btnOpenOrder.Click += new System.EventHandler(this.btnOpenOrder_ClickAsync);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(291, 90);
+            this.textBox1.Location = new System.Drawing.Point(282, 100);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(156, 34);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(677, 392);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // TransactionLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnOpenOrder);
             this.Name = "TransactionLogin";
@@ -64,5 +77,6 @@
 
         private Button btnOpenOrder;
         private TextBox textBox1;
+        private Button btnClose;
     }
 }

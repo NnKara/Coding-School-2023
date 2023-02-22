@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_30.Shared
+namespace Session_30.Shared.TransactionDto
 {
     public class TransactionEditDto {
         public int TransactionID { get; set; }

@@ -12,11 +12,11 @@ namespace Session_30.Server.Controllers
     [ApiController]
 public class CustomerController : ControllerBase {
 
-        private readonly IEntityRepo<Customer> _customerRepo;
+        private readonly ICustomer<Customer> _customerRepo;
         private readonly IValidator _validator;
         private string? _errorMessage;
 
-        public CustomerController(IEntityRepo<Customer> customerRepo,IValidator validator) {
+        public CustomerController(ICustomer<Customer> customerRepo,IValidator validator) {
             _customerRepo = customerRepo;
             _validator = validator;
         }
@@ -46,6 +46,23 @@ public class CustomerController : ControllerBase {
              CardNumber=result.CardNumber
             };
         }
+
+        [Route("/cardNumber/{cardNumber}")]
+        [HttpGet]
+        public async Task<ActionResult<CustomerListDto>> GetByCardNumber(string cardNumber) {
+            var result = _customerRepo.FindCustomerByCardNumber(cardNumber);
+            if (result == null) {
+                return NotFound();
+            }
+            return new CustomerListDto {
+                CustomerID=result.CustomerID,
+                CustomerName = result.CustomerName,
+                CustomerSurname = result.CustomerSurname,
+                CardNumber = result.CardNumber,
+                Transactions= result.Transactions
+            };
+        }
+
 
 
         [HttpPost]

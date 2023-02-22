@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelStation.EF.Repositorys {
-    public class CustomerRepo : IEntityRepo<Customer> {
+    public class CustomerRepo : ICustomer<Customer> {
         public void Add(Customer entity) {
             using var fuelDb = new FuelStasionDbContext();
            
@@ -68,15 +68,18 @@ namespace FuelStation.EF.Repositorys {
             fuelDb.SaveChanges();
         }
 
-        public Customer FindCustomerByCardNumber(string cardNumber) {
+        public Customer? FindCustomerByCardNumber(string cardNumber) {
             using var fuelDb = new FuelStasionDbContext();
-            var customer = fuelDb.Customers.FirstOrDefault(c => c.CardNumber == cardNumber);
-                if (customer is null) {
+            var dbCustomer = fuelDb.Customers.Where(c => c.CardNumber == cardNumber)
+                 .Include(c => c.Transactions)
+                  .ThenInclude(t => t.TransactionLines)
+                 .FirstOrDefault();
+            if (dbCustomer is null) {
                 throw new KeyNotFoundException($"Given Customer with Card-Number: '{cardNumber}' was not found!");
             }
-                return customer;
+                return dbCustomer;
             }
-        }
+    }
   }
 
 

@@ -44,6 +44,7 @@
 @code {
     [Parameter] public int? Id{ get; set; }
     CustomerEditDto? Customer { get; set; } 
+    string? cardNumber { get; set; }
 
     protected override async Task OnInitializedAsync() {
         if (Id == null) {

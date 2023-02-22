@@ -34,6 +34,7 @@ namespace FuelStation.EF.Repositorys {
             fuelDb.SaveChanges();
         }
 
+
         public IList<Employee> GetAll() {
             using var fuelDb = new FuelStasionDbContext();
             return fuelDb.Employees.ToList();

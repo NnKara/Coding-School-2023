@@ -21,7 +21,6 @@ namespace FuelStation.WinForm {
             MainMenu menu = new MainMenu(_role);
             menu.Show();
 
-            //TODO
             this.Hide();
         }
 
