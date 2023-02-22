@@ -39,6 +39,8 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.bsTransLines = new System.Windows.Forms.BindingSource(this.components);
+            this.btnNewTrans = new System.Windows.Forms.Button();
             this.colTransLineID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colItem = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colItemPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTransLines)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -86,7 +89,7 @@
             // 
             // btnNewLine
             // 
-            this.btnNewLine.Location = new System.Drawing.Point(42, 286);
+            this.btnNewLine.Location = new System.Drawing.Point(65, 616);
             this.btnNewLine.Name = "btnNewLine";
             this.btnNewLine.Size = new System.Drawing.Size(94, 29);
             this.btnNewLine.TabIndex = 3;
@@ -174,6 +177,7 @@
             this.grdTransLines.Size = new System.Drawing.Size(1048, 227);
             this.grdTransLines.TabIndex = 5;
             this.grdTransLines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTransLines_CellContentClick);
+            this.grdTransLines.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTransLines_CellValueChangedAsync);
             // 
             // btnRefresh
             // 
@@ -196,12 +200,22 @@
             this.label2.Text = "CDetails";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // btnNewTrans
+            // 
+            this.btnNewTrans.Location = new System.Drawing.Point(65, 286);
+            this.btnNewTrans.Name = "btnNewTrans";
+            this.btnNewTrans.Size = new System.Drawing.Size(94, 29);
+            this.btnNewTrans.TabIndex = 10;
+            this.btnNewTrans.Text = "New Line";
+            this.btnNewTrans.UseVisualStyleBackColor = true;
+            this.btnNewTrans.Click += new System.EventHandler(this.btnNewTrans_Click);
+            // 
             // colTransLineID
             // 
+            this.colTransLineID.DataPropertyName = "TransactionLineID";
             this.colTransLineID.HeaderText = "TransLineID";
             this.colTransLineID.MinimumWidth = 6;
             this.colTransLineID.Name = "colTransLineID";
-            this.colTransLineID.Visible = false;
             // 
             // colItem
             // 
@@ -214,42 +228,49 @@
             // 
             // colItemPrice
             // 
+            this.colItemPrice.DataPropertyName = "ItemPrice";
             this.colItemPrice.HeaderText = "Price";
             this.colItemPrice.MinimumWidth = 6;
             this.colItemPrice.Name = "colItemPrice";
             // 
             // colQuantity
             // 
+            this.colQuantity.DataPropertyName = "Quantity";
             this.colQuantity.HeaderText = "Quantity";
             this.colQuantity.MinimumWidth = 6;
             this.colQuantity.Name = "colQuantity";
             // 
             // colNetValue
             // 
+            this.colNetValue.DataPropertyName = "NetValue";
             this.colNetValue.HeaderText = "NetValue";
             this.colNetValue.MinimumWidth = 6;
             this.colNetValue.Name = "colNetValue";
             // 
             // colDisPercentage
             // 
+            this.colDisPercentage.DataPropertyName = "DiscountPercent";
             this.colDisPercentage.HeaderText = "DiscPercentage";
             this.colDisPercentage.MinimumWidth = 6;
             this.colDisPercentage.Name = "colDisPercentage";
             // 
             // colDiscValue
             // 
+            this.colDiscValue.DataPropertyName = "DiscountValue";
             this.colDiscValue.HeaderText = "DiscValue";
             this.colDiscValue.MinimumWidth = 6;
             this.colDiscValue.Name = "colDiscValue";
             // 
             // dataGridViewTextBoxColumn1
             // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TotalValue";
             this.dataGridViewTextBoxColumn1.HeaderText = "Total";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // colTransID
             // 
+            this.colTransID.DataPropertyName = "TransactionID";
             this.colTransID.HeaderText = "TransID";
             this.colTransID.MinimumWidth = 6;
             this.colTransID.Name = "colTransID";
@@ -259,6 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1185, 683);
+            this.Controls.Add(this.btnNewTrans);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.grdTransLines);
@@ -274,6 +296,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransLines)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTransLines)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,6 +316,8 @@
         private BindingSource bindingSource1;
         private Button btnRefresh;
         private Label label2;
+        private BindingSource bsTransLines;
+        private Button btnNewTrans;
         private DataGridViewTextBoxColumn colTransactionID;
         private DataGridViewTextBoxColumn colDate;
         private DataGridViewComboBoxColumn colPaymentMethod;

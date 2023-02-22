@@ -76,11 +76,11 @@ public class TransactionController : ControllerBase {
                 Date = transaction.Date,
                 CustomerID = transaction.CustomerID,
                 EmployeeID = transaction.EmployeeID,
-                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, transactionLine.DiscountPercent,transactionLine.DiscountValue,transactionLine.TotalValue) {
-                    TransactionLineID = transactionLine.TransactionLineID,
-                    TransactionID = transactionLine.TransactionID,
-                    ItemID = transactionLine.ItemID,
-                }).ToList()
+                //TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, transactionLine.DiscountPercent,transactionLine.DiscountValue,transactionLine.TotalValue) {
+                //    TransactionLineID = transactionLine.TransactionLineID,
+                //    TransactionID = transactionLine.TransactionID,
+                //    ItemID = transactionLine.ItemID,
+                //}).ToList()
             };
              _trasRepo.Add(newTransaction);
         }
@@ -95,21 +95,20 @@ public class TransactionController : ControllerBase {
             dbTransaction.Date = transaction.Date;
             dbTransaction.TotalValue = transaction.TotalValue;
             dbTransaction.PaymentMethod = transaction.PaymentMethod;
-            dbTransaction.CustomerID = transaction.CustomerID;
             dbTransaction.EmployeeID = transaction.EmployeeID;
-            dbTransaction.TransactionLines = transaction.TransactionLines
-                .Select(transactionLine => new TransactionLine(
-                    transactionLine.Quantity,
-                    transactionLine.ItemPrice,
-                    transactionLine.NetValue,
-                    transactionLine.DiscountPercent, 
-                    transactionLine.DiscountValue,
-                    transactionLine.TotalValue) {
-                    ItemID = transactionLine.ItemID,
-                    TransactionID = transactionLine.TransactionID,
-                    TransactionLineID = transactionLine.TransactionLineID
-                }
-                ).ToList();
+            //dbTransaction.TransactionLines = transaction.TransactionLines
+            //    .Select(transactionLine => new TransactionLine(
+            //        transactionLine.Quantity,
+            //        transactionLine.ItemPrice,
+            //        transactionLine.NetValue,
+            //        transactionLine.DiscountPercent, 
+            //        transactionLine.DiscountValue,
+            //        transactionLine.TotalValue) {
+            //        ItemID = transactionLine.ItemID,
+            //        TransactionID = transactionLine.TransactionID,
+            //        TransactionLineID = transactionLine.TransactionLineID
+            //    }
+            //    ).ToList();
 
             _trasRepo.Update(transaction.TransactionID, dbTransaction);
         }

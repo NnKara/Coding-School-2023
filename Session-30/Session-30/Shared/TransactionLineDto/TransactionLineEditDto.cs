@@ -20,8 +20,6 @@ namespace Session_30.Shared
         public decimal TotalValue { get; set; }
 
 
-
-        //Relations
         public int TransactionID { get; set; }
         public Transaction Transaction { get; set; } = null!;
 
