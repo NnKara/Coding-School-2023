@@ -46,18 +46,18 @@ namespace Session_30.Server.Controllers
                 expenses += emp.SalaryPerMonth;
             }
 
-            foreach (Transaction transaction in transactions) {
-                foreach (TransactionLine line in transaction.TransactionLines) {
-                    decimal netValue = line.Quantity * line.ItemPrice;
-                    decimal discountValue = netValue * line.DiscountPercent;
-                    decimal totalValue = netValue - discountValue;
-                    if (line.Item.ItemType == ItemType.Fuel && netValue > 20) {
-                        discountValue += netValue * 0.1m;
-                        totalValue = netValue - discountValue;
-                    }
-                    expenses += totalValue;
-                }
-            }
+            //foreach (Transaction transaction in transactions) {
+            //    foreach (TransactionLine line in transaction.TransactionLines) {
+            //        decimal netValue = line.Quantity * line.ItemPrice;
+            //        decimal discountValue = netValue * line.DiscountPercent;
+            //        decimal totalValue = netValue - discountValue;
+            //        if (line.Item.ItemType == ItemType.Fuel && netValue > 20) {
+            //            discountValue += netValue * 0.1m;
+            //            totalValue = netValue - discountValue;
+            //        }
+            //        expenses += totalValue;
+            //    }
+            //}
 
             // Calculate total
             decimal total = income - expenses - _rent;

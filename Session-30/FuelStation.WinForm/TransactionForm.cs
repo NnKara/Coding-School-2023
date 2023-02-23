@@ -1,4 +1,5 @@
-﻿using FuelStation.Model;
+﻿using FuelStation.EF.Repositorys;
+using FuelStation.Model;
 using Newtonsoft.Json;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
@@ -11,6 +12,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +24,9 @@ namespace FuelStation.WinForm {
 
         private HttpClient _client;
         private CustomerListDto _customer;
+        private List<TransactionListDto> _transactions;
+        private List<TransactionLineListDto> _transactionLines;
+        private List<ItemListDto> _itemList;
 
 
         public TransactionForm(CustomerListDto customer) {
@@ -36,14 +42,12 @@ namespace FuelStation.WinForm {
         private void TransactionForm_Load(object sender, EventArgs e) {
             grdTransactions.AutoGenerateColumns = false;
             grdTransLines.AutoGenerateColumns = false;
-            _ = SetControlTransactionProperties();
-           
-
+            SetControlTransactionProperties();
         }
 
 
         private void grdTransLines_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
+            SetControlTransactionProperties();
         }
 
         private void grdTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -53,27 +57,25 @@ namespace FuelStation.WinForm {
 
 
         private async void btnSave_Click(object sender, EventArgs e) {
-           await OnSave();
+            await OnSaveTransLine();
+
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e) {
-            await OnDelete();
-        }
+        private async void btnNewLine_Click(object sender, EventArgs e) {
+            TransactionLineListDto trasEdit = new TransactionLineListDto();
+            bsTransLines.Add(trasEdit);
 
-        private void btnClose_Click(object sender, EventArgs e) {
-            this.Close();
-        }
-
-        private void btnNewLine_Click(object sender, EventArgs e) {
-            bsTransLines.Add(new TransactionLineListDto());
         }
 
         private void btnNewTrans_Click(object sender, EventArgs e) {
-            bsTransactions.Add(new TransactionListDto());
+            TransactionListDto transEdit = new TransactionListDto();
+            //colCustomerID = _customer.CustomerID;
+            bsTransactions.Add(transEdit);
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            _ = SetControlTransactionProperties();
+            SetControlTransactionProperties();
         }
 
         private async Task<List<TransactionListDto>?> GetTransactions() {
@@ -85,48 +87,66 @@ namespace FuelStation.WinForm {
             return null;
         }
 
-        private async Task<List<TransactionLineListDto>?> GetTransactionLines() {
-            var response = await _client.GetAsync("transactionLine");
+        private async Task<List<TransactionListDto>> GetTransactions(int id) {
+            var response = await _client.GetAsync($"transaction/customer/{id}");
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<TransactionLineListDto>>(content);
+                return JsonConvert.DeserializeObject<List<TransactionListDto>>(content);
             }
             return null;
         }
 
-        private async Task SetControlTransactionProperties() {
-            var transactions = await GetTransactions();
+        private async void SetControlTransactionProperties() {
+            _transactions = await GetTransactions(_customer.CustomerID);
+            //_transactionLines = await _client.GetFromJsonAsync<List<TransactionLineListDto>>("transactionLine");
             var employees = await GetEmployees();
-            var transLines = await GetTransLines();
-            var items = await GetItems();
-
-            if (transactions != null && transLines!=null) {
-
-                DataGridViewComboBoxColumn colPaymentMethod = grdTransactions.Columns["colPaymentMethod"] as DataGridViewComboBoxColumn;
-                colPaymentMethod.ValueType = typeof(PaymentMethod);
-                colPaymentMethod.DataSource = Enum.GetValues(typeof(PaymentMethod));
-
-                DataGridViewComboBoxColumn colEmployee = grdTransactions.Columns["colEmployee"] as DataGridViewComboBoxColumn;
-                colEmployee.DataSource = employees;
-                colEmployee.ValueMember = "EmployeeID";
-                colEmployee.DisplayMember = "EmployeeName";
+            _itemList = await GetItems();
 
 
-                bsTransactions.DataSource = transactions;
+            if (_transactions != null) {
+
+                bsTransactions.DataSource = _transactions;
                 grdTransactions.DataSource = bsTransactions;
+                bsTransLines.DataSource = bsTransactions;
+                bsTransLines.DataMember = "TransactionLines";
+                grdTransLines.DataSource = bsTransLines;
 
-                DataGridViewComboBoxColumn colItem = grdTransLines.Columns["colItem"] as DataGridViewComboBoxColumn;
-                colItem.DataSource = items;
+
+
+
+                DataGridViewComboBoxColumn colPayment = grdTransactions.Columns["colPaymentMethod"] as DataGridViewComboBoxColumn;
+                if (colPayment != null) {
+                    colPayment.DataSource = Enum.GetValues(typeof(PaymentMethod))
+                                                 .Cast<PaymentMethod>()
+                                                 .Select(e => e.ToString())
+                                                 .ToList();
+                    grdTransactions.Refresh();
+                }
+
+
+                bsEmployees.DataSource = employees;
+                colEmployee.DataSource = bsEmployees;
+                colEmployee.ValueMember = "EmployeeID";
+                colEmployee.DisplayMember = "EmployeeSurname";
+
+                bsItems.DataSource = _itemList;
+                colItem.DataSource = bsItems;
                 colItem.ValueMember = "ItemID";
                 colItem.DisplayMember = "Code";
-                grdTransLines.Columns["colItemPrice"].ReadOnly = true;
 
-                bsTransLines.DataSource = transLines;
-                grdTransLines.DataSource = bsTransLines;
+                //bsTransactions.DataSource = _transactions;
+                //grdTransactions.DataSource = bsTransactions;
+
+                //bsTransLines.DataSource = _transactionLines;
+                //grdTransLines.DataSource = bsTransLines;
+
+
+
             }
         }
 
-        private async Task<List<CustomerListDto>> GetCustomers() {
+
+        private async Task<List<CustomerListDto>?> GetCustomers() {
             var response = await _client.GetAsync("customer");
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
@@ -134,17 +154,17 @@ namespace FuelStation.WinForm {
             }
             return null;
         }
-        
-        private async Task<List<TransactionLineListDto>> GetTransLines() {
-            var response = await _client.GetAsync("transactionLine");
-            if (response.IsSuccessStatusCode) {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<TransactionLineListDto>>(content);
-            }
-            return null;
-        }
 
-        private async Task<List<ItemListDto>> GetItems() {
+        //private async Task<List<TransactionLineListDto>?> GetTransLines() {
+        //    var response = await _client.GetAsync("transactionLine");
+        //    if (response.IsSuccessStatusCode) {
+        //        var content = await response.Content.ReadAsStringAsync();
+        //        return JsonConvert.DeserializeObject<List<TransactionLineListDto>>(content);
+        //    }
+        //    return null;
+        //}
+
+        private async Task<List<ItemListDto>?> GetItems() {
             var response = await _client.GetAsync("item");
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
@@ -153,7 +173,7 @@ namespace FuelStation.WinForm {
             return null;
         }
 
-        private async Task<List<EmployeeListDto>> GetEmployees() {
+        private async Task<List<EmployeeListDto>?> GetEmployees() {
             var response = await _client.GetAsync("employee");
             if (response.IsSuccessStatusCode) {
                 var content = await response.Content.ReadAsStringAsync();
@@ -165,10 +185,29 @@ namespace FuelStation.WinForm {
         private async Task OnSave() {
             HttpResponseMessage response = null;
             TransactionListDto tras = (TransactionListDto)bsTransactions.Current;
-            if (tras.TransactionID==0 ) {
-                response = await _client.PostAsJsonAsync("Transaction", tras);
+            //tras.CustomerID = _customer.CustomerID;
+
+            if (tras.TransactionID == 0) {
+                response = await _client.PostAsJsonAsync("transaction", tras);
             } else {
-                response = await _client.PutAsJsonAsync("Transaction", tras);
+                response = await _client.PutAsJsonAsync("transaction", tras);
+            }
+
+            if (response.IsSuccessStatusCode) {
+                MessageBox.Show("Item saved successfully!");
+            } else {
+                MessageBox.Show("Error saving item.");
+            }
+        }
+        private async Task OnSaveTransLine() {
+            HttpResponseMessage response = null;
+            TransactionLineListDto trasLine = (TransactionLineListDto)bsTransLines.Current;
+            //tras.TransactionID = _customer.CustomerID;
+
+            if (trasLine.TransactionLineID == 0) {
+                response = await _client.PostAsJsonAsync("transactionLine", trasLine);
+            } else {
+                response = await _client.PutAsJsonAsync("transactionLine", trasLine);
             }
 
             if (response.IsSuccessStatusCode) {
@@ -201,35 +240,38 @@ namespace FuelStation.WinForm {
         }
 
         private void grdTransLines_CellValueChangedAsync(object sender, DataGridViewCellEventArgs e) {
-            //if (grdTransLines.CurrentRow != null && grdTransLines.CurrentRow.Cells[colItem.Index] != null) {
-            //    int itemId = (int)grdTransLines.CurrentRow.Cells[colItem.Index].Value;
-            //    ItemListDto item = FindItem(itemId).Result;
-            //    if (item != null) {
-            //        Invoke(new Action(() => {
-            //            grdTransLines.CurrentRow.Cells[colItemPrice.Index].Value = item.Price;
-            //        }));
-            //    }
-            //}
+            if (e.ColumnIndex == colItem.Index && e.RowIndex >= 0) {
+                // Get the selected item from the cell value
+                var selectedCell = grdTransLines.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (selectedCell.Value is Item selectedItem) {
+                    // Find the corresponding item in the list of items
+                    ItemListDto item = _itemList.FirstOrDefault(i => i.ItemID == selectedItem.ItemID);
+
+                    // If the item was found, update the value of the "colItemPrice" column
+                    if (item != null) {
+                        grdTransLines.Rows[e.RowIndex].Cells[colItemPrice.Index].Value = item.Price;
+                    }
+                }
+            }
+        
         }
 
-        //private async Task<ItemListDto> FindItem(int itemID) {
-        //        var response = await _client.GetAsync($"item/{itemID}");
-        //        if (response.IsSuccessStatusCode) {
-        //            var content = await response.Content.ReadAsStringAsync();
-        //            var itemDto = JsonConvert.DeserializeObject<ItemEditDto>(content);
-        //            var item = new ItemListDto {
-        //                ItemID = itemDto.ItemID,
-        //                Description = itemDto.Description,
-        //                Price = itemDto.Price,
-        //                Cost = itemDto.Cost,
-        //                ItemType = itemDto.ItemType
-        //            };
-        //            return item;
-        //        }
-        //        return null;
-        //    }
+            private void grdTransactions_SelectionChanged(object sender, EventArgs e) {
+            }
+
+
+            private async void btnDelete_Click(object sender, EventArgs e) {
+                await OnDelete();
+            }
+
+            private void btnClose_Click(object sender, EventArgs e) {
+                this.Close();
+            }
+
+        }
     }
-}
+
+
 
 
 

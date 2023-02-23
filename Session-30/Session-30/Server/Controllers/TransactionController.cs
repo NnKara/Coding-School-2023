@@ -13,9 +13,9 @@ namespace Session_30.Server.Controllers
     [ApiController]
 public class TransactionController : ControllerBase {
 
-        private readonly IEntityRepo<Transaction> _trasRepo;
+        private readonly ITransactionRepo<Transaction> _trasRepo;
 
-        public TransactionController(IEntityRepo<Transaction> trasRepo) {
+        public TransactionController(ITransactionRepo<Transaction> trasRepo) {
             _trasRepo= trasRepo;
         }
 
@@ -76,18 +76,51 @@ public class TransactionController : ControllerBase {
                 Date = transaction.Date,
                 CustomerID = transaction.CustomerID,
                 EmployeeID = transaction.EmployeeID,
-                //TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, transactionLine.DiscountPercent,transactionLine.DiscountValue,transactionLine.TotalValue) {
-                //    TransactionLineID = transactionLine.TransactionLineID,
-                //    TransactionID = transactionLine.TransactionID,
-                //    ItemID = transactionLine.ItemID,
-                //}).ToList()
-            };
+                TransactionLines=new()
+            //TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, transactionLine.DiscountPercent, transactionLine.DiscountValue, transactionLine.TotalValue) {
+            //    TransactionLineID = transactionLine.TransactionLineID,
+            //    TransactionID = transactionLine.TransactionID,
+            //    ItemID = transactionLine.ItemID,
+            //}).ToList()
+        };
              _trasRepo.Add(newTransaction);
+        }
+
+        [Route("/transaction/customer/{id}")]
+        [HttpGet]
+        public async Task<IEnumerable<TransactionListDto>> GetDetailsById(int id) {
+            var result = await Task.Run(() => { return _trasRepo.GetCustomerTransactions(id); });
+            if (result is null) {
+                return null;
+            } else {
+                var selectTransactionList = result.Select(transaction => new TransactionListDto {
+                    TransactionID = id,
+                    Date = transaction.Date,
+                    TotalValue = transaction.TotalValue,
+                    PaymentMethod = transaction.PaymentMethod,
+                    CustomerID = transaction.CustomerID,
+                    EmployeeID = transaction.EmployeeID,
+                    TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLineListDto {
+                        TransactionLineID = transactionLine.TransactionLineID,
+                        Quantity = transactionLine.Quantity,
+                        ItemPrice = transactionLine.ItemPrice,
+                        NetValue = transactionLine.NetValue,
+                        DiscountPercent = transactionLine.DiscountPercent,
+                        DiscountValue = transactionLine.DiscountValue,
+                        TotalValue = transactionLine.TotalValue,
+                        TransactionID = transactionLine.TransactionID,
+                        ItemID = transactionLine.ItemID,
+                        //Item = transactionLine.Item,
+                    }).ToList()
+                }).ToList();
+                return selectTransactionList;
+
+            }
         }
 
 
         [HttpPut]
-        public async Task Put(TransactionEditDto transaction) {
+        public async Task Put(TransactionListDto transaction) {
             var dbTransaction =  _trasRepo.GetByID(transaction.TransactionID);
                 if (dbTransaction is null) {
                 return;
@@ -96,19 +129,20 @@ public class TransactionController : ControllerBase {
             dbTransaction.TotalValue = transaction.TotalValue;
             dbTransaction.PaymentMethod = transaction.PaymentMethod;
             dbTransaction.EmployeeID = transaction.EmployeeID;
-            //dbTransaction.TransactionLines = transaction.TransactionLines
-            //    .Select(transactionLine => new TransactionLine(
-            //        transactionLine.Quantity,
-            //        transactionLine.ItemPrice,
-            //        transactionLine.NetValue,
-            //        transactionLine.DiscountPercent, 
-            //        transactionLine.DiscountValue,
-            //        transactionLine.TotalValue) {
-            //        ItemID = transactionLine.ItemID,
-            //        TransactionID = transactionLine.TransactionID,
-            //        TransactionLineID = transactionLine.TransactionLineID
-            //    }
-            //    ).ToList();
+            dbTransaction.CustomerID = transaction.CustomerID;
+            dbTransaction.TransactionLines = transaction.TransactionLines
+                .Select(transactionLine => new TransactionLine(
+                    transactionLine.Quantity,
+                    transactionLine.ItemPrice,
+                    transactionLine.NetValue,
+                    transactionLine.DiscountPercent,
+                    transactionLine.DiscountValue,
+                    transactionLine.TotalValue) {
+                    ItemID = transactionLine.ItemID,
+                    TransactionID = transactionLine.TransactionID,
+                    TransactionLineID = transactionLine.TransactionLineID
+                }
+                ).ToList();
 
             _trasRepo.Update(transaction.TransactionID, dbTransaction);
         }

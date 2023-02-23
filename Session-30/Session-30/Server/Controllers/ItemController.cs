@@ -61,7 +61,6 @@ public class ItemController : ControllerBase {
                 _itemRepo.Add(newItem);
                 return Ok();
             }
-
             return BadRequest();
         }
 

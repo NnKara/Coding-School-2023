@@ -20,6 +20,9 @@ namespace FuelStation.Model {
             TransactionLines = new List<TransactionLine>();
         }
 
+        public Transaction() {
+        }
+
 
 
 

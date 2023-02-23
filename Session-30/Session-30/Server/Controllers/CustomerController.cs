@@ -3,6 +3,7 @@ using FuelStation.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.Validator;
 
@@ -59,7 +60,7 @@ public class CustomerController : ControllerBase {
                 CustomerName = result.CustomerName,
                 CustomerSurname = result.CustomerSurname,
                 CardNumber = result.CardNumber,
-                Transactions= result.Transactions
+                Transactions = result.Transactions
             };
         }
 

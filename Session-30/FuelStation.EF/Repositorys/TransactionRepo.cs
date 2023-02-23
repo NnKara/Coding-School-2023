@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FuelStation.EF.Repositorys {
-    public class TransactionRepo : IEntityRepo<Transaction> {
+    public class TransactionRepo : ITransactionRepo<Transaction> {
         public void Add(Transaction entity) {
             using var fuelDbContext = new FuelStasionDbContext();
             if (entity.TransactionID != 0) {
@@ -55,6 +55,18 @@ namespace FuelStation.EF.Repositorys {
             dbTransaction.PaymentMethod = entity.PaymentMethod;
             dbTransaction.TotalValue= entity.TotalValue;
             fuelDb.SaveChanges();
+        }
+
+
+        public IList<Transaction> GetCustomerTransactions(int id) {
+            using var context = new FuelStasionDbContext();
+            return context.Transactions
+                .Where(transaction => transaction.CustomerID == id)
+                .Include(transaction => transaction.TransactionLines)
+                .ThenInclude(transactionLines => transactionLines.Item)
+                //.Include(transaction => transaction.Customer)
+                //.Include(transaction => transaction.Employee)
+                .ToList();
         }
     }
 }

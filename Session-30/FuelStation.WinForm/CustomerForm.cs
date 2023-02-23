@@ -3,6 +3,7 @@ using FuelStation.Model;
 
 using Session_30.Server.Controllers;
 using Session_30.Shared.CustomerDto;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +17,14 @@ using System.Windows.Forms;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 using Session_30.Shared.ItemDto;
 using System.Xml.Linq;
+using Session_30.Client.Pages.Customer;
 
 namespace FuelStation.WinForm {
     public partial class CustomerForm : Form {
 
-
+        private List<CustomerListDto> customerListDtos= new List<CustomerListDto>();
         private readonly HttpClient _client;
         public CustomerForm() {
             InitializeComponent();
@@ -32,8 +33,7 @@ namespace FuelStation.WinForm {
         }
 
         private void CustomerForm_Load(object sender, EventArgs e) {
-            grdCustomers.AutoGenerateColumns = false;
-            SetControlProperties();
+           _= SetControlProperties();
         }
 
         private void grdCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -45,21 +45,12 @@ namespace FuelStation.WinForm {
         }
 
         private async Task SetControlProperties() {
-
-            var customers = await GetCustomers();
-            if (customers != null) {
-                bsCustomers.DataSource = customers;
+            customerListDtos = await _client.GetFromJsonAsync<List<CustomerListDto>>("customer");
+            grdCustomers.AutoGenerateColumns = false;
+            if (customerListDtos != null) {
+                bsCustomers.DataSource = customerListDtos;
                 grdCustomers.DataSource = bsCustomers;
             }
-        }
-
-        private async Task<List<CustomerListDto>> GetCustomers() {
-            var response = await _client.GetAsync("customer");
-            if (response.IsSuccessStatusCode) {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<CustomerListDto>>(content);
-            }
-            return null;
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
@@ -67,8 +58,8 @@ namespace FuelStation.WinForm {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            OnSave();
-            SetControlProperties();
+            _=OnSave();
+            _=SetControlProperties();
         }
 
         private async Task OnSave() {
@@ -89,11 +80,11 @@ namespace FuelStation.WinForm {
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            SetControlProperties();
+            _=SetControlProperties();
         }
 
         private void btnDelete_Click(object sender, EventArgs e) {
-           OnDelete();
+           _=OnDelete();
         }
 
         private async Task OnDelete() {

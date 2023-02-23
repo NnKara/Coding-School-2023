@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace FuelStation.WinForm {
     public partial class ItemForm : Form {
 
         private readonly HttpClient _client;
+        private List<ItemListDto> _customerList = new();
         public ItemForm() {
             InitializeComponent();
             _client = new HttpClient();
@@ -28,7 +30,7 @@ namespace FuelStation.WinForm {
 
         private void ItemForm_Load(object sender, EventArgs e) {
             grdItems.AutoGenerateColumns = false;
-            SetControlProperties();
+            _=SetControlProperties();
         }
 
         private void btnNewLine_Click(object sender, EventArgs e) {
@@ -37,15 +39,15 @@ namespace FuelStation.WinForm {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            OnSave();
+            _=OnSave();
         }
 
         private void btnDelete_Click(object sender, EventArgs e) {
-            OnDelete();
+            _=OnDelete();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
-            SetControlProperties();
+            _=SetControlProperties();
         }
 
         private void btnClose_Click(object sender, EventArgs e) {
@@ -53,24 +55,12 @@ namespace FuelStation.WinForm {
         }
 
         private async Task SetControlProperties() {
-            var items = await GetItems();
-            if (items != null) {
-                DataGridViewComboBoxColumn colItemType = grdItems.Columns["colItemType"] as DataGridViewComboBoxColumn;
-                colItemType.DataSource = Enum.GetValues(typeof(ItemType));
-                bsItems.DataSource = items;
+            _customerList = await _client.GetFromJsonAsync<List<ItemListDto>>("item");
+
+            if (_customerList != null) {
+                bsItems.DataSource = _customerList;
                 grdItems.DataSource = bsItems;
-            }        
-        }
-
-
-
-        private async Task<List<ItemListDto>> GetItems() {
-            var response = await _client.GetAsync("item");
-            if (response.IsSuccessStatusCode) {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<ItemListDto>>(content);
             }
-            return null;
         }
 
         private async Task OnSave() {

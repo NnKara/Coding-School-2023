@@ -31,16 +31,19 @@ namespace FuelStation.WinForm {
         private void btnCustomers_Click(object sender, EventArgs e) {
             var customersForm = new CustomerForm();
             customersForm.ShowDialog();
+            this.Close();
         }
 
         private void btnItems_Click(object sender, EventArgs e) {
             var itemFrom = new ItemForm();
             itemFrom.ShowDialog();
+            this.Close();
         }
 
         private void btnTransactions_Click(object sender, EventArgs e) {
             var trasForm = new TransactionLogin();
             trasForm.ShowDialog();
+            this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e) {

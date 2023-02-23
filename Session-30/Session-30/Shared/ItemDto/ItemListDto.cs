@@ -21,6 +21,6 @@ namespace Session_30.Shared.ItemDto
     public decimal Cost { get; set; }
     public decimal Price { get; set; }
 
-    public List<TransactionLineListDto> TransactionLines { get; set; } = new List<TransactionLineListDto>();
-}
+        //public List<TransactionLineListDto> TransactionLines { get; set; } = new List<TransactionLineListDto>();
+    }
 }

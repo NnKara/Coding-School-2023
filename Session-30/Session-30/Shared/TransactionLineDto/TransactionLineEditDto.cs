@@ -1,4 +1,5 @@
 ﻿using FuelStation.Model;
+using Session_30.Shared.ItemDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,6 @@ namespace Session_30.Shared
         public Transaction Transaction { get; set; } = null!;
 
         public int ItemID { get; set; }
-
         public Item Item { get; set; } = null!;
     }
 }
