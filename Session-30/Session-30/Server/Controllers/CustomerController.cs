@@ -1,8 +1,10 @@
-﻿using FuelStation.EF.Repositorys;
+﻿using FuelStation.EF.Context;
+using FuelStation.EF.Repositorys;
 using FuelStation.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.Validator;
@@ -51,17 +53,29 @@ public class CustomerController : ControllerBase {
         [Route("/cardNumber/{cardNumber}")]
         [HttpGet]
         public async Task<ActionResult<CustomerListDto>> GetByCardNumber(string cardNumber) {
-            var result = _customerRepo.FindCustomerByCardNumber(cardNumber);
-            if (result == null) {
+            var fuelDb = new FuelStasionDbContext();
+            var dbCustomer = await _customerRepo.FindCustomerByCardNumber(cardNumber);
+            if (dbCustomer == null) {
                 return NotFound();
             }
-            return new CustomerListDto {
-                CustomerID=result.CustomerID,
-                CustomerName = result.CustomerName,
-                CustomerSurname = result.CustomerSurname,
-                CardNumber = result.CardNumber,
-                Transactions = result.Transactions
-            };
+            var customer = new CustomerListDto();
+            customer.CustomerID = dbCustomer.CustomerID;
+            customer.CustomerName = dbCustomer.CustomerName;
+            customer.CustomerSurname = dbCustomer.CustomerSurname;
+            customer.CardNumber = dbCustomer.CardNumber;
+
+            return customer;
+            ///*await fuelDb.Customers*/
+            //.Where(c => c.CardNumber == cardNumber)
+            //.Include(c => c.Transactions)
+            //.Select(c => new CustomerListDto
+            //{
+            //    CustomerID = c.CustomerID,
+            //    CustomerName = c.CustomerName,
+            //    CustomerSurname = c.CustomerSurname,
+            //    CardNumber = c.CardNumber,
+            //})
+            //.FirstOrDefaultAsync();
         }
 
 

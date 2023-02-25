@@ -31,54 +31,63 @@
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(61, 167);
+            this.btnCustomers.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnCustomers.Location = new System.Drawing.Point(113, 39);
             this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(132, 59);
+            this.btnCustomers.Size = new System.Drawing.Size(637, 82);
             this.btnCustomers.TabIndex = 0;
             this.btnCustomers.Text = "Customers";
-            this.btnCustomers.UseVisualStyleBackColor = true;
+            this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
             // 
             // btnItems
             // 
-            this.btnItems.Location = new System.Drawing.Point(319, 167);
+            this.btnItems.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnItems.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnItems.Location = new System.Drawing.Point(187, 160);
             this.btnItems.Name = "btnItems";
-            this.btnItems.Size = new System.Drawing.Size(132, 59);
+            this.btnItems.Size = new System.Drawing.Size(475, 82);
             this.btnItems.TabIndex = 2;
             this.btnItems.Text = "Items";
-            this.btnItems.UseVisualStyleBackColor = true;
+            this.btnItems.UseVisualStyleBackColor = false;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
             // 
             // btnTransactions
             // 
-            this.btnTransactions.Location = new System.Drawing.Point(603, 167);
+            this.btnTransactions.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.btnTransactions.Location = new System.Drawing.Point(256, 295);
             this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(132, 59);
+            this.btnTransactions.Size = new System.Drawing.Size(359, 82);
             this.btnTransactions.TabIndex = 3;
             this.btnTransactions.Text = "Transactions";
-            this.btnTransactions.UseVisualStyleBackColor = true;
+            this.btnTransactions.UseVisualStyleBackColor = false;
             this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(693, 454);
+            this.btnClose.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClose.Location = new System.Drawing.Point(363, 432);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(105, 34);
+            this.btnClose.Size = new System.Drawing.Size(164, 56);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ManagerForm
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(860, 500);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnTransactions);
             this.Controls.Add(this.btnItems);
             this.Controls.Add(this.btnCustomers);
-            this.Name = "ManagerForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "MainMenu";
             this.Text = "ManagerForm";
             this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.ResumeLayout(false);

@@ -11,7 +11,7 @@ namespace FuelStation.EF.Repositorys {
     public class CustomerRepo : ICustomer<Customer> {
         public void Add(Customer entity) {
             using var fuelDb = new FuelStasionDbContext();
-           
+
 
             if (entity.CustomerID != 0) {
                 throw new ArgumentException("Given entity should not have ID set", nameof(entity));
@@ -37,13 +37,13 @@ namespace FuelStation.EF.Repositorys {
 
         public IList<Customer> GetAll() {
             using var fuelDb = new FuelStasionDbContext();
-            return fuelDb.Customers.ToList();
+            return fuelDb.Customers.Include(cust=>cust.Transactions).ToList();
         }
 
         public Customer? GetByID(int id) {
             using var fuelDb = new FuelStasionDbContext();
 
-            var dbCustomer=fuelDb.Customers
+            var dbCustomer = fuelDb.Customers
                  .Include(c => c.Transactions)
                   .ThenInclude(t => t.TransactionLines)
                  .FirstOrDefault(c => c.CustomerID == id);
@@ -68,18 +68,19 @@ namespace FuelStation.EF.Repositorys {
             fuelDb.SaveChanges();
         }
 
-        public Customer? FindCustomerByCardNumber(string cardNumber) {
-            using var fuelDb = new FuelStasionDbContext();
-            var dbCustomer = fuelDb.Customers.Where(c => c.CardNumber == cardNumber)
-                 .Include(c => c.Transactions)
-                  .ThenInclude(t => t.TransactionLines)
-                 .FirstOrDefault();
-            if (dbCustomer is null) {
-                throw new KeyNotFoundException($"Given Customer with Card-Number: '{cardNumber}' was not found!");
+
+
+        public async Task<Customer?> FindCustomerByCardNumber(string cardNumber) {
+            var fuelDb = new FuelStasionDbContext();
+            var dbCustomer = await fuelDb.Customers
+                .Where(c => c.CardNumber == cardNumber)
+                .Include(c => c.Transactions).FirstOrDefaultAsync();
+            if(dbCustomer is null) {
+                throw new KeyNotFoundException($"Given Card-Number '{cardNumber}' was not found in Database");
             }
-                return dbCustomer;
-            }
+            return dbCustomer;
+        }
     }
-  }
+}
 
 

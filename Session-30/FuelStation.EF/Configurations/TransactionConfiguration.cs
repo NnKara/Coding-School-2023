@@ -28,19 +28,18 @@ namespace FuelStation.EF.Configurations {
 
 
             //Relations
-            builder.HasOne(tras => tras.Customer)
-                .WithMany(tras => tras.Transactions)
-                .HasForeignKey(tras => tras.TransactionID)
+            builder.HasOne(t => t.Customer)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.CustomerID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(t => t.Employee)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(t => t.EmployeeID)
                 .OnDelete(DeleteBehavior.Restrict);
 
 
-            builder.HasOne(tras => tras.Employee)
-                .WithMany(tras => tras.Transactions)
-                .HasForeignKey(tras => tras.TransactionID)
-                .OnDelete(DeleteBehavior.Restrict);
-            
-            
-            
+
 
         }
     }

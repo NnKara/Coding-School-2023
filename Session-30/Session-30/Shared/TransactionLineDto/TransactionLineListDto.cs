@@ -22,11 +22,10 @@ namespace Session_30.Shared
         public decimal TotalValue { get; set; }
 
         public int TransactionID { get; set; }
-        public Transaction Transaction { get; set; } = null!;
 
         public int ItemID { get; set; }
 
-        public Item Item { get; set; } = null!;
+        public Item? Item { get; set; } = null!;
 
     }
 }

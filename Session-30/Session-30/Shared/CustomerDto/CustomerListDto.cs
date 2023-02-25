@@ -19,6 +19,6 @@ namespace Session_30.Shared.CustomerDto
 
         public string? CardNumber { get; set; }
 
-        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+        //public List<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

@@ -21,7 +21,9 @@ namespace FuelStation.EF.Configurations {
             //Properties
             builder.Property(cust => cust.CustomerName).HasMaxLength(50).IsRequired();
             builder.Property(cust => cust.CustomerSurname).HasMaxLength(100).IsRequired();
+
             builder.Property(cust => cust.CardNumber).HasMaxLength(50).IsRequired();
+            builder.HasIndex(cust => cust.CardNumber).IsUnique();
         }
     }
 }

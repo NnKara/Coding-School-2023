@@ -29,18 +29,19 @@ public class TransactionController : ControllerBase {
                 TotalValue = t.TotalValue,
                 EmployeeID = t.EmployeeID,
                 CustomerID = t.CustomerID,
-                TransactionLines = t.TransactionLines.Select(tl => new TransactionLineListDto {
-                    TransactionLineID = tl.TransactionLineID,
-                    Quantity = tl.Quantity,
-                    ItemPrice = tl.ItemPrice,
-                    NetValue = tl.NetValue,
-                    DiscountValue = tl.DiscountValue,
-                    DiscountPercent = tl.DiscountPercent,
-                    TotalValue = tl.TotalValue
-                }).ToList()
+                //TransactionLines = t.TransactionLines.Select(tl => new TransactionLineListDto {
+                //    TransactionLineID = tl.TransactionLineID,
+                //    Quantity = tl.Quantity,
+                //    ItemPrice = tl.ItemPrice,
+                //    NetValue = tl.NetValue,
+                //    DiscountValue = tl.DiscountValue,
+                //    DiscountPercent = tl.DiscountPercent,
+                //    TotalValue = tl.TotalValue
+                //}).ToList()
             });
             return tras;
         }
+        
 
         [HttpGet("{id}")]
         public async Task<ActionResult<TransactionEditDto>> GetById(int id) {
@@ -55,52 +56,58 @@ public class TransactionController : ControllerBase {
                 TotalValue = result.TotalValue,
                 CustomerID=result.CustomerID,
                 EmployeeID=result.EmployeeID,
-                TransactionLines = result.TransactionLines.Select(transactionLine => new TransactionLineEditDto {
-                    TransactionLineID = transactionLine.TransactionLineID,
-                    Quantity = transactionLine.Quantity,
-                    ItemPrice = transactionLine.ItemPrice,
-                    NetValue = transactionLine.NetValue,
-                    DiscountPercent = transactionLine.DiscountPercent,
-                    DiscountValue = transactionLine.DiscountValue,
-                    TotalValue = transactionLine.TotalValue,
-                    TransactionID=transactionLine.TransactionID,
-                    ItemID=transactionLine.ItemID
-                }).ToList()
+                //TransactionLines = result.TransactionLines.Select(transactionLine => new TransactionLineEditDto {
+                //    TransactionLineID = transactionLine.TransactionLineID,
+                //    Quantity = transactionLine.Quantity,
+                //    ItemPrice = transactionLine.ItemPrice,
+                //    NetValue = transactionLine.NetValue,
+                //    DiscountPercent = transactionLine.DiscountPercent,
+                //    DiscountValue = transactionLine.DiscountValue,
+                //    TotalValue = transactionLine.TotalValue,
+                //    TransactionID=transactionLine.TransactionID,
+                //    ItemID=transactionLine.ItemID
+                //}).ToList()
             };
             return transaction;
         }
 
         [HttpPost]
-        public async Task Post(TransactionEditDto transaction) {
-            var newTransaction = new Transaction(transaction.Date, transaction.PaymentMethod,transaction.TotalValue) {
-                Date = transaction.Date,
+        public async Task Post(TransactionListDto transaction) {
+            var newTransaction = new Transaction( transaction.PaymentMethod,transaction.TotalValue,transaction.Date) {
+                TransactionID= transaction.TransactionID,
                 CustomerID = transaction.CustomerID,
                 EmployeeID = transaction.EmployeeID,
-                TransactionLines=new()
-            //TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(transactionLine.Quantity, transactionLine.ItemPrice, transactionLine.NetValue, transactionLine.DiscountPercent, transactionLine.DiscountValue, transactionLine.TotalValue) {
-            //    TransactionLineID = transactionLine.TransactionLineID,
-            //    TransactionID = transactionLine.TransactionID,
-            //    ItemID = transactionLine.ItemID,
-            //}).ToList()
-        };
-             _trasRepo.Add(newTransaction);
+                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(
+                    transactionLine.Quantity,
+                    transactionLine.ItemPrice,
+                    transactionLine.NetValue,
+                    transactionLine.DiscountPercent,
+                    transactionLine.DiscountValue, transactionLine.TotalValue)
+                {
+                    TransactionLineID = transactionLine.TransactionLineID,
+                    TransactionID = transactionLine.TransactionID,
+                    ItemID = transactionLine.ItemID,
+                }).ToList()
+            };
+            _trasRepo.Add(newTransaction);
         }
+
 
         [Route("/transaction/customer/{id}")]
         [HttpGet]
         public async Task<IEnumerable<TransactionListDto>> GetDetailsById(int id) {
-            var result = await Task.Run(() => { return _trasRepo.GetCustomerTransactions(id); });
+            var result = _trasRepo.GetCustomerTransactions(id); 
             if (result is null) {
                 return null;
             } else {
                 var selectTransactionList = result.Select(transaction => new TransactionListDto {
-                    TransactionID = id,
+                    TransactionID = transaction.TransactionID,
                     Date = transaction.Date,
                     TotalValue = transaction.TotalValue,
                     PaymentMethod = transaction.PaymentMethod,
                     CustomerID = transaction.CustomerID,
                     EmployeeID = transaction.EmployeeID,
-                    TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLineListDto {
+                    TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLineEditDto {
                         TransactionLineID = transactionLine.TransactionLineID,
                         Quantity = transactionLine.Quantity,
                         ItemPrice = transactionLine.ItemPrice,
@@ -110,9 +117,9 @@ public class TransactionController : ControllerBase {
                         TotalValue = transactionLine.TotalValue,
                         TransactionID = transactionLine.TransactionID,
                         ItemID = transactionLine.ItemID,
-                        //Item = transactionLine.Item,
                     }).ToList()
                 }).ToList();
+
                 return selectTransactionList;
 
             }
@@ -137,20 +144,21 @@ public class TransactionController : ControllerBase {
                     transactionLine.NetValue,
                     transactionLine.DiscountPercent,
                     transactionLine.DiscountValue,
-                    transactionLine.TotalValue) {
+                    transactionLine.TotalValue)
+                {
                     ItemID = transactionLine.ItemID,
                     TransactionID = transactionLine.TransactionID,
                     TransactionLineID = transactionLine.TransactionLineID
                 }
                 ).ToList();
 
-            _trasRepo.Update(transaction.TransactionID, dbTransaction);
+            await Task.Run(() => { _trasRepo.Update(transaction.TransactionID, dbTransaction); });
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id) {
             try {
-                await Task.Run(() => { _trasRepo.Delete(id); });
+                _trasRepo.Delete(id); 
                 return Ok();
             } catch (DbUpdateException) {
                 return BadRequest($"Could not delete this transaction because it has transactionLines");

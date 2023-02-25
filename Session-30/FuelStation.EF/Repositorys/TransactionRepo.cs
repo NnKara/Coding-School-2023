@@ -11,11 +11,13 @@ namespace FuelStation.EF.Repositorys {
     public class TransactionRepo : ITransactionRepo<Transaction> {
         public void Add(Transaction entity) {
             using var fuelDbContext = new FuelStasionDbContext();
-            if (entity.TransactionID != 0) {
+            if (entity.TransactionID != 0)
+            {
                 throw new ArgumentException("Given entity should not have ID set", nameof(entity));
             }
             fuelDbContext.Add(entity);
             fuelDbContext.SaveChanges();
+            
         }
 
         public void Delete(int id) {
@@ -30,16 +32,16 @@ namespace FuelStation.EF.Repositorys {
 
         public IList<Transaction> GetAll() {
             using var fuelDb = new FuelStasionDbContext();
-            return fuelDb.Transactions.Include(t => t.Customer).Include(t => t.Employee).Include(t => t.TransactionLines).ToList();
+            return fuelDb.Transactions.Include(t => t.Customer).Include(t => t.Employee).Include(t => t.TransactionLines).ThenInclude(trasLines=>trasLines.Item).ToList();
         }
 
         public Transaction? GetByID(int id) {
             using var fuelDb = new FuelStasionDbContext();
             return fuelDb.Transactions
+                                 .Where(transaction => transaction.TransactionID == id)
                                  .Include(transaction => transaction.Customer)
                                  .Include(transaction => transaction.Employee)
-                                 .Include(transaction => transaction.TransactionLines)
-                                 .Where(transaction => transaction.TransactionID == id)
+                                 .Include(transaction => transaction.TransactionLines)                                
                                  .SingleOrDefault();
         }
 
@@ -54,6 +56,7 @@ namespace FuelStation.EF.Repositorys {
             dbTransaction.Date = entity.Date;
             dbTransaction.PaymentMethod = entity.PaymentMethod;
             dbTransaction.TotalValue= entity.TotalValue;
+            dbTransaction.TransactionLines = entity.TransactionLines;
             fuelDb.SaveChanges();
         }
 
@@ -64,8 +67,6 @@ namespace FuelStation.EF.Repositorys {
                 .Where(transaction => transaction.CustomerID == id)
                 .Include(transaction => transaction.TransactionLines)
                 .ThenInclude(transactionLines => transactionLines.Item)
-                //.Include(transaction => transaction.Customer)
-                //.Include(transaction => transaction.Employee)
                 .ToList();
         }
     }

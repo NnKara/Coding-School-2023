@@ -18,7 +18,8 @@ namespace FuelStation.EF.Repositorys {
 
         public void Delete(int id) {
             using var fuelDb = new FuelStasionDbContext();
-            var trasLine = fuelDb.TransactionLines.Where(transactionline => transactionline.TransactionLineID == id).SingleOrDefault();
+            var trasLine = fuelDb.TransactionLines.Where(transactionline => transactionline.TransactionLineID == id)
+                                                  .Include(trasLine=>trasLine.Item).SingleOrDefault();
             if (trasLine is null)
                 return;
             fuelDb.Remove(trasLine);
@@ -53,11 +54,10 @@ namespace FuelStation.EF.Repositorys {
             fuelDb.SaveChanges();
         }
 
-        TransactionLine? IEntityRepo<TransactionLine>.GetByID(int id) {
+       public TransactionLine? GetByID(int id) {
             using var dbFuel = new FuelStasionDbContext();
             return dbFuel.TransactionLines
                 .Include(t => t.Transaction)
-                //.Include(t=>t.TransactionID)
                 .Include(t => t.Item)
                 .FirstOrDefault(t => t.TransactionLineID == id);
         }

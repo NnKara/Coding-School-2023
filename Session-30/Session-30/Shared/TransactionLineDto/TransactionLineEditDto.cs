@@ -9,6 +9,20 @@ using System.Threading.Tasks;
 namespace Session_30.Shared
 {
     public class TransactionLineEditDto {
+        public TransactionLineEditDto()
+        {
+        }
+
+        public TransactionLineEditDto(int quantity, decimal itemPrice, decimal netValue, decimal discountPercent, decimal discountValue, decimal totalValue)
+        {
+            Quantity = quantity;
+            ItemPrice = itemPrice;
+            NetValue = netValue;
+            DiscountPercent = discountPercent;
+            DiscountValue = discountValue;
+            TotalValue = totalValue;
+        }
+
         public int TransactionLineID { get; set; }
 
         public int Quantity { get; set; }
@@ -20,11 +34,12 @@ namespace Session_30.Shared
         public decimal DiscountValue { get; set; }
         public decimal TotalValue { get; set; }
 
-
         public int TransactionID { get; set; }
-        public Transaction Transaction { get; set; } = null!;
+
+        public Transaction? Transaction { get; set; } = null!;
 
         public int ItemID { get; set; }
-        public Item Item { get; set; } = null!;
+        public Item? Item { get; set; } = null!;
+
     }
 }

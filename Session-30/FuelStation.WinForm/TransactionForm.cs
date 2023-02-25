@@ -1,5 +1,13 @@
-﻿using FuelStation.EF.Repositorys;
+﻿using DevExpress.Data;
+using DevExpress.DataAccess.Native;
+using DevExpress.XtraCharts;
+using DevExpress.XtraExport.Helpers;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
+using FuelStation.EF.Repositorys;
 using FuelStation.Model;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
@@ -16,260 +24,499 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using GridView = DevExpress.XtraGrid.Views.Grid.GridView;
 
-namespace FuelStation.WinForm {
-    public partial class TransactionForm : Form {
+namespace FuelStation.WinForm
+{
+    public partial class TransactionForm : Form
+    {
 
         private HttpClient _client;
         private CustomerListDto _customer;
         private List<TransactionListDto> _transactions;
-        private List<TransactionLineListDto> _transactionLines;
-        private List<ItemListDto> _itemList;
+        private List<ItemListDto> _items;
+        private List<EmployeeListDto> _employees;
 
 
-        public TransactionForm(CustomerListDto customer) {
+        public TransactionForm(CustomerListDto customer)
+        {
             InitializeComponent();
             _client = new HttpClient();
             _client.BaseAddress = new Uri("https://localhost:7183/");
             _customer = customer;
             label2.Text = $"Customer: {_customer.CustomerName} {_customer.CustomerSurname} - Card Number: {_customer.CardNumber})";
-
-
         }
 
-        private void TransactionForm_Load(object sender, EventArgs e) {
-            grdTransactions.AutoGenerateColumns = false;
-            grdTransLines.AutoGenerateColumns = false;
-            SetControlTransactionProperties();
-        }
-
-
-        private void grdTransLines_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            SetControlTransactionProperties();
-        }
-
-        private void grdTransactions_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
+        private void TransactionForm_Load(object sender, EventArgs e)
+        {
+            _ = SetControlTransactionProperties();
         }
 
 
 
-        private async void btnSave_Click(object sender, EventArgs e) {
-            await OnSaveTransLine();
-
-        }
-
-        private async void btnNewLine_Click(object sender, EventArgs e) {
-            TransactionLineListDto trasEdit = new TransactionLineListDto();
-            bsTransLines.Add(trasEdit);
-
-        }
-
-        private void btnNewTrans_Click(object sender, EventArgs e) {
+        //BTN ADD NEW TRANSACTION
+        private void btnOpenTransaction_Click(object sender, EventArgs e)
+        {
             TransactionListDto transEdit = new TransactionListDto();
-            //colCustomerID = _customer.CustomerID;
             bsTransactions.Add(transEdit);
+            //hasTransactionLine = false;
 
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e) {
-            SetControlTransactionProperties();
-        }
 
-        private async Task<List<TransactionListDto>?> GetTransactions() {
-            var response = await _client.GetAsync("transaction");
-            if (response.IsSuccessStatusCode) {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<TransactionListDto>>(content);
+        //BTN SAVE/UPDATE TRANSACTION
+        private void BtnSaveUpdateTransaction_Click(object sender, EventArgs e)
+        {
+            if (gridView1.GetFocusedRow() != null)
+            {
+                TransactionListDto? transaction = gridView1.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    transaction.CustomerID = _customer.CustomerID;
+                    if (transaction.TransactionID == 0)
+                    {
+                        _ = OnSaveTransaction(transaction);
+                    }
+                    else
+                    {
+                        _ = OnEditTransaction(transaction);
+                    }
+                }
             }
-            return null;
         }
 
-        private async Task<List<TransactionListDto>> GetTransactions(int id) {
+        //METHOD EDIT TRANSACTION
+        private async Task OnEditTransaction(TransactionListDto transaction)
+        {
+            var response = await _client.PutAsJsonAsync("transaction", transaction);
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Item saved successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Error saving item.");
+            }
+        }
+
+        //METHOD SAVE TRANSACTION
+
+        private async Task OnSaveTransaction(TransactionListDto transaction)
+        {
+            var response = await _client.PostAsJsonAsync("transaction", transaction);
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Transaction saved successfully!", "Success Message");
+            }
+            else
+            {
+                MessageBox.Show("Error saving Transaction!", "Error Message");
+            }
+        }
+
+        //BTN ADD TRANSACTION-LINE
+        private void btnAddTransLine_Click(object sender, EventArgs e)
+        {
+
+            TransactionListDto? transaction = gridView1.GetFocusedRow() as TransactionListDto;
+
+            if (transaction != null)
+            {
+                TransactionLineEditDto newTransLine = new TransactionLineEditDto();
+                newTransLine.TransactionID = transaction.TransactionID;
+                bsTransLines.Add(newTransLine);
+            }
+
+        }
+
+
+        //BTN DELETE TRANSACTION
+        private void btnDeleteTrans_Click(object sender, EventArgs e)
+        {
+            if (gridView1.GetFocusedRow() != null)
+            {
+                TransactionListDto? transaction = gridView1.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    _ = OnDeleteTransaction(transaction.TransactionID);
+                }
+            }
+        }
+
+
+        //DELETE TRANSACTION METHOD
+        private async Task OnDeleteTransaction(int transactionID)
+        {
+            var response = await _client.DeleteAsync($"transaction/{transactionID}");
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                bsTransactions.RemoveCurrent();
+                MessageBox.Show("Transaction Deleted Successfully!", "Success Message!");
+            }
+            else
+            {
+                MessageBox.Show("Error deleting transaction.You have to delete Transaction-Lines first!", "Error Message");
+            }
+        }
+
+        //REMOVE CURRENT TRANSACTIONLINE
+        private void btnDeleteLine_Click(object sender, EventArgs e)
+        {
+            if (bsTransLines.Current != null)
+            {
+                TransactionLineEditDto? transactionL = bsTransLines.Current as TransactionLineEditDto;
+                if (transactionL != null)
+                {
+                    _ = OnDeleteTransactionLine(transactionL.TransactionLineID);
+                }
+            }
+        }
+
+        //METHOD REMOVE TRANSACTION-LINE
+        private async Task OnDeleteTransactionLine(int id)
+        {
+
+            var response = await _client.DeleteAsync($"transactionLine/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                bsTransLines.RemoveCurrent();
+                MessageBox.Show("Transaction-Line Deleted Successfully!", "Success Message");
+            }
+            else
+            {
+                MessageBox.Show("Error deleting Transaction-Line!", "Error Message");
+            }
+        }
+
+        private void btnRemoveTempLineTransLine_Click(object sender, EventArgs e)
+        {
+            bsTransLines.RemoveCurrent();
+        }
+
+        //private bool hasTransactionLine;
+        private void gridTransactions_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+
+        }
+
+        private decimal CalcTransTotalValue()
+        {
+            decimal totalValue = 0;
+            for (int i = 0; i < grdTransLines.RowCount; i++)
+            {
+                totalValue += (decimal)grdTransLines.GetRowCellValue(i, "TotalValue");
+            }
+            // Set the total value for the current transaction
+            var grdTrans = grdTransactions.FocusedView as GridView;
+            if (grdTrans != null)
+            {
+                grdTrans.SetRowCellValue(grdTrans.FocusedRowHandle, "TotalValue", totalValue);
+            }
+            return totalValue;
+        }
+
+
+        //METHOD GET ALL TRANSACTIONS
+        private async Task<List<TransactionListDto>> GetTransactions(int id)
+        {
             var response = await _client.GetAsync($"transaction/customer/{id}");
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode)
+            {
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<TransactionListDto>>(content);
             }
             return null;
         }
 
-        private async void SetControlTransactionProperties() {
+
+        //CONTROL-PROPERTIES
+        private async Task SetControlTransactionProperties()
+        {
             _transactions = await GetTransactions(_customer.CustomerID);
-            //_transactionLines = await _client.GetFromJsonAsync<List<TransactionLineListDto>>("transactionLine");
-            var employees = await GetEmployees();
-            _itemList = await GetItems();
+            _employees = await GetEmployees();
+            _items = await GetItems();
 
-
-            if (_transactions != null) {
+            if (_transactions != null)
+            {
 
                 bsTransactions.DataSource = _transactions;
-                grdTransactions.DataSource = bsTransactions;
                 bsTransLines.DataSource = bsTransactions;
                 bsTransLines.DataMember = "TransactionLines";
-                grdTransLines.DataSource = bsTransLines;
 
 
+                grdTransactions.DataSource = bsTransactions;
+                grdTransactionLines.DataSource = bsTransLines;
 
+                bsEmployees.DataSource = _employees;
+                repoEmployee.DataSource = bsEmployees;
+                repoEmployee.ValueMember = "EmployeeID";
+                repoEmployee.DisplayMember = "EmployeeSurname";
 
-                DataGridViewComboBoxColumn colPayment = grdTransactions.Columns["colPaymentMethod"] as DataGridViewComboBoxColumn;
-                if (colPayment != null) {
-                    colPayment.DataSource = Enum.GetValues(typeof(PaymentMethod))
-                                                 .Cast<PaymentMethod>()
-                                                 .Select(e => e.ToString())
-                                                 .ToList();
-                    grdTransactions.Refresh();
-                }
-
-
-                bsEmployees.DataSource = employees;
-                colEmployee.DataSource = bsEmployees;
-                colEmployee.ValueMember = "EmployeeID";
-                colEmployee.DisplayMember = "EmployeeSurname";
-
-                bsItems.DataSource = _itemList;
-                colItem.DataSource = bsItems;
-                colItem.ValueMember = "ItemID";
-                colItem.DisplayMember = "Code";
-
-                //bsTransactions.DataSource = _transactions;
-                //grdTransactions.DataSource = bsTransactions;
-
-                //bsTransLines.DataSource = _transactionLines;
-                //grdTransLines.DataSource = bsTransLines;
-
-
+                bsItems.DataSource = _items;
+                repoItem.DataSource = bsItems;
+                repoItem.ValueMember = "ItemID";
+                repoItem.DisplayMember = "Code";
 
             }
         }
 
-
-        private async Task<List<CustomerListDto>?> GetCustomers() {
-            var response = await _client.GetAsync("customer");
-            if (response.IsSuccessStatusCode) {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<CustomerListDto>>(content);
-            }
-            return null;
-        }
-
-        //private async Task<List<TransactionLineListDto>?> GetTransLines() {
-        //    var response = await _client.GetAsync("transactionLine");
-        //    if (response.IsSuccessStatusCode) {
-        //        var content = await response.Content.ReadAsStringAsync();
-        //        return JsonConvert.DeserializeObject<List<TransactionLineListDto>>(content);
-        //    }
-        //    return null;
-        //}
-
-        private async Task<List<ItemListDto>?> GetItems() {
+        //METHOD GET ALL ITEMS
+        private async Task<List<ItemListDto>?> GetItems()
+        {
             var response = await _client.GetAsync("item");
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode)
+            {
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<ItemListDto>>(content);
             }
             return null;
         }
 
-        private async Task<List<EmployeeListDto>?> GetEmployees() {
+        //METHOD GET ALL EMPLOYEES
+        private async Task<List<EmployeeListDto>?> GetEmployees()
+        {
             var response = await _client.GetAsync("employee");
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode)
+            {
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<EmployeeListDto>>(content);
             }
             return null;
         }
 
-        private async Task OnSave() {
-            HttpResponseMessage response = null;
-            TransactionListDto tras = (TransactionListDto)bsTransactions.Current;
-            //tras.CustomerID = _customer.CustomerID;
 
-            if (tras.TransactionID == 0) {
-                response = await _client.PostAsJsonAsync("transaction", tras);
-            } else {
-                response = await _client.PutAsJsonAsync("transaction", tras);
-            }
 
-            if (response.IsSuccessStatusCode) {
-                MessageBox.Show("Item saved successfully!");
-            } else {
-                MessageBox.Show("Error saving item.");
-            }
-        }
-        private async Task OnSaveTransLine() {
-            HttpResponseMessage response = null;
-            TransactionLineListDto trasLine = (TransactionLineListDto)bsTransLines.Current;
-            //tras.TransactionID = _customer.CustomerID;
+        private void grdTransactionsDelete(object sender, RowDeletingEventArgs e)
+        {
 
-            if (trasLine.TransactionLineID == 0) {
-                response = await _client.PostAsJsonAsync("transactionLine", trasLine);
-            } else {
-                response = await _client.PutAsJsonAsync("transactionLine", trasLine);
-            }
-
-            if (response.IsSuccessStatusCode) {
-                MessageBox.Show("Item saved successfully!");
-            } else {
-                MessageBox.Show("Error saving item.");
-            }
         }
 
-        private async Task OnDelete() {
-            HttpResponseMessage response = null;
-            TransactionListDto tras = (TransactionListDto)bsTransactions.Current;
-            if (tras.TransactionID != 0) {
-                response = await _client.DeleteAsync($"transaction/{tras.TransactionID}");
-                if (response.IsSuccessStatusCode) {
-                    bsTransactions.RemoveCurrent();
-                    MessageBox.Show("Item Deleted Successfully!");
-                } else {
-                    MessageBox.Show("Error deleting item.");
+
+
+        private void txtLoggedInCustomer_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+
+
+        private void grdTransLines_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "ItemID")
+            {
+                UpdateItemPrice(e.RowHandle, (int)e.Value);
+                CalculateNetValue(e.RowHandle);
+            }
+            else if (e.Column.FieldName == "Quantity")
+            {
+                UpdateItemPrice(e.RowHandle, (int)grdTransLines.GetRowCellValue(e.RowHandle, "ItemID"));
+                CalculateNetValue(e.RowHandle);
+
+                int quantity = (int)e.Value;
+
+                if (quantity == 0 && (int)grdTransLines.GetRowCellValue(e.RowHandle, "ItemID") != 0)
+                {
+                    return;
+                }
+
+                var item = _items.FirstOrDefault(i => i.ItemID == (int)grdTransLines.GetRowCellValue(e.RowHandle, "ItemID"));
+                if (item.ItemType == ItemType.Fuel && (decimal)grdTransLines.GetRowCellValue(e.RowHandle, "NetValue") > 20)
+                {
+                    ApplyFuelDiscount(e.RowHandle, (decimal)grdTransLines.GetRowCellValue(e.RowHandle, "NetValue"));
+                }
+                else
+                {
+                    UpdateTotalValue(e.RowHandle, (decimal)grdTransLines.GetRowCellValue(e.RowHandle, "NetValue"));
                 }
             }
         }
 
-        private void txtLoggedInCustomer_TextChanged(object sender, EventArgs e) {
+        private void UpdateItemPrice(int rowHandle, int itemId)
+        {
+            decimal itemPrice = _items.FirstOrDefault(i => i.ItemID == itemId).Price;
+            grdTransLines.SetRowCellValue(rowHandle, "ItemPrice", itemPrice);
+            CalculateNetValue(rowHandle);
+        }
+
+
+        private void CalculateNetValue(int rowHandle)
+        {
+            decimal itemPrice = (decimal)grdTransLines.GetRowCellValue(rowHandle, "ItemPrice");
+            int quantity = (int)grdTransLines.GetRowCellValue(rowHandle, "Quantity");
+
+            if (itemPrice != 0 && quantity != 0)
+            {
+                decimal netValue = itemPrice * quantity;
+                grdTransLines.SetRowCellValue(rowHandle, "NetValue", netValue);
+                var item = _items.FirstOrDefault(i => i.ItemID == (int)grdTransLines.GetRowCellValue(rowHandle, "ItemID"));
+                if (item.ItemType == ItemType.Fuel && netValue > 20)
+                {
+                    ApplyFuelDiscount(rowHandle, netValue);
+                }
+                else
+                {
+                    UpdateTotalValue(rowHandle, netValue);
+                }
+            }
+        }
+
+        private void ApplyFuelDiscount(int rowHandle, decimal netValue)
+        {
+            decimal discPercent = 0.1m;
+            decimal discValue = netValue * discPercent;
+            grdTransLines.SetRowCellValue(rowHandle, "DiscountPercent", discPercent);
+            grdTransLines.SetRowCellValue(rowHandle, "DiscountValue", Convert.ToInt32(discValue));
+            decimal totalValue = netValue - discValue;
+            grdTransLines.SetRowCellValue(rowHandle, "TotalValue", Convert.ToInt32(totalValue));
+        }
+
+        private void UpdateTotalValue(int rowHandle, decimal netValue)
+        {
+            grdTransLines.SetRowCellValue(rowHandle, "DiscountPercent", 0m);
+            grdTransLines.SetRowCellValue(rowHandle, "DiscountValue", 0m);
+            grdTransLines.SetRowCellValue(rowHandle, "TotalValue", netValue);
+        }
+
+
+
+
+        private void grdTransactions_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void label2_Click(object sender, EventArgs e) {
+        private void grdTransactionLines_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void grdTransLines_CellValueChangedAsync(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == colItem.Index && e.RowIndex >= 0) {
-                // Get the selected item from the cell value
-                var selectedCell = grdTransLines.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (selectedCell.Value is Item selectedItem) {
-                    // Find the corresponding item in the list of items
-                    ItemListDto item = _itemList.FirstOrDefault(i => i.ItemID == selectedItem.ItemID);
+        private void gridView1_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
+        {
+        }
 
-                    // If the item was found, update the value of the "colItemPrice" column
-                    if (item != null) {
-                        grdTransLines.Rows[e.RowIndex].Cells[colItemPrice.Index].Value = item.Price;
+        private void gridView1_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+
+        }
+
+        private void grdTransLines_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            if (e.RowHandle >= 0 && e.RowHandle < grdTransLines.RowCount)
+            {
+                TransactionListDto transaction = gridView1.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    int transactionID = transaction.TransactionID;
+
+                    if (HasMultipleItems())
+                    {
+                        MessageBox.Show("A transaction can have only one fuel type item.", "Error Message");
+                        grdTransLines.DeleteRow(e.RowHandle);
+                        return;
+                    }
+
+
+                    // Calculate the total value
+                    decimal totalValue = CalcTransTotalValue();
+
+                    if (totalValue > 50 && transaction.PaymentMethod != PaymentMethod.Cash)
+                    {
+                        MessageBox.Show("The only acceptable payment method for transactions above 50 Euros is Cash!", "Error Message");
+                        transaction.PaymentMethod = PaymentMethod.Cash;
+                        gridView1.RefreshData();
+                    }
+
+
+                    // Update the TotalValue column in the grdTransactions grid
+                    var gridView = grdTransactions.FocusedView as GridView;
+                    if (gridView != null)
+                    {
+                        int rowHandle = gridView.FocusedRowHandle;
+                        if (gridView.GetRowCellValue(rowHandle, "TransactionID").Equals(transactionID))
+                        {
+                            gridView.SetRowCellValue(rowHandle, "TotalValue", totalValue);
+                        }
                     }
                 }
             }
-        
+        }
+        private bool HasMultipleItems()
+        {
+            int fuelItemCount = 0;
+            for (int i = 0; i < grdTransLines.RowCount; i++)
+            {
+                int itemID = (int)grdTransLines.GetRowCellValue(i, "ItemID");
+                var item = _items.FirstOrDefault(it => it.ItemID == itemID);
+                if (item != null && item.ItemType == ItemType.Fuel)
+                {
+                    fuelItemCount++;
+                    if (fuelItemCount > 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
-            private void grdTransactions_SelectionChanged(object sender, EventArgs e) {
+        private void btnRemoveCurrentRow_Click(object sender, EventArgs e)
+        {
+            int selectedRowHandle = grdTransLines.FocusedRowHandle;
+            if (selectedRowHandle >= 0)
+            {
+                TransactionLineEditDto transactionLine = grdTransLines.GetRow(selectedRowHandle) as TransactionLineEditDto;
+                if (transactionLine != null && transactionLine.TransactionLineID != 0)
+                {
+                    MessageBox.Show("You cannot remove locally a saved Transaction-Line. To remove it, you must delete it permanently!", "Errot Message");
+                }
+                else
+                {
+                    grdTransLines.DeleteRow(selectedRowHandle);
+                }
             }
+        }
 
-
-            private async void btnDelete_Click(object sender, EventArgs e) {
-                await OnDelete();
+        private void btnRemoveCurrentTransaction_Click(object sender, EventArgs e)
+        {
+            int selectedRowHandle = gridView1.FocusedRowHandle;
+            if (selectedRowHandle >= 0)
+            {
+                TransactionListDto transaction = gridView1.GetRow(selectedRowHandle) as TransactionListDto;
+                if (transaction != null && transaction.TransactionID != 0)
+                {
+                    MessageBox.Show("You cannot remove locally a saved Transaction. To remove it, you must delete it permanently!", "Errot Message");
+                }
+                else
+                {
+                    gridView1.DeleteRow(selectedRowHandle);
+                }
             }
-
-            private void btnClose_Click(object sender, EventArgs e) {
-                this.Close();
-            }
-
         }
     }
+}
+
+
+
+
 
 
 

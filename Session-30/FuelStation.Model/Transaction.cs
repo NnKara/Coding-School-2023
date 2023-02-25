@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FuelStation.Model {
     public class Transaction {
+
         public int TransactionID { get; set; }
         public DateTime Date { get; set; }
 
@@ -13,14 +14,14 @@ namespace FuelStation.Model {
 
         public decimal TotalValue { get; set; }
 
-        public Transaction(DateTime date, PaymentMethod paymentMethod, decimal totalValue) {
-            Date = date;
-            PaymentMethod = paymentMethod;
-            TotalValue = totalValue;
-            TransactionLines = new List<TransactionLine>();
-        }
 
         public Transaction() {
+        }
+
+        public Transaction(PaymentMethod paymentMethod, decimal totalValue,DateTime date) {
+            PaymentMethod= paymentMethod;
+            TotalValue = totalValue;
+            Date = date;
         }
 
 

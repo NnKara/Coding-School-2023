@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,31 +29,20 @@ namespace FuelStation.WinForm {
 
         }
 
-        private void btnOpenOrder_ClickAsync(object sender, EventArgs e) {
-            string cardNumber = textBox1.Text;
-            //var customer =await FindCustomerByCardNumber(cardNumber);
-            //if (customer is null) {
-            //    MessageBox.Show("Customer doesn't exist! Redirecting..");
-            //    CustomerForm custForm = new CustomerForm();
-            //    custForm.ShowDialog();
-            //} else {
-            //    MessageBox.Show("Welcome Back!");
-            //    TransactionForm trasForm = new TransactionForm(customer);
-            //    trasForm.ShowDialog();
-
-            //}
-            _ =Navigate(cardNumber);
-        }
-
         private async Task Navigate(string cardNumber) {
-            var customer = await FindCustomerByCardNumber(cardNumber);
+            CustomerListDto customer = await FindCustomerByCardNumber(cardNumber);
             if (customer != null) {
+                MessageBox.Show("Welcome Back!");
                TransactionForm trasForm=new TransactionForm(customer);
-               
-                trasForm.ShowDialog();
+                this.Hide();
+                TransactionForm transForm = new TransactionForm(customer);
+                transForm.FormClosed += (s, args) => this.Hide();
+                transForm.ShowDialog();
+
             } else {
-               CustomerForm custForm=new CustomerForm();
-             
+                MessageBox.Show("Card Number doesn't exists! Redirecting..");
+                CustomerForm custForm=new CustomerForm(); 
+                
                 custForm.ShowDialog();
             }
         }
@@ -61,18 +51,27 @@ namespace FuelStation.WinForm {
 
         }
 
-        private async Task<CustomerListDto?> FindCustomerByCardNumber(string cardNumber) {
-            var response = await _client.GetAsync($"cardNumber/{cardNumber}");
-            if (response.IsSuccessStatusCode) {
-                return await response.Content.ReadAsAsync<CustomerListDto>();
-            }
-            return null;
-        
+        private void btnNewOrder_Click(object sender, EventArgs e) {
+            btnNewOrder.Enabled = false;
+            string cardNumber = textBox1.Text;
+            _ = Navigate(cardNumber);
         }
+
+        private async Task<CustomerListDto?> FindCustomerByCardNumber(string cardNumber) {
+        
+                var response = await _client.GetAsync($"cardNumber/{cardNumber}");
+                if (response.IsSuccessStatusCode) {
+                    return await response.Content.ReadAsAsync<CustomerListDto>();
+                }
+                return null;
+
+            }
 
         private void btnClose_Click(object sender, EventArgs e) {
             this.Close();
         }
+
+    
     }
 
 }

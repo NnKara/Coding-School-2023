@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Session_30.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-public class TransactionLineController : ControllerBase {
+    public class TransactionLineController : ControllerBase {
 
 
         private readonly IEntityRepo<TransactionLine> _transLineRepo;
@@ -28,10 +29,10 @@ public class TransactionLineController : ControllerBase {
                 TotalValue = t.TotalValue,
                 DiscountPercent = t.DiscountPercent,
                 DiscountValue = t.DiscountValue,
-                NetValue= t.NetValue,
-                TransactionID=t.TransactionID,
-                ItemID=t.ItemID
-                
+                NetValue = t.NetValue,
+                TransactionID = t.TransactionID,
+                ItemID = t.ItemID
+
             });
             return transLine;
         }
@@ -43,26 +44,35 @@ public class TransactionLineController : ControllerBase {
                 return NotFound();
             }
             return new TransactionLineListDto {
-                 TransactionLineID= result.TransactionLineID,
+                TransactionLineID = result.TransactionLineID,
                 Quantity = result.Quantity,
                 ItemPrice = result.ItemPrice,
                 NetValue = result.NetValue,
-                DiscountPercent= result.DiscountPercent,
-                DiscountValue= result.DiscountValue,
-                TotalValue= result.TotalValue,
-                TransactionID= result.TransactionID,
-                ItemID= result.ItemID
+                DiscountPercent = result.DiscountPercent,
+                DiscountValue = result.DiscountValue,
+                TotalValue = result.TotalValue,
+                TransactionID = result.TransactionID,
+                ItemID = result.ItemID
             };
         }
         [HttpPost]
         public async Task<IActionResult> Post(TransactionLineEditDto transLine) {
 
-            var newTransLine = new TransactionLine(transLine.Quantity,transLine.ItemPrice,transLine.NetValue,transLine.DiscountPercent,transLine.DiscountValue,transLine.TotalValue);
-            _transLineRepo.Add(newTransLine);
-
+            var newTransaction = new TransactionLine(
+                transLine.Quantity,
+                transLine.ItemPrice,
+                transLine.NetValue,
+                transLine.DiscountPercent,
+                transLine.DiscountValue,
+                transLine.TotalValue
+               );
+          await Task.Run(() => { _transLineRepo.Add(newTransaction); });
             return Ok();
-
         }
+           
+
+    
+
 
         [HttpPut]
         public async Task<IActionResult> Put(TransactionLineEditDto transLine) {

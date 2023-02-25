@@ -11,6 +11,6 @@ namespace FuelStation.EF.Repositorys {
         void Add(TEntity entity);
         void Update(int id, TEntity entity);
         void Delete(int id);
-        TEntity? FindCustomerByCardNumber(string cardNumber);
+        Task<TEntity?> FindCustomerByCardNumber(string cardNumber);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FuelStation.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,7 +65,8 @@ namespace FuelStation.EF.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    TransactionID = table.Column<int>(type: "int", nullable: false),
+                    TransactionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentMethod = table.Column<int>(type: "int", nullable: false),
                     TotalValue = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false),
@@ -76,14 +77,14 @@ namespace FuelStation.EF.Migrations
                 {
                     table.PrimaryKey("PK_Transactions", x => x.TransactionID);
                     table.ForeignKey(
-                        name: "FK_Transactions_Customers_TransactionID",
-                        column: x => x.TransactionID,
+                        name: "FK_Transactions_Customers_CustomerID",
+                        column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "CustomerID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Transactions_Employees_TransactionID",
-                        column: x => x.TransactionID,
+                        name: "FK_Transactions_Employees_EmployeeID",
+                        column: x => x.EmployeeID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeID",
                         onDelete: ReferentialAction.Restrict);
@@ -122,6 +123,12 @@ namespace FuelStation.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Customers_CardNumber",
+                table: "Customers",
+                column: "CardNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Items_Code",
                 table: "Items",
                 column: "Code",
@@ -136,6 +143,16 @@ namespace FuelStation.EF.Migrations
                 name: "IX_TransactionLines_TransactionID",
                 table: "TransactionLines",
                 column: "TransactionID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_CustomerID",
+                table: "Transactions",
+                column: "CustomerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transactions_EmployeeID",
+                table: "Transactions",
+                column: "EmployeeID");
         }
 
         /// <inheritdoc />

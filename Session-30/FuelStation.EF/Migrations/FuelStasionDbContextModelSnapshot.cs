@@ -47,6 +47,9 @@ namespace FuelStation.EF.Migrations
 
                     b.HasKey("CustomerID");
 
+                    b.HasIndex("CardNumber")
+                        .IsUnique();
+
                     b.ToTable("Customers", (string)null);
                 });
 
@@ -128,6 +131,8 @@ namespace FuelStation.EF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionID"));
+
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
@@ -145,6 +150,10 @@ namespace FuelStation.EF.Migrations
                         .HasColumnType("decimal(10,2)");
 
                     b.HasKey("TransactionID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.HasIndex("EmployeeID");
 
                     b.ToTable("Transactions", (string)null);
                 });
@@ -199,13 +208,13 @@ namespace FuelStation.EF.Migrations
                 {
                     b.HasOne("FuelStation.Model.Customer", "Customer")
                         .WithMany("Transactions")
-                        .HasForeignKey("TransactionID")
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FuelStation.Model.Employee", "Employee")
                         .WithMany("Transactions")
-                        .HasForeignKey("TransactionID")
+                        .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

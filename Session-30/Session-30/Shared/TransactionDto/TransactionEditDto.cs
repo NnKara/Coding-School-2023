@@ -16,11 +16,11 @@ namespace Session_30.Shared.TransactionDto
         public decimal TotalValue { get; set; }
 
         public int EmployeeID { get; set; }
-        public Employee Employee { get; set; } = null!;
+        public Employee? Employee { get; set; } 
 
         public int CustomerID { get; set; }
-        public Customer Customer { get; set; } = null!;
+        public Customer? Customer { get; set; } 
 
-        public List<TransactionLineEditDto> TransactionLines { get; set; }=new List<TransactionLineEditDto>();
+        public List<TransactionLine>? TransactionLines { get; set; }=new();
     }
 }
