@@ -67,9 +67,13 @@ namespace Session_30.Shared.Validator
                 errorMessage = $"You have only {StaffLimits.Min} Barista. Min number of Baristas is {StaffLimits.Min}";
                 isValid = false;
             }
-            
-
+           
             return isValid;
+        }
+
+        public bool ValidateUpdateAddItem(ItemType type, int code, Item item, List<Item> items, out string erroMessage)
+        {
+            throw new NotImplementedException();
         }
 
         public bool ValidateUpdateEmployee(EmployeeType NewType, Employee dbEmployee, List<Employee> employees, out string errorMessage) {

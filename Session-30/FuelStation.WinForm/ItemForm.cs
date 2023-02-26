@@ -1,4 +1,5 @@
-﻿using FuelStation.Model;
+﻿using DevExpress.XtraScheduler.Outlook.Interop;
+using FuelStation.Model;
 using Newtonsoft.Json;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.ItemDto;
@@ -18,7 +19,7 @@ namespace FuelStation.WinForm {
     public partial class ItemForm : Form {
 
         private readonly HttpClient _client;
-        private List<ItemListDto> _customerList = new();
+        private List<ItemListDto> _itemList = new();
         public ItemForm() {
             InitializeComponent();
             _client = new HttpClient();
@@ -30,13 +31,11 @@ namespace FuelStation.WinForm {
         }
 
         private void ItemForm_Load(object sender, EventArgs e) {
-            grdItems.AutoGenerateColumns = false;
             _=SetControlProperties();
         }
 
         private void btnNewLine_Click(object sender, EventArgs e) {
-       
-            bsItems.Add(new ItemListDto());
+            gridView1.AddNewRow();
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
@@ -56,11 +55,11 @@ namespace FuelStation.WinForm {
         }
 
         private async Task SetControlProperties() {
-            _customerList = await _client.GetFromJsonAsync<List<ItemListDto>>("item");
+            _itemList = await _client.GetFromJsonAsync<List<ItemListDto>>("item");
 
-            if (_customerList != null) {
-                bsItems.DataSource = _customerList;
-                grdItems.DataSource = bsItems;
+            if (_itemList != null) {
+                bsItems.DataSource = _itemList;
+                gridControl1.DataSource = bsItems;
             }
         }
 
@@ -75,6 +74,7 @@ namespace FuelStation.WinForm {
 
             if (response.IsSuccessStatusCode) {
                 MessageBox.Show("Item saved successfully!");
+                SetControlProperties();
             } else {
                 MessageBox.Show("Error saving item.");
             }
@@ -93,7 +93,6 @@ namespace FuelStation.WinForm {
                 }
             }
         }
-
       
     }
 }

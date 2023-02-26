@@ -93,7 +93,7 @@ public class TransactionController : ControllerBase {
         }
 
 
-        [Route("/transaction/customer/{id}")]
+        [Route("/transactions/customer/{id}")]
         [HttpGet]
         public async Task<IEnumerable<TransactionListDto>> GetDetailsById(int id) {
             var result = _trasRepo.GetCustomerTransactions(id); 

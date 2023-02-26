@@ -24,90 +24,22 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.grdCustomers = new System.Windows.Forms.DataGridView();
-            this.colCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerCardNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCustomers = new System.Windows.Forms.BindingSource(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).BeginInit();
+            this.gridCustomers = new DevExpress.XtraGrid.GridControl();
+            this.grdCustomers = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCustomerID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSurname = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).BeginInit();
             this.SuspendLayout();
-            // 
-            // grdCustomers
-            // 
-            this.grdCustomers.AllowUserToAddRows = false;
-            this.grdCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.grdCustomers.BackgroundColor = System.Drawing.Color.MediumTurquoise;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCustomerID,
-            this.colCustomerName,
-            this.colCustomerSurname,
-            this.colCustomerCardNumber});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdCustomers.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdCustomers.Location = new System.Drawing.Point(119, 39);
-            this.grdCustomers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grdCustomers.Name = "grdCustomers";
-            this.grdCustomers.RowHeadersWidth = 51;
-            this.grdCustomers.RowTemplate.Height = 25;
-            this.grdCustomers.Size = new System.Drawing.Size(817, 365);
-            this.grdCustomers.TabIndex = 0;
-            this.grdCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCustomers_CellContentClick);
-            // 
-            // colCustomerID
-            // 
-            this.colCustomerID.DataPropertyName = "CustomerID";
-            this.colCustomerID.HeaderText = "CustomerID";
-            this.colCustomerID.MinimumWidth = 6;
-            this.colCustomerID.Name = "colCustomerID";
-            this.colCustomerID.Visible = false;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.DataPropertyName = "CustomerName";
-            this.colCustomerName.HeaderText = "Name";
-            this.colCustomerName.MinimumWidth = 6;
-            this.colCustomerName.Name = "colCustomerName";
-            // 
-            // colCustomerSurname
-            // 
-            this.colCustomerSurname.DataPropertyName = "CustomerSurname";
-            this.colCustomerSurname.HeaderText = "Surname";
-            this.colCustomerSurname.MinimumWidth = 6;
-            this.colCustomerSurname.Name = "colCustomerSurname";
-            // 
-            // colCustomerCardNumber
-            // 
-            this.colCustomerCardNumber.DataPropertyName = "CardNumber";
-            this.colCustomerCardNumber.HeaderText = "CardNumber";
-            this.colCustomerCardNumber.MinimumWidth = 6;
-            this.colCustomerCardNumber.Name = "colCustomerCardNumber";
-            this.colCustomerCardNumber.ReadOnly = true;
             // 
             // btnClose
             // 
@@ -175,41 +107,101 @@
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // gridCustomers
+            // 
+            this.gridCustomers.Location = new System.Drawing.Point(119, 79);
+            this.gridCustomers.MainView = this.grdCustomers;
+            this.gridCustomers.Name = "gridCustomers";
+            this.gridCustomers.Size = new System.Drawing.Size(817, 317);
+            this.gridCustomers.TabIndex = 6;
+            this.gridCustomers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdCustomers});
+            // 
+            // grdCustomers
+            // 
+            this.grdCustomers.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCustomerID,
+            this.colCustomerName,
+            this.colSurname,
+            this.colCardNumber});
+            this.grdCustomers.GridControl = this.gridCustomers;
+            this.grdCustomers.Name = "grdCustomers";
+            // 
+            // colCustomerID
+            // 
+            this.colCustomerID.Caption = "CustomerID";
+            this.colCustomerID.FieldName = "CustomerID";
+            this.colCustomerID.MinWidth = 25;
+            this.colCustomerID.Name = "colCustomerID";
+            this.colCustomerID.Width = 94;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.Caption = "Name";
+            this.colCustomerName.FieldName = "CustomerName";
+            this.colCustomerName.MinWidth = 25;
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 1;
+            this.colCustomerName.Width = 94;
+            // 
+            // colSurname
+            // 
+            this.colSurname.Caption = "Surname";
+            this.colSurname.FieldName = "CustomerSurname";
+            this.colSurname.MinWidth = 25;
+            this.colSurname.Name = "colSurname";
+            this.colSurname.Visible = true;
+            this.colSurname.VisibleIndex = 2;
+            this.colSurname.Width = 94;
+            // 
+            // colCardNumber
+            // 
+            this.colCardNumber.Caption = "CardNumber";
+            this.colCardNumber.FieldName = "CardNumber";
+            this.colCardNumber.MinWidth = 25;
+            this.colCardNumber.Name = "colCardNumber";
+            this.colCardNumber.OptionsColumn.AllowEdit = false;
+            this.colCardNumber.Visible = true;
+            this.colCardNumber.VisibleIndex = 2;
+            this.colCardNumber.Width = 94;
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1128, 690);
+            this.Controls.Add(this.gridCustomers);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.grdCustomers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DataGridView grdCustomers;
         private BindingSource bsCustomers;
         private Button btnClose;
         private Button btnAdd;
         private Button btnDelete;
         private Button btnSave;
         private Button btnRefresh;
-        private DataGridViewTextBoxColumn colCustomerID;
-        private DataGridViewTextBoxColumn colCustomerName;
-        private DataGridViewTextBoxColumn colCustomerSurname;
-        private DataGridViewTextBoxColumn colCustomerCardNumber;
+        private DevExpress.XtraGrid.GridControl gridCustomers;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdCustomers;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
+        private DevExpress.XtraGrid.Columns.GridColumn colSurname;
+        private DevExpress.XtraGrid.Columns.GridColumn colCardNumber;
     }
 }

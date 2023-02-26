@@ -46,20 +46,21 @@ namespace FuelStation.WinForm {
 
         private async Task SetControlProperties() {
             customerListDtos = await _client.GetFromJsonAsync<List<CustomerListDto>>("customer");
-            grdCustomers.AutoGenerateColumns = false;
             if (customerListDtos != null) {
                 bsCustomers.DataSource = customerListDtos;
-                grdCustomers.DataSource = bsCustomers;
+                gridCustomers.DataSource = bsCustomers;
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
             bsCustomers.Add(new CustomerListDto());
+            int newRowHandle = grdCustomers.GetRowHandle(grdCustomers.DataRowCount);
+            grdCustomers.FocusedRowHandle = newRowHandle;
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
             _=OnSave();
-            _=SetControlProperties();
+            
         }
 
         private async Task OnSave() {
@@ -73,6 +74,7 @@ namespace FuelStation.WinForm {
 
             if (response.IsSuccessStatusCode) {
                 MessageBox.Show("Customer saved successfully!");
+                SetControlProperties();
             } else {
                 MessageBox.Show("Error saving customer.");
             }

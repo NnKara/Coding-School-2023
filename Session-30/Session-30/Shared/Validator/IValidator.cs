@@ -11,9 +11,7 @@ namespace Session_30.Shared.Validator
 
         bool ValidateAddEmployee(Employee employee,EmployeeType type, List<Employee> employees, out String errorMessage);
         bool ValidateDeleteEmployee(EmployeeType type, List<Employee> employees, out String errorMessage);
-        bool ValidateUpdateEmployee(EmployeeType NewType, Employee dbEmployee, List<Employee> employees, out String errorMessage);
-        //bool ValidateAddCustomer(List<Customer> customers, out String errorMessage);
-        //bool ValidateDeleteCustomer(List<Customer> customers, out String errorMessage);
-        //bool ValidateTransaction(Transaction transaction, out String errorMessage);
+        bool ValidateUpdateEmployee(EmployeeType type, Employee dbEmployee, List<Employee> employees, out String errorMessage);
+        bool ValidateUpdateAddItem(ItemType type, int code, Item item, List<Item> items, out String erroMessage);
     }
 }

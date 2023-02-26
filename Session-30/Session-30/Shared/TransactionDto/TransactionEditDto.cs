@@ -1,6 +1,7 @@
 ﻿using FuelStation.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Session_30.Shared.TransactionDto
         public int TransactionID { get; set; }
         public DateTime Date { get; set; }
 
+        [Required]
+        [Range(1, 2, ErrorMessage = "You must choose a Payment Method!")]
         public PaymentMethod PaymentMethod { get; set; }
 
         public decimal TotalValue { get; set; }

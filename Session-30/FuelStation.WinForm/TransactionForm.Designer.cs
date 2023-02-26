@@ -99,7 +99,6 @@
             this.label2.Size = new System.Drawing.Size(102, 31);
             this.label2.TabIndex = 9;
             this.label2.Text = "CDetails";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // grdTransactionLines
             // 
@@ -113,7 +112,6 @@
             this.grdTransactionLines.TabIndex = 11;
             this.grdTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdTransLines});
-            this.grdTransactionLines.Click += new System.EventHandler(this.grdTransactionLines_Click);
             // 
             // grdTransLines
             // 
@@ -131,6 +129,7 @@
             this.grdTransLines.Name = "grdTransLines";
             this.grdTransLines.OptionsView.ShowGroupPanel = false;
             this.grdTransLines.OptionsView.ShowIndicator = false;
+         
             this.grdTransLines.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.grdTransLines_CellValueChanged);
             this.grdTransLines.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grdTransLines_RowUpdated);
             // 
@@ -261,7 +260,6 @@
             this.grdTransactions.TabIndex = 12;
             this.grdTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.grdTransactions.Click += new System.EventHandler(this.grdTransactions_Click);
             // 
             // gridView1
             // 
@@ -275,10 +273,7 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridTransactions_CellValueChanged);
-            this.gridView1.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.grdTransactionsDelete);
-            this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
             // 
             // colTransactionID
             // 
@@ -517,5 +512,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPaymentMethod;
         private DevExpress.XtraGrid.Columns.GridColumn colTotalValue;
         private Button btnRemoveCurrentTransaction;
+        private Button btnRefresh;
     }
 }
