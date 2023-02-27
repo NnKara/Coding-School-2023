@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.TransactionDto;
+using System.Data.Common;
 
 namespace Session_30.Server.Controllers
 {
@@ -28,16 +29,7 @@ public class TransactionController : ControllerBase {
                 PaymentMethod = t.PaymentMethod,
                 TotalValue = t.TotalValue,
                 EmployeeID = t.EmployeeID,
-                CustomerID = t.CustomerID,
-                //TransactionLines = t.TransactionLines.Select(tl => new TransactionLineListDto {
-                //    TransactionLineID = tl.TransactionLineID,
-                //    Quantity = tl.Quantity,
-                //    ItemPrice = tl.ItemPrice,
-                //    NetValue = tl.NetValue,
-                //    DiscountValue = tl.DiscountValue,
-                //    DiscountPercent = tl.DiscountPercent,
-                //    TotalValue = tl.TotalValue
-                //}).ToList()
+                CustomerID = t.CustomerID
             });
             return tras;
         }
@@ -56,40 +48,32 @@ public class TransactionController : ControllerBase {
                 TotalValue = result.TotalValue,
                 CustomerID=result.CustomerID,
                 EmployeeID=result.EmployeeID,
-                //TransactionLines = result.TransactionLines.Select(transactionLine => new TransactionLineEditDto {
-                //    TransactionLineID = transactionLine.TransactionLineID,
-                //    Quantity = transactionLine.Quantity,
-                //    ItemPrice = transactionLine.ItemPrice,
-                //    NetValue = transactionLine.NetValue,
-                //    DiscountPercent = transactionLine.DiscountPercent,
-                //    DiscountValue = transactionLine.DiscountValue,
-                //    TotalValue = transactionLine.TotalValue,
-                //    TransactionID=transactionLine.TransactionID,
-                //    ItemID=transactionLine.ItemID
-                //}).ToList()
             };
             return transaction;
         }
 
         [HttpPost]
         public async Task Post(TransactionListDto transaction) {
-            var newTransaction = new Transaction( transaction.PaymentMethod,transaction.TotalValue,transaction.Date) {
-                TransactionID= transaction.TransactionID,
-                CustomerID = transaction.CustomerID,
-                EmployeeID = transaction.EmployeeID,
-                TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(
-                    transactionLine.Quantity,
-                    transactionLine.ItemPrice,
-                    transactionLine.NetValue,
-                    transactionLine.DiscountPercent,
-                    transactionLine.DiscountValue, transactionLine.TotalValue)
+
+                var newTransaction = new Transaction(transaction.PaymentMethod, transaction.TotalValue, transaction.Date)
                 {
-                    TransactionLineID = transactionLine.TransactionLineID,
-                    TransactionID = transactionLine.TransactionID,
-                    ItemID = transactionLine.ItemID,
-                }).ToList()
-            };
-            _trasRepo.Add(newTransaction);
+                    TransactionID = transaction.TransactionID,
+                    CustomerID = transaction.CustomerID,
+                    EmployeeID = transaction.EmployeeID,
+                    TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine
+                    (
+                        transactionLine.Quantity,
+                        transactionLine.ItemPrice,
+                        transactionLine.NetValue,
+                        transactionLine.DiscountPercent,
+                        transactionLine.DiscountValue, transactionLine.TotalValue
+                    ){
+                        TransactionLineID = transactionLine.TransactionLineID,
+                        TransactionID = transactionLine.TransactionID,
+                        ItemID = transactionLine.ItemID,
+                    }).ToList()
+                };
+                _trasRepo.Add(newTransaction); 
         }
 
 
@@ -131,28 +115,30 @@ public class TransactionController : ControllerBase {
             var dbTransaction =  _trasRepo.GetByID(transaction.TransactionID);
                 if (dbTransaction is null) {
                 return;
-            }
-            dbTransaction.Date = transaction.Date;
-            dbTransaction.TotalValue = transaction.TotalValue;
-            dbTransaction.PaymentMethod = transaction.PaymentMethod;
-            dbTransaction.EmployeeID = transaction.EmployeeID;
-            dbTransaction.CustomerID = transaction.CustomerID;
-            dbTransaction.TransactionLines = transaction.TransactionLines
-                .Select(transactionLine => new TransactionLine(
-                    transactionLine.Quantity,
-                    transactionLine.ItemPrice,
-                    transactionLine.NetValue,
-                    transactionLine.DiscountPercent,
-                    transactionLine.DiscountValue,
-                    transactionLine.TotalValue)
-                {
-                    ItemID = transactionLine.ItemID,
-                    TransactionID = transactionLine.TransactionID,
-                    TransactionLineID = transactionLine.TransactionLineID
                 }
-                ).ToList();
+                
+                dbTransaction.Date = transaction.Date;
+                dbTransaction.TotalValue = transaction.TotalValue;
+                dbTransaction.PaymentMethod = transaction.PaymentMethod;
+                dbTransaction.EmployeeID = transaction.EmployeeID;
+                dbTransaction.CustomerID = transaction.CustomerID;
+                dbTransaction.TransactionLines = transaction.TransactionLines
+                    .Select(transactionLine => new TransactionLine(
+                        transactionLine.Quantity,
+                        transactionLine.ItemPrice,
+                        transactionLine.NetValue,
+                        transactionLine.DiscountPercent,
+                        transactionLine.DiscountValue,
+                        transactionLine.TotalValue)
+                    {
+                        ItemID = transactionLine.ItemID,
+                        TransactionID = transactionLine.TransactionID,
+                        TransactionLineID = transactionLine.TransactionLineID
+                    }).ToList();
+
 
             await Task.Run(() => { _trasRepo.Update(transaction.TransactionID, dbTransaction); });
+   
         }
 
         [HttpDelete("{id}")]

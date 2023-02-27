@@ -118,62 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="1253243" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1253243.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-enter-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-enter-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="139-1395666_customers-icon-png-leadership-team-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\139-1395666_customers-icon-png-leadership-team-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hand+bag+items+online+shop+shopping+icon-1320166527587396540" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hand+bag+items+online+shop+shopping+icon-1320166527587396540.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="png-transparent-computer-icons-shopping-happiness-customer-miscellaneous-hand-logo-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png-transparent-computer-icons-shopping-happiness-customer-miscellaneous-hand-logo-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="img_157564" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\img_157564.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="1630969-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1630969-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="336-3364402_gas-station-movie-icon-transparent-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\336-3364402_gas-station-movie-icon-transparent-background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="800px_COLOURBOX23595556" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\800px_COLOURBOX23595556.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="customers-customers-icon-146530412" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\customers-customers-icon-146530412.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="buy-gain-income-money-pay-payment-icon--191" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\buy-gain-income-money-pay-payment-icon--191.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="671961-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\671961-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="20961" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20961.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="139-1395666_customers-icon-png-leadership-team-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\139-1395666_customers-icon-png-leadership-team-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="198257-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\198257-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="buy-gain-income-money-pay-payment-icon--19" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\buy-gain-income-money-pay-payment-icon--19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="273-2738719_user-login-icon-png-transparent-background-login-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\273-2738719_user-login-icon-png-transparent-background-login-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,16 +127,82 @@
   <data name="hand+bag+items+online+shop+shopping+icon-13201665275873965401" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hand+bag+items+online+shop+shopping+icon-13201665275873965401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="png-transparent-computer-icons-shopping-happiness-customer-miscellaneous-hand-logo-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-transparent-computer-icons-shopping-happiness-customer-miscellaneous-hand-logo-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="336-3364402_gas-station-movie-icon-transparent-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\336-3364402_gas-station-movie-icon-transparent-background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="198257-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\198257-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-enter-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-enter-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="images (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="img_157564" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\img_157564.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hand+bag+items+online+shop+shopping+icon-1320166527587396540" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hand+bag+items+online+shop+shopping+icon-1320166527587396540.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1253243" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1253243.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="671961-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\671961-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customers-customers-icon-146530412" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customers-customers-icon-146530412.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="139-1395666_customers-icon-png-leadership-team-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\139-1395666_customers-icon-png-leadership-team-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-username-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-username-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="139-1395666_customers-icon-png-leadership-team-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\139-1395666_customers-icon-png-leadership-team-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-private-lock-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-private-lock-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buy-gain-income-money-pay-payment-icon--191" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buy-gain-income-money-pay-payment-icon--191.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buy-gain-income-money-pay-payment-icon--19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buy-gain-income-money-pay-payment-icon--19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="800px_COLOURBOX23595556" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\800px_COLOURBOX23595556.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="20961" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\20961.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-remove-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-remove-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="customer-360-icon-512x467-moy15kxr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\customer-360-icon-512x467-moy15kxr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="download (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-cross-mark-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-cross-mark-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

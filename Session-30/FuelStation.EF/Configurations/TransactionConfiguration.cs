@@ -38,9 +38,6 @@ namespace FuelStation.EF.Configurations {
                 .HasForeignKey(t => t.EmployeeID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
-
-
         }
     }
 }

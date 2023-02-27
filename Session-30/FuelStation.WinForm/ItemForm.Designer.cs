@@ -205,7 +205,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label1.Location = new System.Drawing.Point(758, 18);
+            this.label1.Location = new System.Drawing.Point(748, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(254, 31);
             this.label1.TabIndex = 7;
@@ -230,7 +230,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(258, 23);
             this.label3.TabIndex = 9;
-            this.label3.Text = "- Each item has a Unique Code.";
+            this.label3.Text = "• Each item has a Unique Code.";
             // 
             // label4
             // 
@@ -240,7 +240,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(303, 23);
             this.label4.TabIndex = 10;
-            this.label4.Text = "- You cannot modify an item if it has";
+            this.label4.Text = "• You cannot modify an item if it has";
             // 
             // label5
             // 
@@ -260,7 +260,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(295, 23);
             this.label6.TabIndex = 12;
-            this.label6.Text = "- You cannot delete an item if it has";
+            this.label6.Text = "• You cannot delete an item if it has";
             // 
             // label7
             // 
@@ -280,7 +280,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(285, 23);
             this.label8.TabIndex = 14;
-            this.label8.Text = "- You have to fill every cell before ";
+            this.label8.Text = "• You have to fill every cell before ";
             // 
             // label9
             // 

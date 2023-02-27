@@ -22,7 +22,6 @@ namespace Session_30.Shared.EmployeeDto
         public string? EmployeeSurname { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]
-        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public int SalaryPerMonth { get; set; }
 
@@ -31,9 +30,7 @@ namespace Session_30.Shared.EmployeeDto
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime HireDateStart { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime HireDateEnd { get; set; }
+        public DateTime? HireDateEnd { get; set; }
 
 
         [Required(ErrorMessage = "Field is required.")]

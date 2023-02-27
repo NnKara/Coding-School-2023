@@ -13,7 +13,7 @@ namespace FuelStation.Model {
 
         public int SalaryPerMonth { get; set; }
         public DateTime HireDateStart { get; set; }
-        public DateTime HireDateEnd { get; set; }
+        public DateTime? HireDateEnd { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
 
@@ -21,7 +21,7 @@ namespace FuelStation.Model {
             Transactions = new List<Transaction>();
         }
 
-        public Employee( string? employeeName, string? employeeSurname, int salaryPerMonth, DateTime hireDateStart, DateTime hireDateEnd, EmployeeType employeeType) {
+        public Employee( string? employeeName, string? employeeSurname, int salaryPerMonth, DateTime hireDateStart, DateTime? hireDateEnd, EmployeeType employeeType) {
             EmployeeName = employeeName;
             EmployeeSurname = employeeSurname;
             SalaryPerMonth = salaryPerMonth;

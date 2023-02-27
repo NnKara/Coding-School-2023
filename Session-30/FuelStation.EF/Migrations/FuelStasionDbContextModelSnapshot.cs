@@ -74,7 +74,7 @@ namespace FuelStation.EF.Migrations
                     b.Property<int>("EmployeeType")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("HireDateEnd")
+                    b.Property<DateTime?>("HireDateEnd")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDateStart")

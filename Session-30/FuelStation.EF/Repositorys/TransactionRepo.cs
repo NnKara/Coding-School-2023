@@ -51,6 +51,7 @@ namespace FuelStation.EF.Repositorys {
             if (dbTransaction is null) {
                 throw new KeyNotFoundException($"Given id '{id}' was not found in database");
             }
+            
             dbTransaction.CustomerID = entity.CustomerID;
             dbTransaction.EmployeeID = entity.EmployeeID;
             dbTransaction.Date = entity.Date;

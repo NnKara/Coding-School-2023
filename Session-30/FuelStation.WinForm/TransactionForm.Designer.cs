@@ -67,6 +67,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -82,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoPaymentMethod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
@@ -109,7 +117,7 @@
             // 
             // grdTransactionLines
             // 
-            this.grdTransactionLines.Location = new System.Drawing.Point(185, 572);
+            this.grdTransactionLines.Location = new System.Drawing.Point(196, 572);
             this.grdTransactionLines.MainView = this.grdTransLines;
             this.grdTransactionLines.Name = "grdTransactionLines";
             this.grdTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -139,7 +147,6 @@
             this.grdTransLines.OptionsView.ShowGroupPanel = false;
             this.grdTransLines.OptionsView.ShowIndicator = false;
             this.grdTransLines.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.grdTransLines_CellValueChanged);
-            this.grdTransLines.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.grdTransLines_ValidateRow);
             this.grdTransLines.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grdTransLines_RowUpdated);
             // 
             // colItemID
@@ -370,7 +377,7 @@
             // btnAddTransLine
             // 
             this.btnAddTransLine.BackColor = System.Drawing.Color.Khaki;
-            this.btnAddTransLine.Location = new System.Drawing.Point(12, 572);
+            this.btnAddTransLine.Location = new System.Drawing.Point(37, 3);
             this.btnAddTransLine.Name = "btnAddTransLine";
             this.btnAddTransLine.Size = new System.Drawing.Size(111, 51);
             this.btnAddTransLine.TabIndex = 13;
@@ -381,7 +388,7 @@
             // btnDeleteLine
             // 
             this.btnDeleteLine.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteLine.Location = new System.Drawing.Point(12, 776);
+            this.btnDeleteLine.Location = new System.Drawing.Point(37, 204);
             this.btnDeleteLine.Name = "btnDeleteLine";
             this.btnDeleteLine.Size = new System.Drawing.Size(111, 46);
             this.btnDeleteLine.TabIndex = 14;
@@ -393,7 +400,7 @@
             // 
             this.btnOpenTransaction.BackColor = System.Drawing.Color.Khaki;
             this.btnOpenTransaction.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenTransaction.Location = new System.Drawing.Point(12, 90);
+            this.btnOpenTransaction.Location = new System.Drawing.Point(49, 100);
             this.btnOpenTransaction.Name = "btnOpenTransaction";
             this.btnOpenTransaction.Size = new System.Drawing.Size(111, 54);
             this.btnOpenTransaction.TabIndex = 16;
@@ -415,7 +422,7 @@
             // btnDeleteTrans
             // 
             this.btnDeleteTrans.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteTrans.Location = new System.Drawing.Point(12, 322);
+            this.btnDeleteTrans.Location = new System.Drawing.Point(49, 322);
             this.btnDeleteTrans.Name = "btnDeleteTrans";
             this.btnDeleteTrans.Size = new System.Drawing.Size(111, 54);
             this.btnDeleteTrans.TabIndex = 18;
@@ -434,9 +441,9 @@
             // btnRemoveCurrentRow
             // 
             this.btnRemoveCurrentRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRemoveCurrentRow.Location = new System.Drawing.Point(12, 667);
+            this.btnRemoveCurrentRow.Location = new System.Drawing.Point(37, 104);
             this.btnRemoveCurrentRow.Name = "btnRemoveCurrentRow";
-            this.btnRemoveCurrentRow.Size = new System.Drawing.Size(111, 51);
+            this.btnRemoveCurrentRow.Size = new System.Drawing.Size(111, 50);
             this.btnRemoveCurrentRow.TabIndex = 20;
             this.btnRemoveCurrentRow.Text = "Remove Current ";
             this.btnRemoveCurrentRow.UseVisualStyleBackColor = false;
@@ -446,7 +453,7 @@
             // 
             this.btnRemoveCurrentTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnRemoveCurrentTransaction.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRemoveCurrentTransaction.Location = new System.Drawing.Point(12, 200);
+            this.btnRemoveCurrentTransaction.Location = new System.Drawing.Point(49, 196);
             this.btnRemoveCurrentTransaction.Name = "btnRemoveCurrentTransaction";
             this.btnRemoveCurrentTransaction.Size = new System.Drawing.Size(111, 54);
             this.btnRemoveCurrentTransaction.TabIndex = 21;
@@ -489,13 +496,13 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1087, 100);
+            this.label3.Location = new System.Drawing.Point(1087, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 28);
+            this.label3.Size = new System.Drawing.Size(150, 31);
             this.label3.TabIndex = 25;
-            this.label3.Text = "Infromation:";
+            this.label3.Text = "Information:";
             // 
             // label8
             // 
@@ -505,7 +512,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(285, 23);
             this.label8.TabIndex = 26;
-            this.label8.Text = "- You have to fill every cell before ";
+            this.label8.Text = "• You have to fill every cell before ";
             // 
             // label9
             // 
@@ -517,12 +524,89 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "saving an Item.";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnAddTransLine);
+            this.panel1.Controls.Add(this.btnRemoveCurrentRow);
+            this.panel1.Controls.Add(this.btnDeleteLine);
+            this.panel1.Location = new System.Drawing.Point(12, 572);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 259);
+            this.panel1.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(1072, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 23);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "•Above 50 euros , customer has";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(1076, 250);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(135, 23);
+            this.label5.TabIndex = 30;
+            this.label5.Text = " to pay by cash.";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(1072, 302);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(284, 23);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "•In order to save a tranasction you";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(1076, 325);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(270, 23);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "you have to fill transaction lines.";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(1092, 575);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(270, 23);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "•A transaction can have only one";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(1102, 598);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(178, 23);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "product of type fuel.";
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1383, 935);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
@@ -530,17 +614,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRef);
             this.Controls.Add(this.btnRemoveCurrentTransaction);
-            this.Controls.Add(this.btnRemoveCurrentRow);
             this.Controls.Add(this.stackPanel1);
             this.Controls.Add(this.btnDeleteTrans);
             this.Controls.Add(this.BtnSaveUpdateTransaction);
             this.Controls.Add(this.btnOpenTransaction);
-            this.Controls.Add(this.btnDeleteLine);
-            this.Controls.Add(this.btnAddTransLine);
             this.Controls.Add(this.grdTransactions);
             this.Controls.Add(this.grdTransactionLines);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "TransactionForm";
             this.Text = "TransactionForm";
             this.Load += new System.EventHandler(this.TransactionForm_Load);
@@ -559,6 +641,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoPaymentMethod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,5 +696,12 @@
         private Label label3;
         private Label label8;
         private Label label9;
+        private Panel panel1;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label10;
+        private Label label11;
     }
 }

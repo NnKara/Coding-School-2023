@@ -1,4 +1,5 @@
-﻿using FuelStation.EF.Repositorys;
+﻿using DevExpress.CodeParser;
+using FuelStation.EF.Repositorys;
 using FuelStation.Model;
 using Session_30.Server.Controllers;
 using Session_30.Shared.Validator;
@@ -29,27 +30,30 @@ namespace FuelStation.WinForm {
         }
 
         private void btnCustomers_Click(object sender, EventArgs e) {
-            var customersForm = new CustomerForm();
-            customersForm.ShowDialog();
             this.Hide();
+            CustomerForm custForm = new CustomerForm();
+            custForm.FormClosed += (s, args) => this.Show();
+            custForm.ShowDialog();
         }
 
         private void btnItems_Click(object sender, EventArgs e) {
-            var itemFrom = new ItemForm();
-            itemFrom.ShowDialog();
             this.Hide();
+            ItemForm itmForm = new ItemForm();
+            itmForm.FormClosed += (s, args) => this.Show();
+            itmForm.ShowDialog();
         }
 
         private void btnTransactions_Click(object sender, EventArgs e) {
-            var trasForm = new TransactionLogin();
-            trasForm.ShowDialog();
             this.Hide();
+            TransactionLogin trasLogin = new TransactionLogin();
+            trasLogin.FormClosed += (s, args) => this.Show();
+            trasLogin.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e) {
             FuelStation fuel=new FuelStation();
             fuel.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void RoleBasedView() {

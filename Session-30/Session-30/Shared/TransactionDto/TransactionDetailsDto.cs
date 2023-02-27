@@ -1,4 +1,5 @@
 ﻿using FuelStation.Model;
+using Session_30.Shared.EmployeeDto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -27,7 +28,7 @@ namespace Session_30.Shared.TransactionDto
 
 
         public int EmployeeID { get; set; }
-        public Employee? Employee { get; set; }
+        public EmployeeDetailsDto? Employee { get; set; }
 
         public int CustomerID { get; set; }
 

@@ -16,5 +16,7 @@ namespace Session_30.Shared.Ledger
         public decimal Total { get; set; }
 
         public List<Transaction> Transactions = new List<Transaction>();
+
+
     }
 }

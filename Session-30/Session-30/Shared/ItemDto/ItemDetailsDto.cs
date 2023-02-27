@@ -12,28 +12,26 @@ namespace Session_30.Shared.ItemDto
 
         public int ItemID { get; set; }
 
-        //[Required(ErrorMessage = "Code is required.")]
-        //[MaxLength(20, ErrorMessage = "Maximum 20 characters")]
+ 
+        [MaxLength(20, ErrorMessage = "Maximum 20 characters")]
         public string? Code { get; set; }
 
-        //[Required(ErrorMessage = "Description is required.")]
-        //[MaxLength(50, ErrorMessage = "Maximum 50 characters")]
+        [Required(ErrorMessage = "Description is required.")]
+        [MaxLength(50, ErrorMessage = "Maximum 50 characters")]
         public string? Description { get; set; }
 
-        //[Required(ErrorMessage = "Item Type is required.")]
-        //[Range(1, 3, ErrorMessage = "You must choose a type!")]
+        [Required(ErrorMessage = "Item Type is required.")]
+        [Range(1, 3, ErrorMessage = "You must choose a type!")]
         public ItemType ItemType { get; set; }
 
-        //[Required(ErrorMessage = "Cost is required.")]
-        //[DataType(DataType.Currency)]
-        //[DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
-        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
+        [Required(ErrorMessage = "Cost is required.")]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
         public decimal Cost { get; set; }
 
-        //[Required(ErrorMessage = "Price is required.")]
-        //[DataType(DataType.Currency)]
-        //[DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
-        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
+        [Required(ErrorMessage = "Price is required.")]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
         public decimal Price { get; set; }
 
         public List<TransactionLine> TransactionLines { get; set; }=new List<TransactionLine>();

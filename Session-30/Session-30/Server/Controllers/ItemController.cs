@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.ItemDto;
 using Session_30.Shared.Validator;
+using System.Data.Common;
 
 namespace Session_30.Server.Controllers
 {
@@ -89,6 +90,7 @@ public class ItemController : ControllerBase {
             {
                 if (_validator.ValidateUpdateItem(items, itemToUpdate, item, out _errorMessage))
                 {
+                    
                     itemToUpdate.Code = item.Code;
                     itemToUpdate.Description = item.Description;
                     itemToUpdate.ItemType = item.ItemType;
@@ -97,15 +99,15 @@ public class ItemController : ControllerBase {
                     _itemRepo.Update(item.ItemID, itemToUpdate);
 
                     return Ok();
-                }
-                else
-                {
-                    return BadRequest(_errorMessage);
-                }
-            }catch(Exception ex)
-            {
-                return BadRequest($"You cannot update the code of this item because it has associated Transactions!");
-            }
+        }
+        else
+        {
+            return BadRequest(_errorMessage);
+    }
+            }catch (DbException ex)
+{
+    return BadRequest($"Error updating Item!");
+}
         }
 
         [HttpDelete("{id}")]

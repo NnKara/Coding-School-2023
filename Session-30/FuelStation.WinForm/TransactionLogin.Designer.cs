@@ -39,10 +39,10 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.Color.Aquamarine;
-            this.textBox1.Location = new System.Drawing.Point(274, 130);
+            this.textBox1.Location = new System.Drawing.Point(274, 144);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 68);
+            this.textBox1.Size = new System.Drawing.Size(280, 43);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -77,7 +77,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label1.Location = new System.Drawing.Point(0, 333);
+            this.label1.Location = new System.Drawing.Point(3, 410);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(254, 31);
             this.label1.TabIndex = 8;
@@ -106,7 +106,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::FuelStation.WinForm.Properties.Resources._198257_200;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 376);
+            this.pictureBox2.Location = new System.Drawing.Point(54, 345);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(193, 62);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -42,6 +42,7 @@ namespace Session_30.Shared
 
         [Required]
         [Range(0, 100)]
+        [DisplayFormat(DataFormatString = "{0}%")]
         public decimal DiscountPercent { get; set; }
 
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]

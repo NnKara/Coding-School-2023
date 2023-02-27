@@ -42,6 +42,7 @@ namespace FuelStation.WinForm
         private List<TransactionListDto> _transactions;
         private List<ItemListDto> _items;
         private List<EmployeeListDto> _employees;
+        private  int selectedItem;
 
 
         public TransactionForm(CustomerListDto customer)
@@ -56,7 +57,7 @@ namespace FuelStation.WinForm
         private void TransactionForm_Load(object sender, EventArgs e)
         {
             _ = SetControlProperties();
-           
+
         }
 
 
@@ -72,7 +73,7 @@ namespace FuelStation.WinForm
         //BTN SAVE/UPDATE TRANSACTION
         private void BtnSaveUpdateTransaction_Click(object sender, EventArgs e)
         {
-            if (IsGridFilled(gridView1) && IsGridFilled(grdTransLines))
+            if (IsGridFilled(gridView1) && IsGridFilled(grdTransLines) && selectedItem !=0)
             {
                 if (gridView1.GetFocusedRow() != null)
                 {
@@ -93,7 +94,8 @@ namespace FuelStation.WinForm
             }
             else
             {
-                XtraMessageBox.Show("Please fill in all cells before saving.","Error Message");
+                grdTransLines.RefreshData();
+                XtraMessageBox.Show("Please fill in all cells before saving.", "Error Message");
             }
         }
 
@@ -103,16 +105,16 @@ namespace FuelStation.WinForm
             var response = await _client.PutAsJsonAsync("transaction", transaction);
             if (response.IsSuccessStatusCode)
             {
-                XtraMessageBox.Show("Item saved successfully!","Success Message");
+                XtraMessageBox.Show("Item saved successfully!", "Success Message");
+
             }
             else
             {
-                XtraMessageBox.Show("Error saving item.","Error Message");
+                XtraMessageBox.Show("Error saving item.", "Error Message");
             }
         }
 
         //METHOD SAVE TRANSACTION
-
         private async Task OnSaveTransaction(TransactionListDto transaction)
         {
             var response = await _client.PostAsJsonAsync("transaction", transaction);
@@ -121,7 +123,6 @@ namespace FuelStation.WinForm
 
                 XtraMessageBox.Show("Transaction saved successfully!", "Success Message");
                 SetControlProperties();
-                
             }
             else
             {
@@ -226,12 +227,11 @@ namespace FuelStation.WinForm
                     }
                 }
             }
-
             // If all cells are filled, return true
             return true;
         }
 
-            private void btnRemoveTempLineTransLine_Click(object sender, EventArgs e)
+        private void btnRemoveTempLineTransLine_Click(object sender, EventArgs e)
         {
             bsTransLines.RemoveCurrent();
         }
@@ -331,8 +331,10 @@ namespace FuelStation.WinForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-
+            this.Hide();
+            TransactionLogin trasLogin = new TransactionLogin();
+            trasLogin.FormClosed += (s, args) => this.Show();
+            trasLogin.ShowDialog();
         }
 
 
@@ -366,6 +368,10 @@ namespace FuelStation.WinForm
                         grdTransLines.SetRowCellValue(transactionLineIndex, "TotalValue", netValue);
                     }
                 }
+                else
+                {
+                    XtraMessageBox.Show("Select an item!");
+                }
             }
             else if (e.Column.FieldName == "Quantity")
             {
@@ -373,7 +379,7 @@ namespace FuelStation.WinForm
                 int transactionLineIndex = e.RowHandle;
 
                 int itemID = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemID");
-
+                 selectedItem = itemID;
                 decimal itemPrice = (decimal)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemPrice");
                 decimal quantity = Convert.ToDecimal(e.Value);
 
@@ -384,8 +390,8 @@ namespace FuelStation.WinForm
                 {
                     if (item.ItemType == ItemType.Fuel && netValue > 20)
                     {
-                        decimal discPercent = 0.1m;
-                        decimal discValue = netValue * discPercent;
+                        decimal discPercent = 10;
+                        decimal discValue = netValue * discPercent/100;
                         grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountPercent", discPercent);
                         grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountValue", Convert.ToInt32(discValue));
                         decimal totalValue = netValue - discValue;
@@ -399,13 +405,14 @@ namespace FuelStation.WinForm
                     }
                 }
                 else
-                {
-                    XtraMessageBox.Show("Please select an item in order to procceed..");
+                {            
+                    XtraMessageBox.Show("Quantity Cannot be 0 or negative number!","Error Message");
+
                 }
             }
         }
 
-        
+
 
         private void grdTransLines_RowUpdated(object sender, RowObjectEventArgs e)
         {
@@ -421,7 +428,7 @@ namespace FuelStation.WinForm
                         XtraMessageBox.Show("A transaction can have only one fuel type item.", "Error Message");
                         grdTransLines.DeleteRow(e.RowHandle);
                         return;
-                    }
+                    }                   
 
                     UpdateTransactionPaymentMethod(transaction);
 
@@ -436,7 +443,7 @@ namespace FuelStation.WinForm
                             gridView.SetRowCellValue(rowHandle, "TotalValue", totalValue);
                         }
                     }
-                    
+
                 }
             }
         }
@@ -493,7 +500,7 @@ namespace FuelStation.WinForm
                         int transactionID = Convert.ToInt32(gridView.GetRowCellValue(rowHandle, "TransactionID"));
                         gridView.SetRowCellValue(rowHandle, "TotalValue", totalValue);
                     }
-                    
+
                 }
             }
         }
@@ -529,27 +536,12 @@ namespace FuelStation.WinForm
 
         private void btnRef_Click(object sender, EventArgs e)
         {
-            SetControlProperties();
+            _ = SetControlProperties();
         }
 
-        private void grdTransLines_ValidateRow(object sender, ValidateRowEventArgs e)
-        {
-            //int transactionLineIndex = e.RowHandle;
-            //int itemID = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemID");
-            ////int quantityRow = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "Quantity");
 
-            //decimal itemPrice = (decimal)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemPrice");
-            //int quantity =(int) grdTransLines.GetRowCellValue(transactionLineIndex,"Quantity");
-            //if (quantity < 0)
-            //{
-            //    XtraMessageBox.Show("Quantity cannot be less than or equal to 0.", "Error Message");
-
-            //    //TODO
-            //    /*grdTransLines.SetRowCellValue(transactionLineIndex, "Quantity", 1);*/ // reset the value to 1
-            //    return;
-            }
-        }
     }
+}
 
 
 

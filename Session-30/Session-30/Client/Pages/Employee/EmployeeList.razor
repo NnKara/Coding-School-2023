@@ -24,7 +24,7 @@
                       <th>Surname</th>
                       <th>Salary</th>
                       <th>Hire Date Start</th>
-                      <th>Hire Date End</th>
+                     @* <th>Hire Date End</th>*@
                       <th>Type</th>
                       <th>Actions</th>
                   </tr>
@@ -36,7 +36,7 @@
                             <td>@employee.EmployeeSurname</td>
                             <td>@employee.SalaryPerMonth</td>               
                             <td>@employee.HireDateStart</td>               
-                            <td>@employee.HireDateEnd</td>               
+                           @* <td>@employee.HireDateEnd</td>  *@             
                             <td>@employee.EmployeeType.ToString()</td>               
                             <td>
                                 <button class="btn btn-primary" @onclick="()=> EditItem(employee)">Edit</button>

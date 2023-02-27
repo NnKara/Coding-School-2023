@@ -48,15 +48,13 @@ namespace FuelStation.EF.Repositorys {
 
         public void Update(int id, Item entity) {
             using var fuelDb = new FuelStasionDbContext();
-            var existingItem = fuelDb.Items.Include(i => i.TransactionLines).FirstOrDefault(i => i.ItemID == id);
+            var existingItem=fuelDb.Items.Where(i=>i.ItemID== id).SingleOrDefault();
             if (existingItem != null) {
                 existingItem.Code = entity.Code;
                 existingItem.Description = entity.Description;
                 existingItem.ItemType = entity.ItemType;
                 existingItem.Cost = entity.Cost;
                 existingItem.Price = entity.Price;
-                existingItem.TransactionLines = entity.TransactionLines;
-
                 fuelDb.SaveChanges();
             } else {
                 throw new Exception("Item not found");

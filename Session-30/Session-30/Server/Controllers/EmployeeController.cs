@@ -107,22 +107,15 @@ namespace Session_30.Server.Controllers
             {
                 return BadRequest($"Employee not found");
             }
-            else if (_validator.ValidateUpdateEmployee(employee.EmployeeType, dbEmployee, _employeeRepo.GetAll().ToList(), out errorMessage))
+            if (_validator.ValidateUpdateEmployee(employee.EmployeeType, dbEmployee, _employeeRepo.GetAll().ToList(), out errorMessage))
             {
                 dbEmployee.EmployeeName = employee.EmployeeName;
                 dbEmployee.EmployeeSurname = employee.EmployeeSurname;
                 dbEmployee.SalaryPerMonth = employee.SalaryPerMonth;
                 dbEmployee.EmployeeType = employee.EmployeeType;
                 dbEmployee.HireDateStart = employee.HireDateStart;
-                dbEmployee.HireDateEnd = employee.HireDateStart;
-                try
-                {
-                    _employeeRepo.Update(employee.EmployeeID, dbEmployee);
-                }
-                catch (DbUpdateException ex)
-                {
-                    return BadRequest(ex.Message);
-                }
+                dbEmployee.HireDateEnd = employee.HireDateEnd;
+               _employeeRepo.Update(employee.EmployeeID, dbEmployee);             
                 return Ok();
             }
             else

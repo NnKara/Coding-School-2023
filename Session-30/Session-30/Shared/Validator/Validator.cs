@@ -20,26 +20,27 @@ namespace Session_30.Shared.Validator
             CashiersLimits = new MinMax() { Min = 1, Max = 4 };
             StaffLimits = new MinMax() { Min = 1, Max = 10 };
         }
+
         public bool ValidateAddEmployee(Employee employee,EmployeeType type, List<Employee> employees, out string errorMessage) {
             errorMessage = "Succeed";
             bool isValid = true;
             var cashiers = employees.Where(e => e.EmployeeType == EmployeeType.Cashier);
-            var baristas = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
+            var staff = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
             var managers = employees.Where(e => e.EmployeeType == EmployeeType.Manager);
 
             if (type == EmployeeType.Manager && managers.Count() == ManagersLimits.Max) {
                 isValid = false;
-                errorMessage = $"You have already {ManagersLimits.Max} Managers. Max number of managers is {ManagersLimits.Max}";
+                errorMessage = $"You have already {ManagersLimits.Max} Managers. Max number of Managers is {ManagersLimits.Max}";
             }
             if (type == EmployeeType.Cashier && cashiers.Count() >= CashiersLimits.Max) {
                 isValid = false;
                 errorMessage = $"You have already {CashiersLimits.Max} Cashiers. Max number of Cashiers is {CashiersLimits.Max}";
             }
-            if (type == EmployeeType.Staff && baristas.Count() >= StaffLimits.Max) {
+            if (type == EmployeeType.Staff && staff.Count() >= StaffLimits.Max) {
                 isValid = false;
                 errorMessage = $"You have already {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
             }
-            if (employee.HireDateStart < employee.HireDateEnd) {
+            if (employee.HireDateStart <= employee.HireDateEnd) {
                 isValid = false;
                 errorMessage = $"Hire-Date-Start must be greater than Hire-Date-End!";
             }
@@ -105,7 +106,7 @@ namespace Session_30.Shared.Validator
             bool isValid = true;
             errorMessage = "Succeed ";
             var cashiers = employees.Where(e => e.EmployeeType == EmployeeType.Cashier);
-            var baristas = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
+            var staff = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
             var managers = employees.Where(e => e.EmployeeType == EmployeeType.Manager);
             if (type == EmployeeType.Manager && managers.Count() <= ManagersLimits.Min) {
                 errorMessage = $"You have only {ManagersLimits.Min} Manager. Min number of Managers is {ManagersLimits.Min}";
@@ -115,8 +116,8 @@ namespace Session_30.Shared.Validator
                 errorMessage = $"You have only {CashiersLimits.Min} Cashier. Min number of Cashiers is {CashiersLimits.Min}";
                 isValid = false;
             }
-            if (type == EmployeeType.Staff && baristas.Count() <= StaffLimits.Min) {
-                errorMessage = $"You have only {StaffLimits.Min} Barista. Min number of Baristas is {StaffLimits.Min}";
+            if (type == EmployeeType.Staff && staff.Count() <= StaffLimits.Min) {
+                errorMessage = $"You have only {StaffLimits.Min} staff. Min number of Staff is {StaffLimits.Min}";
                 isValid = false;
             }
             return isValid;
@@ -130,23 +131,24 @@ namespace Session_30.Shared.Validator
                 isValid = false;
             } else if (NewType != dbEmployee.EmployeeType) {
                 var cashiers = employees.Where(e => e.EmployeeType == EmployeeType.Cashier);
-                var baristas = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
+                var staff = employees.Where(e => e.EmployeeType == EmployeeType.Staff);
                 var managers = employees.Where(e => e.EmployeeType == EmployeeType.Manager);
                 if (NewType == EmployeeType.Manager && managers.Count() >= ManagersLimits.Max) {
                     errorMessage = $"You have already {ManagersLimits.Max} Managers. Max number of managers is {ManagersLimits.Max}";
                     isValid = false;
                 }
                 if (NewType == EmployeeType.Cashier && cashiers.Count() >= CashiersLimits.Max) {
-                    errorMessage = $"You have already {CashiersLimits.Max} cashiers. Max number of cashiers is {CashiersLimits.Max}";
+                    errorMessage = $"You have already {CashiersLimits.Max} Cashiers. Max number of cashiers is {CashiersLimits.Max}";
                     isValid = false;
                 }
-                if (NewType == EmployeeType.Staff && baristas.Count() >= StaffLimits.Max) {
+                if (NewType == EmployeeType.Staff && staff.Count() >= StaffLimits.Max) {
                     errorMessage = $"You have already {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
                     isValid = false;
                 }
-                if (dbEmployee.HireDateStart > dbEmployee.HireDateEnd) {
+                if (dbEmployee.HireDateStart <= dbEmployee.HireDateEnd)
+                {
                     isValid = false;
-                    errorMessage = $"Hire-Date-Start must be greater than Hire-Date-End!";
+                    errorMessage = "Hire-Date-Start must be lower than Hire-Date-End!";
                 }
             }
             return isValid;

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Session_30.Client.Pages.Employee;
 using Session_30.Shared;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.EmployeeDto;
@@ -94,12 +93,12 @@ namespace Session_30.Server.Controllers
                         PaymentMethod = t.PaymentMethod,
                         TotalValue = t.TotalValue,
                         TransactionID=t.TransactionID,
-                        //Employee=new Employee
-                        //{
-                        //    EmployeeID= t.Employee.EmployeeID,
-                        //    EmployeeName=t.Employee.EmployeeName,
-                        //    EmployeeSurname=t.Employee.EmployeeSurname
-                        //}
+                        Employee = new EmployeeDetailsDto
+                        {
+                            EmployeeID = t.Employee.EmployeeID,
+                            EmployeeName = t.Employee.EmployeeName,
+                            EmployeeSurname = t.Employee.EmployeeSurname
+                        }
                     }).ToList()
                    
                 };

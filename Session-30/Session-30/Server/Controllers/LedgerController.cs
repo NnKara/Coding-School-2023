@@ -3,70 +3,78 @@ using FuelStation.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Session_30.Shared.Ledger;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Session_30.Server.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class LedgerController : ControllerBase {
+    public class LedgerController : ControllerBase
+    {
 
-        private readonly IEntityRepo<Transaction> _transactionRepo;
+        private readonly ITransactionRepo<Transaction> _transactionRepo;
         private readonly IEntityRepo<Employee> _employeeRepo;
         private readonly IEntityRepo<Item> _itemRepo;
         private readonly decimal _rent = 5000;
+        private readonly DateTime currentDate = DateTime.Now;
 
-        public LedgerController(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo) {
+
+        public LedgerController(ITransactionRepo<Transaction> transactionRepo, IEntityRepo<Employee> employeeRepo, IEntityRepo<Item> itemRepo)
+        {
             _transactionRepo = transactionRepo;
             _employeeRepo = employeeRepo;
             _itemRepo = itemRepo;
         }
 
-        [HttpGet]
-        public IActionResult GetLedger() {
+        [Route("/ledger/details")]
+        public IActionResult GetLedger()
+        {
             List<Ledger> ledgers = new List<Ledger>();
-            var items=_itemRepo.GetAll().ToList();
-            var employees=_employeeRepo.GetAll().ToList();
-            decimal expenses = 0;
-            
+            var items = _itemRepo.GetAll().ToList();
+            var employees = _employeeRepo.GetAll().ToList();
 
-            // Get all transactions for the current year and month
-            DateTime currentDate = DateTime.Now;
-            List<Transaction> transactions = _transactionRepo.GetAll().Where(t => t.Date.Year == currentDate.Year && t.Date.Month == currentDate.Month).ToList();
+            // Retrieve the date of the first transaction made
+            var firstTransactionDate = _transactionRepo.GetAll().OrderBy(t => t.Date).FirstOrDefault()?.Date;
 
-            // Calculate income
-            decimal income = transactions.Sum(t => t.TotalValue);
+            // Calculate the month of the first transaction date
+            var firstTransactionMonth = new DateTime(firstTransactionDate.Value.Year, firstTransactionDate.Value.Month, 1);
 
-            // Calculate expenses
-            
-            foreach (var item in items) {
-                expenses += item.Cost;
+            // Calculate the number of months between the first transaction month and the current month
+            int monthsSinceFirstTransaction = ((currentDate.Year - firstTransactionMonth.Year) * 12) + (currentDate.Month - firstTransactionMonth.Month);
+
+            // Loop through each month since the first transaction date until the current month
+            for (int i = 0; i <= monthsSinceFirstTransaction; i++)
+            {
+                DateTime monthStartDate = firstTransactionMonth.AddMonths(i);
+                DateTime monthEndDate = new DateTime(monthStartDate.Year, monthStartDate.Month, DateTime.DaysInMonth(monthStartDate.Year, monthStartDate.Month));
+
+                // Get transactions for the current month
+                List<Transaction> transactions = _transactionRepo.GetAll().Where(t => t.Date >= monthStartDate && t.Date <= monthEndDate).ToList();
+
+                decimal income = transactions.Sum(t => t.TotalValue);
+                decimal expenses = items.Sum(i => i.Cost) + employees.Sum(e => e.SalaryPerMonth);
+                decimal total = income - expenses - _rent;
+
+                var currentLedger = new Ledger
+                {
+                    Year = monthStartDate.Year,
+                    Month = monthStartDate.Month,
+                    Income = income,
+                    Expenses = expenses + _rent,
+                    Total = total
+                };
+
+                ledgers.Add(currentLedger);
             }
-
-            foreach (var emp in employees) {
-                expenses += emp.SalaryPerMonth;
-            }
-
-
-            // Calculate total
-            decimal total = income - expenses - _rent;
-
-            // Add the ledger to the list
-            var currentLedger = new Ledger {
-                Year = currentDate.Year,
-                Month = currentDate.Month,
-                Income = income,
-                Expenses = expenses + _rent,
-                Total = total
-            };
-            ledgers.Add(currentLedger);
 
             return Ok(ledgers);
+
         }
+
+
+
+
+
     }
-
-
-
-
-
 }
 

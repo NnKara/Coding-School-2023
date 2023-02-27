@@ -243,9 +243,49 @@ namespace FuelStation.WinForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_cross_mark_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cross-mark-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_enter_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-enter-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_private_lock_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-private-lock-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_remove_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-remove-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_username_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-username-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

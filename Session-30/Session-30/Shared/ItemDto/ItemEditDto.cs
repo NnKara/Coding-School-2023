@@ -12,7 +12,7 @@ namespace Session_30.Shared.ItemDto
 
         public int ItemID { get; set; }
 
-        //[Required(ErrorMessage = "Code is required.")]
+
         [MaxLength(20, ErrorMessage = "Maximum 20 characters")]
         public string Code { get; set; } = null!;
 
@@ -28,13 +28,11 @@ namespace Session_30.Shared.ItemDto
 
 
         [Required(ErrorMessage = "Cost is required.")]
-        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
         public decimal Cost { get; set; }
 
         [Required(ErrorMessage = "Cost is required.")]
-        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Price must be a valid number")]
         public decimal Price { get; set; }

@@ -45,6 +45,8 @@ namespace FuelStation.EF.Repositorys {
 
             var dbCustomer = fuelDb.Customers
                  .Include(c => c.Transactions)
+                 .ThenInclude(c=>c.Employee)
+                 .Include(c=>c.Transactions)
                   .ThenInclude(t => t.TransactionLines)
                  .FirstOrDefault(c => c.CustomerID == id);
 

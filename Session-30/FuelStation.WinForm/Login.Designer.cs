@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
@@ -35,6 +37,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -48,12 +52,14 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(139, 57);
             this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "Exit";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblUsername);
@@ -64,6 +70,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(458, 245);
             this.panel1.TabIndex = 4;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::FuelStation.WinForm.Properties.Resources.icons8_private_lock_30;
+            this.pictureBox5.Location = new System.Drawing.Point(12, 150);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(42, 39);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox5.TabIndex = 19;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::FuelStation.WinForm.Properties.Resources.icons8_username_50;
+            this.pictureBox4.Location = new System.Drawing.Point(12, 94);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabStop = false;
             // 
             // btnLogin
             // 
@@ -80,7 +106,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(41, 159);
+            this.label1.Location = new System.Drawing.Point(63, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 28);
             this.label1.TabIndex = 7;
@@ -90,7 +116,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUsername.Location = new System.Drawing.Point(41, 102);
+            this.lblUsername.Location = new System.Drawing.Point(63, 105);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(111, 28);
             this.lblUsername.TabIndex = 6;
@@ -126,7 +152,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::FuelStation.WinForm.Properties.Resources._336_3364402_gas_station_movie_icon_transparent_background;
-            this.pictureBox2.Location = new System.Drawing.Point(488, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(522, 32);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(451, 519);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -147,9 +173,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FuelStation.WinForm.Properties.Resources._198257_200;
-            this.pictureBox3.Location = new System.Drawing.Point(307, 302);
+            this.pictureBox3.Location = new System.Drawing.Point(303, 294);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(114, 42);
+            this.pictureBox3.Size = new System.Drawing.Size(118, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
@@ -170,6 +196,8 @@
             this.Text = "FuelStation";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -190,5 +218,7 @@
         private PictureBox pictureBox2;
         private Label label2;
         private PictureBox pictureBox3;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox4;
     }
 }

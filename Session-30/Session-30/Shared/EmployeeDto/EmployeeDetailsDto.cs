@@ -25,7 +25,6 @@ namespace Session_30.Shared.EmployeeDto
 
 
         [Required]
-        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public int SalaryPerMonth { get; set; }
 
@@ -34,15 +33,10 @@ namespace Session_30.Shared.EmployeeDto
         [DataType(DataType.Date)]
         public DateTime HireDateStart { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        [DataType(DataType.Date)]
-        public DateTime HireDateEnd { get; set; }
+
+        public DateTime? HireDateEnd { get; set; }
 
         [Required]
-
         public EmployeeType EmployeeType { get; set; }
-
-        //Changed
-        public List<TransactionDetailsDto> Transactions { get; set; } = new();
     }
 }

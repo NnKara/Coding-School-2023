@@ -76,8 +76,7 @@ namespace FuelStation.WinForm {
 
             }
 
-        private void btnClose_Click(object sender, EventArgs e) {
-            //MainMenu newMenu = new();
+        private void btnClose_Click(object sender, EventArgs e) {           
             this.Hide();
         }
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FuelStation.EF.Migrations
 {
     [DbContext(typeof(FuelStasionDbContext))]
-    [Migration("20230224002716_Update")]
-    partial class Update
+    [Migration("20230227213128_newBuild")]
+    partial class newBuild
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,7 +77,7 @@ namespace FuelStation.EF.Migrations
                     b.Property<int>("EmployeeType")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("HireDateEnd")
+                    b.Property<DateTime?>("HireDateEnd")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDateStart")

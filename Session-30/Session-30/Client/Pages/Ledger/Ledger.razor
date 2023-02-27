@@ -46,14 +46,9 @@
     }
 
     private async Task LoadItemsFromServer() {
-        var ledgers = await httpClient.GetFromJsonAsync<List<LedgerListDto>>("ledger");
+        var ledgers = await httpClient.GetFromJsonAsync<List<LedgerListDto>>("ledger/details");
         if (ledgers is not null) {
             Ledgers = ledgers;
         } 
     }
-
-
-
-
-
 }

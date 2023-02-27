@@ -35,17 +35,11 @@
                 <ValidationMessage For="@(() => Employee.SalaryPerMonth)" />
             </div>
 
-            <div class="col-md-6">
+           <div class="col-md-6">
                 <label class="form-label">Hire Date Start</label>
-                <input class="form-control" type="date" @bind="@Employee.HireDateStart" />
-                <ValidationMessage For="@(() => Employee.HireDateStart)" />
+                <InputDate class="form-control" @bind-Value="@Employee.HireDateStart" />
             </div>
 
-            <div class="col-md-6">
-                <label class="form-label">Hire Date End</label>
-                <input class="form-control"  @bind="@Employee.HireDateEnd" />
-                <ValidationMessage For="@(() => Employee.HireDateEnd)" />
-            </div>
 
             <div class="col-md-6">
                 <label class="form-label">Type</label>

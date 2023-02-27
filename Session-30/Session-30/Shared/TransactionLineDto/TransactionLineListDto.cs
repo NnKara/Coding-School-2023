@@ -28,14 +28,14 @@ namespace Session_30.Shared
 
         [Required]
         [Range(0, 100)]
+        [DisplayFormat(DataFormatString = "{0}%")]
         public decimal DiscountPercent { get; set; }
 
-        [DataType(DataType.Currency)]
+
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal DiscountValue { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal TotalValue { get; set; }
 

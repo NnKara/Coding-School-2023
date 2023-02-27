@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FuelStation.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class Update : Migration
+    public partial class newBuild : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,7 +36,7 @@ namespace FuelStation.EF.Migrations
                     EmployeeSurname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     SalaryPerMonth = table.Column<int>(type: "int", nullable: false),
                     HireDateStart = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HireDateEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EmployeeType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
