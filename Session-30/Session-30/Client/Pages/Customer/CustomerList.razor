@@ -70,8 +70,15 @@
         var confirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Item.Are you sure?");
         if (confirm) {
             var response = await httpClient.DeleteAsync($"customer/{customer.CustomerID}");
-            response.EnsureSuccessStatusCode();
-            await LoadItemsFromServer();
+            if (response.IsSuccessStatusCode)
+            {
+                await LoadItemsFromServer();
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                await jsRuntime.InvokeVoidAsync("alert", error);
+            }
         }
     }
 

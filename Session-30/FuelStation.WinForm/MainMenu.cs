@@ -56,23 +56,23 @@ namespace FuelStation.WinForm {
             switch (_role) {
                 case EmployeeType.Manager:
 
-                    btnCustomers.Visible = true;
-                    btnTransactions.Visible = true;
-                    btnItems.Visible = true;
+                    btnCustomers.Enabled = true;
+                    btnTransactions.Enabled = true;
+                    btnItems.Enabled = true;
 
                     break;
                 case EmployeeType.Cashier:
 
-                    btnCustomers.Visible = false;
-                    btnTransactions.Visible = true;
-                    btnItems.Visible = true;
+                    btnCustomers.Enabled = false;
+                    btnTransactions.Enabled = true;
+                    btnItems.Enabled = true;
 
                     break;
                 case EmployeeType.Staff:
 
-                    btnCustomers.Visible = false;
-                    btnTransactions.Visible = false;
-                    btnItems.Visible = true;
+                    btnCustomers.Enabled = false;
+                    btnTransactions.Enabled = false;
+                    btnItems.Enabled = true;
 
                     break;
                 default:

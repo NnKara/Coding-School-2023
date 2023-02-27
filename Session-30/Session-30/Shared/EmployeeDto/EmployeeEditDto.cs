@@ -22,12 +22,17 @@ namespace Session_30.Shared.EmployeeDto
         public string? EmployeeSurname { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public int SalaryPerMonth { get; set; }
 
-     
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime HireDateStart { get; set; }
 
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime HireDateEnd { get; set; }
 
 
@@ -35,6 +40,6 @@ namespace Session_30.Shared.EmployeeDto
         [Range(1, 3, ErrorMessage = "You must choose a type!")]
         public EmployeeType EmployeeType { get; set; }
 
-        public List<Transaction> Transactions { get; set; } = new();
+        public List<TransactionListDto> Transactions { get; set; } = new();
     }
 }

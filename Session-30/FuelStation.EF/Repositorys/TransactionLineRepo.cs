@@ -31,7 +31,6 @@ namespace FuelStation.EF.Repositorys {
             using var fuelDb = new FuelStasionDbContext();
             return fuelDb.TransactionLines
                         .Include(tl => tl.Transaction)
-                        //.Include(tl=>tl.TransactionID)
                         .Include(tl => tl.Item)
                         .ToList();
 

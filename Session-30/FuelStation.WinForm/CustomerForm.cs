@@ -20,6 +20,7 @@ using System.Text.Json.Serialization;
 using Session_30.Shared.ItemDto;
 using System.Xml.Linq;
 using Session_30.Client.Pages.Customer;
+using DevExpress.XtraEditors;
 
 namespace FuelStation.WinForm {
     public partial class CustomerForm : Form {
@@ -41,6 +42,7 @@ namespace FuelStation.WinForm {
         }
 
         private void btnClose_Click(object sender, EventArgs e) {
+
             this.Close();
         }
 
@@ -53,9 +55,7 @@ namespace FuelStation.WinForm {
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
-            bsCustomers.Add(new CustomerListDto());
-            int newRowHandle = grdCustomers.GetRowHandle(grdCustomers.DataRowCount);
-            grdCustomers.FocusedRowHandle = newRowHandle;
+            grdCustomers.AddNewRow();
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
@@ -66,17 +66,26 @@ namespace FuelStation.WinForm {
         private async Task OnSave() {
             HttpResponseMessage response = null;
             CustomerListDto customer = (CustomerListDto)bsCustomers.Current;
-            if  (customer.CardNumber is null) {
-                response = await _client.PostAsJsonAsync("customer", customer);
-            } else {
-                response = await _client.PutAsJsonAsync("customer", customer);
-            }
+            if (customer != null)
+            {
+                if (customer.CardNumber is null)
+                {
+                    response = await _client.PostAsJsonAsync("customer", customer);
+                }
+                else
+                {
+                    response = await _client.PutAsJsonAsync("customer", customer);
+                }
 
-            if (response.IsSuccessStatusCode) {
-                MessageBox.Show("Customer saved successfully!");
-                SetControlProperties();
-            } else {
-                MessageBox.Show("Error saving customer.");
+                if (response.IsSuccessStatusCode)
+                {
+                    XtraMessageBox.Show("Customer saved successfully!","Success Message");
+                    SetControlProperties();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Error saving customer.","Erros Message");
+                }
             }
 
         }
@@ -96,9 +105,9 @@ namespace FuelStation.WinForm {
                 response = await _client.DeleteAsync($"customer/{customer.CustomerID}");
                 if (response.IsSuccessStatusCode) {
                     bsCustomers.RemoveCurrent();
-                    MessageBox.Show("Customer deleted successfully!");
+                    XtraMessageBox.Show("Customer deleted successfully!","Success Message");
                 } else {
-                    MessageBox.Show("Error deleting customer.");
+                    XtraMessageBox.Show("Error deleting customer.");
                 }
             }
         }

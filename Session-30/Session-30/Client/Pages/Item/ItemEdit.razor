@@ -90,9 +90,15 @@
         } else {
             response = await httpClient.PutAsJsonAsync("item", Item);
         }
-
-        response.EnsureSuccessStatusCode();
-        navigationManager.NavigateTo("itemList");
+        if (response.IsSuccessStatusCode)
+        {
+            navigationManager.NavigateTo("/itemList");
+        }
+        else
+        {
+            var error = await response.Content.ReadAsStringAsync();
+            await jsRuntime.InvokeVoidAsync("alert", error);
+        }
     }
 
 }

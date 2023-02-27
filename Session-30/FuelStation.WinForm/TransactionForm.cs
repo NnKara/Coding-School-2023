@@ -1,6 +1,7 @@
 ﻿using DevExpress.Data;
 using DevExpress.DataAccess.Native;
 using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraExport.Helpers;
 using DevExpress.XtraGrid;
@@ -92,7 +93,7 @@ namespace FuelStation.WinForm
             }
             else
             {
-                MessageBox.Show("Please fill in all cells before saving.");
+                XtraMessageBox.Show("Please fill in all cells before saving.","Error Message");
             }
         }
 
@@ -102,11 +103,11 @@ namespace FuelStation.WinForm
             var response = await _client.PutAsJsonAsync("transaction", transaction);
             if (response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Item saved successfully!");
+                XtraMessageBox.Show("Item saved successfully!","Success Message");
             }
             else
             {
-                MessageBox.Show("Error saving item.");
+                XtraMessageBox.Show("Error saving item.","Error Message");
             }
         }
 
@@ -117,14 +118,14 @@ namespace FuelStation.WinForm
             var response = await _client.PostAsJsonAsync("transaction", transaction);
             if (response.IsSuccessStatusCode)
             {
-               
-                MessageBox.Show("Transaction saved successfully!", "Success Message");
+
+                XtraMessageBox.Show("Transaction saved successfully!", "Success Message");
                 SetControlProperties();
                 
             }
             else
             {
-                MessageBox.Show("Error saving Transaction!", "Error Message");
+                XtraMessageBox.Show("Error saving Transaction!", "Error Message");
             }
         }
 
@@ -167,11 +168,11 @@ namespace FuelStation.WinForm
             {
 
                 bsTransactions.RemoveCurrent();
-                MessageBox.Show("Transaction Deleted Successfully!", "Success Message!");
+                XtraMessageBox.Show("Transaction Deleted Successfully!", "Success Message!");
             }
             else
             {
-                MessageBox.Show("Error deleting transaction.You have to delete Transaction-Lines first!", "Error Message");
+                XtraMessageBox.Show("Error deleting transaction.You have to delete Transaction-Lines first!", "Error Message");
             }
         }
 
@@ -197,11 +198,11 @@ namespace FuelStation.WinForm
             if (response.IsSuccessStatusCode)
             {
                 bsTransLines.RemoveCurrent();
-                MessageBox.Show("Transaction-Line Deleted Successfully!", "Success Message");
+                XtraMessageBox.Show("Transaction-Line Deleted Successfully!", "Success Message");
             }
             else
             {
-                MessageBox.Show("Error deleting Transaction-Line!", "Error Message");
+                XtraMessageBox.Show("Error deleting Transaction-Line!", "Error Message");
             }
         }
 
@@ -331,6 +332,7 @@ namespace FuelStation.WinForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+
         }
 
 
@@ -365,39 +367,40 @@ namespace FuelStation.WinForm
                     }
                 }
             }
-            else if ( e.Column.FieldName == "Quantity")
+            else if (e.Column.FieldName == "Quantity")
             {
 
                 int transactionLineIndex = e.RowHandle;
+
                 int itemID = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemID");
-                //int quantityRow = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "Quantity");
-          
+
                 decimal itemPrice = (decimal)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemPrice");
                 decimal quantity = Convert.ToDecimal(e.Value);
-                //if (quantity <= 0)
-                //{
-                //    MessageBox.Show("Quantity cannot be less than or equal to 0.", "Error Message");
-                //    grdTransLines.SetRowCellValue(transactionLineIndex, "Quantity", 1); // reset the value to 1
-                //    return;
-                //}
-                grdTransLines.SetRowCellValue(transactionLineIndex, "Quantity", quantity);
+
                 decimal netValue = itemPrice * quantity;
                 grdTransLines.SetRowCellValue(transactionLineIndex, "NetValue", netValue);
                 var item = _items.FirstOrDefault(i => i.ItemID == itemID);
-                if (item.ItemType == ItemType.Fuel && netValue > 20)
+                if (item != null)
                 {
-                    decimal discPercent = 0.1m;
-                    decimal discValue = netValue * discPercent;
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountPercent", discPercent);
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountValue", Convert.ToInt32(discValue));
-                    decimal totalValue = netValue - discValue;
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "TotalValue", Convert.ToInt32(totalValue));
+                    if (item.ItemType == ItemType.Fuel && netValue > 20)
+                    {
+                        decimal discPercent = 0.1m;
+                        decimal discValue = netValue * discPercent;
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountPercent", discPercent);
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountValue", Convert.ToInt32(discValue));
+                        decimal totalValue = netValue - discValue;
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "TotalValue", Convert.ToInt32(totalValue));
+                    }
+                    else
+                    {
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountPercent", 0m);
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountValue", 0m);
+                        grdTransLines.SetRowCellValue(transactionLineIndex, "TotalValue", netValue);
+                    }
                 }
                 else
                 {
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountPercent", 0m);
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "DiscountValue", 0m);
-                    grdTransLines.SetRowCellValue(transactionLineIndex, "TotalValue", netValue);
+                    XtraMessageBox.Show("Please select an item in order to procceed..");
                 }
             }
         }
@@ -415,21 +418,15 @@ namespace FuelStation.WinForm
 
                     if (HasMultipleItems())
                     {
-                        MessageBox.Show("A transaction can have only one fuel type item.", "Error Message");
+                        XtraMessageBox.Show("A transaction can have only one fuel type item.", "Error Message");
                         grdTransLines.DeleteRow(e.RowHandle);
                         return;
                     }
 
+                    UpdateTransactionPaymentMethod(transaction);
+
                     // Calculate the total value
                     decimal totalValue = CalcTransTotalValue();
-
-                    if (totalValue > 50 && transaction.PaymentMethod != PaymentMethod.Cash)
-                    {
-                        MessageBox.Show("The only acceptable payment method for transactions above 50 Euros is Cash!", "Error Message");
-                        transaction.PaymentMethod = PaymentMethod.Cash;
-                        gridView1.RefreshData();
-                    }
-                    // Update the TotalValue column in the grdTransactions grid
                     var gridView = grdTransactions.FocusedView as GridView;
                     if (gridView != null)
                     {
@@ -441,6 +438,19 @@ namespace FuelStation.WinForm
                     }
                     
                 }
+            }
+        }
+
+
+        private void UpdateTransactionPaymentMethod(TransactionListDto transaction)
+        {
+            // Calculate the total value
+            decimal totalValue = CalcTransTotalValue();
+
+            if (totalValue > 50 && transaction.PaymentMethod != PaymentMethod.Cash)
+            {
+                XtraMessageBox.Show("The only acceptable payment method for transactions above 50 Euros is Cash!", "Error Message");
+                transaction.PaymentMethod = PaymentMethod.Cash;
             }
         }
         private bool HasMultipleItems()
@@ -470,7 +480,7 @@ namespace FuelStation.WinForm
                 TransactionLineEditDto transactionLine = grdTransLines.GetRow(selectedRowHandle) as TransactionLineEditDto;
                 if (transactionLine != null && transactionLine.TransactionLineID != 0)
                 {
-                    MessageBox.Show("You cannot remove locally a saved Transaction-Line. To remove it, you must delete it permanently!", "Errot Message");
+                    XtraMessageBox.Show("You cannot remove locally a saved Transaction-Line. To remove it, you must delete it permanently!", "Errot Message");
                 }
                 else
                 {
@@ -496,7 +506,7 @@ namespace FuelStation.WinForm
                 TransactionListDto transaction = gridView1.GetRow(selectedRowHandle) as TransactionListDto;
                 if (transaction != null && transaction.TransactionID != 0)
                 {
-                    MessageBox.Show("You cannot remove locally a saved Transaction. To remove it, you must delete it permanently!", "Errot Message");
+                    XtraMessageBox.Show("You cannot remove locally a saved Transaction. To remove it, you must delete it permanently!", "Errot Message");
                 }
                 else
                 {
@@ -504,8 +514,44 @@ namespace FuelStation.WinForm
                 }
             }
         }
+
+        private void gridView1_RowUpdated(object sender, RowObjectEventArgs e)
+        {
+            if (e.RowHandle >= 0 && e.RowHandle < gridView1.RowCount)
+            {
+                TransactionListDto transaction = gridView1.GetFocusedRow() as TransactionListDto;
+                if (transaction != null)
+                {
+                    UpdateTransactionPaymentMethod(transaction);
+                }
+            }
+        }
+
+        private void btnRef_Click(object sender, EventArgs e)
+        {
+            SetControlProperties();
+        }
+
+        private void grdTransLines_ValidateRow(object sender, ValidateRowEventArgs e)
+        {
+            //int transactionLineIndex = e.RowHandle;
+            //int itemID = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemID");
+            ////int quantityRow = (int)grdTransLines.GetRowCellValue(transactionLineIndex, "Quantity");
+
+            //decimal itemPrice = (decimal)grdTransLines.GetRowCellValue(transactionLineIndex, "ItemPrice");
+            //int quantity =(int) grdTransLines.GetRowCellValue(transactionLineIndex,"Quantity");
+            //if (quantity < 0)
+            //{
+            //    XtraMessageBox.Show("Quantity cannot be less than or equal to 0.", "Error Message");
+
+            //    //TODO
+            //    /*grdTransLines.SetRowCellValue(transactionLineIndex, "Quantity", 1);*/ // reset the value to 1
+            //    return;
+            }
+        }
     }
-}
+
+
 
 
 

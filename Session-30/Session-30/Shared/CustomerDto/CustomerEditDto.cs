@@ -19,11 +19,13 @@ namespace Session_30.Shared.CustomerDto
 
         [Required(ErrorMessage = "Surname is required.")]
         [MaxLength(15, ErrorMessage = "Maximum 15 characters")]
-        [RegularExpression(@"^[a-zA-ZΑ-Ωα-ω\u0386-\u03CE\s]+$", ErrorMessage = "Name can only contain letters")]
+        [RegularExpression(@"^[a-zA-ZΑ-Ωα-ω\u0386-\u03CE\s]+$", ErrorMessage = "Surname can only contain letters")]
         public string? CustomerSurname { get; set; }
 
+
+        [RegularExpression("^A.{0,}$", ErrorMessage = "CardNumber should start with 'A'.")]
         public string? CardNumber { get; set; }
 
-        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+        public List<TransactionListDto> Transactions { get; set; } = new();
     }
 }

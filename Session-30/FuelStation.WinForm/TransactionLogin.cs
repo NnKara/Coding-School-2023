@@ -1,4 +1,5 @@
-﻿using FuelStation.EF.Repositorys;
+﻿using DevExpress.XtraEditors;
+using FuelStation.EF.Repositorys;
 using FuelStation.Model;
 using Newtonsoft.Json;
 using Session_30.Shared.CustomerDto;
@@ -32,7 +33,7 @@ namespace FuelStation.WinForm {
         private async Task Navigate(string cardNumber) {
             CustomerListDto customer = await FindCustomerByCardNumber(cardNumber);
             if (customer != null) {
-                MessageBox.Show("Welcome Back!");
+                XtraMessageBox.Show("Welcome Back!", "Success Message");
                TransactionForm trasForm=new TransactionForm(customer);
                 this.Hide();
                 TransactionForm transForm = new TransactionForm(customer);
@@ -40,7 +41,7 @@ namespace FuelStation.WinForm {
                 transForm.ShowDialog();
 
             } else {
-                MessageBox.Show("Card Number doesn't exists! Redirecting..");
+                XtraMessageBox.Show("Card Number doesn't exists! Redirecting..","Information Message");
                 CustomerForm custForm=new CustomerForm(); 
                 
                 custForm.ShowDialog();
@@ -54,7 +55,15 @@ namespace FuelStation.WinForm {
         private void btnNewOrder_Click(object sender, EventArgs e) {
             btnNewOrder.Enabled = false;
             string cardNumber = textBox1.Text;
+
+            if (string.IsNullOrEmpty(cardNumber))
+            {
+                XtraMessageBox.Show("You must enter a card number.");
+                btnNewOrder.Enabled = true;
+                return;
+            }
             _ = Navigate(cardNumber);
+            btnNewOrder.Refresh();
         }
 
         private async Task<CustomerListDto?> FindCustomerByCardNumber(string cardNumber) {
@@ -68,7 +77,8 @@ namespace FuelStation.WinForm {
             }
 
         private void btnClose_Click(object sender, EventArgs e) {
-            this.Close();
+            //MainMenu newMenu = new();
+            this.Hide();
         }
 
     

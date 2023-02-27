@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraScheduler.Outlook.Interop;
+﻿using DevExpress.Utils.Drawing.Animation;
+using DevExpress.XtraEditors;
+using DevExpress.XtraScheduler.Outlook.Interop;
 using FuelStation.Model;
 using Newtonsoft.Json;
 using Session_30.Shared.CustomerDto;
@@ -73,10 +75,17 @@ namespace FuelStation.WinForm {
             }
 
             if (response.IsSuccessStatusCode) {
-                MessageBox.Show("Item saved successfully!");
+                XtraMessageBox.Show("Item saved successfully!","Success Message");
                 SetControlProperties();
-            } else {
-                MessageBox.Show("Error saving item.");
+            }
+            else
+            {
+                XtraMessageBox.Show("Error saving item." +
+                                "\nPossible  Erros: " +
+                                "\n1. Item is associated with Transactions and its not Editable." +
+                                "\n2. Code is taken by another Item. Each code is unique."+
+                                "\n3. Cell is empty or does not have proper value.","Error Message");
+                SetControlProperties();                
             }
         }
 
@@ -87,9 +96,10 @@ namespace FuelStation.WinForm {
                 response = await _client.DeleteAsync($"item/{item.ItemID}");
                 if (response.IsSuccessStatusCode) {
                     bsItems.RemoveCurrent();
-                    MessageBox.Show("Item Deleted Successfully!");
+                   XtraMessageBox.Show("Item Deleted Successfully!","Success Message");
                 } else {
-                    MessageBox.Show("Error deleting item.");
+                    XtraMessageBox.Show("Error deleting item." +
+                                   " \n1. Item is associated with Transactions and cannot be Deleted.","Error Message");
                 }
             }
         }

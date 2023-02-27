@@ -61,6 +61,12 @@
             this.stackPanel1 = new DevExpress.Utils.Layout.StackPanel();
             this.btnRemoveCurrentRow = new System.Windows.Forms.Button();
             this.btnRemoveCurrentTransaction = new System.Windows.Forms.Button();
+            this.btnRef = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -75,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoPaymentMethod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -108,7 +115,7 @@
             this.grdTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoItem,
             this.repQuantity});
-            this.grdTransactionLines.Size = new System.Drawing.Size(1013, 250);
+            this.grdTransactionLines.Size = new System.Drawing.Size(890, 250);
             this.grdTransactionLines.TabIndex = 11;
             this.grdTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdTransLines});
@@ -127,10 +134,12 @@
             this.col});
             this.grdTransLines.GridControl = this.grdTransactionLines;
             this.grdTransLines.Name = "grdTransLines";
+            this.grdTransLines.OptionsDetail.EnableMasterViewMode = false;
+            this.grdTransLines.OptionsDetail.ShowDetailTabs = false;
             this.grdTransLines.OptionsView.ShowGroupPanel = false;
             this.grdTransLines.OptionsView.ShowIndicator = false;
-         
             this.grdTransLines.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.grdTransLines_CellValueChanged);
+            this.grdTransLines.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.grdTransLines_ValidateRow);
             this.grdTransLines.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.grdTransLines_RowUpdated);
             // 
             // colItemID
@@ -182,6 +191,16 @@
             this.repQuantity.AutoHeight = false;
             this.repQuantity.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repQuantity.MaxValue = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.repQuantity.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.repQuantity.Name = "repQuantity";
             // 
             // colNetValue
@@ -256,13 +275,14 @@
             this.grdTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repoPaymentMethod,
             this.repoEmployee});
-            this.grdTransactions.Size = new System.Drawing.Size(1002, 286);
+            this.grdTransactions.Size = new System.Drawing.Size(870, 286);
             this.grdTransactions.TabIndex = 12;
             this.grdTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.ActiveFilterEnabled = false;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colTransactionID,
             this.colDate,
@@ -271,9 +291,13 @@
             this.colTotalValue});
             this.gridView1.GridControl = this.grdTransactions;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
+            this.gridView1.OptionsDetail.ShowDetailTabs = false;
+            this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridTransactions_CellValueChanged);
+            this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
             // 
             // colTransactionID
             // 
@@ -380,7 +404,7 @@
             // BtnSaveUpdateTransaction
             // 
             this.BtnSaveUpdateTransaction.BackColor = System.Drawing.Color.SpringGreen;
-            this.BtnSaveUpdateTransaction.Location = new System.Drawing.Point(611, 425);
+            this.BtnSaveUpdateTransaction.Location = new System.Drawing.Point(371, 425);
             this.BtnSaveUpdateTransaction.Name = "BtnSaveUpdateTransaction";
             this.BtnSaveUpdateTransaction.Size = new System.Drawing.Size(116, 64);
             this.BtnSaveUpdateTransaction.TabIndex = 17;
@@ -430,12 +454,81 @@
             this.btnRemoveCurrentTransaction.UseVisualStyleBackColor = false;
             this.btnRemoveCurrentTransaction.Click += new System.EventHandler(this.btnRemoveCurrentTransaction_Click);
             // 
+            // btnRef
+            // 
+            this.btnRef.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnRef.Location = new System.Drawing.Point(725, 425);
+            this.btnRef.Name = "btnRef";
+            this.btnRef.Size = new System.Drawing.Size(116, 64);
+            this.btnRef.TabIndex = 22;
+            this.btnRef.Text = "Refresh";
+            this.btnRef.UseVisualStyleBackColor = false;
+            this.btnRef.Click += new System.EventHandler(this.btnRef_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FloralWhite;
+            this.label1.Location = new System.Drawing.Point(371, 874);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(254, 31);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "KARA\'S FUEL STATION";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FuelStation.WinForm.Properties.Resources._198257_200;
+            this.pictureBox2.Location = new System.Drawing.Point(661, 861);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(193, 62);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(1087, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 28);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Infromation:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(1072, 157);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(285, 23);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "- You have to fill every cell before ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(1087, 180);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 23);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "saving an Item.";
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1383, 935);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRef);
             this.Controls.Add(this.btnRemoveCurrentTransaction);
             this.Controls.Add(this.btnRemoveCurrentRow);
             this.Controls.Add(this.stackPanel1);
@@ -465,6 +558,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repoEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repoPaymentMethod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stackPanel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,5 +607,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTotalValue;
         private Button btnRemoveCurrentTransaction;
         private Button btnRefresh;
+        private Button btnRef;
+        private Label label1;
+        private PictureBox pictureBox2;
+        private Label label3;
+        private Label label8;
+        private Label label9;
     }
 }

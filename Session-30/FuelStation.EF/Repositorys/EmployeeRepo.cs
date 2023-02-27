@@ -37,7 +37,7 @@ namespace FuelStation.EF.Repositorys {
 
         public IList<Employee> GetAll() {
             using var fuelDb = new FuelStasionDbContext();
-            return fuelDb.Employees.ToList();
+            return fuelDb.Employees.Include(emp=>emp.Transactions).ToList();
         }
 
         public Employee? GetByID(int id) {

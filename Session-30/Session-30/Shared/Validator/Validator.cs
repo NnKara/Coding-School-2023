@@ -1,4 +1,5 @@
 ﻿using FuelStation.Model;
+using Session_30.Shared.ItemDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,8 +46,59 @@ namespace Session_30.Shared.Validator
             return isValid;    
     }
 
-        public bool ValidateAddEmployee(EmployeeType type, List<Employee> employees, out string errorMessage) {
-            throw new NotImplementedException();
+
+        public bool ValidateAddItem(List<Item> items, ItemEditDto newItem, out string errorMessage)
+        {
+            errorMessage = "Succeed";
+            bool isValid = true;
+            foreach(Item item in items)
+            {
+                if (item.Code == newItem.Code && item.ItemID!=newItem.ItemID)
+                {
+                    errorMessage = $"Specific code is been taken by another Item! Re-enter a new code..";
+                    isValid = false;
+                }
+                if(item.ItemID!=newItem.ItemID && item.ItemType==newItem.ItemType && item.Description == newItem.Description)
+                {
+                    errorMessage = $"This item already exists!";
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        public bool ValidateUpdateItem(List<Item> items, Item dbItem, ItemEditDto newItem, out string errorMessage)
+        {
+            errorMessage = "Succeed";
+            bool isValid = true;
+            foreach (Item item in items)
+            {
+                if (item.Code == newItem.Code && item.ItemID != newItem.ItemID)
+                {
+                    errorMessage = $"Specific code is been taken by another Item! Re-enter a new code..";
+                    isValid = false;
+                }
+                if (item.ItemID != newItem.ItemID && item.ItemType == newItem.ItemType && item.Description == newItem.Description)
+                {
+                    errorMessage = $"This item already exists!";
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        public bool ValidateDeleteItem(Item item, out string errorMessage)
+        {
+            errorMessage = "Succeed";
+            bool isValid = true;
+            if (item.TransactionLines.Count > 0)
+            {
+                errorMessage = $"You cannot delete current Item.Delete it's associated Transactions first!";
+                isValid = false;
+            }
+            return isValid;
         }
 
         public bool ValidateDeleteEmployee(EmployeeType type, List<Employee> employees, out string errorMessage) {
@@ -67,14 +119,9 @@ namespace Session_30.Shared.Validator
                 errorMessage = $"You have only {StaffLimits.Min} Barista. Min number of Baristas is {StaffLimits.Min}";
                 isValid = false;
             }
-           
             return isValid;
         }
 
-        public bool ValidateUpdateAddItem(ItemType type, int code, Item item, List<Item> items, out string erroMessage)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool ValidateUpdateEmployee(EmployeeType NewType, Employee dbEmployee, List<Employee> employees, out string errorMessage) {
             errorMessage = "Succeed ";
@@ -105,6 +152,29 @@ namespace Session_30.Shared.Validator
             return isValid;
         }
 
+        public bool ValidateDeleteCustomer(Customer customer, out string erroMessage)
+        {
+            erroMessage = "Succeed";
+            bool isValid = true;
+            if (customer.Transactions.Count > 0)
+            {
+                erroMessage = $"You cannot delete current Customer.Delete his associated Transactions first!";
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        public bool HasEmployeeTransaction(Employee employee, out string errorMessage)
+        {
+            errorMessage = "Succeed";
+            bool isValid = true;
+            if (employee.Transactions.Count > 0)
+            {
+                errorMessage = $"You cannot delete current Employee.Delete his associated Transactions first!";
+                isValid = false;
+            }
+            return isValid;
+        }
 
         public struct MinMax {
             public int Min;

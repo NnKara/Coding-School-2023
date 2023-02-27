@@ -10,6 +10,7 @@ namespace Session_30.Shared.EmployeeDto
 {
     public class EmployeeListDto {
         public int EmployeeID { get; set; }
+
         [Required(ErrorMessage = "Name is required.")]
         [MaxLength(15, ErrorMessage = "Maximum 15 characters")]
         [RegularExpression(@"^[a-zA-ZΑ-Ωα-ω\u0386-\u03CE\s]+$", ErrorMessage = "Name can only contain letters")]
@@ -21,12 +22,17 @@ namespace Session_30.Shared.EmployeeDto
         public string? EmployeeSurname { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
+        
         public int SalaryPerMonth { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime HireDateStart { get; set; }
 
-        [Required(ErrorMessage = "Field is required.")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime HireDateEnd { get; set; }
 
         [Required(ErrorMessage = "Field is required.")]

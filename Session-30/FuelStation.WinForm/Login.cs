@@ -1,3 +1,4 @@
+using DevExpress.XtraEditors;
 using FuelStation.EF.Repositorys;
 using FuelStation.Model;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,40 +10,46 @@ namespace FuelStation.WinForm {
         
         public FuelStation() {
             InitializeComponent();
-            
+            txtPassword.PasswordChar = '*';
         }
 
-        private void FuelStation_Load(object sender, EventArgs e) {
-          
-        }
-
-        private void btnLoginManager_Click(object sender, EventArgs e) {
-            _role = EmployeeType.Manager;
-            MainMenu menu = new MainMenu(_role);
-            menu.Show();
-
-            this.Hide();
-        }
-
-        private void btnLoginCashier_Click(object sender, EventArgs e) {
-            _role = EmployeeType.Cashier;
-            MainMenu menu = new MainMenu(_role);
-            menu.Show();
-            this.Hide();
-        }
-
-        private void btnLoginStaff_Click(object sender, EventArgs e) {
-            _role = EmployeeType.Staff;
-            MainMenu menu = new MainMenu(_role);
-            menu.Show();
-            this.Hide();
-        }
 
         private void btnLogout_Click(object sender, EventArgs e) {
             this.Close();
             Application.Exit();
         }
 
-       
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Hide();
+            if (txtUsername.Text == "manager" && txtPassword.Text == "manager")
+            {
+                _role = EmployeeType.Manager;
+                MainMenu mainMenu = new (_role);
+                mainMenu.ShowDialog();
+                this.Hide();
+            }
+            else if (txtUsername.Text == "cashier" && txtPassword.Text == "cashier")
+            {
+                _role = EmployeeType.Cashier;
+                MainMenu mainMenu = new MainMenu(_role);
+                mainMenu.ShowDialog();
+                this.Hide();
+            }
+            else if (txtUsername.Text == "staff" && txtPassword.Text == "staff")
+            {
+                _role = EmployeeType.Staff;
+                MainMenu mainMenu = new MainMenu(_role);
+                mainMenu.ShowDialog();
+            }
+            else
+            {
+                XtraMessageBox.Show("Invalid Username or Password!");
+                txtUsername.Clear();
+                txtPassword.Clear();
+            }
+            Show();
+            
+        }
     }
 }

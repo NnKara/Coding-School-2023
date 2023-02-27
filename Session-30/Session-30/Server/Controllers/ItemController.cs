@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Session_30.Shared.CustomerDto;
 using Session_30.Shared.ItemDto;
+using Session_30.Shared.Validator;
 
 namespace Session_30.Server.Controllers
 {
@@ -12,9 +13,13 @@ namespace Session_30.Server.Controllers
 public class ItemController : ControllerBase {
 
         private readonly IEntityRepo<Item> _itemRepo;
+        private readonly IValidator _validator;
+        private string? _errorMessage;
 
-        public ItemController(IEntityRepo<Item> itemrepo) {
+        public ItemController(IEntityRepo<Item> itemrepo,IValidator validator) {
             _itemRepo= itemrepo;
+            _validator= validator;
+            _errorMessage= string.Empty;
         }
 
         [HttpGet]
@@ -54,35 +59,53 @@ public class ItemController : ControllerBase {
 
         public async Task<IActionResult> Post(ItemEditDto item) {
 
-            var itemExists = _itemRepo.GetAll().Any(i => i.Code == item.Code);
+            var items = _itemRepo.GetAll().ToList();
 
-            if (!itemExists) {
+            if (_validator.ValidateAddItem(items, item, out _errorMessage)) {
                 var newItem = new Item(item.Code, item.Description, item.ItemType, item.Cost, item.Price);
                 _itemRepo.Add(newItem);
                 return Ok();
             }
-            return BadRequest();
+            else {
+                return BadRequest(_errorMessage);
+            }
         }
 
 
 
 
         [HttpPut]
-        public async Task<IActionResult> Put(ItemEditDto item) {
+        public async Task<IActionResult> Put(ItemEditDto item)
+        {
+
+            var items = _itemRepo.GetAll().ToList();
             var itemToUpdate = _itemRepo.GetByID(item.ItemID);
-
-            if (itemToUpdate == null) {
-                return NotFound(); 
+           
+            if (itemToUpdate == null)
+            {
+                return NotFound();
             }
+            try
+            {
+                if (_validator.ValidateUpdateItem(items, itemToUpdate, item, out _errorMessage))
+                {
+                    itemToUpdate.Code = item.Code;
+                    itemToUpdate.Description = item.Description;
+                    itemToUpdate.ItemType = item.ItemType;
+                    itemToUpdate.Cost = item.Cost;
+                    itemToUpdate.Price = item.Price;
+                    _itemRepo.Update(item.ItemID, itemToUpdate);
 
-            itemToUpdate.Code= item.Code;
-            itemToUpdate.Description= item.Description;
-            itemToUpdate.ItemType= item.ItemType;
-            itemToUpdate.Cost= item.Cost;
-            itemToUpdate.Price= item.Price;
-            _itemRepo.Update(item.ItemID, itemToUpdate);
-
-            return Ok();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest(_errorMessage);
+                }
+            }catch(Exception ex)
+            {
+                return BadRequest($"You cannot update the code of this item because it has associated Transactions!");
+            }
         }
 
         [HttpDelete("{id}")]
@@ -92,8 +115,16 @@ public class ItemController : ControllerBase {
             if (itemToDelete == null) {
                 return NotFound(); 
             }
-            _itemRepo.Delete(id);
-            return Ok(); 
+            if (_validator.ValidateDeleteItem(itemToDelete, out _errorMessage))
+            {
+                _itemRepo.Delete(id);
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(_errorMessage);
+            }          
+
         }
     }
 }

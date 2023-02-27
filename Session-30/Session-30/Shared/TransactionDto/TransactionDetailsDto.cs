@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Session_30.Shared.TransactionDto
 {
-    public class TransactionEditDto {
+    public class TransactionDetailsDto
+{
         public int TransactionID { get; set; }
 
         [Required]
@@ -24,13 +25,12 @@ namespace Session_30.Shared.TransactionDto
         public decimal TotalValue { get; set; }
 
 
-        
+
         public int EmployeeID { get; set; }
-        public Employee? Employee { get; set; } 
+        public Employee? Employee { get; set; }
 
         public int CustomerID { get; set; }
-        public Customer? Customer { get; set; } 
 
-        public List<TransactionLineEditDto>? TransactionLines { get; set; }=new();
+        public List<TransactionLineEditDto>? TransactionLines { get; set; } = new();
     }
 }
