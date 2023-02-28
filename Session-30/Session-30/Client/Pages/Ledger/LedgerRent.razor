@@ -5,17 +5,18 @@
 
 <h3>Monthly Ledgers</h3>
 
-<p>Enter monthly ledger: </p>
-<div class="row">
+<div class="row my-3">
     <div class="col-md-3">
-        <InputNumber @bind-Value="Rent" class="form-control" placeholder="0" />
+        <label for="rent-input" class="form-label">Enter monthly ledger:</label>
+        <InputNumber @bind-Value="Rent" id="rent-input" class="form-control" placeholder="0" />
     </div>
 </div>
-<div class="row">
-    <div class="col-md-2 mt-3">
-        <button class="btn btn-primary" @onclick= "DisplayL">Set</button>
+<div class="row my-3">
+    <div class="col-md-2">
+        <button class="btn btn-primary" @onclick="DisplayL">Set</button>
     </div>
 </div>
+
 
 @code {
     private int? Rent { get; set; }
