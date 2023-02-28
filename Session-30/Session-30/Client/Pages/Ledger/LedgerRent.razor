@@ -1,0 +1,30 @@
+﻿@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@page "/ledger"
+
+<h3>Monthly Ledgers</h3>
+
+<p>Enter monthly ledger: </p>
+<div class="row">
+    <div class="col-md-3">
+        <InputNumber @bind-Value="Rent" class="form-control" placeholder="0" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 mt-3">
+        <button class="btn btn-primary" @onclick= "DisplayL">Set</button>
+    </div>
+</div>
+
+@code {
+    private int? Rent { get; set; }
+
+    private void DisplayL() {
+        if (Rent <= 0) {
+            jsRuntime.InvokeVoidAsync("alert", "Insert a valid number!");
+        } else {
+            navigationManager.NavigateTo($"ledgers/{Rent}");
+        }
+    }
+}

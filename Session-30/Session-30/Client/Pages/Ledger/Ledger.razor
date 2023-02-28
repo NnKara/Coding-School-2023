@@ -1,54 +1,74 @@
 ﻿@inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
-@page "/ledger"
+@page "/ledgers/{Rent:int?}"
 @using Session_30.Shared;
 @using Session_30.Shared.Ledger;
 @inject HttpClient httpClient
 <PageTitle>Fuel Station</PageTitle>
 <h3>Monthly Ledgers</h3>
 
-@if (isLoading) {
-    <div class="spinner-border text-secondary" role="status">
-    </div>
-} else {
 
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Year</th>
-                <th>Month</th>
-                <th>Income</th>
-                <th>Expenses</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ledger in Ledgers) {
-                <tr>
-                    <td>@ledger.Year</td>
-                    <td>@ledger.Month</td>
-                    <td>@ledger.Income</td>
-                    <td>@ledger.Expenses</td>
-                    <th>@ledger.Total</th>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+@if (isLoading)
+{
+    <div class="spinner-border text-secondary" role="status"></div>
 }
+else if (Ledgers == null)
+{
+    <h3>Ledgers not found.</h3>
+}
+else if (Ledgers.Count() == 0)
+{
+    <h3>No ledgers available.</h3>
+}
+else
+{
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>Income</th>
+                    <th>Expenses</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ledger in Ledgers)
+                {
+                    <tr>
+                        <td>@ledger.Year</td>
+                        <td>@ledger.Month</td>
+                        <td>@ledger.Income</td>
+                        <td>@ledger.Expenses</td>
+                        <th>@ledger.Total</th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
 
 @code {
-    private List<LedgerListDto> Ledgers = new();
+    private List<LedgerListDto>? Ledgers = new();
     bool isLoading { get; set; } = true;
+    [Parameter] public int? Rent { get; set; }
 
-    protected override async Task OnInitializedAsync() {
+    protected override async Task OnInitializedAsync()
+    {
         await LoadItemsFromServer();
         isLoading = false;
     }
 
-    private async Task LoadItemsFromServer() {
-        var ledgers = await httpClient.GetFromJsonAsync<List<LedgerListDto>>("ledger/details");
-        if (ledgers is not null) {
+    private async Task LoadItemsFromServer()
+    {
+        var ledgers = await httpClient.GetFromJsonAsync<List<LedgerListDto>>($"/ledger/details/{Rent}");
+        if(ledgers is not null)
+        {
             Ledgers = ledgers;
-        } 
+        }
+
     }
+
 }

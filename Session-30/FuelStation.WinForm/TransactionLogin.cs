@@ -42,8 +42,8 @@ namespace FuelStation.WinForm {
 
             } else {
                 XtraMessageBox.Show("Card Number doesn't exists! Redirecting..","Information Message");
-                CustomerForm custForm=new CustomerForm(); 
-                
+                CustomerForm custForm=new CustomerForm();
+                custForm.FormClosed += (s, args) => this.Hide();
                 custForm.ShowDialog();
             }
         }

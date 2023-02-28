@@ -36,6 +36,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -76,7 +78,7 @@
             this.pictureBox5.Image = global::FuelStation.WinForm.Properties.Resources.icons8_private_lock_30;
             this.pictureBox5.Location = new System.Drawing.Point(12, 150);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(42, 39);
+            this.pictureBox5.Size = new System.Drawing.Size(50, 54);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 19;
             this.pictureBox5.TabStop = false;
@@ -84,10 +86,10 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::FuelStation.WinForm.Properties.Resources.icons8_username_50;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 94);
+            this.pictureBox4.Location = new System.Drawing.Point(12, 105);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.Size = new System.Drawing.Size(50, 39);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             // 
@@ -127,7 +129,7 @@
             this.pictureBox1.Image = global::FuelStation.WinForm.Properties.Resources.icons8_enter_50;
             this.pictureBox1.Location = new System.Drawing.Point(0, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(136, 72);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -164,7 +166,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label2.Location = new System.Drawing.Point(12, 347);
+            this.label2.Location = new System.Drawing.Point(24, 369);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(360, 28);
             this.label2.TabIndex = 7;
@@ -173,12 +175,32 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FuelStation.WinForm.Properties.Resources._198257_200;
-            this.pictureBox3.Location = new System.Drawing.Point(303, 294);
+            this.pictureBox3.Location = new System.Drawing.Point(24, 316);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(118, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(220, 518);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 23);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Developed By:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(348, 518);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 23);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Nikos Karamitos";
             // 
             // FuelStation
             // 
@@ -186,6 +208,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(976, 553);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
@@ -220,5 +244,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox5;
         private PictureBox pictureBox4;
+        private Label label8;
+        private Label label3;
     }
 }

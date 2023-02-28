@@ -15,7 +15,6 @@ namespace Session_30.Server.Controllers
         private readonly ITransactionRepo<Transaction> _transactionRepo;
         private readonly IEntityRepo<Employee> _employeeRepo;
         private readonly IEntityRepo<Item> _itemRepo;
-        private readonly decimal _rent = 5000;
         private readonly DateTime currentDate = DateTime.Now;
 
 
@@ -26,48 +25,60 @@ namespace Session_30.Server.Controllers
             _itemRepo = itemRepo;
         }
 
-        [Route("/ledger/details")]
-        public IActionResult GetLedger()
+
+        [Route("/ledger/details/{int}")]
+        [HttpGet]
+        public async Task <IEnumerable<LedgerListDto>>? GetLedger(int rent)
         {
-            List<Ledger> ledgers = new List<Ledger>();
+            List<LedgerListDto> ledgers = new List<LedgerListDto>();
             var items = _itemRepo.GetAll().ToList();
             var employees = _employeeRepo.GetAll().ToList();
 
             // Retrieve the date of the first transaction made
             var firstTransactionDate = _transactionRepo.GetAll().OrderBy(t => t.Date).FirstOrDefault()?.Date;
 
-            // Calculate the month of the first transaction date
-            var firstTransactionMonth = new DateTime(firstTransactionDate.Value.Year, firstTransactionDate.Value.Month, 1);
-
-            // Calculate the number of months between the first transaction month and the current month
-            int monthsSinceFirstTransaction = ((currentDate.Year - firstTransactionMonth.Year) * 12) + (currentDate.Month - firstTransactionMonth.Month);
-
-            // Loop through each month since the first transaction date until the current month
-            for (int i = 0; i <= monthsSinceFirstTransaction; i++)
+            if (firstTransactionDate == null)
             {
-                DateTime monthStartDate = firstTransactionMonth.AddMonths(i);
-                DateTime monthEndDate = new DateTime(monthStartDate.Year, monthStartDate.Month, DateTime.DaysInMonth(monthStartDate.Year, monthStartDate.Month));
+                return ledgers;
+            }
+            else
+            {
 
-                // Get transactions for the current month
-                List<Transaction> transactions = _transactionRepo.GetAll().Where(t => t.Date >= monthStartDate && t.Date <= monthEndDate).ToList();
+                // Calculate the month of the first transaction date
+                var firstTransactionMonth = new DateTime(firstTransactionDate.Value.Year, firstTransactionDate.Value.Month, 1);
 
-                decimal income = transactions.Sum(t => t.TotalValue);
-                decimal expenses = items.Sum(i => i.Cost) + employees.Sum(e => e.SalaryPerMonth);
-                decimal total = income - expenses - _rent;
 
-                var currentLedger = new Ledger
+                // Calculate the number of months between the first transaction month and the current month
+                int monthsSinceFirstTransaction = ((currentDate.Year - firstTransactionMonth.Year) * 12) + (currentDate.Month - firstTransactionMonth.Month);
+
+                // Loop through each month since the first transaction date until the current month
+                for (int i = 0; i <= monthsSinceFirstTransaction; i++)
                 {
-                    Year = monthStartDate.Year,
-                    Month = monthStartDate.Month,
-                    Income = income,
-                    Expenses = expenses + _rent,
-                    Total = total
-                };
+                    DateTime monthStartDate = firstTransactionMonth.AddMonths(i);
+                    DateTime monthEndDate = new DateTime(monthStartDate.Year, monthStartDate.Month, DateTime.DaysInMonth(monthStartDate.Year, monthStartDate.Month));
 
-                ledgers.Add(currentLedger);
+
+                    // Get transactions for the current month
+                    List<Transaction> transactions = _transactionRepo.GetAll().Where(t => t.Date >= monthStartDate && t.Date <= monthEndDate).ToList();
+
+                    decimal income = transactions.Sum(t => t.TotalValue);
+                    decimal expenses = items.Sum(i => i.Cost) + employees.Sum(e => e.SalaryPerMonth);
+                    decimal total = income - expenses - rent;
+
+                    var currentLedger = new LedgerListDto
+                    {
+                        Year = monthStartDate.Year,
+                        Month = monthStartDate.Month,
+                        Income = income,
+                        Expenses = expenses + rent,
+                        Total = total
+                    };
+
+                    ledgers.Add(currentLedger);
+                }
             }
 
-            return Ok(ledgers);
+            return ledgers;
 
         }
 

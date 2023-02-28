@@ -4,6 +4,8 @@
 @inject LoggedUser userStatus
 <PageTitle>Login Page</PageTitle>
 
+
+
 <h1>Welcome</h1>
 
 <div class="row">
@@ -13,6 +15,7 @@
         <button type="button" class="btn btn-primary" @onclick='()=> LoginToPage(EmployeeType.Cashier)'>Cashier</button>
     </div>
 </div>
+
 
 @code {
     private void LoginToPage(EmployeeType role) {

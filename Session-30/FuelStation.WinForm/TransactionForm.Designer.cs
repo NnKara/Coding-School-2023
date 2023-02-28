@@ -74,6 +74,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -109,7 +111,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Info;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(371, 28);
+            this.label2.Location = new System.Drawing.Point(352, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 31);
             this.label2.TabIndex = 9;
@@ -594,12 +596,33 @@
             this.label11.TabIndex = 34;
             this.label11.Text = "product of type fuel.";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(1092, 659);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(287, 23);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "•Quantity must me greater than 0.";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(1101, 689);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(0, 23);
+            this.label13.TabIndex = 36;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1383, 935);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
@@ -703,5 +726,7 @@
         private Label label7;
         private Label label10;
         private Label label11;
+        private Label label12;
+        private Label label13;
     }
 }
